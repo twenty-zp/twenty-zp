@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>一个Loading加载圆动画的实现 (3) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本教程为系列教程第三篇。如果不了解具体的情况,请至传送门。
+第一篇教程传送门
+第二篇教程传送门
+本系列教程,我们要实现如下效果:
+我们可以看到动画中,当第二篇教程中的红点部分移动到最高度的时候会有一个蓝色的细线出现,并且细线向下移动,而未做任何的动画.那么我们就可以考虑其中最简单的方法。
+####方法一:创建一个简单的UIView或CALayer,使用UIView的动画或者CAAnimation动">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个Loading加载圆动画的实现 (3)">
+<meta property="og:url" content="http://yoursite.com/2016/01/05/yi-ge-jia-zai-yuan-dong-hua-de-shi-xian-3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本教程为系列教程第三篇。如果不了解具体的情况,请至传送门。
+第一篇教程传送门
+第二篇教程传送门
+本系列教程,我们要实现如下效果:
+我们可以看到动画中,当第二篇教程中的红点部分移动到最高度的时候会有一个蓝色的细线出现,并且细线向下移动,而未做任何的动画.那么我们就可以考虑其中最简单的方法。
+####方法一:创建一个简单的UIView或CALayer,使用UIView的动画或者CAAnimation动">
+<meta property="og:image" content="http://blog.img421.com/content/images/2016/01/2016-01-05-14_31_51.gif">
+<meta property="og:image" content="http://yoursite.com/content/images/2016/01/-----2016-01-05---2-48-05.png">
+<meta property="og:image" content="http://yoursite.com/content/images/2016/01/-----2016-01-05---3-01-15-1.png">
+<meta property="og:updated_time" content="2016-05-03T04:53:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个Loading加载圆动画的实现 (3)">
+<meta name="twitter:description" content="本教程为系列教程第三篇。如果不了解具体的情况,请至传送门。
+第一篇教程传送门
+第二篇教程传送门
+本系列教程,我们要实现如下效果:
+我们可以看到动画中,当第二篇教程中的红点部分移动到最高度的时候会有一个蓝色的细线出现,并且细线向下移动,而未做任何的动画.那么我们就可以考虑其中最简单的方法。
+####方法一:创建一个简单的UIView或CALayer,使用UIView的动画或者CAAnimation动">
+<meta name="twitter:image" content="http://blog.img421.com/content/images/2016/01/2016-01-05-14_31_51.gif">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-yi-ge-jia-zai-yuan-dong-hua-de-shi-xian-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/05/yi-ge-jia-zai-yuan-dong-hua-de-shi-xian-3/" class="article-date">
+  <time datetime="2016-01-05T07:13:15.000Z" itemprop="datePublished">2016-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      一个Loading加载圆动画的实现 (3)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本教程为系列教程第三篇。如果不了解具体的情况,请至传送门。</p>
+<p><a href="http://blog.img421.com/yi-ge-loadingjia-zai-yuan-dong-hua-de-shi-xian/" target="_blank" rel="external">第一篇教程传送门</a></p>
+<p><a href="http://blog.img421.com/yi-ge-loadingjia-zai-yuan-dong-hua-de-shi-xian-2/" target="_blank" rel="external">第二篇教程传送门</a></p>
+<p>本系列教程,我们要实现如下效果:<br><img src="http://blog.img421.com/content/images/2016/01/2016-01-05-14_31_51.gif" alt="第三篇效果"></p>
+<p>我们可以看到动画中,当<a href="http://blog.img421.com/yi-ge-loadingjia-zai-yuan-dong-hua-de-shi-xian-2/" target="_blank" rel="external">第二篇教程</a>中的红点部分移动到最高度的时候会有一个蓝色的细线出现,并且细线向下移动,而未做任何的动画.那么我们就可以考虑其中最简单的方法。</p>
+<p>####方法一:<br>创建一个简单的<code>UIView</code>或<code>CALayer</code>,使用UIView的动画或者CAAnimation动画。</p>
+<p>####方法二:<br>使用<a href="http://blog.img421.com/yi-ge-loadingjia-zai-yuan-dong-hua-de-shi-xian-2/" target="_blank" rel="external">第二篇教程</a>中的<br><code>CAShapeLayer</code>的属性<code>strokeStart</code>和<code>strokeEnd</code>来实现类似效.</p>
+<p>这里我们为了简便我们使用第一种方法,通过改变<code>CALayer</code>的位置来进行动画。</p>
+<p><img src="/content/images/2016/01/-----2016-01-05---2-48-05.png" alt="初始简图"><br>我们可以看到蓝色的细线。假设蓝色的细线<code>长度为15</code>,由圆图的<code>position</code>,我们可以获取到蓝色细线的初始<code>position</code> <strong>ps: 注意调试线宽</strong></p>
+<pre><code>蓝色细线初始position = 圆的position - 2*半径R ＋ (蓝色细线长度)*0.5
+</code></pre><p><img src="/content/images/2016/01/-----2016-01-05---3-01-15-1.png" alt="最终简图"></p>
+<p>上图为蓝色为所移动到的最终位置。<strong>ps: 注意调试线宽</strong></p>
+<pre><code>蓝色细线最终position = 圆的position - 半径R - (蓝色细线长度)*0.5
+</code></pre><p>######上代码:<br>通过CAAnimation代理结束可知道,</p>
+<pre><code>- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if ([[anim valueForKey:kName] isEqualToString:kProgress]) {
+        //执行红点抛物线
+        [self doHandlePao];
+    }else if ([[anim valueForKey:kName] isEqualToString:kMoveLayerGroup])
+    {
+        //执行向下滑动
+        [self doHandleTranslate];
+    }
+}
+</code></pre><p>当红色的部分移动到顶端的时候,我们把它从父类上移出,然后创建蓝色的细线.代码如下:</p>
+<pre><code>  [_moveLayer removeFromSuperlayer];
+CAShapeLayer * lineLayer = [CAShapeLayer layer];
+//蓝线大小
+lineLayer.bounds = CGRectMake(0, 0, 2, 15);
+//蓝线的position
+CGFloat y = CGRectGetMidY(self.view.bounds) - 2* kRadius + (lineLayer.bounds.size.height)*0.5;
+
+lineLayer.position = CGPointMake(CGRectGetMidX(self.view.bounds), y);
+
+lineLayer.backgroundColor= [UIColor blueColor].CGColor;
+lineLayer.lineWidth = 2;
+lineLayer.contentsScale = [UIScreen mainScreen].scale;
+[self.view.layer addSublayer:lineLayer];
+_lineLayer= lineLayer;
+
+//蓝线的最终位置 kRadius为半径长度
+finalPosition = CGRectGetMidY(self.view.bounds) -  kRadius -5;
+</code></pre><p>通过<code>CABasicAnimation</code>改变<code>position.y</code></p>
+<pre><code> CABasicAnimation * yAnimation = [CABasicAnimation animationWithKeyPath:@&quot;position.y&quot;];
+yAnimation.fromValue = @(y);
+yAnimation.toValue = @(finalPosition);
+yAnimation.removedOnCompletion = NO;
+yAnimation.delegate = self;
+yAnimation.duration = 3;
+yAnimation.repeatCount = MAXFLOAT;
+[yAnimation setValue:kPositionY forKey:kName];
+yAnimation.fillMode = kCAFillModeForwards;
+[lineLayer addAnimation:yAnimation forKey:nil];
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/01/05/yi-ge-jia-zai-yuan-dong-hua-de-shi-xian-3/" data-id="cit9psq4z000vignj7sg8lfwj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS技术/"> - iOS技术</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/07/macxia-an-zhuang-ioniche-cordova-bing-yun-xing-iosxiang-mu/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Mac下安装ionic和cordova,并生成iOS项目
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/04/yi-ge-loadingjia-zai-yuan-dong-hua-de-shi-xian-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">一个Loading加载圆动画的实现(2)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/"> - React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twenty随笔录/"> - Twenty随笔录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS技术/"> - iOS技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS资源/"> - iOS资源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic系列/"> - ionic系列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/"> - 其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频直播系列/"> - 视频直播系列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆向工程/"> - 逆向工程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/React-Native/" style="font-size: 13.33px;"> - React Native</a> <a href="/tags/Twenty随笔录/" style="font-size: 10px;"> - Twenty随笔录</a> <a href="/tags/iOS技术/" style="font-size: 20px;"> - iOS技术</a> <a href="/tags/iOS资源/" style="font-size: 13.33px;"> - iOS资源</a> <a href="/tags/ionic系列/" style="font-size: 13.33px;"> - ionic系列</a> <a href="/tags/其他/" style="font-size: 10px;"> - 其他</a> <a href="/tags/视频直播系列/" style="font-size: 16.67px;"> - 视频直播系列</a> <a href="/tags/逆向工程/" style="font-size: 10px;"> - 逆向工程</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/19/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/">四、视频的编解码-编码篇</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/san-shi-pin-bian-jie-ma-jie-ma-pian/">三、视频编解码-解码篇</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/shi-pin-zhi-bo-xi-lie-er-cai-ji-shi-pin-shu-ju/">二、采集视频数据</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/shi-pin-zhi-bo-xi-lie-yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/">iOS视频直播系列</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

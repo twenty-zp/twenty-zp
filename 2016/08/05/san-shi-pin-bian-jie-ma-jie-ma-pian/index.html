@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>三、视频编解码-解码篇 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Demo地址
+在此之前我们通常使用的FFmpeg多媒体库,利用CPU来进行视频的编解码,占用CPU资源,效率低下,俗称软编解码.而苹果在2014年的iOS8中,开放了VideoToolbox.framwork框架,此框架使用GPU或专用的处理器来进行编解码,俗称硬编解码.而此框架在此之前只有MAC OS系统中可以使用,在iOS作为私有框架.终于苹果在iOS8.0中得到开放引入.
+2014年的WWD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="三、视频编解码-解码篇">
+<meta property="og:url" content="http://yoursite.com/2016/08/05/san-shi-pin-bian-jie-ma-jie-ma-pian/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Demo地址
+在此之前我们通常使用的FFmpeg多媒体库,利用CPU来进行视频的编解码,占用CPU资源,效率低下,俗称软编解码.而苹果在2014年的iOS8中,开放了VideoToolbox.framwork框架,此框架使用GPU或专用的处理器来进行编解码,俗称硬编解码.而此框架在此之前只有MAC OS系统中可以使用,在iOS作为私有框架.终于苹果在iOS8.0中得到开放引入.
+2014年的WWD">
+<meta property="og:image" content="https://twenty-zp.gitbooks.io/-/content/AFBF71FB-4A38-449B-97FC-EBE4BAC1A3F6.png">
+<meta property="og:image" content="https://twenty-zp.gitbooks.io/-/content/6738D208-3D91-4C81-8C09-E9F212FAC080.png">
+<meta property="og:image" content="https://twenty-zp.gitbooks.io/-/content/C9B77B4F-5091-4C80-92DE-D84C9AB44D25.png">
+<meta property="og:image" content="https://twenty-zp.gitbooks.io/-/content/DEA65059-66BE-49E3-BF53-5938CB278F36.png">
+<meta property="og:image" content="https://twenty-zp.gitbooks.io/-/content/F2D6F4FA-87C1-4B41-9295-6F4E1F8E43C7.png">
+<meta property="og:image" content="https://twenty-zp.gitbooks.io/-/content/9F927C1A-288F-44DF-BB7B-9B5804C55562.png">
+<meta property="og:image" content="https://twenty-zp.gitbooks.io/-/content/FCACB659-4B39-4497-BDF4-246499F94EAC.png">
+<meta property="og:image" content="https://twenty-zp.gitbooks.io/-/content/BAC15B30-4D58-4ECD-A3EF-C924F61759F4.png">
+<meta property="og:updated_time" content="2016-08-05T07:58:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="三、视频编解码-解码篇">
+<meta name="twitter:description" content="Demo地址
+在此之前我们通常使用的FFmpeg多媒体库,利用CPU来进行视频的编解码,占用CPU资源,效率低下,俗称软编解码.而苹果在2014年的iOS8中,开放了VideoToolbox.framwork框架,此框架使用GPU或专用的处理器来进行编解码,俗称硬编解码.而此框架在此之前只有MAC OS系统中可以使用,在iOS作为私有框架.终于苹果在iOS8.0中得到开放引入.
+2014年的WWD">
+<meta name="twitter:image" content="https://twenty-zp.gitbooks.io/-/content/AFBF71FB-4A38-449B-97FC-EBE4BAC1A3F6.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-san-shi-pin-bian-jie-ma-jie-ma-pian" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/05/san-shi-pin-bian-jie-ma-jie-ma-pian/" class="article-date">
+  <time datetime="2016-08-05T02:15:46.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      三、视频编解码-解码篇
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://github.com/twenty-zp/RealTimeAVVideo" target="_blank" rel="external">Demo地址</a></p>
+<p>在此之前我们通常使用的FFmpeg多媒体库,利用CPU来进行视频的编解码,占用CPU资源,效率低下,俗称软编解码.而苹果在2014年的iOS8中,开放了VideoToolbox.framwork框架,此框架使用GPU或专用的处理器来进行编解码,俗称硬编解码.而此框架在此之前只有MAC OS系统中可以使用,在iOS作为私有框架.终于苹果在iOS8.0中得到开放引入.</p>
+<p>2014年的WWDC<a href="https://developer.apple.com/videos/play/wwdc2014/513/" target="_blank" rel="external">Direct Access to Video Encoding and Decoding</a>中,苹果介绍了使用videoToolbox硬编解码.<br>使用硬编解码有几个优点:</p>
+<ul>
+<li>提高性能;</li>
+<li>增加效率;</li>
+<li>延长电量的使用</li>
+</ul>
+<p>对于编解码,AVFoundation框架只有以下几个功能:</p>
+<ol>
+<li>直接解压后显示;</li>
+<li>直接压缩到一个文件当中;</li>
+</ol>
+<p>而对于Video Toolbox,我们可以通过以下功能获取到数据,进行网络流传输等多种保存：</p>
+<ol>
+<li>解压为图像的数据结构;</li>
+<li><p>压缩为视频图像的容器数据结构.<br>###一、videoToolbox的基本数据<br>Video Toolbox视频编解码前后需要应用的数据结构进行说明。</p>
+</li>
+<li><p>CVPixelBuffer：编码前和解码后的图像数据结构。此内容包含一系列的CVPixelBufferPool内容</p>
+</li>
+<li><p>CMTime、CMClock和CMTimebase：时间戳相关。时间以64-bit/32-bit的形式出现。</p>
+</li>
+<li><p>pixelBufferAttributes:字典设置.可能包括Width/height、pixel format type、• Compatibility (e.g., OpenGL ES, Core Animation)</p>
+</li>
+<li><p>CMBlockBuffer：编码后，结果图像的数据结构。</p>
+</li>
+<li><p>CMVideoFormatDescription：图像存储方式，编解码器等格式描述。</p>
+</li>
+<li><p>(CMSampleBuffer：存放编解码前后的视频图像的容器数据结构。</p>
+</li>
+<li><p>CMClock </p>
+</li>
+<li><p>CMTimebase: 关于CMClock的一个控制视图,包含CMClock、时间映射(Time mapping)、速率控制(Rate control)</p>
+</li>
+</ol>
+<hr>
+<p>由<a href="er_3001_cai_ji_shi_pin.md">二、采集视频数据</a>可知,我们获取到的数据<code>(CMSampleBufferRef)sampleBuffer</code>为未编码的数据;</p>
+<p><img src="https://twenty-zp.gitbooks.io/-/content/AFBF71FB-4A38-449B-97FC-EBE4BAC1A3F6.png" alt="图1.1编码前后的数据结构示意图"><strong>图1.1</strong></p>
+<p>上图中,编码前后的视频图像都封装在<code>CMSampleBuffer</code>中,编码前以<code>CVPixelBuffer</code>进行存储;编码后以<code>CMBlockBuffer</code>进行存储。除此之外两者都包括<code>CMTime</code>、<code>CMVideoFormatDesc</code>.</p>
+<p>###二、获取已编码数据流进行解码展示(获取编码后的数据进行解码展示)<br><img src="https://twenty-zp.gitbooks.io/-/content/6738D208-3D91-4C81-8C09-E9F212FAC080.png" alt="图2.1"><strong>图2.1</strong></p>
+<p>通过网络获取<strong>已编码的H.264数据流</strong>进行<strong>MPEG-4</strong>处理,通过使用<code>AVSampleBufferDisplayLayer</code>解码获取图像显示到设备上。<br><img src="https://twenty-zp.gitbooks.io/-/content/C9B77B4F-5091-4C80-92DE-D84C9AB44D25.png" alt="图2.2 AVSampleBufferDisplayLayer解码显示"><br><strong>图2.2</strong></p>
+<p>2.1. 将获取到的<strong>已编码的数据流</strong>进行处理成<code>CMSampleBuffer</code>.<br><img src="https://twenty-zp.gitbooks.io/-/content/DEA65059-66BE-49E3-BF53-5938CB278F36.png" alt="图2.3 处理H.264码流"><br><strong>图2.3</strong></p>
+<p>由图1.1可知:解码前的图像数据结构$$CMSampleBuffer = CMTime + FormatDesc + CMBlockBuffer$$组成 因此需要从H.264的码流需要以上三个信息组合成<code>CMSampleBuffer</code>.</p>
+<blockquote>
+<p>H.264码流由一系列的NALU单元组成.NALU单元包含视频图像数据(或视频帧片段)和H.264的参数信息。其中视频图像信息数据是CMBlockBuffer,而H.264参数信息可以组合成FormatDesc,包括编码所用的profile，level，图像的宽和高，deblock滤波器等.具体包含<strong>第一个NALU的SPS</strong>（Sequence Parameter Set）和<strong>第二个NALU的PPS</strong>（Picture Parameter Set）。</p>
+</blockquote>
+<p>  <img src="https://twenty-zp.gitbooks.io/-/content/F2D6F4FA-87C1-4B41-9295-6F4E1F8E43C7.png" alt="图2.3 H.264组成结构">  <strong>图2.4</strong></p>
+<pre><code>* frame的数据可以分为多个slice(片段). 
+* 每个slice中的数据，在帧内预测只用到自己slice的数据， 与其他slice 数据没有依赖关系。 
+* NAL 是用来将编码的数据进行大包的。 比如，每一个slice 数据可以放在NAL 包中。
+* I frame 是自己独立编码，不依赖于其他frame 数据。 
+* P frame 依赖 I frame 数据。 
+* B frame 依赖 I frame, P frame 或其他 B frame 数据。
+* H.264码流的第三个NALU是IDR(即时解码器刷新),IDR图像都是I帧，H.264引入IDR图像为了解码的同步,使错
+ 误不被传播，当解码器解码到IDR图像时，立即将参考帧队列清空，将已解码的数据全部输出或抛弃，重新查找参数集，
+ 开一个新的序 列。这样，如果前一个序列出现重大错误，在这里可以获得重新同步的机会。IDR图像之后的图像永远不
+ 会使用IDR之前的图像的数据来解码。
+</code></pre><p> <strong>1.1 使用<code>CMVideoFormatDescriptionCreateFromH264ParameterSets</code>提取编码的SPS和PPS压缩转换成<code>MPEG—4</code>需要的SPS和PPS,组合成<code>CMVideoFormatDescription</code></strong><br>      <img src="https://twenty-zp.gitbooks.io/-/content/9F927C1A-288F-44DF-BB7B-9B5804C55562.png" alt="图2.1.1"></p>
+<pre><code>(1)每个NALU的开始码是3或4字节头:00 00 01 或 00 00 00 01,按开始码可定位NALU;
+(2)提取出SPS和PPS,通过获取到的编码流,判断开始码后的第一个byte的后5位,7代表SPS,8代表PPS.      
+(3)`CMVideoFormatDescriptionCreateFromH264ParameterSets`函数构建`CMVideoFormatDescription`.
+</code></pre><p>   <strong>1.2 获取CMBlockBuffer</strong><br>  <img src="https://twenty-zp.gitbooks.io/-/content/FCACB659-4B39-4497-BDF4-246499F94EAC.png" alt="图2.1.2"></p>
+<pre><code>(1)通过开始码,定位到NALU;
+(2)确认类型数据将开始码替换为NALU的长度信息（4 Byte）
+(3)通过CMBlockBufferCreateWithMemoryBlock接口构造CMBlockBufferRef
+</code></pre><p>   <strong>1.3 添加CMTime</strong></p>
+<p>  <img src="https://twenty-zp.gitbooks.io/-/content/BAC15B30-4D58-4ECD-A3EF-C924F61759F4.png" alt="图2.5"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/08/05/san-shi-pin-bian-jie-ma-jie-ma-pian/" data-id="cit9psq4z000yignjg1bxyjp8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视频直播系列/"> - 视频直播系列</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          四、视频的编解码-编码篇
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/05/shi-pin-zhi-bo-xi-lie-er-cai-ji-shi-pin-shu-ju/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">二、采集视频数据</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/"> - React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twenty随笔录/"> - Twenty随笔录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS技术/"> - iOS技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS资源/"> - iOS资源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic系列/"> - ionic系列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/"> - 其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频直播系列/"> - 视频直播系列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆向工程/"> - 逆向工程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/React-Native/" style="font-size: 13.33px;"> - React Native</a> <a href="/tags/Twenty随笔录/" style="font-size: 10px;"> - Twenty随笔录</a> <a href="/tags/iOS技术/" style="font-size: 20px;"> - iOS技术</a> <a href="/tags/iOS资源/" style="font-size: 13.33px;"> - iOS资源</a> <a href="/tags/ionic系列/" style="font-size: 13.33px;"> - ionic系列</a> <a href="/tags/其他/" style="font-size: 10px;"> - 其他</a> <a href="/tags/视频直播系列/" style="font-size: 16.67px;"> - 视频直播系列</a> <a href="/tags/逆向工程/" style="font-size: 10px;"> - 逆向工程</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/19/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/">四、视频的编解码-编码篇</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/san-shi-pin-bian-jie-ma-jie-ma-pian/">三、视频编解码-解码篇</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/shi-pin-zhi-bo-xi-lie-er-cai-ji-shi-pin-shu-ju/">二、采集视频数据</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/shi-pin-zhi-bo-xi-lie-yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/">iOS视频直播系列</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

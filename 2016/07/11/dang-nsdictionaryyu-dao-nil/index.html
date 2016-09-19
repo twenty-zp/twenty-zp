@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>当NSDictionary遇到nil | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#问题在开发中我们经常会遇到如下问题：
+
+failed: caught “NSInvalidArgumentException”, “* -[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil object from objects[1]”
+failed: caught “NSInvali">
+<meta property="og:type" content="article">
+<meta property="og:title" content="当NSDictionary遇到nil">
+<meta property="og:url" content="http://yoursite.com/2016/07/11/dang-nsdictionaryyu-dao-nil/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#问题在开发中我们经常会遇到如下问题：
+
+failed: caught “NSInvalidArgumentException”, “* -[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil object from objects[1]”
+failed: caught “NSInvali">
+<meta property="og:updated_time" content="2016-08-01T08:53:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="当NSDictionary遇到nil">
+<meta name="twitter:description" content="#问题在开发中我们经常会遇到如下问题：
+
+failed: caught “NSInvalidArgumentException”, “* -[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil object from objects[1]”
+failed: caught “NSInvali">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-dang-nsdictionaryyu-dao-nil" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/11/dang-nsdictionaryyu-dao-nil/" class="article-date">
+  <time datetime="2016-07-11T08:15:48.000Z" itemprop="datePublished">2016-07-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      当NSDictionary遇到nil
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#问题<br>在开发中我们经常会遇到如下问题：</p>
+<ul>
+<li>failed: caught “NSInvalidArgumentException”, “<em>*</em> -[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil object from objects[1]”</li>
+<li>failed: caught “NSInvalidArgumentException”, “<em>*</em> setObjectForKey: object cannot be nil (key: no_nillKey)”</li>
+<li>failed: caught “NSInvalidArgumentException”, “<em>*</em> setObjectForKey: key cannot be nil”</li>
+</ul>
+<p>由上可知,Objective-C里的<strong>NSDictionary</strong>是不支持<strong>nil</strong>作为key和value的.但是总会有一些地方我们往往会不注意的插入<strong>nil</strong>值。</p>
+<p>通过我们的做法是：</p>
+<ol>
+<li><p>使用<strong>if</strong>判断对象是否存在:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (obj) &#123;</div><div class="line">	[dic setObject:obj forKey:@&quot;obj&quot;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用<strong>三目运算符</strong>来判断</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[dic setObject:obj?:@&quot;&quot; forKey:@&quot;obj&quot;];</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样做有几个坏处：</p>
+<ol>
+<li>代码冗余较多；</li>
+<li>如果忘了检查<strong>nil</strong>,在某些情况下就会遇到以上问题;</li>
+<li>后台的API大部分是以JSON 格式传递,所以一个<strong>nil</strong>值不论是传空字符还是不传都不是很正确。</li>
+</ol>
+<p>因此我们希望<strong>NSDictionary</strong>用起来会遇到以下几种情况:</p>
+<ol>
+<li><p>插入<strong>nil</strong>时不会crash</p>
+</li>
+<li><p>插入<strong>nil</strong>值以后(不管是<strong>key</strong>为nil还是<strong>value</strong>为nil)对应的key-value 都不包含在<strong>NSDictionary</strong>中</p>
+</li>
+</ol>
+<p>#设计<br>根据crash 可以看出,dictionary有三个主要的入口传入nil 对象：</p>
+<ol>
+<li>字面量一个dictionary的时候，会调用<strong>dictionaryWithObjects:forKeys:count:</strong></li>
+<li>直接调用<strong>setObjectForKey:</strong>的时候</li>
+<li>通过下标方式赋值的时候(key不能为nil)调用”<strong>setObjectForKey: key cannot be nil”</strong></li>
+</ol>
+<p>当使用 <strong>setObjectForKey</strong>时对象是<strong>__NSDictionaryM</strong>类,同样要定义此类。<br>因此可以通过Method Swizzing 把这几种方法替换为自己的方法,在key或value 为<strong>nil</strong>的时候,并不加入到NSDictionary中.</p>
+<p>以<strong>dictionaryWithObjects:forKeys:count</strong>为例:</p>
+<p>创建交换方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">//</div><div class="line">//  NSDictionary+SafeNil.m</div><div class="line">//  当NSDictionary遇到nil</div><div class="line">//</div><div class="line">//  Created by iLogiEMAC on 16/7/11.</div><div class="line">//  Copyright © 2016年 zp. All rights reserved.</div><div class="line">//</div><div class="line"></div><div class="line">#import &quot;NSDictionary+SafeNil.h&quot;</div><div class="line">#import &lt;objc/runtime.h&gt;</div><div class="line">@implementation NSObject (SafeNil)</div><div class="line"></div><div class="line">+ (BOOL)swizzing_method:(SEL)originalSelector  replaceMethod:(SEL)replaceSelector</div><div class="line">&#123;</div><div class="line">    Method original = class_getInstanceMethod(self, originalSelector);</div><div class="line">    Method replace = class_getInstanceMethod(self, replaceSelector);</div><div class="line">    if (!original || !replace) &#123;</div><div class="line">        return NO;</div><div class="line">    &#125;</div><div class="line">    class_addMethod(self, originalSelector, class_getMethodImplementation(self, originalSelector), method_getTypeEncoding(original));</div><div class="line">    class_addMethod(self, replaceSelector, class_getMethodImplementation(self, replaceSelector), method_getTypeEncoding(replace));</div><div class="line">    </div><div class="line">    method_exchangeImplementations(original, replace);</div><div class="line">    return YES;</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (BOOL)swizzingClassMethod:(SEL)originSelector replaceMethod:(SEL)replaceSelector</div><div class="line">&#123;</div><div class="line">    return [object_getClass((id)self) swizzing_method:originSelector replaceMethod:replaceSelector];</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure></p>
+<p>实现自定义的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">@implementation NSDictionary (SafeNil)</div><div class="line"></div><div class="line">+ (void)load</div><div class="line">&#123;</div><div class="line">    static dispatch_once_t onceToken;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        [self swizzingClassMethod:@selector(initWithObjects:forKeys:count:) replaceMethod:@selector(zpSwizzing_initWithObjects:forKeys:count:)];</div><div class="line">        [self swizzingClassMethod:@selector(dictionaryWithObjects:forKeys:count:) replaceMethod:@selector(zpSwizzingClass_dictionaryWithObjects:forKeys:count:)];</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (instancetype)zpSwizzing_initWithObjects:(const id  _Nonnull __unsafe_unretained *)objects forKeys:(const id&lt;NSCopying&gt;  _Nonnull __unsafe_unretained *)keys count:(NSUInteger)cnt&#123;</div><div class="line">    id safeObjects[cnt];</div><div class="line">    id safeKeys[cnt];</div><div class="line">    </div><div class="line">    NSUInteger j = 0;</div><div class="line">    for (NSUInteger i = 0; i &lt; cnt ; i++) &#123;</div><div class="line">        id key = keys[i];</div><div class="line">        id obj = objects[i];</div><div class="line">        if (!key || !obj) &#123;</div><div class="line">            continue;</div><div class="line">        &#125;</div><div class="line">        safeObjects[j] = obj;</div><div class="line">        safeKeys[j] = key;</div><div class="line">        j++;</div><div class="line">    &#125;</div><div class="line">    return  [self zpSwizzing_initWithObjects:safeObjects forKeys:safeKeys count:j];</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">+ (instancetype)zpSwizzingClass_dictionaryWithObjects:(const id  _Nonnull __unsafe_unretained *)objects forKeys:(const id&lt;NSCopying&gt;  _Nonnull __unsafe_unretained *)keys count:(NSUInteger)cnt</div><div class="line">&#123;</div><div class="line">    id safeObjects[cnt];</div><div class="line">    id safeKeys[cnt];</div><div class="line">    </div><div class="line">    NSUInteger j = 0;</div><div class="line">    for (NSUInteger i = 0; i &lt; cnt ; i++) &#123;</div><div class="line">        id key = keys[i];</div><div class="line">        id obj = objects[i];</div><div class="line">        if (!key || !obj) &#123;</div><div class="line">            continue;</div><div class="line">        &#125;</div><div class="line">        safeObjects[j] = obj;</div><div class="line">        safeKeys[j] = key;</div><div class="line">        j++;</div><div class="line">    &#125;</div><div class="line">    return [self zpSwizzingClass_dictionaryWithObjects:safeObjects forKeys:safeKeys count:j];</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure></p>
+<p>在单元测试中测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">NSString * no_nillKey = @&quot;no_nillKey&quot;;</div><div class="line">NSString * nilKey = nil;</div><div class="line">NSString * no_nillValue = @&quot;no_nillValue&quot;;</div><div class="line">NSString * nilValue = nil;</div><div class="line">NSDictionary * dic = @&#123;</div><div class="line">                       no_nillKey: nilValue,</div><div class="line">                       nilKey: no_nillValue</div><div class="line">&#125;;</div><div class="line"></div><div class="line">NSLog(@&quot;%@&quot;,dic);</div><div class="line">     </div><div class="line">dic 输出为 &#123; &#125;</div></pre></td></tr></table></figure>
+<p><a href="http://tech.glowing.com/cn/how-we-made-nsdictionary-nil-safe/" target="_blank" rel="external">参考地址</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/07/11/dang-nsdictionaryyu-dao-nil/" data-id="cit9psq5d001aignji6jevctu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/05/yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          一、音视频配置文档概念
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/08/shi-yong-interactivepopgesturerecognizerqia-zhu-de-wen-ti-bu-shi-bugde-bug/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用interactivePopGestureRecognizer卡住的问题-不是BUG的BUG</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/"> - React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twenty随笔录/"> - Twenty随笔录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS技术/"> - iOS技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS资源/"> - iOS资源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic系列/"> - ionic系列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/"> - 其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频直播系列/"> - 视频直播系列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆向工程/"> - 逆向工程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/React-Native/" style="font-size: 13.33px;"> - React Native</a> <a href="/tags/Twenty随笔录/" style="font-size: 10px;"> - Twenty随笔录</a> <a href="/tags/iOS技术/" style="font-size: 20px;"> - iOS技术</a> <a href="/tags/iOS资源/" style="font-size: 13.33px;"> - iOS资源</a> <a href="/tags/ionic系列/" style="font-size: 13.33px;"> - ionic系列</a> <a href="/tags/其他/" style="font-size: 10px;"> - 其他</a> <a href="/tags/视频直播系列/" style="font-size: 16.67px;"> - 视频直播系列</a> <a href="/tags/逆向工程/" style="font-size: 10px;"> - 逆向工程</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/19/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/">四、视频的编解码-编码篇</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/san-shi-pin-bian-jie-ma-jie-ma-pian/">三、视频编解码-解码篇</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/shi-pin-zhi-bo-xi-lie-er-cai-ji-shi-pin-shu-ju/">二、采集视频数据</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/shi-pin-zhi-bo-xi-lie-yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/">iOS视频直播系列</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>解决Mac OSX系统版本安装brew出错 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="上周更新了最新的Mac OSX操作系统10.11.x,但是安装brew命令的时候出现如下两种错误：
+1fatal: cannot unlink &amp;apos;Library/Aliases/0install&amp;apos;: Permission denied
+123456789101112131415161718192021222324252627282930313233error: unable t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="解决Mac OSX系统版本安装brew出错">
+<meta property="og:url" content="http://yoursite.com/2016/04/09/jie-jue-osx10-11-xxi-tong-ban-ben-an-zhuang-brewchu-cuo/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="上周更新了最新的Mac OSX操作系统10.11.x,但是安装brew命令的时候出现如下两种错误：
+1fatal: cannot unlink &amp;apos;Library/Aliases/0install&amp;apos;: Permission denied
+123456789101112131415161718192021222324252627282930313233error: unable t">
+<meta property="og:image" content="http://yoursite.com/content/images/2016/04/45ECDF54-98F9-4027-A726-F961BB0DBCEF.png">
+<meta property="og:updated_time" content="2016-08-18T09:10:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="解决Mac OSX系统版本安装brew出错">
+<meta name="twitter:description" content="上周更新了最新的Mac OSX操作系统10.11.x,但是安装brew命令的时候出现如下两种错误：
+1fatal: cannot unlink &amp;apos;Library/Aliases/0install&amp;apos;: Permission denied
+123456789101112131415161718192021222324252627282930313233error: unable t">
+<meta name="twitter:image" content="http://yoursite.com/content/images/2016/04/45ECDF54-98F9-4027-A726-F961BB0DBCEF.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-jie-jue-osx10-11-xxi-tong-ban-ben-an-zhuang-brewchu-cuo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/09/jie-jue-osx10-11-xxi-tong-ban-ben-an-zhuang-brewchu-cuo/" class="article-date">
+  <time datetime="2016-04-08T16:28:13.000Z" itemprop="datePublished">2016-04-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      解决Mac OSX系统版本安装brew出错
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上周更新了最新的Mac OSX操作系统10.11.x,但是安装<a href="http://brew.sh/index.html" target="_blank" rel="external">brew</a>命令的时候出现如下两种错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fatal: cannot unlink &apos;Library/Aliases/0install&apos;: Permission denied</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Acceptable-Formulae.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Bottles.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Brew-Test-Bot-For-Core-Contributors.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Brew-Test-Bot.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/C++-Standard-Libraries.md&apos; (Permission denied)</div><div class="line">error: unable to create file share/doc/homebrew/Checksum_Deprecation.md (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Common-Issues-for-Core-Contributors.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Common-Issues.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Custom-GCC-and-cross-compilers.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/External-Commands.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/FAQ.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Formula-Cookbook.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Gems,-Eggs-and-Perl-Modules.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Homebrew-and-Python.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/How-To-Open-a-Homebrew-Pull-Request-(and-get-it-merged).md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/How-to-Create-and-Maintain-a-Tap.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/How-to-build-software-outside-Homebrew-with-Homebrew-keg-only-dependencies.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Installation.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Interesting-Taps-&amp;-Branches.md&apos; (Permission denied)</div><div class="line">error: unable to create file share/doc/homebrew/Kickstarter-Supporters.md (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Maintainer-Guidelines.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Migrating-A-Formula-To-A-Tap.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/New-Maintainer-Checklist.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Python-for-Formula-Authors.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Querying-Brew.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/README.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Rename-A-Formula.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Tips-N&apos;-Tricks.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Troubleshooting.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Xcode.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/brew-tap.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/brew.1.html&apos; (Permission denied)</div><div class="line">fatal: cannot create directory at &apos;share/doc/homebrew/images&apos;: Permission denied</div></pre></td></tr></table></figure>
+<p>网上找了半天找到了此种方法<a href="http://stackoverflow.com/questions/28460953/homebrew-install-issue-after-computer-restoration" target="_blank" rel="external">stackoverflow</a>.此方法给我了一些提示,解决了OSX系统中brew的安装。</p>
+<p>####1.clone brew项目到本地<br>    git clone <a href="https://github.com/Homebrew/brew" target="_blank" rel="external">https://github.com/Homebrew/brew</a></p>
+<p>####2.移动项目文件<br><code>在执行文件的移动之前,请保证要移动到的目录文件中的相同文件移除</code></p>
+<p>#####1).通过本地项目可知brew的目录结构,而我们所使用的命令都是<code>/usr/local/bin</code>文件中,因此将brew中的<code>bin</code>目录下的命令<code>brew</code>拷贝或者移动到<code>/usr/local/bin</code>下:(我所使用的是移动)</p>
+<pre><code>//进入本地项目brew中
+cd brew 
+//移动brew到系统文件中
+sudo mv bin/brew /usr/local/bin
+</code></pre><p>#####2).移动Library<br>    //移动Library库到/usr/local<br>    sudo mv Library /usr/local</p>
+<p>#####3).移动share文件<br>    //移动share库到/usr/local<br>    sudo mv share /usr/local</p>
+<p>####3.查看是否安装成功<br>使用<code>brew</code>查看是否已经移动成功.如果有以下内容则代表成功。<br><img src="/content/images/2016/04/45ECDF54-98F9-4027-A726-F961BB0DBCEF.png" alt=""><br>到此为止,我们可以运行<code>brew update</code>更新<code>brew</code>,以及<code>brew install</code>来安装我们所要使用的工具</p>
+<p><a href="">ps:转载请注明出处</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/04/09/jie-jue-osx10-11-xxi-tong-ban-ben-an-zhuang-brewchu-cuo/" data-id="cit9psq5e001cignjgu7zs1g5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/其他/"> - 其他</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/04/11/react-nativexue-xi-zhi-nan/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          [转]React-Native学习指南
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/04/05/xcode-7-3-zhong-da-duan-dian-beng-kui-jie-jue/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">解决Xcode 7.3 中打断点崩溃</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/"> - React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twenty随笔录/"> - Twenty随笔录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS技术/"> - iOS技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS资源/"> - iOS资源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic系列/"> - ionic系列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/"> - 其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频直播系列/"> - 视频直播系列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆向工程/"> - 逆向工程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/React-Native/" style="font-size: 13.33px;"> - React Native</a> <a href="/tags/Twenty随笔录/" style="font-size: 10px;"> - Twenty随笔录</a> <a href="/tags/iOS技术/" style="font-size: 20px;"> - iOS技术</a> <a href="/tags/iOS资源/" style="font-size: 13.33px;"> - iOS资源</a> <a href="/tags/ionic系列/" style="font-size: 13.33px;"> - ionic系列</a> <a href="/tags/其他/" style="font-size: 10px;"> - 其他</a> <a href="/tags/视频直播系列/" style="font-size: 16.67px;"> - 视频直播系列</a> <a href="/tags/逆向工程/" style="font-size: 10px;"> - 逆向工程</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/19/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/">四、视频的编解码-编码篇</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/san-shi-pin-bian-jie-ma-jie-ma-pian/">三、视频编解码-解码篇</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/shi-pin-zhi-bo-xi-lie-er-cai-ji-shi-pin-shu-ju/">二、采集视频数据</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/shi-pin-zhi-bo-xi-lie-yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/">iOS视频直播系列</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

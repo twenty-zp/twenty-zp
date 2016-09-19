@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用interactivePopGestureRecognizer卡住的问题-不是BUG的BUG | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="记录一次小问题
+
+苹果在iOS7的UINavigationController中加入了一个返回手势–interactivePopGestureRecognizer,因此支持iOS7以上版本,不用自己去实现一个手势去操作.在iOS开发中,对于有些单独的一个ViewController页面等控制习惯性的喜欢在viewWillAppear生命周期方法中设置,因此在设置self.navigatio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用interactivePopGestureRecognizer卡住的问题-不是BUG的BUG">
+<meta property="og:url" content="http://yoursite.com/2016/06/08/shi-yong-interactivepopgesturerecognizerqia-zhu-de-wen-ti-bu-shi-bugde-bug/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="记录一次小问题
+
+苹果在iOS7的UINavigationController中加入了一个返回手势–interactivePopGestureRecognizer,因此支持iOS7以上版本,不用自己去实现一个手势去操作.在iOS开发中,对于有些单独的一个ViewController页面等控制习惯性的喜欢在viewWillAppear生命周期方法中设置,因此在设置self.navigatio">
+<meta property="og:updated_time" content="2016-06-08T02:30:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用interactivePopGestureRecognizer卡住的问题-不是BUG的BUG">
+<meta name="twitter:description" content="记录一次小问题
+
+苹果在iOS7的UINavigationController中加入了一个返回手势–interactivePopGestureRecognizer,因此支持iOS7以上版本,不用自己去实现一个手势去操作.在iOS开发中,对于有些单独的一个ViewController页面等控制习惯性的喜欢在viewWillAppear生命周期方法中设置,因此在设置self.navigatio">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-shi-yong-interactivepopgesturerecognizerqia-zhu-de-wen-ti-bu-shi-bugde-bug" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/08/shi-yong-interactivepopgesturerecognizerqia-zhu-de-wen-ti-bu-shi-bugde-bug/" class="article-date">
+  <time datetime="2016-06-08T02:29:23.000Z" itemprop="datePublished">2016-06-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用interactivePopGestureRecognizer卡住的问题-不是BUG的BUG
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>   记录一次小问题</p>
+</blockquote>
+<p>苹果在iOS7的<strong>UINavigationController</strong>中加入了一个返回手势–<strong>interactivePopGestureRecognizer</strong>,因此支持iOS7以上版本,不用自己去实现一个手势去操作.<br>在iOS开发中,对于有些单独的一个<strong>ViewController</strong>页面等控制习惯性的喜欢在<strong>viewWillAppear</strong>生命周期方法中设置,因此在设置<strong>self.navigationController的interactivePopGestureRecognizer</strong>属性禁用系统时也会这样做.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillAppear:(BOOL)animated</div><div class="line">&#123;</div><div class="line">    [super viewWillAppear:animated];    </div><div class="line">    self.navigationController.interactivePopGestureRecognizer.enabled = NO;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因为只有此单独一个页面禁用系统的手势返回,所以要让此<strong>ViewController</strong>自己去启动<strong>interactivePopGestureRecognizer</strong>. 在<strong>viewWillDisappear</strong>方法中去实现启动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillDisappear:(BOOL)animated</div><div class="line">&#123;</div><div class="line">    [super viewWillDisappear:animated];</div><div class="line">    self.navigationController.interactivePopGestureRecognizer.enabled = YES;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试的时候,当由<strong>ViewController</strong>通过<strong>push</strong>方法导航到下一个页面,然后执行手势返回的时候会发生页面卡住,但是按住<strong>Home键</strong>到后台,然后重新回到<strong>app</strong>确实可以返回到上一页面.</p>
+<p>通过操作检查,当我们开始使用手势返回的时候,在执行<strong>interactivePopGestureRecognizer</strong>手势方法<strong>action=handleNavigationTransition:</strong> 时就开始执行上一个页面的<strong>viewWillAppear</strong>方法,而因此我在<strong>viewWillAppear</strong>方法中禁用了<strong>interactivePopGestureRecognizer</strong>返回手势,因此当前页面并没有看到<strong>pop</strong>动画,但确实是返回到上一页面.由此修改内容我们可以在<strong><em>viewDidAppear</em></strong>中,当页面已经显示的时候将方法禁用.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidAppear:(BOOL)animated</div><div class="line">&#123;</div><div class="line">    [super viewDidAppear:animated];</div><div class="line">    self.navigationController.interactivePopGestureRecognizer.enabled = NO;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/06/08/shi-yong-interactivepopgesturerecognizerqia-zhu-de-wen-ti-bu-shi-bugde-bug/" data-id="cit9psq580013ignjn2vr7mer" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/11/dang-nsdictionaryyu-dao-nil/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          当NSDictionary遇到nil
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/02/itunes-store-xie-yi-shui-wu-he-yin-xing-ye-wu-2016zui-xin-ban/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">iTunes Connect(协议、税务和银行业务)－2016最新版</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/"> - React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twenty随笔录/"> - Twenty随笔录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS技术/"> - iOS技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS资源/"> - iOS资源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic系列/"> - ionic系列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/"> - 其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频直播系列/"> - 视频直播系列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆向工程/"> - 逆向工程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/React-Native/" style="font-size: 13.33px;"> - React Native</a> <a href="/tags/Twenty随笔录/" style="font-size: 10px;"> - Twenty随笔录</a> <a href="/tags/iOS技术/" style="font-size: 20px;"> - iOS技术</a> <a href="/tags/iOS资源/" style="font-size: 13.33px;"> - iOS资源</a> <a href="/tags/ionic系列/" style="font-size: 13.33px;"> - ionic系列</a> <a href="/tags/其他/" style="font-size: 10px;"> - 其他</a> <a href="/tags/视频直播系列/" style="font-size: 16.67px;"> - 视频直播系列</a> <a href="/tags/逆向工程/" style="font-size: 10px;"> - 逆向工程</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/19/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/">四、视频的编解码-编码篇</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/san-shi-pin-bian-jie-ma-jie-ma-pian/">三、视频编解码-解码篇</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/shi-pin-zhi-bo-xi-lie-er-cai-ji-shi-pin-shu-ju/">二、采集视频数据</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/shi-pin-zhi-bo-xi-lie-yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/">iOS视频直播系列</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

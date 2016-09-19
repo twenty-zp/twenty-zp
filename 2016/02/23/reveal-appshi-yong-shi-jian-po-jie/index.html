@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Reveal App试用时间破解 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文转自John Wong.亲测可用
+1以下内容仅用于学习逆向工程。用到的工具有Hopper，lldb。
+iOS应用调试利器Reveal不必多介绍。应用可以免费试用。目测时间校验并不严谨，修改系统时间就可以将试用状态从已过期变为未过期。先改时间到多天以后，运行会弹出“Your free trial of Reveal has expired”。接下来切入正题。
+1更新：以下方法在1.6.1版本中仍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reveal App试用时间破解">
+<meta property="og:url" content="http://yoursite.com/2016/02/23/reveal-appshi-yong-shi-jian-po-jie/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本文转自John Wong.亲测可用
+1以下内容仅用于学习逆向工程。用到的工具有Hopper，lldb。
+iOS应用调试利器Reveal不必多介绍。应用可以免费试用。目测时间校验并不严谨，修改系统时间就可以将试用状态从已过期变为未过期。先改时间到多天以后，运行会弹出“Your free trial of Reveal has expired”。接下来切入正题。
+1更新：以下方法在1.6.1版本中仍">
+<meta property="og:image" content="http://dn-johnwong.qbox.me/images/2015-05-20-hack-reveal-app-01.png">
+<meta property="og:image" content="http://dn-johnwong.qbox.me/images/2015-05-20-hack-reveal-app-02.png">
+<meta property="og:image" content="http://dn-johnwong.qbox.me/images/2015-05-20-hack-reveal-app-03.png">
+<meta property="og:updated_time" content="2016-02-23T06:43:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Reveal App试用时间破解">
+<meta name="twitter:description" content="本文转自John Wong.亲测可用
+1以下内容仅用于学习逆向工程。用到的工具有Hopper，lldb。
+iOS应用调试利器Reveal不必多介绍。应用可以免费试用。目测时间校验并不严谨，修改系统时间就可以将试用状态从已过期变为未过期。先改时间到多天以后，运行会弹出“Your free trial of Reveal has expired”。接下来切入正题。
+1更新：以下方法在1.6.1版本中仍">
+<meta name="twitter:image" content="http://dn-johnwong.qbox.me/images/2015-05-20-hack-reveal-app-01.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-reveal-appshi-yong-shi-jian-po-jie" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/23/reveal-appshi-yong-shi-jian-po-jie/" class="article-date">
+  <time datetime="2016-02-23T06:32:42.000Z" itemprop="datePublished">2016-02-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Reveal App试用时间破解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文转自<a href="http://johnwong.github.io/mobile/2015/05/20/hack-reveal-app.html" target="_blank" rel="external">John Wong</a>.<code>亲测可用</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">以下内容仅用于学习逆向工程。用到的工具有Hopper，lldb。</div></pre></td></tr></table></figure>
+<p>iOS应用调试利器Reveal不必多介绍。应用可以免费试用。目测时间校验并不严谨，修改系统时间就可以将试用状态从已过期变为未过期。先改时间到多天以后，运行会弹出“Your free trial of Reveal has expired”。接下来切入正题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">更新：以下方法在1.6.1版本中仍然试用。如果你不关心探索过程，寻找关键代码这一节略过，动手的时候绕过应用自身校验这一节与绕过过期弹窗交换顺序。</div></pre></td></tr></table></figure>
+<h3 id="寻找关键代码"><a href="#寻找关键代码" class="headerlink" title="寻找关键代码"></a>寻找关键代码</h3><pre><code>使用的是1.5.1的Reveal，先拖入Hopper。根据提示我们猜测使用过期的一些代码可能与“trial”有关，在左侧的搜索框搜索这个词。
+</code></pre><p><img src="http://dn-johnwong.qbox.me/images/2015-05-20-hack-reveal-app-01.png" alt=""></p>
+<p>许多结果都是IBATrialModeReminderWindowController来自这个类，看起来是试用的提示窗。可以看到初始化方法[IBATrialModeReminderWindowController controller]及其地址0000000100077940。尝试用GDB调试，打开命令行，切换到目录/Applications/Reveal.app/Contents/MacOS，然后使用GDB调试。</p>
+<pre><code>gdb Reveal
+(gdb) b *0x0000000100077940
+(gdb) r
+(gdb) bt
+</code></pre><p>结果看到调用堆栈如下：</p>
+<pre><code>#0  0x0000000100077940 in std::__1::shared_ptr&lt;IBATrialDateStorageInterface&gt;::shared_ptr&lt;IBANSUserDefaultsTrialDateStorage, void&gt;(IBANSUserDefaultsTrialDateStorage*) ()
+#1  0x0000000100079779 in std::__1::shared_ptr&lt;IBATrialDateStorageInterface&gt;::shared_ptr&lt;IBANSUserDefaultsTrialDateStorage, void&gt;(IBANSUserDefaultsTrialDateStorage*) ()
+#2  0x000000010007992a in std::__1::shared_ptr&lt;IBATrialDateStorageInterface&gt;::shared_ptr&lt;IBANSUserDefaultsTrialDateStorage, void&gt;(IBANSUserDefaultsTrialDateStorage*) ()
+#3  0x000000010001f534 in _mh_execute_header ()
+</code></pre><p>调用堆栈感觉不太对劲，放弃。</p>
+<h3 id="绕过过期弹窗"><a href="#绕过过期弹窗" class="headerlink" title="绕过过期弹窗"></a>绕过过期弹窗</h3><pre><code>之前搜索结果还有一些来自IBATrialModeReminderPresenter这个类。-[IBATrialModeReminderPresenter shouldShowTrialModeSheet]方法看起来判断是否显示试用窗口。0000000100079678处有跳转的汇编指令，我们尝试改改它。选中这一行，选择菜单栏的Modify &gt; Assemble Instruction...，将jne修改成je，然后点击Assemble and Go Next。
+</code></pre><p><img src="http://dn-johnwong.qbox.me/images/2015-05-20-hack-reveal-app-02.png" alt=""></p>
+<p>然后生成新的可执行文件。备份/Applications/Reveal.app/Contents/MacOS/Reveal。点击File &gt; Produce New Executable…，并替换为新的可执行文件。运行会提示This copy of Reveal is damaged。</p>
+<h3 id="绕过应用自身校验"><a href="#绕过应用自身校验" class="headerlink" title="绕过应用自身校验"></a>绕过应用自身校验</h3><p>浏览一堆方法，看到了[IBAAppDelegate verifyCodeSignature]这个方法，用来在应用启动时做签名校验。部分汇编代码如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">000000010008f3de         je         0x10008f3e9</div><div class="line"></div><div class="line">000000010008f3e0         test       r15b, r15b</div><div class="line">000000010008f3e3         jne        0x10008f662</div><div class="line"></div><div class="line">000000010008f3e9         mov        rax, qword [ds:objc_cls_ref_NSAlert]</div><div class="line">000000010008f3f0         mov        qword [ss:rbp-0x70+var_48], rax</div><div class="line">000000010008f3f4         mov        rdi, qword [ds:objc_cls_ref_NSBundle]</div><div class="line">000000010008f3fb         mov        rsi, qword [ds:0x1001dda18]</div><div class="line">000000010008f402         mov        rbx, qword [ds:imp___got__objc_msgSend]</div><div class="line">000000010008f409         call       rbx</div><div class="line">000000010008f40b         mov        rdi, rax</div><div class="line">000000010008f40e         call       imp___stubs__objc_retainAutoreleasedReturnValue</div><div class="line">000000010008f413         mov        qword [ss:rbp-0x70+var_56], rax</div><div class="line">000000010008f417         mov        rsi, qword [ds:0x1001ddca8]</div><div class="line">000000010008f41e         lea        rdx, qword [ds:cfstring_This_copy_of_Reveal_is_damaged] ; @&quot;This copy of Reveal is damaged&quot;</div></pre></td></tr></table></figure>
+<p>方法内的第一个je跳转到0x10008f3e9。从这个地址往下看，能够看到”This copy of Reveal is damaged”，说明这个跳转会提示签名问题。我们尝试将这里的je替换为jne，应用崩溃了。将je替换为jmp 0x10008f662，再次运行Reveal。弹出框提示“Insecure update error!”。点击确定，Reveal可以运行起来，绕过了试用限制的弹窗。</p>
+<h3 id="屏蔽升级功能"><a href="#屏蔽升级功能" class="headerlink" title="屏蔽升级功能"></a>屏蔽升级功能</h3><p>每次打开都会弹窗都会提示这个，还是不爽。试着用签名的方法解决，遇到问题签名失败。读这个提示框的内容，看到了Sparkle，应该是个应用升级组件。那么把升级功能去掉应该就不会弹窗了。搜索Sparkle，找到一个方法-[IBAAppDelegate configureSparkle]。我们能够看到方法内先判断是否Sparkle是否enable，然后做Sparkle的初始化。我们只需要把跳转语句je改为jne，那么升级功能就会去掉，也就不会弹出那个框。试了一下果真如此。至此过程全部结束。</p>
+<p><img src="http://dn-johnwong.qbox.me/images/2015-05-20-hack-reveal-app-03.png" alt=""></p>
+<h3 id="去掉标题栏过期提示"><a href="#去掉标题栏过期提示" class="headerlink" title="去掉标题栏过期提示"></a>去掉标题栏过期提示</h3><p>窗口右上角的过期提示有点惹眼，去掉。找到-[IBAMainWindowController configureTitleBarAccessoryView]这个方法，把下面的第一个跳转语句改成nop。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">000000010007be25 nop</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/02/23/reveal-appshi-yong-shi-jian-po-jie/" data-id="cit9psq3w0007ignjvy0u4gtf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/逆向工程/"> - 逆向工程</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/02/objective-c-runtime/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Objective-C  Runtime
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/22/ioscheng-xu-yuan-xue-xi-wang-zhan/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">iOS程序员学习网站</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/"> - React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twenty随笔录/"> - Twenty随笔录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS技术/"> - iOS技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS资源/"> - iOS资源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic系列/"> - ionic系列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/"> - 其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频直播系列/"> - 视频直播系列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆向工程/"> - 逆向工程</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/React-Native/" style="font-size: 13.33px;"> - React Native</a> <a href="/tags/Twenty随笔录/" style="font-size: 10px;"> - Twenty随笔录</a> <a href="/tags/iOS技术/" style="font-size: 20px;"> - iOS技术</a> <a href="/tags/iOS资源/" style="font-size: 13.33px;"> - iOS资源</a> <a href="/tags/ionic系列/" style="font-size: 13.33px;"> - ionic系列</a> <a href="/tags/其他/" style="font-size: 10px;"> - 其他</a> <a href="/tags/视频直播系列/" style="font-size: 16.67px;"> - 视频直播系列</a> <a href="/tags/逆向工程/" style="font-size: 10px;"> - 逆向工程</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/19/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/">四、视频的编解码-编码篇</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/san-shi-pin-bian-jie-ma-jie-ma-pian/">三、视频编解码-解码篇</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/shi-pin-zhi-bo-xi-lie-er-cai-ji-shi-pin-shu-ju/">二、采集视频数据</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/shi-pin-zhi-bo-xi-lie-yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/">iOS视频直播系列</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
