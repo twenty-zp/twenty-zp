@@ -1,11 +1,90 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
+<!doctype html>
+
+
+
   
-  <title>一、音视频配置文档概念 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="开始中我们要了解几种影响音视频的质量的关键概念:
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content=" - 视频直播系列," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="开始中我们要了解几种影响音视频的质量的关键概念:
 
 码流(也通常称码率、比特率),指在单位时间传输或解码的位数(数据流量),是视频中画面质量控制的最重要部分。在分辨率相同的情况下,码流越大,压缩的比例就越小,画面质量越高,视频文件的体积也就越大.码流越大,说明单位时间内采样率越大,数据流和精度也越高,所以图像画面质量越好、越清晰,但要求设备的解码能力也越强;
 
@@ -13,7 +92,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="一、音视频配置文档概念">
 <meta property="og:url" content="http://yoursite.com/2016/08/05/yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Twenty's 时间念">
 <meta property="og:description" content="开始中我们要了解几种影响音视频的质量的关键概念:
 
 码流(也通常称码率、比特率),指在单位时间传输或解码的位数(数据流量),是视频中画面质量控制的最重要部分。在分辨率相同的情况下,码流越大,压缩的比例就越小,画面质量越高,视频文件的体积也就越大.码流越大,说明单位时间内采样率越大,数据流和精度也越高,所以图像画面质量越好、越清晰,但要求设备的解码能力也越强;
@@ -29,75 +108,194 @@
 
 采样率(也称为采样速度或采样频率),">
 <meta name="twitter:image" content="https://twenty-zp.gitbooks.io/-/content/adcaae0535cc795cb6eb0ee1b179790d.jpg">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
 
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/08/05/yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/"/>
+
+  <title> 一、音视频配置文档概念 | Twenty's 时间念 </title>
 </head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/05/yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/" class="article-date">
-  <time datetime="2016-08-05T02:08:30.000Z" itemprop="datePublished">2016-08-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      一、音视频配置文档概念
-    </h1>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
 
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?a19dd0c033f48c51a16dc7871acded18";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Twenty's 时间念</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                一、音视频配置文档概念
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-05T10:08:30+08:00" content="2016-08-05">
+              2016-08-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/05/yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/05/yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
       
         <p>开始中我们要了解几种影响音视频的质量的关键概念:</p>
 <ol>
@@ -121,136 +319,331 @@
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/05/yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/" data-id="cit9rtj9u000lz0njsnfc9n4v" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/视频直播系列/"> - 视频直播系列</a></li></ul>
 
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/视频直播系列/" rel="tag"># - 视频直播系列</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/11/dang-nsdictionaryyu-dao-nil/" rel="next" title="当NSDictionary遇到nil">
+                <i class="fa fa-chevron-left"></i> 当NSDictionary遇到nil
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/05/shi-pin-zhi-bo-xi-lie-yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/" rel="prev" title="iOS视频直播系列">
+                iOS视频直播系列 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
     </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
   </div>
-  
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
     
-<nav id="article-nav">
-  
-    <a href="/2016/08/05/shi-pin-zhi-bo-xi-lie-yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
+      <div class="ds-thread" data-thread-key="2016/08/05/yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/"
+           data-title="一、音视频配置文档概念" data-url="http://yoursite.com/2016/08/05/yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/">
+      </div>
+    
+  </div>
+
+
+        </div>
         
-          iOS视频直播系列
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xoj45.com1.z0.glb.clouddn.com/avtar.png"
+               alt="Twenty's 时间念" />
+          <p class="site-author-name" itemprop="name">Twenty's 时间念</p>
+          <p class="site-description motion-element" itemprop="description">你只有一定要,才一定会得到</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#由此从上述概念可知"><span class="nav-number">1.</span> <span class="nav-text">由此从上述概念可知:</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
         
       </div>
-    </a>
-  
-  
-    <a href="/2016/07/11/dang-nsdictionaryyu-dao-nil/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">当NSDictionary遇到nil</div>
-    </a>
-  
-</nav>
+    </main>
 
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
   
-</article>
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Twenty's 时间念</span>
+</div>
 
-</section>
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
         
-          <aside id="sidebar">
-  
-    
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/React-Native/"> - React Native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twenty随笔录/"> - Twenty随笔录</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS技术/"> - iOS技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS资源/"> - iOS资源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ionic系列/"> - ionic系列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其他/"> - 其他</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频直播系列/"> - 视频直播系列</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆向工程/"> - 逆向工程</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/React-Native/" style="font-size: 13.33px;"> - React Native</a> <a href="/tags/Twenty随笔录/" style="font-size: 10px;"> - Twenty随笔录</a> <a href="/tags/iOS技术/" style="font-size: 20px;"> - iOS技术</a> <a href="/tags/iOS资源/" style="font-size: 13.33px;"> - iOS资源</a> <a href="/tags/ionic系列/" style="font-size: 13.33px;"> - ionic系列</a> <a href="/tags/其他/" style="font-size: 10px;"> - 其他</a> <a href="/tags/视频直播系列/" style="font-size: 16.67px;"> - 视频直播系列</a> <a href="/tags/逆向工程/" style="font-size: 10px;"> - 逆向工程</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2016/09/19/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/">四、视频的编解码-编码篇</a>
-          </li>
-        
-          <li>
-            <a href="/2016/08/05/san-shi-pin-bian-jie-ma-jie-ma-pian/">三、视频编解码-解码篇</a>
-          </li>
-        
-          <li>
-            <a href="/2016/08/05/shi-pin-zhi-bo-xi-lie-er-cai-ji-shi-pin-shu-ju/">二、采集视频数据</a>
-          </li>
-        
-          <li>
-            <a href="/2016/08/05/shi-pin-zhi-bo-xi-lie-yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/">iOS视频直播系列</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2016 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
     </div>
   </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
+
   
-    <a href="/" class="mobile-nav-link">Home</a>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+
+
+
   
-</nav>
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
     
+  
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"twenty-zp"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js"></script>
 
-  </div>
+
+  
+  
+
+  
+
+  
+
+  
+
 </body>
 </html>
