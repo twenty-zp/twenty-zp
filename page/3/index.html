@@ -813,8 +813,8 @@ CGContextStrokePath(ctx);
         
           
             <p>#1. 域名购买<br>域名就是网址,比如你输入img421.com(一级域名),而我的博客blog.img421.com(二级域名).域名的购买你可以到<a href="http://wanwang.aliyun.com/" target="_blank" rel="external">万网</a>、<a href="http://www.godaddy.com/" target="_blank" rel="external">Godaddy</a>等大型域名供应商购买。</p>
-<h5 id="万网"><a href="#万网" class="headerlink" title="万网"></a>万网</h5><p><img src="/content/images/2015/12/---2.png" alt="万网"></p>
-<h5 id="Godaddy"><a href="#Godaddy" class="headerlink" title="Godaddy"></a>Godaddy</h5><p><img src="/content/images/2015/12/Godaddy.png" alt="Godaddy"><br>首页中输入框就是输入你要命名的域名。如果这个域名被注册,万网会推荐你使用其他的后缀名比如 <code>.net</code> <code>.org</code> <code>.com.cn</code> . . . 也会推荐在你使用的名字后面添加数字比如 <code>baidu123</code> <code>baidu1234</code> . . . </p>
+<h5 id="万网"><a href="#万网" class="headerlink" title="万网"></a>万网</h5><p><img src="http://upload-images.jianshu.io/upload_images/318204-5d2d22ebbfc28378.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="万网"></p>
+<h5 id="Godaddy"><a href="#Godaddy" class="headerlink" title="Godaddy"></a>Godaddy</h5><p><img src="http://upload-images.jianshu.io/upload_images/318204-600f86d625c5aa61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Godaddy"><br>首页中输入框就是输入你要命名的域名。如果这个域名被注册,万网会推荐你使用其他的后缀名比如 <code>.net</code> <code>.org</code> <code>.com.cn</code> . . . 也会推荐在你使用的名字后面添加数字比如 <code>baidu123</code> <code>baidu1234</code> . . . </p>
 <p><strong>tips</strong> (博主使用的是万网提供的域名,Godaddy请转到<a href="http://kittenyang.com/myfirstblog/" target="_blank" rel="external">这儿</a></p>
 <pre><code>Godaddy可以使用支付宝支付，只要把顶部货币栏切换到CNY即可。
 </code></pre><p>#2. 配置服务器<br>博主使用的是AWS(<a href="http://aws.amazon.com/cn/" target="_blank" rel="external">亚马逊服务器</a>),AWS提供新用户免费一年的使用时间,但是注册以后必须使用<strong>信用卡</strong>才行。(说好的免费呢,怎么绑定还扣我预授权6RMB？  !-. - )</p>
@@ -823,26 +823,25 @@ CGContextStrokePath(ctx);
 <ul>
 <li>切换到你下载好的.pem密钥文件目录,我的是在桌面 输入 <code>cd ./Desktop</code> (按tab键会自动补全)</li>
 </ul>
-<p><img src="/content/images/2015/12/desktop-1.png" alt="desktop"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/318204-280bcc4cc2441901.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="desktop"></p>
 <ul>
-<li>链接AWS服务器,输入命令行: <code>ssh ssh -i &quot;pem的名字.pem&quot; ubuntu@你的公共IP</code><br>如果是第一次链接服务器,会让你确认是否连接 输入<code>y</code> 即可,<br>下图因为我已经连接过,因此跳过这个确认环节,返回红线内容表示连接成功。</li>
+<li>链接AWS服务器,输入命令行: <code>ssh ssh -i &quot;pem的名字.pem&quot; ubuntu@你的公共IP</code><br>如果是第一次链接服务器,会让你确认是否连接 输入<code>y</code> 即可,<br>下图因为我已经连接过,因此跳过这个确认环节,返回红线内容表示连接成功。<br><img src="http://upload-images.jianshu.io/upload_images/318204-8cf0cc236573f544.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ssh"></li>
 </ul>
-<pre><code>![ssh](/content/images/2015/12/ssh.png)
-</code></pre><p>##2.2    安装Node.js</p>
+<p>##2.2    安装Node.js</p>
 <ol>
 <li><a href="http://nodejs.org/" target="_blank" rel="external">Node.js</a>是一个可以快速构建网络服务及应用的平台，基于Chrome’s JavaScript runtime，即Google V8引擎，是一款高性能的服务架构平台。</li>
 <li><p>Ubuntu系统上执行以下代码即可安装Node.js</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">	apt-get update		</div><div class="line">	apt-get install -y python-software-properties python g++ make		</div><div class="line">	sudo add-apt-repository ppa:chris-lea/node.js		</div><div class="line">	sudo apt-get update		</div><div class="line">	sudo apt-get install nodejs</div><div class="line">	```	</div><div class="line">3.	安装过程中会有一些提示，直接回车，继续安装。</div><div class="line">4.	确认是否安装成功:</div></pre></td></tr></table></figure>
 <p>node -v</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">	</div></pre></td></tr></table></figure>
-<p>npm  -v<br>```<br><img src="/content/images/2015/12/apt-get.png" alt="install"></p>
+<p>npm  -v<br>```<br><img src="http://upload-images.jianshu.io/upload_images/318204-04a8ec8e783ba342.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="install"></p>
 </li>
 </ol>
 <p>##2.3 安装Nginx<br>    输入如下安装命令<br>    sudo apt-get install nginx</p>
 <p>##2.4 安装MySQL<br>Ghost 默认采用 Sqlite3 数据库。<br>安装MySQL执行如下命令:</p>
 <pre><code>sudo apt-get install mysql-server mysql-client  
 </code></pre><p>安装过程中，系统会提示你给 root 用户（这里的 root 是 MySQL 数据库的管理账号） 设置个密码，建议设置的复杂些，更加安全些。如下图：</p>
-<p><img src="/content/images/2015/12/mysql.png" alt="mysql"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/318204-f531de5c1cd06c34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mysql"></p>
 <p>为了确保MysqL的安全性：</p>
 <pre><code>sudo mysql_secure_installation  
 
@@ -897,7 +896,7 @@ Reload privilege tables now? [Y/n] y
 </code></pre><p>然后输入：                                                       </p>
 <pre><code>sudo vi my.cnf 
 </code></pre><p>将光标定位到 [mysqld] 位置，按 “i” ，添加如下红线框内设置：</p>
-<p><img src="/content/images/2015/12/sqlset.png" alt="mysqlSet"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/318204-6ef156108360b772.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mysqlSet"></p>
 <pre><code>collation-server = utf8_unicode_ci
 init-connect=&apos;SET NAMES utf8&apos;
 character-set-server = utf8
@@ -912,7 +911,7 @@ character-set-server = utf8
 sudo touch ghost.conf  
 sudo vi ghost.conf 
 </code></pre><p>修改如下内容:</p>
-<p><img src="/content/images/2015/12/dominset-1.png" alt="域名设置"><br>完成之后按etc :wq 退出编辑</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/318204-93ca802a607ce4ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="域名设置"><br>完成之后按etc :wq 退出编辑</p>
 <p>##3.3 建立软链接<br>为 ghost.conf 文件做一个软链接到 /etc/nginx/sites-enabled/ 目录下：</p>
 <pre><code>sudo ln -s /etc/nginx/sites-available/ghost.conf /etc/nginx/sites-enabled/ghost.conf  
 </code></pre><p>##3.4 安装forever<br>为了使ghost永远运行,使用 forever 工具帮我们解决这个问题。接下来执行以下指令来安装 forever,执行如下命令:</p>
@@ -921,11 +920,12 @@ sudo vi ghost.conf
 <p>####3.5.1        下载Ghost<br>Ghost 安装包是一个压缩包,在Linux 上我们需要用unzip 工具进行解压。</p>
 <ol>
 <li><p>安装unzip 工具:</p>
-<p>  sudo apt-get install unzip </p>
-</li>
+<pre><code>sudo apt-get install unzip 
+</code></pre></li>
 <li><p>下载 Ghost 安装包</p>
-<p>  cd /srv/<br>  sudo curl -L <a href="https://ghost.org/zip/ghost-latest.zip" target="_blank" rel="external">https://ghost.org/zip/ghost-latest.zip</a> -o ghost.zip</p>
-</li>
+<pre><code>cd /srv/
+sudo curl -L https://ghost.org/zip/ghost-latest.zip -o ghost.zip
+</code></pre></li>
 <li><p>使用以下命令解压存档</p>
 <pre><code>unzip -uo ghost.zip -d ghost
 </code></pre></li>
@@ -935,7 +935,7 @@ sudo vi ghost.conf
 sudo cp config.example.js config.js
 sudo vi config.js 
 </code></pre><p>修改production 的配置信息,修改为如下</p>
-<p><img src="/content/images/2015/12/ghostConfig-1.png" alt="ghostConfig"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/318204-27174f898fe69ab6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ghostConfig"></p>
 <p>完成之后按etc :wq 退出编辑。</p>
 <p>####3.5.3     安装Ghost依赖库<br>打开 Ghost 系统的目录下面的 package.json 文件，将 “sqlite3”: “x.x.0”, 这一行删除掉。</p>
 <p>进入Ghost 目录，安装依赖库</p>
@@ -1013,7 +1013,7 @@ sudo restart ssh
 sudo status ssh
 </code></pre><p><strong>注意:不要退出现在的远程控制.另打开一个终端(Terminal)</strong><br>输入命令:</p>
 <pre><code>ssh root@你的公共IP地址
-</code></pre><p><img src="/content/images/2015/12/-----2015-12-30---12-42-25.png" alt="rootLogin"><br>提示输入你设置的root密码,按回车键等待登录成功。<br><img src="/content/images/2015/12/-----2015-12-30---12-43-26-1.png" alt="loginIn"><br>如果切换用户为其他用户,比如ubuntu用户<br>终端输入:</p>
+</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/318204-e56471357a8c8436.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="rootLogin"><br>提示输入你设置的root密码,按回车键等待登录成功。<br><img src="http://upload-images.jianshu.io/upload_images/318204-62ab42dab556cce2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="loginIn"><br>如果切换用户为其他用户,比如ubuntu用户<br>终端输入:</p>
 <pre><code>su ubuntu
 </code></pre><p>参考资料:</p>
 </li>
