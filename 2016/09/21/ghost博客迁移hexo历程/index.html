@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content=" - 博客," />
 
 
 
@@ -84,22 +84,28 @@
 
 
 
-<meta name="description" content="记录一次小问题
+<meta name="description" content="在亚马逊云服务(简称AWS)到期之前,因为将服务器的到期时间搞错,所以数据没有给export 出来.
+幸运的是到期后的两周内云服务器卷宗和实例还都在,就又重新启动一个新的实例绑定卷宗,
+通过远程获取到MySQL数据库Copy到本地。
 
-苹果在iOS7的UINavigationController中加入了一个返回手势–interactivePopGestureRecognizer,因此支持iOS7以上版本,不用自己去实现一个手势去操作.在iOS开发中,对于有些单独的一个ViewController页面等控制习惯性的喜欢在viewWillAppear生命周期方法中设置,因此在设置self.navigatio">
+1.获取到MySQL打开后的数据库为文件夹,内部都是一些.frm文件,因此要安装本地MySQL服务器,通过同名数据库,Copy所有的.frm文件到本地MySQL服">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用interactivePopGestureRecognizer卡住的问题-不是BUG的BUG">
-<meta property="og:url" content="http://yoursite.com/2016/06/08/shi-yong-interactivepopgesturerecognizerqia-zhu-de-wen-ti-bu-shi-bugde-bug/index.html">
+<meta property="og:title" content="Ghost博客迁移Hexo历程">
+<meta property="og:url" content="http://yoursite.com/2016/09/21/ghost博客迁移hexo历程/index.html">
 <meta property="og:site_name" content="Twenty's 时间念">
-<meta property="og:description" content="记录一次小问题
+<meta property="og:description" content="在亚马逊云服务(简称AWS)到期之前,因为将服务器的到期时间搞错,所以数据没有给export 出来.
+幸运的是到期后的两周内云服务器卷宗和实例还都在,就又重新启动一个新的实例绑定卷宗,
+通过远程获取到MySQL数据库Copy到本地。
 
-苹果在iOS7的UINavigationController中加入了一个返回手势–interactivePopGestureRecognizer,因此支持iOS7以上版本,不用自己去实现一个手势去操作.在iOS开发中,对于有些单独的一个ViewController页面等控制习惯性的喜欢在viewWillAppear生命周期方法中设置,因此在设置self.navigatio">
-<meta property="og:updated_time" content="2016-06-08T02:30:05.000Z">
+1.获取到MySQL打开后的数据库为文件夹,内部都是一些.frm文件,因此要安装本地MySQL服务器,通过同名数据库,Copy所有的.frm文件到本地MySQL服">
+<meta property="og:updated_time" content="2016-09-21T02:49:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用interactivePopGestureRecognizer卡住的问题-不是BUG的BUG">
-<meta name="twitter:description" content="记录一次小问题
+<meta name="twitter:title" content="Ghost博客迁移Hexo历程">
+<meta name="twitter:description" content="在亚马逊云服务(简称AWS)到期之前,因为将服务器的到期时间搞错,所以数据没有给export 出来.
+幸运的是到期后的两周内云服务器卷宗和实例还都在,就又重新启动一个新的实例绑定卷宗,
+通过远程获取到MySQL数据库Copy到本地。
 
-苹果在iOS7的UINavigationController中加入了一个返回手势–interactivePopGestureRecognizer,因此支持iOS7以上版本,不用自己去实现一个手势去操作.在iOS开发中,对于有些单独的一个ViewController页面等控制习惯性的喜欢在viewWillAppear生命周期方法中设置,因此在设置self.navigatio">
+1.获取到MySQL打开后的数据库为文件夹,内部都是一些.frm文件,因此要安装本地MySQL服务器,通过同名数据库,Copy所有的.frm文件到本地MySQL服">
 
 
 
@@ -120,9 +126,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/06/08/shi-yong-interactivepopgesturerecognizerqia-zhu-de-wen-ti-bu-shi-bugde-bug/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/09/21/ghost博客迁移hexo历程/"/>
 
-  <title> 使用interactivePopGestureRecognizer卡住的问题-不是BUG的BUG | Twenty's 时间念 </title>
+  <title> Ghost博客迁移Hexo历程 | Twenty's 时间念 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -242,7 +248,7 @@
             
             
               
-                使用interactivePopGestureRecognizer卡住的问题-不是BUG的BUG
+                Ghost博客迁移Hexo历程
               
             
           </h1>
@@ -254,8 +260,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-08T10:29:23+08:00" content="2016-06-08">
-              2016-06-08
+            <time itemprop="dateCreated" datetime="2016-09-21T10:45:30+08:00" content="2016-09-21">
+              2016-09-21
             </time>
           </span>
 
@@ -265,8 +271,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/08/shi-yong-interactivepopgesturerecognizerqia-zhu-de-wen-ti-bu-shi-bugde-bug/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/08/shi-yong-interactivepopgesturerecognizerqia-zhu-de-wen-ti-bu-shi-bugde-bug/" itemprop="commentsCount"></span>
+                <a href="/2016/09/21/ghost博客迁移hexo历程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/21/ghost博客迁移hexo历程/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -290,15 +296,21 @@
 
       
         <blockquote>
-<p>   记录一次小问题</p>
-</blockquote>
-<p>苹果在iOS7的<strong>UINavigationController</strong>中加入了一个返回手势–<strong>interactivePopGestureRecognizer</strong>,因此支持iOS7以上版本,不用自己去实现一个手势去操作.<br>在iOS开发中,对于有些单独的一个<strong>ViewController</strong>页面等控制习惯性的喜欢在<strong>viewWillAppear</strong>生命周期方法中设置,因此在设置<strong>self.navigationController的interactivePopGestureRecognizer</strong>属性禁用系统时也会这样做.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillAppear:(BOOL)animated</div><div class="line">&#123;</div><div class="line">    [super viewWillAppear:animated];    </div><div class="line">    self.navigationController.interactivePopGestureRecognizer.enabled = NO;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>因为只有此单独一个页面禁用系统的手势返回,所以要让此<strong>ViewController</strong>自己去启动<strong>interactivePopGestureRecognizer</strong>. 在<strong>viewWillDisappear</strong>方法中去实现启动。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillDisappear:(BOOL)animated</div><div class="line">&#123;</div><div class="line">    [super viewWillDisappear:animated];</div><div class="line">    self.navigationController.interactivePopGestureRecognizer.enabled = YES;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>测试的时候,当由<strong>ViewController</strong>通过<strong>push</strong>方法导航到下一个页面,然后执行手势返回的时候会发生页面卡住,但是按住<strong>Home键</strong>到后台,然后重新回到<strong>app</strong>确实可以返回到上一页面.</p>
-<p>通过操作检查,当我们开始使用手势返回的时候,在执行<strong>interactivePopGestureRecognizer</strong>手势方法<strong>action=handleNavigationTransition:</strong> 时就开始执行上一个页面的<strong>viewWillAppear</strong>方法,而因此我在<strong>viewWillAppear</strong>方法中禁用了<strong>interactivePopGestureRecognizer</strong>返回手势,因此当前页面并没有看到<strong>pop</strong>动画,但确实是返回到上一页面.由此修改内容我们可以在<strong><em>viewDidAppear</em></strong>中,当页面已经显示的时候将方法禁用.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidAppear:(BOOL)animated</div><div class="line">&#123;</div><div class="line">    [super viewDidAppear:animated];</div><div class="line">    self.navigationController.interactivePopGestureRecognizer.enabled = NO;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre><code>在亚马逊云服务(简称AWS)到期之前,因为将服务器的到期时间搞错,所以数据没有给export 出来.
+幸运的是到期后的两周内云服务器卷宗和实例还都在,就又重新启动一个新的实例绑定卷宗,
+通过远程获取到MySQL数据库Copy到本地。
+</code></pre></blockquote>
+<p>1.获取到MySQL打开后的数据库为文件夹,内部都是一些<code>.frm</code>文件,因此要安装本地MySQL服务器,通过同名数据库,<code>Copy</code>所有的<code>.frm</code>文件到本地MySQL服务器中,除此之外<code>ib_logfile0</code>、<code>ib_logfile1</code>、<code>ibdata1</code>文件也要复制进去.</p>
+<p>2.启动MySQL.</p>
+<p>3.通过<code>Navicate Premium</code>或命令打开数据库查看表中内容.</p>
+<p>注:MySQL默认为<code>latin1</code>字符集,因此如果我们打开表会看到乱码.因此要将MySQL中的<code>my-defalut.cnf</code> 复制一份到<code>/etc</code>下,并命名为<code>my.cnf</code>.再<code>my.cnf</code>的<code>[mysqld]</code>下,添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">init-connect = &apos;set names latin1&apos;</div><div class="line">character-set-server = latin1</div></pre></td></tr></table></figure>
+<p>4.重新启动MySQL查看内容,显示为非乱码.</p>
+<p>5.本地安装ghost博客,使用<code>MySQL</code>数据库,名称为本地的数据库名称。</p>
+<p>6.运行ghost博客,进入到后台可以重新<code>export</code>json文件数据.</p>
+<p>7.安装Hexo,使用ghost-hexo 插件转json内容为<code>markdown</code>文件.</p>
+<p>8.hexo生成html,并上传到coding、github等.</p>
+
       
     </div>
 
@@ -318,22 +330,24 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/博客/" rel="tag"># - 博客</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/02/itunes-store-xie-yi-shui-wu-he-yin-xing-ye-wu-2016zui-xin-ban/" rel="next" title="iTunes Connect(协议、税务和银行业务)－2016最新版">
-                <i class="fa fa-chevron-left"></i> iTunes Connect(协议、税务和银行业务)－2016最新版
+              <a href="/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/" rel="next" title="四、视频的编解码-编码篇">
+                <i class="fa fa-chevron-left"></i> 四、视频的编解码-编码篇
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/07/11/dang-nsdictionaryyu-dao-nil/" rel="prev" title="当NSDictionary遇到nil">
-                当NSDictionary遇到nil <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -385,8 +399,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/06/08/shi-yong-interactivepopgesturerecognizerqia-zhu-de-wen-ti-bu-shi-bugde-bug/"
-           data-title="使用interactivePopGestureRecognizer卡住的问题-不是BUG的BUG" data-url="http://yoursite.com/2016/06/08/shi-yong-interactivepopgesturerecognizerqia-zhu-de-wen-ti-bu-shi-bugde-bug/">
+      <div class="ds-thread" data-thread-key="2016/09/21/ghost博客迁移hexo历程/"
+           data-title="Ghost博客迁移Hexo历程" data-url="http://yoursite.com/2016/09/21/ghost博客迁移hexo历程/">
       </div>
     
   </div>

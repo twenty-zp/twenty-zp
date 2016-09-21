@@ -238,6 +238,121 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/21/ghost博客迁移hexo历程/" itemprop="url">
+                  Ghost博客迁移Hexo历程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-21T10:45:30+08:00" content="2016-09-21">
+              2016-09-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/21/ghost博客迁移hexo历程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/21/ghost博客迁移hexo历程/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<pre><code>在亚马逊云服务(简称AWS)到期之前,因为将服务器的到期时间搞错,所以数据没有给export 出来.
+幸运的是到期后的两周内云服务器卷宗和实例还都在,就又重新启动一个新的实例绑定卷宗,
+通过远程获取到MySQL数据库Copy到本地。
+</code></pre></blockquote>
+<p>1.获取到MySQL打开后的数据库为文件夹,内部都是一些<code>.frm</code>文件,因此要安装本地MySQL服务器,通过同名数据库,<code>Copy</code>所有的<code>.frm</code>文件到本地MySQL服务器中,除此之外<code>ib_logfile0</code>、<code>ib_logfile1</code>、<code>ibdata1</code>文件也要复制进去.</p>
+<p>2.启动MySQL.</p>
+<p>3.通过<code>Navicate Premium</code>或命令打开数据库查看表中内容.</p>
+<p>注:MySQL默认为<code>latin1</code>字符集,因此如果我们打开表会看到乱码.因此要将MySQL中的<code>my-defalut.cnf</code> 复制一份到<code>/etc</code>下,并命名为<code>my.cnf</code>.再<code>my.cnf</code>的<code>[mysqld]</code>下,添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">init-connect = &apos;set names latin1&apos;</div><div class="line">character-set-server = latin1</div></pre></td></tr></table></figure>
+<p>4.重新启动MySQL查看内容,显示为非乱码.</p>
+<p>5.本地安装ghost博客,使用<code>MySQL</code>数据库,名称为本地的数据库名称。</p>
+<p>6.运行ghost博客,进入到后台可以重新<code>export</code>json文件数据.</p>
+<p>7.安装Hexo,使用ghost-hexo 插件转json内容为<code>markdown</code>文件.</p>
+<p>8.hexo生成html,并上传到coding、github等.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/" itemprop="url">
                   四、视频的编解码-编码篇
                 </a>
@@ -1504,131 +1619,6 @@ return;
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/14/react-native-ru-men/" itemprop="url">
-                  React Native 开发系列
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-14T11:15:07+08:00" content="2016-04-14">
-              2016-04-14
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/14/react-native-ru-men/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/react-native-ru-men/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>你只有一定要,才一定会得到.<br>                                  – 沃兹基朔德</p>
-</blockquote>
-<p><img src="/content/images/2016/04/React-Native.png" alt=""><br>React Native发布已经有一段时间了,发布之后只是大概的了解下作用并没有做其余的工作,前段时间公司项目被客户要求使用HTML5开发,<code>React Native</code>因为是刚出来,可能网上的资料较少以及考虑到要踩得坑比较多,所以项目考虑使用<a href="http://www.ionic.wang/" target="_blank" rel="external">Ionic中文</a>开发,虽然自己不是此项目的开发人员,但是因为要写原生iOS插件,只是简单的了解了下<a href="http://www.ionic.wang/" target="_blank" rel="external">Ionic中文</a>,在写好的HTML5项目中,调试iOS插件的情况下,因为HTML5占用手机内存比较大,有时候手机没有交互效果,要每次重新运行很多次才可以,因此想到使用<code>React Native</code>试一下看看效果怎么样.</p>
-<p>以下只是显示简单的请求服务器登录和列表页面,后续工作也在进行当中:<br><img src="/content/images/2016/04/2016-04-14-11_45_48.gif" alt=""></p>
-<p>###开始工作</p>
-<ol>
-<li><p>开发工具: <a href="https://www.sublimetext.com/3" target="_blank" rel="external">Sublimt Text</a></p>
-</li>
-<li><p>JavaScript教程:<a href="http://www.w3school.com.cn/js/index.asp" target="_blank" rel="external">W3School-JavaScript</a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this" target="_blank" rel="external">MDN-JavaScript</a>教程.</p>
-</li>
-<li><p>CSS样式教程:<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS" target="_blank" rel="external">MDN-CSS</a> 和 <a href="http://www.w3school.com.cn/css/index.asp" target="_blank" rel="external">W3School-CSS</a></p>
-</li>
-<li><p><strong><a href="http://www.race604.com/react-native-component-lifecycle/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">了解React Native的生命周期</a></strong></p>
-</li>
-<li><p><a href="http://reactjs.cn/react/docs/component-api.html" target="_blank" rel="external">React.js 中文版</a></p>
-</li>
-<li><p><strong>请根据两篇教程走一遍,不懂的请务必<a href="https://www.google.co.jp/?gfe_rd=cr&amp;ei=_QgPV4TkNYf-8wfr17LgAg&amp;gws_rd=ssl" target="_blank" rel="external">Google</a>或其他浏览器搜索,搞明白为止.<a href="http://reactnative.cn/docs/0.23/getting-started.html" target="_blank" rel="external">React Native 中文版</a>和<a href="https://www.raywenderlich.com/126063/react-native-tutorial" target="_blank" rel="external">Raywenderlich 英文版</a></strong></p>
-</li>
-<li><p><strong><a href="https://github.com/facebook/css-layout" target="_blank" rel="external">FaceBook CSS-layout</a></strong></p>
-</li>
-<li><p><code>React Native</code>中的<code>fetch</code>方法所使用的规则同<a href="http://liubin.org/promises-book/#chapter1-what-is-promise" target="_blank" rel="external">Promise</a>.<br><a href="http://www.tuicool.com/articles/QZBJ7zJ" target="_blank" rel="external">fetch 入门</a></p>
-</li>
-</ol>
-<p><strong>注: 如果你跟着步骤5,6,7走一遍,在不懂得情况下同时Google或者度娘,那么你即可入门</strong></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1674,7 +1664,7 @@ return;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1684,7 +1674,7 @@ return;
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -1728,8 +1718,10 @@ return;
   <span class="author" itemprop="copyrightHolder">Twenty's 时间念</span>
 </div>
 
-<div class="powered-by">
-  你只有一定要才一定会得到-博客由Ghost迁移到Hexo
+<div>
+  <p>
+  你只有一定要才一定会得到---------博客由Ghost迁移到Hexo
+  </p>
 </div>
 
         
