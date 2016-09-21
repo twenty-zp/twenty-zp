@@ -1,20 +1,648 @@
-extends partial/layout
+<!doctype html>
 
-block site_title
-    != page.title + " · " + config.title
 
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name="description", content=desc)
 
-block container
-    include mixins/post
-    +post(page)
+  
 
-block pagination
-    include mixins/paginator
-    +post()
-    include partial/comment
 
-block copyright
-    include partial/copyright
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content=" - iOS资源," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="#前言早期开发iOS所做的资源等都是用文本编辑保存起来,每次换电脑后查找起来都要先从Bitbucket git下来很不方便,如今整理一下学习资源,免得以后再用某些东西的时候重复查找,而且也不方便.
+#正题
+##入门级
+
+CocoaChina创立于2008年3月，是一个苹果产品和 iOS 开发的中文社区网站，主要为苹果产品开发者提供资讯、信息及服务。
+Apple的官方文档，尤其是关于人机界面设计的和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS程序员学习网站">
+<meta property="og:url" content="http://blog.img421.com/2016/01/22/ioscheng-xu-yuan-xue-xi-wang-zhan/index.html">
+<meta property="og:site_name" content="Twenty's 时间念">
+<meta property="og:description" content="#前言早期开发iOS所做的资源等都是用文本编辑保存起来,每次换电脑后查找起来都要先从Bitbucket git下来很不方便,如今整理一下学习资源,免得以后再用某些东西的时候重复查找,而且也不方便.
+#正题
+##入门级
+
+CocoaChina创立于2008年3月，是一个苹果产品和 iOS 开发的中文社区网站，主要为苹果产品开发者提供资讯、信息及服务。
+Apple的官方文档，尤其是关于人机界面设计的和">
+<meta property="og:updated_time" content="2016-01-22T13:57:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS程序员学习网站">
+<meta name="twitter:description" content="#前言早期开发iOS所做的资源等都是用文本编辑保存起来,每次换电脑后查找起来都要先从Bitbucket git下来很不方便,如今整理一下学习资源,免得以后再用某些东西的时候重复查找,而且也不方便.
+#正题
+##入门级
+
+CocoaChina创立于2008年3月，是一个苹果产品和 iOS 开发的中文社区网站，主要为苹果产品开发者提供资讯、信息及服务。
+Apple的官方文档，尤其是关于人机界面设计的和">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://blog.img421.com/2016/01/22/ioscheng-xu-yuan-xue-xi-wang-zhan/"/>
+
+  <title> iOS程序员学习网站 | Twenty's 时间念 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?a19dd0c033f48c51a16dc7871acded18";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Twenty's 时间念</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS程序员学习网站
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-22T11:10:52+08:00" content="2016-01-22">
+              2016-01-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/22/ioscheng-xu-yuan-xue-xi-wang-zhan/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/22/ioscheng-xu-yuan-xue-xi-wang-zhan/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#前言<br>早期开发iOS所做的资源等都是用文本编辑保存起来,每次换电脑后查找起来都要先从<a href="https://bitbucket.org/" target="_blank" rel="external">Bitbucket</a> git下来很不方便,如今整理一下学习资源,免得以后再用某些东西的时候重复查找,而且也不方便.</p>
+<p>#正题</p>
+<p>##入门级</p>
+<ul>
+<li><a href="http://www.cocoachina.com/" target="_blank" rel="external">CocoaChina</a>创立于2008年3月，是一个苹果产品和 iOS 开发的中文社区网站，主要为苹果产品开发者提供资讯、信息及服务。</li>
+<li>Apple的官方文档，尤其是关于人机界面设计的和OC的，网址不固定，XCode中可以查看。（这里还建议使用Dash管理API文档）</li>
+</ul>
+<p>##进阶级</p>
+<ol>
+<li>CS193p，视频学习的首选教程<br><a href="http://web.stanford.edu/class/cs193p/cgi-bin/drupal/" target="_blank" rel="external">CS193p iPhone Application Development</a></li>
+<li><p>英文学习网站<br><a href="www.google.com">Google</a> (有问题，找谷歌)</p>
+<p><a href="www.github.com">Github</a> (源码，直观且易学)</p>
+<p><a href="http://stackoverflow.com/" target="_blank" rel="external">Stackoverflow</a> (你遇到的程序问题，基本都在这里)</p>
+<p><a href="http://www.raywenderlich.com/" target="_blank" rel="external">Raywenderlich</a>(墙裂推荐@.@)</p>
+<p><a href="https://www.objc.io/" target="_blank" rel="external">objc.io</a>(深度解读Objective-C)</p>
+<p><a href="http://nshipster.com/" target="_blank" rel="external">NSHipster</a> (a journal of the overlooked bits in Objective-C and Cocoa.)<a href="http://nshipster.cn/" target="_blank" rel="external">中文版</a></p>
+<p><a href="http://www.thinkandbuild.it/" target="_blank" rel="external">Think&amp;Build</a><br>(Tutorials about OS X,iOS and web development)<br>####中文博客(大多为微博大牛的博客)<br><a href="http://blog.devtang.com/" target="_blank" rel="external">唐巧的技术博客</a>(拥有深厚功力者,京城iOS一哥@唐巧)</p>
+</li>
+</ol>
+<p><a href="http://beyondvincent.com/" target="_blank" rel="external">破船之家</a> (iOS文章绝对高产者，据说跑起马拉松也是在程序员中首屈一指@BeyondVincent)</p>
+<p><a href="http://onevcat.com/" target="_blank" rel="external">OneV’s Den</a> (喵神,隐居樱花之国，躬耕于上乘游戏之作@onevcat)</p>
+<p><a href="http://blog.t-xx.me/" target="_blank" rel="external">txx’s blog</a> (虾神，出任上市CTO不是梦@糖炒小虾_txx)</p>
+<p><a href="http://iosinit.com/" target="_blank" rel="external">iOS init</a> (如果你对objc.io的文章情有独钟，Come here@方一雄)</p>
+<p><a href="http://www.ios-wiki.com/" target="_blank" rel="external">iOS Wiki</a> (iOS资讯期刊 @吴发伟Ted)</p>
+<p><a href="http://yingkong1987.github.io/" target="_blank" rel="external">yingkong1987 iOS Dev Blog</a> (给我很多帮助的兔子@兔be南玻1)</p>
+<p><a href="http://blog.xcodev.com/" target="_blank" rel="external">Xcode Dev</a> (资深iOS开发工程师@谌启亮) </p>
+<p><a href="http://www.isaced.com/" target="_blank" rel="external">isaced</a> (iOS Programmer@isaced) </p>
+<p><a href="http://answerhuang.duapp.com/" target="_blank" rel="external">answer_huang</a> (iOS developer, Python fans@answer-huang) </p>
+<p><a href="http://blog.cocoabit.com/" target="_blank" rel="external">Cocoabit</a> (iOS 码农，攻城狮。喜欢各种有意思的东西。@6david9) </p>
+<p><a href="http://geeklu.com/" target="_blank" rel="external">Luke’s Homepage|卢克</a> (Mac，iOS开发@卢小克)</p>
+<p><a href="http://blog.csdn.net/ysy441088327" target="_blank" rel="external">余书懿</a> (代表作:&lt;豆豆音乐&gt; @余书懿)</p>
+<p><a href="http://wangling.me/" target="_blank" rel="external">Creator of moke</a>(Creator of 墨客(moke.com) and Voodo(moke.com/voodo)@an00na)</p>
+<p><a href="http://iiiyu.com/" target="_blank" rel="external">萧宸宇</a> (注定漂泊的人@Sumi-iYu) </p>
+<p><a href="http://webfrogs.me/" target="_blank" rel="external">webfrogs’ Homepage</a> (iOS开发，开源爱好者 @webfrogs)</p>
+<p><a href="http://esoftmobile.com/" target="_blank" rel="external">Esoft Mobile</a> (iOS开发者 esoftmobile.com @TracyYih)</p>
+<p><a href="http://blog.leezhong.com/" target="_blank" rel="external">无网不剩</a> (iOS开发@李忠)</p>
+<p><a href="http://www.lofter.com/shareblog/xxblog?fpost=19d861_5619fa" target="_blank" rel="external">小小技术博客 的推荐</a></p>
+<p><a href="http://dev.swiftguide.cn/" target="_blank" rel="external">Swift 语言指南</a><br>(@SwiftLanguag 学习swift的好资源)</p>
+<p><a href="http://www.devdiv.com/" target="_blank" rel="external">DevDiv开发者社区</a></p>
+<p><a href="http://blog.ibireme.com/" target="_blank" rel="external">Garan no Dou</a>(一只魔法师的工坊)</p>
+<p><a href="http://foggry.com/blog/2014/04/25/githubyou-xiu-xiang-mu-ios/" target="_blank" rel="external">王中周的技术博客</a></p>
+<p><a href="http://tech.glowing.com/" target="_blank" rel="external">Glow 技术团队博客</a></p>
+<p><a href="http://www.superqq.com/blog/archives/" target="_blank" rel="external">刚刚在线</a></p>
+<p><a href="http://adad184.com/" target="_blank" rel="external">里脊串的开发随笔</a></p>
+<p><a href="https://lvwenhan.com/" target="_blank" rel="external">岁寒</a>(全栈工程师)</p>
+<p><a href="http://www.freebuf.com/" target="_blank" rel="external">FreeBuf</a>(关注黑客与极客)</p>
+<p><a href="http://www.ioscookies.com/" target="_blank" rel="external">ioscookies</a>(一个老外总结的第三方库)</p>
+<p>####<a href="https://github.com/tangqiaoboy/iOSBlogCN" target="_blank" rel="external">更多的优秀博客集锦</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS资源/" rel="tag"># - iOS资源</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/21/ioskai-fa-zhi-ru-he-tiao-dao-xi-tong-she-zhi-li-de-wifijie-mian/" rel="next" title="iOS开发之如何跳到系统设置界面">
+                <i class="fa fa-chevron-left"></i> iOS开发之如何跳到系统设置界面
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/23/reveal-appshi-yong-shi-jian-po-jie/" rel="prev" title="Reveal App试用时间破解">
+                Reveal App试用时间破解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/01/22/ioscheng-xu-yuan-xue-xi-wang-zhan/"
+           data-title="iOS程序员学习网站" data-url="http://blog.img421.com/2016/01/22/ioscheng-xu-yuan-xue-xi-wang-zhan/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xoj45.com1.z0.glb.clouddn.com/avtar.png"
+               alt="Twenty's 时间念" />
+          <p class="site-author-name" itemprop="name">Twenty's 时间念</p>
+          <p class="site-description motion-element" itemprop="description">你只有一定要,才一定会得到</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Twenty's 时间念</span>
+</div>
+
+<div>
+  <p>
+  你只有一定要才一定会得到---------博客由Ghost迁移到Hexo
+  </p>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"twenty-zp"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

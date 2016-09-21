@@ -1,20 +1,638 @@
-extends partial/layout
+<!doctype html>
 
-block site_title
-    != page.title + " · " + config.title
 
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name="description", content=desc)
 
-block container
-    include mixins/post
-    +post(page)
+  
 
-block pagination
-    include mixins/paginator
-    +post()
-    include partial/comment
 
-block copyright
-    include partial/copyright
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content=" - iOS技术," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Objective-C 不同于 其他语言,它是动态的。何为动态，就是说它在执行一个方法的时候，比如[object method]并不是去直接执行,而是将method当作一条消息发送,这个消息由object来处理,这个消息可能被转发给另外一个对象。例[object init]调用［super  init］或者不予理睬假装没有收到此消息比如给button 添加一个SEL.多条不同的消息也可以对应同一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Objective-C  Runtime">
+<meta property="og:url" content="http://blog.img421.com/2016/03/02/objective-c-runtime/index.html">
+<meta property="og:site_name" content="Twenty's 时间念">
+<meta property="og:description" content="Objective-C 不同于 其他语言,它是动态的。何为动态，就是说它在执行一个方法的时候，比如[object method]并不是去直接执行,而是将method当作一条消息发送,这个消息由object来处理,这个消息可能被转发给另外一个对象。例[object init]调用［super  init］或者不予理睬假装没有收到此消息比如给button 添加一个SEL.多条不同的消息也可以对应同一个">
+<meta property="og:image" content="http://ianisme.u.qiniudn.com/wp-content/uploads/2016/01/objective-runtime-2.png">
+<meta property="og:image" content="http://ianisme.u.qiniudn.com/wp-content/uploads/2016/01/objective-runtime-6.png">
+<meta property="og:updated_time" content="2016-07-11T03:01:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Objective-C  Runtime">
+<meta name="twitter:description" content="Objective-C 不同于 其他语言,它是动态的。何为动态，就是说它在执行一个方法的时候，比如[object method]并不是去直接执行,而是将method当作一条消息发送,这个消息由object来处理,这个消息可能被转发给另外一个对象。例[object init]调用［super  init］或者不予理睬假装没有收到此消息比如给button 添加一个SEL.多条不同的消息也可以对应同一个">
+<meta name="twitter:image" content="http://ianisme.u.qiniudn.com/wp-content/uploads/2016/01/objective-runtime-2.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://blog.img421.com/2016/03/02/objective-c-runtime/"/>
+
+  <title> Objective-C  Runtime | Twenty's 时间念 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?a19dd0c033f48c51a16dc7871acded18";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Twenty's 时间念</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Objective-C  Runtime
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-02T17:31:00+08:00" content="2016-03-02">
+              2016-03-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/02/objective-c-runtime/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/02/objective-c-runtime/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Objective-C 不同于 其他语言,它是动态的。何为动态，就是说它在执行一个方法的时候，比如[object method]并不是去直接执行,而是将method当作一条消息发送,这个消息由object来处理,这个消息可能被转发给另外一个对象。例[object init]调用［super  init］或者不予理睬假装没有收到此消息比如给button 添加一个SEL.多条不同的消息也可以对应同一个方法实现。这都是在程序运行的过程时候决定的。</p>
+<p>实际情况下,我们所使用OC调用的语法都会被解析成一个C的函数调用 <code>- object_msgSend()</code>.例如以下代码是等价的：</p>
+<pre><code>1.[object method:message];
+2.object_msgSend(object,@selector(method:),message)
+</code></pre><p>消息传递的关键存在于<code>objc_object</code> 中的isa指针和<code>objc_class</code>中的class dispatch table.</p>
+<p>###<code>Objc_object</code>,<code>Objc_class</code>以及<code>objc_method</code></p>
+<p>在OC中，类、对象和方法都是一个C的结构体,从<code>objc/objc.h</code>头文件中,我们可以找到他们的定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">struct objc_object &#123;  </div><div class="line">    Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">struct objc_class &#123;  </div><div class="line">    Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line">#if !__OBJC2__</div><div class="line">    Class super_class;</div><div class="line">    const char *name;</div><div class="line">    long version;</div><div class="line">    long info;</div><div class="line">    long instance_size;</div><div class="line">    struct objc_ivar_list *ivars;</div><div class="line">    **struct objc_method_list **methodLists**;</div><div class="line">    **struct objc_cache *cache**;</div><div class="line">    struct objc_protocol_list *protocols;</div><div class="line">#endif</div><div class="line">&#125;;</div><div class="line"></div><div class="line">struct objc_method_list &#123;  </div><div class="line">    struct objc_method_list *obsolete;</div><div class="line">    int method_count;</div><div class="line"></div><div class="line">#ifdef __LP64__</div><div class="line">    int space;</div><div class="line">#endif</div><div class="line"></div><div class="line">    /* variable length structure */</div><div class="line">    struct objc_method method_list[1];</div><div class="line">&#125;;</div><div class="line"></div><div class="line">struct objc_method &#123;  </div><div class="line">    SEL method_name;</div><div class="line">    char *method_types;    /* a string representing argument/return types */</div><div class="line">    IMP method_imp;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><code>objc_method_list</code>本质是一个由<code>objc_method</code>元素的可变长度数组.一个<code>objc_method</code>结构体中有函数名,也就是SEL,函数类型的字符串,以及函数的实现IMP。<br>从这些定义中可以看出发送一条消息也就 <code>objc_msgSend</code> 做了什么事。举<code>objc_msgSend(obj, foo)</code> 这个例子来说:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">具体会转换成什么代码呢？</div><div class="line">Runtime会根据类型自动转换成下列某一个函数：</div><div class="line">objc_msgSend:普通的消息都会通过该函数发送</div><div class="line">objc_msgSend_stret:消息中有数据结构作为返回值（不是简单值）时，通过此函数发送和接收返回值</div><div class="line">objc_msgSendSuper:和objc_msgSend类似，这里把消息发送给父类的实例</div><div class="line">objc_msgSendSuper_stret:和objc_msgSend_stret类似，这里把消息发送给父类的实例并接收返回值</div></pre></td></tr></table></figure>
+<ol>
+<li>首先，通过 obj 的 isa 指针找到它的 class ;</li>
+<li>在 class 的 method list 找 foo ;</li>
+<li>如果 class 中没到 foo，继续往它的 superclass 中找 ;</li>
+<li>一旦找到 foo 这个函数，就去执行它的实现IMP .</li>
+</ol>
+<p>当消息被发送到实例对象时,是如图所示处理的（图片源自网络):</p>
+<p><img src="http://ianisme.u.qiniudn.com/wp-content/uploads/2016/01/objective-runtime-2.png" alt=""></p>
+<p>但这种实现有个问题，效率低。但一个 class 往往只有 20% 的函数会被经常调用，可能占总调用次数的 80% 。每个消息都需要遍历一次 <code>objc_method_list</code> 并不合理。如果把经常被调用的函数缓存下来，那可以大大提高函数查询的效率。这也就是 <code>objc_class</code> 中另一个重要成员 <code>objc_cache</code> 做的事情 - 再找到 foo 之后，把 foo 的 <code>method_name</code> 作为 key ，<code>method_imp</code> 作为 value 给存起来。当再次收到 foo 消息的时候，可以直接在 cache 里找到，避免去遍历 <code>objc_method_list</code>.</p>
+<p>##消息动态解析<br>动态方法解析流程图:</p>
+<p><img src="http://ianisme.u.qiniudn.com/wp-content/uploads/2016/01/objective-runtime-6.png" alt=""></p>
+<p>在上面的例子中，如果 <code>foo</code> 没有找到会发生什么？通常情况下，程序会在运行时挂掉并抛出 <em>unrecognized selector sent to …</em> 的异常。但在异常抛出前，Objective-C 的运行时会给你三次拯救程序的机会：</p>
+<ol>
+<li>Method resolution</li>
+<li>Fast forwarding</li>
+<li>Normal forwarding</li>
+</ol>
+<ul>
+<li>第一步：通过<code>+resolveInstanceMethod:</code>或者 <code>+resolveClassMethod:</code>,方法决定是否动态添加方法。如果返回<code>Yes</code>则通过<code>class_addMethod</code>动态添加方法，消息得到处理，结束；如果返回No，则进入下一步；</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">void fooMethod(id obj, SEL _cmd)  </div><div class="line">&#123;</div><div class="line">    NSLog(@&quot;Doing foo&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (BOOL)resolveInstanceMethod:(SEL)aSEL</div><div class="line">&#123;</div><div class="line">    if(aSEL == @selector(foo:))&#123;</div><div class="line">        class_addMethod([self class], aSEL, (IMP)fooMethod, &quot;v@:&quot;);</div><div class="line">        return YES;</div><div class="line">    &#125;</div><div class="line">    return [super resolveInstanceMethod];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>iOS 4.3加入runtime 方法，主要都是以 imp 为前缀的方法，比如 <code>imp_implementationWithBlock()</code> 用 block 快速创建一个 imp 。<br>上面的例子可以重写成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">IMP fooIMP = imp_implementationWithBlock(^(id _self) &#123;  </div><div class="line">    NSLog(@&quot;Doing foo&quot;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">class_addMethod([self class], aSEL, fooIMP, &quot;v@:&quot;);</div></pre></td></tr></table></figure>
+<ul>
+<li>第二步：这步会进入forwardingTargetForSelector:方法，用于指定响应这个selector的备选对象，不能指定为self。如果返回某个对象则会调用对象的方法，结束。如果返回nil，则进入第三部；</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (id)forwardingTargetForSelector:(SEL)aSelector</div><div class="line">&#123;</div><div class="line">    if(aSelector == @selector(foo:))&#123;</div><div class="line">        return alternateObject;</div><div class="line">    &#125;</div><div class="line">    return [super forwardingTargetForSelector:aSelector];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>只要这个方法返回的不是 nil 和 self，整个消息发送的过程就会被重启，当然发送的对象会变成你返回的那个对象。否则，就会继续 Normal Fowarding </p>
+<ul>
+<li>第三部：这步我们要通过methodSignatureForSelector:方法签名，如果返回nil，则消息无法处理。如果返回methodSignature，则进入下一步；</li>
+<li>第四部：这步调用forwardInvocation：方法，我们可以通过anInvocation对象做很多处理，比如修改实现方法，修改响应对象等，如果方法调用成功，则结束。如果失败，则进入doesNotRecognizeSelector方法，若我们没有实现这个方法，那么就会crash。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (void)forwardInvocation:(NSInvocation *)invocation</div><div class="line">&#123;</div><div class="line">    SEL sel = invocation.selector;</div><div class="line"></div><div class="line">    if([alternateObject respondsToSelector:sel]) &#123;</div><div class="line">        [invocation invokeWithTarget:alternateObject];</div><div class="line">    &#125; </div><div class="line">    else &#123;</div><div class="line">        [self doesNotRecognizeSelector:sel];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>##总结<br>Objective-C 中给一个对象发送消息会经过以下几个步骤：</p>
+<ol>
+<li>在对象类的 dispatch table 中尝试找到该消息。如果找到了，跳到相应的函数IMP去执行实现代码；</li>
+<li>如果没有找到，Runtime 会发送 <code>+resolveInstanceMethod:</code> 或者 <code>+resolveClassMethod:</code>尝试去 resolve 这个消息；</li>
+<li>如果 resolve 方法返回 NO，Runtime 就发送 -<code>forwardingTargetForSelector:</code> 允许你把这个消息转发给另一个对象；</li>
+<li>如果没有新的目标对象返回， Runtime 就会发送 <code>-methodSignatureForSelector:</code> 和 <code>-forwardInvocation:</code> 消息。你可以发送 <code>-invokeWithTarget:</code> 消息来手动转发消息或者发送 -<code>doesNotRecognizeSelector:</code> 抛出异常。</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS技术/" rel="tag"># - iOS技术</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/23/reveal-appshi-yong-shi-jian-po-jie/" rel="next" title="Reveal App试用时间破解">
+                <i class="fa fa-chevron-left"></i> Reveal App试用时间破解
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/23/sketchqian-duan-she-ji/" rel="prev" title="Sketch图形设计+Keynote交互">
+                Sketch图形设计+Keynote交互 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/02/objective-c-runtime/"
+           data-title="Objective-C  Runtime" data-url="http://blog.img421.com/2016/03/02/objective-c-runtime/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xoj45.com1.z0.glb.clouddn.com/avtar.png"
+               alt="Twenty's 时间念" />
+          <p class="site-author-name" itemprop="name">Twenty's 时间念</p>
+          <p class="site-description motion-element" itemprop="description">你只有一定要,才一定会得到</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Twenty's 时间念</span>
+</div>
+
+<div>
+  <p>
+  你只有一定要才一定会得到---------博客由Ghost迁移到Hexo
+  </p>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"twenty-zp"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
