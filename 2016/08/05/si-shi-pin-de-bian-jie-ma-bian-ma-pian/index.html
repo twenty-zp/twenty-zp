@@ -1,274 +1,4 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content=" - 视频直播系列," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
-
-
-
-
-
-
-<meta name="description" content="Demo地址
-在此之前我们通常使用的FFmpeg多媒体库,利用CPU来进行视频的编解码,占用CPU资源,效率低下,俗称软编解码.而苹果在2014年的iOS8中,开放了VideoToolbox.framwork框架,此框架使用GPU或专用的处理器来进行编解码,俗称硬编解码.而此框架在此之前只有MAC OS系统中可以使用,在iOS作为私有框架.终于苹果在iOS8.0中得到开放引入.
-2014年的WWD">
-<meta property="og:type" content="article">
-<meta property="og:title" content="四、视频的编解码-编码篇">
-<meta property="og:url" content="http://blog.img421.com/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/index.html">
-<meta property="og:site_name" content="Twenty's 时间念">
-<meta property="og:description" content="Demo地址
-在此之前我们通常使用的FFmpeg多媒体库,利用CPU来进行视频的编解码,占用CPU资源,效率低下,俗称软编解码.而苹果在2014年的iOS8中,开放了VideoToolbox.framwork框架,此框架使用GPU或专用的处理器来进行编解码,俗称硬编解码.而此框架在此之前只有MAC OS系统中可以使用,在iOS作为私有框架.终于苹果在iOS8.0中得到开放引入.
-2014年的WWD">
-<meta property="og:image" content="https://twenty-zp.gitbooks.io/-/content/AFBF71FB-4A38-449B-97FC-EBE4BAC1A3F6.png">
-<meta property="og:image" content="https://twenty-zp.gitbooks.io/-/content/4218AA54-612D-4C96-92D6-1DC9E6358142.png">
-<meta property="og:image" content="https://twenty-zp.gitbooks.io/-/content/3EFF1058-1A5B-45E9-B7F3-21BA58C232F2.png">
-<meta property="og:image" content="https://twenty-zp.gitbooks.io/-/content/9C31AACA-9BFA-4434-89DD-BFD4787F4038.png">
-<meta property="og:updated_time" content="2016-08-05T08:09:59.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="四、视频的编解码-编码篇">
-<meta name="twitter:description" content="Demo地址
-在此之前我们通常使用的FFmpeg多媒体库,利用CPU来进行视频的编解码,占用CPU资源,效率低下,俗称软编解码.而苹果在2014年的iOS8中,开放了VideoToolbox.framwork框架,此框架使用GPU或专用的处理器来进行编解码,俗称硬编解码.而此框架在此之前只有MAC OS系统中可以使用,在iOS作为私有框架.终于苹果在iOS8.0中得到开放引入.
-2014年的WWD">
-<meta name="twitter:image" content="https://twenty-zp.gitbooks.io/-/content/AFBF71FB-4A38-449B-97FC-EBE4BAC1A3F6.png">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-
-
-
-  <link rel="canonical" href="http://blog.img421.com/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/"/>
-
-  <title> 四、视频的编解码-编码篇 | Twenty's 时间念 </title>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?a19dd0c033f48c51a16dc7871acded18";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Twenty's 时间念</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle"></p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                四、视频的编解码-编码篇
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-05T10:21:42+08:00" content="2016-08-05">
-              2016-08-05
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p><a href="https://github.com/twenty-zp/RealTimeAVVideo" target="_blank" rel="external">Demo地址</a></p>
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 四、视频的编解码-编码篇 · Twenty's 时间念</title><meta name="description" content="四、视频的编解码-编码篇 - Twenty's 时间念"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://blog.img421.com/atom.xml" title="Twenty's 时间念"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/twenty-zp" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">四、视频的编解码-编码篇</h1><div class="post-info">Aug 5, 2016</div><div class="post-content"><p><a href="https://github.com/twenty-zp/RealTimeAVVideo" target="_blank" rel="external">Demo地址</a></p>
 <p>在此之前我们通常使用的FFmpeg多媒体库,利用CPU来进行视频的编解码,占用CPU资源,效率低下,俗称软编解码.而苹果在2014年的iOS8中,开放了VideoToolbox.framwork框架,此框架使用GPU或专用的处理器来进行编解码,俗称硬编解码.而此框架在此之前只有MAC OS系统中可以使用,在iOS作为私有框架.终于苹果在iOS8.0中得到开放引入.</p>
 <p>2014年的WWDC<a href="https://developer.apple.com/videos/play/wwdc2014/513/" target="_blank" rel="external">Direct Access to Video Encoding and Decoding</a>中,苹果介绍了使用videoToolbox硬编解码.<br>使用硬编解码有几个优点:</p>
 <ul>
@@ -284,7 +14,8 @@
 <p>而对于Video Toolbox,我们可以通过以下功能获取到数据,进行网络流传输等多种保存：</p>
 <ol>
 <li>解压为图像的数据结构;</li>
-<li><p>压缩为视频图像的容器数据结构.<br>##一、videoToolbox的基本数据<br>Video Toolbox视频编解码前后需要应用的数据结构进行说明。</p>
+<li><p>压缩为视频图像的容器数据结构.</p>
+<h3 id="一、videoToolbox的基本数据"><a href="#一、videoToolbox的基本数据" class="headerlink" title="一、videoToolbox的基本数据"></a>一、videoToolbox的基本数据</h3><p>Video Toolbox视频编解码前后需要应用的数据结构进行说明。</p>
 </li>
 <li><p>CVPixelBuffer：编码前和解码后的图像数据结构。此内容包含一系列的CVPixelBufferPool内容</p>
 </li>
@@ -305,15 +36,11 @@
 </ol>
 <hr>
 <p>由<a href="er_3001_cai_ji_shi_pin.md">二、采集视频数据</a>可知,我们获取到的数据<code>(CMSampleBufferRef)sampleBuffer</code>为未编码的数据;</p>
-<p><img src="https://twenty-zp.gitbooks.io/-/content/AFBF71FB-4A38-449B-97FC-EBE4BAC1A3F6.png" alt="图1.1编码前后的数据结构示意图"><strong>图1.1</strong></p>
-<p>上图中,编码前后的视频图像都封装在<code>CMSampleBuffer</code>中,编码前以<code>CVPixelBuffer</code>进行存储;编码后以<code>CMBlockBuffer</code>进行存储。除此之外两者都包括<code>CMTime</code>、<code>CMVideoFormatDesc</code>.</p>
-<p>##二、视频数据流编码并上传到服务器<br><img src="https://twenty-zp.gitbooks.io/-/content/4218AA54-612D-4C96-92D6-1DC9E6358142.png" alt="图2.1"></p>
-<p>###1.将CVPixelBuffer使用VTCompressionSession进行数据流的硬编码。</p>
-<p>####(1)初始化VTCompressionSession</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">VT_EXPORT OSStatus </div><div class="line">VTCompressionSessionCreate(</div><div class="line">	CM_NULLABLE CFAllocatorRef							allocator,</div><div class="line">	int32_t												width,</div><div class="line">	int32_t												height,</div><div class="line">	CMVideoCodecType									codecType,</div><div class="line">	CM_NULLABLE CFDictionaryRef							encoderSpecification,</div><div class="line">	CM_NULLABLE CFDictionaryRef							sourceImageBufferAttributes,</div><div class="line">	CM_NULLABLE CFAllocatorRef							compressedDataAllocator,</div><div class="line">	CM_NULLABLE VTCompressionOutputCallback				outputCallback,</div><div class="line">	void * CM_NULLABLE									outputCallbackRefCon,</div><div class="line">	CM_RETURNS_RETAINED_PARAMETER CM_NULLABLE VTCompressionSessionRef * CM_NONNULL compressionSessionOut)</div><div class="line">    __OSX_AVAILABLE_STARTING(__MAC_10_8, __IPHONE_8_0);</div></pre></td></tr></table></figure>
+<p><img src="https://twenty-zp.gitbooks.io/-/content/AFBF71FB-4A38-449B-97FC-EBE4BAC1A3F6.png" alt="图1.1编码前后的数据结构示意图"><br><strong>图1.1</strong><br>上图中,编码前后的视频图像都封装在<code>CMSampleBuffer</code>中,编码前以<code>CVPixelBuffer</code>进行存储;编码后以<code>CMBlockBuffer</code>进行存储。除此之外两者都包括<code>CMTime</code>、<code>CMVideoFormatDesc</code>.</p>
+<h3 id="二、视频数据流编码并上传到服务器"><a href="#二、视频数据流编码并上传到服务器" class="headerlink" title="二、视频数据流编码并上传到服务器"></a>二、视频数据流编码并上传到服务器</h3><p><img src="https://twenty-zp.gitbooks.io/-/content/4218AA54-612D-4C96-92D6-1DC9E6358142.png" alt="图2.1"></p>
+<h4 id="1-将CVPixelBuffer使用VTCompressionSession进行数据流的硬编码。"><a href="#1-将CVPixelBuffer使用VTCompressionSession进行数据流的硬编码。" class="headerlink" title="1.将CVPixelBuffer使用VTCompressionSession进行数据流的硬编码。"></a>1.将CVPixelBuffer使用VTCompressionSession进行数据流的硬编码。</h4><h5 id="1-初始化VTCompressionSession"><a href="#1-初始化VTCompressionSession" class="headerlink" title="(1)初始化VTCompressionSession"></a>(1)初始化VTCompressionSession</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">VT_EXPORT OSStatus </div><div class="line">VTCompressionSessionCreate(</div><div class="line">	CM_NULLABLE CFAllocatorRef							allocator,</div><div class="line">	int32_t												width,</div><div class="line">	int32_t												height,</div><div class="line">	CMVideoCodecType									codecType,</div><div class="line">	CM_NULLABLE CFDictionaryRef							encoderSpecification,</div><div class="line">	CM_NULLABLE CFDictionaryRef							sourceImageBufferAttributes,</div><div class="line">	CM_NULLABLE CFAllocatorRef							compressedDataAllocator,</div><div class="line">	CM_NULLABLE VTCompressionOutputCallback				outputCallback,</div><div class="line">	void * CM_NULLABLE									outputCallbackRefCon,</div><div class="line">	CM_RETURNS_RETAINED_PARAMETER CM_NULLABLE VTCompressionSessionRef * CM_NONNULL compressionSessionOut)</div><div class="line">    __OSX_AVAILABLE_STARTING(__MAC_10_8, __IPHONE_8_0);</div></pre></td></tr></table></figure>
 <blockquote>
 <p>VTCompressionSession的初始化参数说明:</p>
-</blockquote>
 <ul>
 <li>allocator:分配器,设置NULL为默认分配</li>
 <li>width: 宽</li>
@@ -326,7 +53,9 @@
 <li>outputCallbackRefCon: 回调客户定义的参考值.</li>
 <li>compressionSessionOut: 压缩会话变量。</li>
 </ul>
-<p>####(2)配置VTCompressionSession<br>  使用VTSessionSetProperty()调用进行配置compression。<br>  <img src="https://twenty-zp.gitbooks.io/-/content/3EFF1058-1A5B-45E9-B7F3-21BA58C232F2.png" alt=""></p>
+</blockquote>
+<h5 id="2-配置VTCompressionSession"><a href="#2-配置VTCompressionSession" class="headerlink" title="(2)配置VTCompressionSession"></a>(2)配置VTCompressionSession</h5><p>  使用VTSessionSetProperty()调用进行配置compression。<br>  <img src="https://twenty-zp.gitbooks.io/-/content/3EFF1058-1A5B-45E9-B7F3-21BA58C232F2.png" alt=""></p>
+<blockquote>
 <ul>
 <li>kVTCompressionPropertyKey_AllowFrameReordering: 允许帧重新排序.默认为true</li>
 <li>kVTCompressionPropertyKey_AverageBitRate: 设置需要的平均编码率</li>
@@ -334,9 +63,11 @@
 <li>kVTCompressionPropertyKey_RealTime: 视频编码压缩是否是实时压缩。可设置CFBoolean或NULL.默认为NULL</li>
 <li>kVTCompressionPropertyKey_ProfileLevel: 对于编码流指定配置和标准 .比如kVTProfileLevel_H264_Main_AutoLevel</li>
 </ul>
+</blockquote>
 <p>配置过VTCompressionSession后,可以可选的调用<code>VTCompressionSessionPrepareToEncodeFrames</code>进行准备工作编码帧。</p>
-<p>####(3)开始硬编码流入的数据<br>使用<code>VTCompressionSessionEncodeFrame</code>方法进行编码.当编码结束后调用outputCallback回调函数。</p>
+<h5 id="3-开始硬编码流入的数据"><a href="#3-开始硬编码流入的数据" class="headerlink" title="(3)开始硬编码流入的数据"></a>(3)开始硬编码流入的数据</h5><p>使用<code>VTCompressionSessionEncodeFrame</code>方法进行编码.当编码结束后调用outputCallback回调函数。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">VT_EXPORT OSStatus</div><div class="line">VTCompressionSessionEncodeFrame(</div><div class="line">	CM_NONNULL VTCompressionSessionRef	session,</div><div class="line">	CM_NONNULL CVImageBufferRef			imageBuffer,</div><div class="line">	CMTime								presentationTimeStamp,</div><div class="line">	CMTime								duration, // may be kCMTimeInvalid</div><div class="line">	CM_NULLABLE CFDictionaryRef			frameProperties,</div><div class="line">	void * CM_NULLABLE					sourceFrameRefCon,</div><div class="line">	VTEncodeInfoFlags * CM_NULLABLE		infoFlagsOut )</div><div class="line">    __OSX_AVAILABLE_STARTING(__MAC_10_8, __IPHONE_8_0);</div></pre></td></tr></table></figure>
+<blockquote>
 <ul>
 <li>presentationTimeStamp： 获取到的这个sample buffer数据的展示时间戳。每一个传给这个session的时间戳都要大于前一个展示时间戳.</li>
 <li>duration: 对于获取到sample buffer数据,这个帧的展示时间.如果没有时间信息,可设置<code>kCMTimeInvalid</code>.</li>
@@ -344,8 +75,9 @@
 <li>sourceFrameRefCon: 回调函数会引用你设置的这个帧的参考值.</li>
 <li>infoFlagsOut: 指向一个<code>VTEncodeInfoFlags</code>来接受一个编码操作.如果使用异步运行,<code>kVTEncodeInfo_Asynchronous</code>被设置；同步运行,<code>kVTEncodeInfo_FrameDropped</code>被设置；设置NULL为不想接受这个信息.</li>
 </ul>
-<p>####(4)执行VTCompressionOutputCallback回调函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">typedef void (*VTCompressionOutputCallback)(</div><div class="line">		void * CM_NULLABLE outputCallbackRefCon,</div><div class="line">		void * CM_NULLABLE sourceFrameRefCon, </div><div class="line">		OSStatus status, </div><div class="line">		VTEncodeInfoFlags infoFlags,</div><div class="line">		CM_NULLABLE CMSampleBufferRef sampleBuffer );</div></pre></td></tr></table></figure>
+</blockquote>
+<h5 id="4-执行VTCompressionOutputCallback回调函数"><a href="#4-执行VTCompressionOutputCallback回调函数" class="headerlink" title="(4)执行VTCompressionOutputCallback回调函数"></a>(4)执行VTCompressionOutputCallback回调函数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">typedef void (*VTCompressionOutputCallback)(</div><div class="line">		void * CM_NULLABLE outputCallbackRefCon,</div><div class="line">		void * CM_NULLABLE sourceFrameRefCon, </div><div class="line">		OSStatus status, </div><div class="line">		VTEncodeInfoFlags infoFlags,</div><div class="line">		CM_NULLABLE CMSampleBufferRef sampleBuffer );</div></pre></td></tr></table></figure>
+<blockquote>
 <ul>
 <li>outputCallbackRefCon: 回调函数的参考值</li>
 <li>sourceFrameRefCon: VTCompressionSessionEncodeFrame函数中设置的帧的参考值</li>
@@ -353,8 +85,8 @@
 <li>infoFlags: 包含编码操作的信息标识</li>
 <li>sampleBuffer: 如果压缩成功或者帧不丢失,则包含这个已压缩的数据CMSampleBuffer,否则为NULL</li>
 </ul>
-<p>####(5)将压缩成功的sampleBuffer数据进行处理为基本流NSData上传到服务器</p>
-<blockquote>
+</blockquote>
+<h5 id="5-将压缩成功的sampleBuffer数据进行处理为基本流NSData上传到服务器"><a href="#5-将压缩成功的sampleBuffer数据进行处理为基本流NSData上传到服务器" class="headerlink" title="(5)将压缩成功的sampleBuffer数据进行处理为基本流NSData上传到服务器"></a>(5)将压缩成功的sampleBuffer数据进行处理为基本流NSData上传到服务器</h5><blockquote>
 <p>MPEG-4是一套用于音频、视频信息的压缩编码标准.</p>
 </blockquote>
 <p><img src="https://twenty-zp.gitbooks.io/-/content/9C31AACA-9BFA-4434-89DD-BFD4787F4038.png" alt="图5.1"><br>由<strong>图1.1</strong>可知,已压缩 $$CMSampleBuffer = CMTime(可选) + CMBlockBuffer + CMVideoFormatDesc$$。</p>
@@ -383,329 +115,14 @@ if (keyframe &amp;&amp; !encoder -&gt; sps) {
 </code></pre><p><strong>5.3 获取CMBlockBuffer并转换成数据</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">CMBlockBufferRef blockBuffer = CMSampleBufferGetDataBuffer(sampleBuffer);</div><div class="line">  size_t  lengthAtOffset,totalLength;</div><div class="line">  char *dataPointer;</div><div class="line">  //接收到的数据展示</div><div class="line">  OSStatus blockBufferStatus = CMBlockBufferGetDataPointer(blockBuffer, 0, &amp;lengthAtOffset, &amp;totalLength, &amp;dataPointer);</div><div class="line">  if (blockBufferStatus != kCMBlockBufferNoErr)</div><div class="line">  &#123;</div><div class="line">      size_t bufferOffset = 0;</div><div class="line">      static const int AVCCHeaderLength = 4;</div><div class="line">      while (bufferOffset &lt; totalLength -  AVCCHeaderLength) &#123;</div><div class="line">          // Read the NAL unit length</div><div class="line">          uint32_t NALUnitLength = 0;</div><div class="line">          /**</div><div class="line">           *  void *memcpy(void *dest, const void *src, size_t n);</div><div class="line">           *  从源src所指的内存地址的起始位置开始拷贝n个字节到目标dest所指的内存地址的起始位置中</div><div class="line">           */</div><div class="line">          memcpy(&amp;NALUnitLength, dataPointer + bufferOffset, AVCCHeaderLength);</div><div class="line">          //字节从高位反转到低位</div><div class="line">          NALUnitLength = CFSwapInt32BigToHost(NALUnitLength);</div><div class="line">          </div><div class="line">          RTAVVideoFrame * frame = [RTAVVideoFrame new];</div><div class="line">          frame.sps = encoder -&gt; sps;</div><div class="line">          frame.pps = encoder -&gt; pps;</div><div class="line">          frame.data = [NSData dataWithBytes:(dataPointer+bufferOffset+AVCCHeaderLength) length:NALUnitLength];</div><div class="line">          </div><div class="line">          bufferOffset += NALUnitLength + AVCCHeaderLength;</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 <p>此得到的H264数据应用于后面的RTMP协议做推流准备。</p>
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/视频直播系列/" rel="tag"># - 视频直播系列</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/08/05/san-shi-pin-bian-jie-ma-jie-ma-pian/" rel="next" title="三、视频编解码-解码篇">
-                <i class="fa fa-chevron-left"></i> 三、视频编解码-解码篇
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/21/ghost博客迁移hexo历程/" rel="prev" title="Ghost博客迁移Hexo历程">
-                Ghost博客迁移Hexo历程 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-  <p>热评文章</p>
-  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
-
-
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/"
-           data-title="四、视频的编解码-编码篇" data-url="http://blog.img421.com/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/">
-      </div>
-    
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://7xoj45.com1.z0.glb.clouddn.com/avtar.png"
-               alt="Twenty's 时间念" />
-          <p class="site-author-name" itemprop="name">Twenty's 时间念</p>
-          <p class="site-description motion-element" itemprop="description">你只有一定要,才一定会得到</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">26</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">标签</span>
-              
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-      </section>
-
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">此文章未包含目录</p>
-            
-          </div>
-        </section>
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Twenty's 时间念</span>
-</div>
-
-<div>
-  <p>
-  你只有一定要才一定会得到---------博客由Ghost迁移到Hexo
-  </p>
-</div>
-
-        
-
-        
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"twenty-zp"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
-
-
-
-
-
-
-  
-  
-
-  
-
-  
-
-  
-
-</body>
-</html>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/09/21/ghost博客迁移hexo历程/" class="prev">PREV</a><a href="/2016/08/05/san-shi-pin-bian-jie-ma-jie-ma-pian/" class="next">NEXT</a></div><div data-thread-key="2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/" data-title="四、视频的编解码-编码篇" data-url="http://blog.img421.com/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"twenty-zp"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2015 - 2016 <a href="http://blog.img421.com">Twenty's 时间念</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>

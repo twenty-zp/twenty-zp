@@ -1,0 +1,1242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Twenty&#39;s 时间念</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://blog.img421.com/"/>
+  <updated>2016-04-25T05:25:00.000Z</updated>
+  <id>http://blog.img421.com/</id>
+  
+  <author>
+    <name>Twenty&#39;s 时间念</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Xcode8 安装Alcatraz使用插件</title>
+    <link href="http://blog.img421.com/2016/09/23/Xcode8%20%E5%AE%89%E8%A3%85Alcatraz%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6/"/>
+    <id>http://blog.img421.com/2016/09/23/Xcode8 安装Alcatraz使用插件/</id>
+    <published>2016-09-23T09:34:49.000Z</published>
+    <updated>2016-04-25T05:25:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>苹果从Xcode 8开始对于Alcatraz中安装的插件已经不支持,这可能是因为Xcode-ghost事件,让苹果认为未审核过的插件也会不安全,因此苹果在Xcode 8 中提供了开发插件的扩展.<br><a href="https://developer.apple.com/videos/play/wwdc2016/414/" target="_blank" rel="external">Using and Extending the Xcode Source Editor</a>.但是我们使用插件已经习惯性和方便,所以本章节为<strong>在Xcode 8 中安装Alcatraz</strong></p>
+</blockquote>
+<p>##1.安装<br>通过以下命令安装<strong>xcode plugins</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install update_xcode_plugins</div></pre></td></tr></table></figure>
+<p>##2.使用<br>如果安装好了,可以使用以下再命令行中查看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">update_xcode_plugins</div></pre></td></tr></table></figure>
+<p><img src="http://7xoj45.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-09-23%20%E4%B8%8B%E5%8D%885.44.16.png" alt=""></p>
+<p>##3.使用插件<br>当确认安装好以后,通过提示运行以下命令,默认颜色是选择<strong>Cancel</strong>,可以通过使用键盘上下键,来选择<strong>Xcode 8.0</strong>等待安装.此安装会等待长时间,因为相当于copy一份Xcode.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">update_xcode_plugins --unsign</div></pre></td></tr></table></figure>
+<p><img src="http://7xoj45.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-09-23%20%E4%B8%8B%E5%8D%885.46.41.png" alt=""></p>
+<p>##4.安装成功<br>当安装成功以后会给你跳出<strong>Finished!</strong>,你可以到你<strong>应用程序</strong>或者<strong>Launchpad</strong>中查看到一个<strong>Xcode-unsign</strong>命名的Xcode版本.打开此版本即可.<br><img src="http://7xoj45.com1.z0.glb.clouddn.com/xcode8.0.png" alt=""><br><img src="http://7xoj45.com1.z0.glb.clouddn.com/5130115C-C9A4-400F-B205-5122F0CD1309.png" alt=""></p>
+<p>###工具<br><a href="https://github.com/inket/update_xcode_plugins" target="_blank" rel="external">update_xcode_plugins</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;苹果从Xcode 8开始对于Alcatraz中安装的插件已经不支持,这可能是因为Xcode-ghost事件,让苹果认为未审核过的插件也会不安全,因此苹果在Xcode 8 中提供了开发插件的扩展.&lt;br&gt;&lt;a href=&quot;https://develo
+    
+    </summary>
+    
+    
+      <category term=" - Twenty随笔录" scheme="http://blog.img421.com/tags/Twenty%E9%9A%8F%E7%AC%94%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ghost博客迁移Hexo历程</title>
+    <link href="http://blog.img421.com/2016/09/21/ghost%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BBhexo%E5%8E%86%E7%A8%8B/"/>
+    <id>http://blog.img421.com/2016/09/21/ghost博客迁移hexo历程/</id>
+    <published>2016-09-21T02:45:30.000Z</published>
+    <updated>2016-09-21T02:49:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<pre><code>在亚马逊云服务(简称AWS)到期之前,因为将服务器的到期时间搞错,所以数据没有给export 出来.
+幸运的是到期后的两周内云服务器卷宗和实例还都在,就又重新启动一个新的实例绑定卷宗,
+通过远程获取到MySQL数据库Copy到本地。
+</code></pre></blockquote>
+<p>1.获取到MySQL打开后的数据库为文件夹,内部都是一些<code>.frm</code>文件,因此要安装本地MySQL服务器,通过同名数据库,<code>Copy</code>所有的<code>.frm</code>文件到本地MySQL服务器中,除此之外<code>ib_logfile0</code>、<code>ib_logfile1</code>、<code>ibdata1</code>文件也要复制进去.</p>
+<p>2.启动MySQL.</p>
+<p>3.通过<code>Navicate Premium</code>或命令打开数据库查看表中内容.</p>
+<p>注:MySQL默认为<code>latin1</code>字符集,因此如果我们打开表会看到乱码.因此要将MySQL中的<code>my-defalut.cnf</code> 复制一份到<code>/etc</code>下,并命名为<code>my.cnf</code>.再<code>my.cnf</code>的<code>[mysqld]</code>下,添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">init-connect = &apos;set names latin1&apos;</div><div class="line">character-set-server = latin1</div></pre></td></tr></table></figure>
+<p>4.重新启动MySQL查看内容,显示为非乱码.</p>
+<p>5.本地安装ghost博客,使用<code>MySQL</code>数据库,名称为本地的数据库名称。</p>
+<p>6.运行ghost博客,进入到后台可以重新<code>export</code>json文件数据.</p>
+<p>7.安装Hexo,使用ghost-hexo 插件转json内容为<code>markdown</code>文件.</p>
+<p>8.hexo生成html,并上传到coding、github等.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;在亚马逊云服务(简称AWS)到期之前,因为将服务器的到期时间搞错,所以数据没有给export 出来.
+幸运的是到期后的两周内云服务器卷宗和实例还都在,就又重新启动一个新的实例绑定卷宗,
+通过远程获取到MySQL数据库Copy到本地。
+    
+    </summary>
+    
+    
+      <category term=" - 博客" scheme="http://blog.img421.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>四、视频的编解码-编码篇</title>
+    <link href="http://blog.img421.com/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/"/>
+    <id>http://blog.img421.com/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/</id>
+    <published>2016-08-05T02:21:42.000Z</published>
+    <updated>2016-08-05T08:09:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/twenty-zp/RealTimeAVVideo" target="_blank" rel="external">Demo地址</a></p>
+<p>在此之前我们通常使用的FFmpeg多媒体库,利用CPU来进行视频的编解码,占用CPU资源,效率低下,俗称软编解码.而苹果在2014年的iOS8中,开放了VideoToolbox.framwork框架,此框架使用GPU或专用的处理器来进行编解码,俗称硬编解码.而此框架在此之前只有MAC OS系统中可以使用,在iOS作为私有框架.终于苹果在iOS8.0中得到开放引入.</p>
+<p>2014年的WWDC<a href="https://developer.apple.com/videos/play/wwdc2014/513/" target="_blank" rel="external">Direct Access to Video Encoding and Decoding</a>中,苹果介绍了使用videoToolbox硬编解码.<br>使用硬编解码有几个优点:</p>
+<ul>
+<li>提高性能;</li>
+<li>增加效率;</li>
+<li>延长电量的使用</li>
+</ul>
+<p>对于编解码,AVFoundation框架只有以下几个功能:</p>
+<ol>
+<li>直接解压后显示;</li>
+<li>直接压缩到一个文件当中;</li>
+</ol>
+<p>而对于Video Toolbox,我们可以通过以下功能获取到数据,进行网络流传输等多种保存：</p>
+<ol>
+<li>解压为图像的数据结构;</li>
+<li><p>压缩为视频图像的容器数据结构.</p>
+<h3 id="一、videoToolbox的基本数据"><a href="#一、videoToolbox的基本数据" class="headerlink" title="一、videoToolbox的基本数据"></a>一、videoToolbox的基本数据</h3><p>Video Toolbox视频编解码前后需要应用的数据结构进行说明。</p>
+</li>
+<li><p>CVPixelBuffer：编码前和解码后的图像数据结构。此内容包含一系列的CVPixelBufferPool内容</p>
+</li>
+<li><p>CMTime、CMClock和CMTimebase：时间戳相关。时间以64-bit/32-bit的形式出现。</p>
+</li>
+<li><p>pixelBufferAttributes:字典设置.可能包括Width/height、pixel format type、• Compatibility (e.g., OpenGL ES, Core Animation)</p>
+</li>
+<li><p>CMBlockBuffer：编码后，结果图像的数据结构。</p>
+</li>
+<li><p>CMVideoFormatDescription：图像存储方式，编解码器等格式描述。</p>
+</li>
+<li><p>(CMSampleBuffer：存放编解码前后的视频图像的容器数据结构。</p>
+</li>
+<li><p>CMClock </p>
+</li>
+<li><p>CMTimebase: 关于CMClock的一个控制视图,包含CMClock、时间映射(Time mapping)、速率控制(Rate control)</p>
+</li>
+</ol>
+<hr>
+<p>由<a href="er_3001_cai_ji_shi_pin.md">二、采集视频数据</a>可知,我们获取到的数据<code>(CMSampleBufferRef)sampleBuffer</code>为未编码的数据;</p>
+<p><img src="https://twenty-zp.gitbooks.io/-/content/AFBF71FB-4A38-449B-97FC-EBE4BAC1A3F6.png" alt="图1.1编码前后的数据结构示意图"><br><strong>图1.1</strong><br>上图中,编码前后的视频图像都封装在<code>CMSampleBuffer</code>中,编码前以<code>CVPixelBuffer</code>进行存储;编码后以<code>CMBlockBuffer</code>进行存储。除此之外两者都包括<code>CMTime</code>、<code>CMVideoFormatDesc</code>.</p>
+<h3 id="二、视频数据流编码并上传到服务器"><a href="#二、视频数据流编码并上传到服务器" class="headerlink" title="二、视频数据流编码并上传到服务器"></a>二、视频数据流编码并上传到服务器</h3><p><img src="https://twenty-zp.gitbooks.io/-/content/4218AA54-612D-4C96-92D6-1DC9E6358142.png" alt="图2.1"></p>
+<h4 id="1-将CVPixelBuffer使用VTCompressionSession进行数据流的硬编码。"><a href="#1-将CVPixelBuffer使用VTCompressionSession进行数据流的硬编码。" class="headerlink" title="1.将CVPixelBuffer使用VTCompressionSession进行数据流的硬编码。"></a>1.将CVPixelBuffer使用VTCompressionSession进行数据流的硬编码。</h4><h5 id="1-初始化VTCompressionSession"><a href="#1-初始化VTCompressionSession" class="headerlink" title="(1)初始化VTCompressionSession"></a>(1)初始化VTCompressionSession</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">VT_EXPORT OSStatus </div><div class="line">VTCompressionSessionCreate(</div><div class="line">	CM_NULLABLE CFAllocatorRef							allocator,</div><div class="line">	int32_t												width,</div><div class="line">	int32_t												height,</div><div class="line">	CMVideoCodecType									codecType,</div><div class="line">	CM_NULLABLE CFDictionaryRef							encoderSpecification,</div><div class="line">	CM_NULLABLE CFDictionaryRef							sourceImageBufferAttributes,</div><div class="line">	CM_NULLABLE CFAllocatorRef							compressedDataAllocator,</div><div class="line">	CM_NULLABLE VTCompressionOutputCallback				outputCallback,</div><div class="line">	void * CM_NULLABLE									outputCallbackRefCon,</div><div class="line">	CM_RETURNS_RETAINED_PARAMETER CM_NULLABLE VTCompressionSessionRef * CM_NONNULL compressionSessionOut)</div><div class="line">    __OSX_AVAILABLE_STARTING(__MAC_10_8, __IPHONE_8_0);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>VTCompressionSession的初始化参数说明:</p>
+<ul>
+<li>allocator:分配器,设置NULL为默认分配</li>
+<li>width: 宽</li>
+<li>height: 高</li>
+<li>codecType: 编码类型,如kCMVideoCodecType_H264</li>
+<li>encoderSpecification: 编码规范。设置NULL由videoToolbox自己选择</li>
+<li>sourceImageBufferAttributes: 源像素缓冲区属性.设置NULL不让videToolbox创建,而自己创建</li>
+<li>compressedDataAllocator: 压缩数据分配器.设置NULL,默认的分配</li>
+<li>outputCallback: 当VTCompressionSessionEncodeFrame被调用压缩一次后会被异步调用.<strong>注:当你设置NULL的时候,你需要调用VTCompressionSessionEncodeFrameWithOutputHandler方法进行压缩帧处理,支持iOS9.0以上</strong></li>
+<li>outputCallbackRefCon: 回调客户定义的参考值.</li>
+<li>compressionSessionOut: 压缩会话变量。</li>
+</ul>
+</blockquote>
+<h5 id="2-配置VTCompressionSession"><a href="#2-配置VTCompressionSession" class="headerlink" title="(2)配置VTCompressionSession"></a>(2)配置VTCompressionSession</h5><p>  使用VTSessionSetProperty()调用进行配置compression。<br>  <img src="https://twenty-zp.gitbooks.io/-/content/3EFF1058-1A5B-45E9-B7F3-21BA58C232F2.png" alt=""></p>
+<blockquote>
+<ul>
+<li>kVTCompressionPropertyKey_AllowFrameReordering: 允许帧重新排序.默认为true</li>
+<li>kVTCompressionPropertyKey_AverageBitRate: 设置需要的平均编码率</li>
+<li>kVTCompressionPropertyKey_H264EntropyMode：H264的<a href="http://baike.baidu.com/view/182718.htm" target="_blank" rel="external">熵编码</a>模式。有两种模式:一种基于上下文的二进制算数编码CABAC和可变长编码VLC.在slice层之上（picture和sequence）使用定长或变长的二进制编码，slice层及其以下使用VLC或CABAC.<a href="http://www.programgo.com/article/71134070443/" target="_blank" rel="external">详情请参考</a></li>
+<li>kVTCompressionPropertyKey_RealTime: 视频编码压缩是否是实时压缩。可设置CFBoolean或NULL.默认为NULL</li>
+<li>kVTCompressionPropertyKey_ProfileLevel: 对于编码流指定配置和标准 .比如kVTProfileLevel_H264_Main_AutoLevel</li>
+</ul>
+</blockquote>
+<p>配置过VTCompressionSession后,可以可选的调用<code>VTCompressionSessionPrepareToEncodeFrames</code>进行准备工作编码帧。</p>
+<h5 id="3-开始硬编码流入的数据"><a href="#3-开始硬编码流入的数据" class="headerlink" title="(3)开始硬编码流入的数据"></a>(3)开始硬编码流入的数据</h5><p>使用<code>VTCompressionSessionEncodeFrame</code>方法进行编码.当编码结束后调用outputCallback回调函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">VT_EXPORT OSStatus</div><div class="line">VTCompressionSessionEncodeFrame(</div><div class="line">	CM_NONNULL VTCompressionSessionRef	session,</div><div class="line">	CM_NONNULL CVImageBufferRef			imageBuffer,</div><div class="line">	CMTime								presentationTimeStamp,</div><div class="line">	CMTime								duration, // may be kCMTimeInvalid</div><div class="line">	CM_NULLABLE CFDictionaryRef			frameProperties,</div><div class="line">	void * CM_NULLABLE					sourceFrameRefCon,</div><div class="line">	VTEncodeInfoFlags * CM_NULLABLE		infoFlagsOut )</div><div class="line">    __OSX_AVAILABLE_STARTING(__MAC_10_8, __IPHONE_8_0);</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>presentationTimeStamp： 获取到的这个sample buffer数据的展示时间戳。每一个传给这个session的时间戳都要大于前一个展示时间戳.</li>
+<li>duration: 对于获取到sample buffer数据,这个帧的展示时间.如果没有时间信息,可设置<code>kCMTimeInvalid</code>.</li>
+<li>frameProperties: 包含这个帧的属性.帧的改变会影响后边的编码帧.</li>
+<li>sourceFrameRefCon: 回调函数会引用你设置的这个帧的参考值.</li>
+<li>infoFlagsOut: 指向一个<code>VTEncodeInfoFlags</code>来接受一个编码操作.如果使用异步运行,<code>kVTEncodeInfo_Asynchronous</code>被设置；同步运行,<code>kVTEncodeInfo_FrameDropped</code>被设置；设置NULL为不想接受这个信息.</li>
+</ul>
+</blockquote>
+<h5 id="4-执行VTCompressionOutputCallback回调函数"><a href="#4-执行VTCompressionOutputCallback回调函数" class="headerlink" title="(4)执行VTCompressionOutputCallback回调函数"></a>(4)执行VTCompressionOutputCallback回调函数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">typedef void (*VTCompressionOutputCallback)(</div><div class="line">		void * CM_NULLABLE outputCallbackRefCon,</div><div class="line">		void * CM_NULLABLE sourceFrameRefCon, </div><div class="line">		OSStatus status, </div><div class="line">		VTEncodeInfoFlags infoFlags,</div><div class="line">		CM_NULLABLE CMSampleBufferRef sampleBuffer );</div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>outputCallbackRefCon: 回调函数的参考值</li>
+<li>sourceFrameRefCon: VTCompressionSessionEncodeFrame函数中设置的帧的参考值</li>
+<li>status: 压缩的成功为noErr,如失败有错误码</li>
+<li>infoFlags: 包含编码操作的信息标识</li>
+<li>sampleBuffer: 如果压缩成功或者帧不丢失,则包含这个已压缩的数据CMSampleBuffer,否则为NULL</li>
+</ul>
+</blockquote>
+<h5 id="5-将压缩成功的sampleBuffer数据进行处理为基本流NSData上传到服务器"><a href="#5-将压缩成功的sampleBuffer数据进行处理为基本流NSData上传到服务器" class="headerlink" title="(5)将压缩成功的sampleBuffer数据进行处理为基本流NSData上传到服务器"></a>(5)将压缩成功的sampleBuffer数据进行处理为基本流NSData上传到服务器</h5><blockquote>
+<p>MPEG-4是一套用于音频、视频信息的压缩编码标准.</p>
+</blockquote>
+<p><img src="https://twenty-zp.gitbooks.io/-/content/9C31AACA-9BFA-4434-89DD-BFD4787F4038.png" alt="图5.1"><br>由<strong>图1.1</strong>可知,已压缩 $$CMSampleBuffer = CMTime(可选) + CMBlockBuffer + CMVideoFormatDesc$$。</p>
+<p><strong>5.1 先判断压缩的数据是否正确</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//不存在则代表压缩不成功或帧丢失</div><div class="line"> if(!sampleBuffer) return;</div><div class="line"> if (status != noErr) return;</div><div class="line"> //返回sampleBuffer中包括可变字典的不可变数组,如果有错误则为NULL</div><div class="line">CFArrayRef  array =  CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, true);</div><div class="line"> if (!array)  return;</div><div class="line"></div><div class="line">CFDictionaryRef dic = CFArrayGetValueAtIndex(array, 0);</div><div class="line"> if (!dic) return;</div><div class="line"> </div><div class="line">//issue 3:kCMSampleAttachmentKey_NotSync:没有这个键意味着同步, yes: 异步. no:同步</div><div class="line"> BOOL keyframe = !CFDictionaryContainsKey(dic, kCMSampleAttachmentKey_NotSync); //此代表为同步</div></pre></td></tr></table></figure></p>
+<p>而对于<strong>issue 3</strong>从字面意思理解即为以上的说明,但是网上看到很多都是做为查询是否是视频关键帧,而查询文档看到有此关键帧key值<code>kCMSampleBufferAttachmentKey_ForceKeyFrame</code>存在,因此对此值如若有了解情况者敬请告知详情.</p>
+<p><strong>5.2 获取CMVideoFormatDesc数据</strong><br>由<a href="https://twenty-zp.gitbooks.io/-/content/san_3001_shi_pin_de_bian_jie_ma.md" target="_blank" rel="external">三、解码篇</a>可知CMVideoFormatDesc 包括编码所用的profile，level，图像的宽和高，deblock滤波器等.具体包含<strong>第一个NALU的SPS</strong>（Sequence Parameter Set）和<strong>第二个NALU的PPS</strong>（Picture Parameter Set）.</p>
+<pre><code>//
+if (keyframe &amp;&amp; !encoder -&gt; sps) {
+    //获取sample buffer 中的 CMVideoFormatDesc
+    CMFormatDescriptionRef format = CMSampleBufferGetFormatDescription(sampleBuffer);
+
+    //获取H264参数集合中的SPS和PPS
+    const uint8_t * sparameterSet;
+    size_t sparameterSetSize,sparameterSetCount ;
+   OSStatus statusCode =    CMVideoFormatDescriptionGetH264ParameterSetAtIndex(format, 0, &amp;sparameterSet, &amp;sparameterSetSize, &amp;sparameterSetCount, 0);
+    if (statusCode == noErr) {
+        size_t pparameterSetSize, pparameterSetCount;
+        const uint8_t *pparameterSet;
+     OSStatus statusCode =    CMVideoFormatDescriptionGetH264ParameterSetAtIndex(format, 1, &amp;pparameterSet, &amp;pparameterSetSize, &amp;pparameterSetCount, 0);
+        if (statusCode == noErr) {
+            encoder-&gt;sps = [NSData dataWithBytes:sparameterSet length:sparameterSetSize];
+            encoder-&gt;pps = [NSData dataWithBytes:pparameterSet length:pparameterSetSize];
+        }
+    }
+}
+</code></pre><p><strong>5.3 获取CMBlockBuffer并转换成数据</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">CMBlockBufferRef blockBuffer = CMSampleBufferGetDataBuffer(sampleBuffer);</div><div class="line">  size_t  lengthAtOffset,totalLength;</div><div class="line">  char *dataPointer;</div><div class="line">  //接收到的数据展示</div><div class="line">  OSStatus blockBufferStatus = CMBlockBufferGetDataPointer(blockBuffer, 0, &amp;lengthAtOffset, &amp;totalLength, &amp;dataPointer);</div><div class="line">  if (blockBufferStatus != kCMBlockBufferNoErr)</div><div class="line">  &#123;</div><div class="line">      size_t bufferOffset = 0;</div><div class="line">      static const int AVCCHeaderLength = 4;</div><div class="line">      while (bufferOffset &lt; totalLength -  AVCCHeaderLength) &#123;</div><div class="line">          // Read the NAL unit length</div><div class="line">          uint32_t NALUnitLength = 0;</div><div class="line">          /**</div><div class="line">           *  void *memcpy(void *dest, const void *src, size_t n);</div><div class="line">           *  从源src所指的内存地址的起始位置开始拷贝n个字节到目标dest所指的内存地址的起始位置中</div><div class="line">           */</div><div class="line">          memcpy(&amp;NALUnitLength, dataPointer + bufferOffset, AVCCHeaderLength);</div><div class="line">          //字节从高位反转到低位</div><div class="line">          NALUnitLength = CFSwapInt32BigToHost(NALUnitLength);</div><div class="line">          </div><div class="line">          RTAVVideoFrame * frame = [RTAVVideoFrame new];</div><div class="line">          frame.sps = encoder -&gt; sps;</div><div class="line">          frame.pps = encoder -&gt; pps;</div><div class="line">          frame.data = [NSData dataWithBytes:(dataPointer+bufferOffset+AVCCHeaderLength) length:NALUnitLength];</div><div class="line">          </div><div class="line">          bufferOffset += NALUnitLength + AVCCHeaderLength;</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>此得到的H264数据应用于后面的RTMP协议做推流准备。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://github.com/twenty-zp/RealTimeAVVideo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Demo地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在此之前我们通常使用的FFmpeg多媒体库,利用CPU来进行视频的
+    
+    </summary>
+    
+    
+      <category term=" - 视频直播系列" scheme="http://blog.img421.com/tags/%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>三、视频编解码-解码篇</title>
+    <link href="http://blog.img421.com/2016/08/05/san-shi-pin-bian-jie-ma-jie-ma-pian/"/>
+    <id>http://blog.img421.com/2016/08/05/san-shi-pin-bian-jie-ma-jie-ma-pian/</id>
+    <published>2016-08-05T02:15:46.000Z</published>
+    <updated>2016-08-05T07:58:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/twenty-zp/RealTimeAVVideo" target="_blank" rel="external">Demo地址</a></p>
+<p>在此之前我们通常使用的FFmpeg多媒体库,利用CPU来进行视频的编解码,占用CPU资源,效率低下,俗称软编解码.而苹果在2014年的iOS8中,开放了VideoToolbox.framwork框架,此框架使用GPU或专用的处理器来进行编解码,俗称硬编解码.而此框架在此之前只有MAC OS系统中可以使用,在iOS作为私有框架.终于苹果在iOS8.0中得到开放引入.</p>
+<p>2014年的WWDC<a href="https://developer.apple.com/videos/play/wwdc2014/513/" target="_blank" rel="external">Direct Access to Video Encoding and Decoding</a>中,苹果介绍了使用videoToolbox硬编解码.<br>使用硬编解码有几个优点:</p>
+<ul>
+<li>提高性能;</li>
+<li>增加效率;</li>
+<li>延长电量的使用</li>
+</ul>
+<p>对于编解码,AVFoundation框架只有以下几个功能:</p>
+<ol>
+<li>直接解压后显示;</li>
+<li>直接压缩到一个文件当中;</li>
+</ol>
+<p>而对于Video Toolbox,我们可以通过以下功能获取到数据,进行网络流传输等多种保存：</p>
+<ol>
+<li>解压为图像的数据结构;</li>
+<li><p>压缩为视频图像的容器数据结构.</p>
+<h3 id="一、videoToolbox的基本数据"><a href="#一、videoToolbox的基本数据" class="headerlink" title="一、videoToolbox的基本数据"></a>一、videoToolbox的基本数据</h3><p>Video Toolbox视频编解码前后需要应用的数据结构进行说明。</p>
+</li>
+<li><p>CVPixelBuffer：编码前和解码后的图像数据结构。此内容包含一系列的CVPixelBufferPool内容</p>
+</li>
+<li><p>CMTime、CMClock和CMTimebase：时间戳相关。时间以64-bit/32-bit的形式出现。</p>
+</li>
+<li><p>pixelBufferAttributes:字典设置.可能包括Width/height、pixel format type、• Compatibility (e.g., OpenGL ES, Core Animation)</p>
+</li>
+<li><p>CMBlockBuffer：编码后，结果图像的数据结构。</p>
+</li>
+<li><p>CMVideoFormatDescription：图像存储方式，编解码器等格式描述。</p>
+</li>
+<li><p>(CMSampleBuffer：存放编解码前后的视频图像的容器数据结构。</p>
+</li>
+<li><p>CMClock </p>
+</li>
+<li><p>CMTimebase: 关于CMClock的一个控制视图,包含CMClock、时间映射(Time mapping)、速率控制(Rate control)</p>
+</li>
+</ol>
+<hr>
+<p>由<a href="er_3001_cai_ji_shi_pin.md">二、采集视频数据</a>可知,我们获取到的数据<code>(CMSampleBufferRef)sampleBuffer</code>为未编码的数据;<br><img src="https://twenty-zp.gitbooks.io/-/content/AFBF71FB-4A38-449B-97FC-EBE4BAC1A3F6.png" alt="图1.1编码前后的数据结构示意图"><br><strong>图1.1</strong><br>上图中,编码前后的视频图像都封装在<code>CMSampleBuffer</code>中,编码前以<code>CVPixelBuffer</code>进行存储;编码后以<code>CMBlockBuffer</code>进行存储。除此之外两者都包括<code>CMTime</code>、<code>CMVideoFormatDesc</code>.</p>
+<h3 id="二、获取已编码数据流进行解码展示-获取编码后的数据进行解码展示"><a href="#二、获取已编码数据流进行解码展示-获取编码后的数据进行解码展示" class="headerlink" title="二、获取已编码数据流进行解码展示(获取编码后的数据进行解码展示)"></a>二、获取已编码数据流进行解码展示(获取编码后的数据进行解码展示)</h3><p><img src="https://twenty-zp.gitbooks.io/-/content/6738D208-3D91-4C81-8C09-E9F212FAC080.png" alt="图2.1"><br><strong>图2.1</strong><br>通过网络获取<strong>已编码的H.264数据流</strong>进行<strong>MPEG-4</strong>处理,通过使用<code>AVSampleBufferDisplayLayer</code>解码获取图像显示到设备上。<br><img src="https://twenty-zp.gitbooks.io/-/content/C9B77B4F-5091-4C80-92DE-D84C9AB44D25.png" alt="图2.2 AVSampleBufferDisplayLayer解码显示"><br><strong>图2.2</strong></p>
+<p>2.1. 将获取到的<strong>已编码的数据流</strong>进行处理成<code>CMSampleBuffer</code>.<br><img src="https://twenty-zp.gitbooks.io/-/content/DEA65059-66BE-49E3-BF53-5938CB278F36.png" alt="图2.3 处理H.264码流"><br><strong>图2.3</strong><br>由图1.1可知:解码前的图像数据结构$$CMSampleBuffer = CMTime + FormatDesc + CMBlockBuffer$$组成 因此需要从H.264的码流需要以上三个信息组合成<code>CMSampleBuffer</code>.</p>
+<blockquote>
+<p>H.264码流由一系列的NALU单元组成.NALU单元包含视频图像数据(或视频帧片段)和H.264的参数信息。其中视频图像信息数据是CMBlockBuffer,而H.264参数信息可以组合成FormatDesc,包括编码所用的profile，level，图像的宽和高，deblock滤波器等.具体包含<strong>第一个NALU的SPS</strong>（Sequence Parameter Set）和<strong>第二个NALU的PPS</strong>（Picture Parameter Set）。</p>
+</blockquote>
+<p><img src="https://twenty-zp.gitbooks.io/-/content/F2D6F4FA-87C1-4B41-9295-6F4E1F8E43C7.png" alt="图2.3 H.264组成结构"><br><strong>图2.4</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">* frame的数据可以分为多个slice(片段). </div><div class="line">    * 每个slice中的数据，在帧内预测只用到自己slice的数据， 与其他slice 数据没有依赖关系。 </div><div class="line">    * NAL 是用来将编码的数据进行大包的。 比如，每一个slice 数据可以放在NAL 包中。</div><div class="line">    * I frame 是自己独立编码，不依赖于其他frame 数据。 </div><div class="line">    * P frame 依赖 I frame 数据。 </div><div class="line">    * B frame 依赖 I frame, P frame 或其他 B frame 数据。</div><div class="line">    * H.264码流的第三个NALU是IDR(即时解码器刷新),IDR图像都是I帧，H.264引入IDR图像为了解码的同步,使错</div><div class="line">     误不被传播，当解码器解码到IDR图像时，立即将参考帧队列清空，将已解码的数据全部输出或抛弃，重新查找参数集，</div><div class="line">     开一个新的序 列。这样，如果前一个序列出现重大错误，在这里可以获得重新同步的机会。IDR图像之后的图像永远不</div><div class="line">     会使用IDR之前的图像的数据来解码。</div></pre></td></tr></table></figure></p>
+<p> <strong>1.1 使用<code>CMVideoFormatDescriptionCreateFromH264ParameterSets</code>提取编码的SPS和PPS压缩转换成<code>MPEG—4</code>需要的SPS和PPS,组合成<code>CMVideoFormatDescription</code></strong><br><img src="https://twenty-zp.gitbooks.io/-/content/9F927C1A-288F-44DF-BB7B-9B5804C55562.png" alt="图2.1.1"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(1)每个NALU的开始码是3或4字节头:00 00 01 或 00 00 00 01,按开始码可定位NALU;</div><div class="line">(2)提取出SPS和PPS,通过获取到的编码流,判断开始码后的第一个byte的后5位,7代表SPS,8代表PPS;</div><div class="line">(3)CMVideoFormatDescriptionCreateFromH264ParameterSets函数构建CMVideoFormatDescription.</div></pre></td></tr></table></figure></p>
+<p>   <strong>1.2 获取CMBlockBuffer</strong><br>  <img src="https://twenty-zp.gitbooks.io/-/content/FCACB659-4B39-4497-BDF4-246499F94EAC.png" alt="图2.1.2"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(1)通过开始码,定位到NALU;</div><div class="line">(2)确认类型数据将开始码替换为NALU的长度信息（4 Byte）</div><div class="line">(3)通过CMBlockBufferCreateWithMemoryBlock接口构造CMBlockBufferRef</div></pre></td></tr></table></figure></p>
+<p>   <strong>1.3 添加CMTime</strong><br>  <img src="https://twenty-zp.gitbooks.io/-/content/BAC15B30-4D58-4ECD-A3EF-C924F61759F4.png" alt="图2.5"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://github.com/twenty-zp/RealTimeAVVideo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Demo地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在此之前我们通常使用的FFmpeg多媒体库,利用CPU来进行视频的
+    
+    </summary>
+    
+    
+      <category term=" - 视频直播系列" scheme="http://blog.img421.com/tags/%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二、采集视频数据</title>
+    <link href="http://blog.img421.com/2016/08/05/shi-pin-zhi-bo-xi-lie-er-cai-ji-shi-pin-shu-ju/"/>
+    <id>http://blog.img421.com/2016/08/05/shi-pin-zhi-bo-xi-lie-er-cai-ji-shi-pin-shu-ju/</id>
+    <published>2016-08-05T02:15:08.000Z</published>
+    <updated>2016-08-05T07:55:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/twenty-zp/RealTimeAVVideo" target="_blank" rel="external">Demo地址</a></p>
+<p>苹果对于音视频的采集已经提供给我们很好的封装:AVFoundation.framework.我们可以使用AVFoundation框架来采集视频数据.<br><img src="https://twenty-zp.gitbooks.io/-/content/AVCaptureSession.svg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div></pre></td><td class="code"><pre><div class="line">@interface RTAVVideoCaputre ()&lt;AVCaptureVideoDataOutputSampleBufferDelegate&gt;</div><div class="line">&#123;</div><div class="line">    AVCaptureVideoPreviewLayer * _preViewLayer;</div><div class="line">    </div><div class="line">&#125;</div><div class="line">@property (nonatomic,strong)AVCaptureSession *session;</div><div class="line">@property (nonatomic,strong)RTAVVideoConfiguration *videoConfiguration;</div><div class="line">@end</div><div class="line">@implementation RTAVVideoCaputre</div><div class="line"></div><div class="line">- (instancetype)initWithVideoConfiguration:(RTAVVideoConfiguration *)configuration</div><div class="line">&#123;</div><div class="line">    if (self = [super init]) &#123;</div><div class="line">        _videoConfiguration = configuration;</div><div class="line">        [self addPreVideo];</div><div class="line">    &#125;</div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line">#pragma mark - Method</div><div class="line">- (void)addPreVideo</div><div class="line">&#123;</div><div class="line">    AVCaptureVideoPreviewLayer * preViewLayer = [AVCaptureVideoPreviewLayer layerWithSession:self.session];</div><div class="line">    preViewLayer.frame = [UIScreen mainScreen].bounds;</div><div class="line">    preViewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;</div><div class="line">    </div><div class="line">    _preViewLayer = preViewLayer;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">#pragma mark - delegate</div><div class="line"></div><div class="line">#pragma mark AVCaptureSessionDelegete</div><div class="line">- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection</div><div class="line">&#123;</div><div class="line">    CVImageBufferRef imageBuffer  = CMSampleBufferGetImageBuffer(sampleBuffer);</div><div class="line">    if (imageBuffer != NULL) &#123;</div><div class="line">        if ([_delegate respondsToSelector:@selector(captureOutput:pixelBuffer:)]) &#123;</div><div class="line">            [_delegate captureOutput:self pixelBuffer:imageBuffer];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">#pragma mark - setter &amp; getter</div><div class="line">- (AVCaptureSession *)session</div><div class="line">&#123;</div><div class="line">    if (!_session) &#123;</div><div class="line">        //4.</div><div class="line">        AVCaptureSession * session = [[AVCaptureSession alloc]init];</div><div class="line">        session.sessionPreset = _videoConfiguration.avsessionPreset;</div><div class="line">        //1.</div><div class="line">        AVCaptureDevice * device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];</div><div class="line">        </div><div class="line">        NSError * error = nil;</div><div class="line">        //2.</div><div class="line">        AVCaptureDeviceInput * videoInput = [AVCaptureDeviceInput deviceInputWithDevice:device error:&amp;error];</div><div class="line">      </div><div class="line">        //3.</div><div class="line">        AVCaptureVideoDataOutput *  videoOutput = [[AVCaptureVideoDataOutput alloc]init];</div><div class="line">        dispatch_queue_t videoDataOutputQueue = dispatch_queue_create(&quot;VideoDataOutputQueue&quot;, DISPATCH_QUEUE_SERIAL);</div><div class="line">        [videoOutput setSampleBufferDelegate:self queue:videoDataOutputQueue];</div><div class="line">        </div><div class="line">        [videoOutput connectionWithMediaType:AVMediaTypeVideo] ;</div><div class="line">        </div><div class="line">        videoOutput.videoSettings = @&#123;(id)kCVPixelBufferPixelFormatTypeKey:@(kCVPixelFormatType_32BGRA)&#125;;</div><div class="line">        </div><div class="line">        //设置帧率</div><div class="line">        if ([device respondsToSelector:@selector(setActiveVideoMaxFrameDuration:)] &amp;&amp; [device respondsToSelector:@selector(setActiveVideoMinFrameDuration:)]) &#123;</div><div class="line">            NSError * error ;</div><div class="line">            [device lockForConfiguration:&amp;error];</div><div class="line">            if (nil == error) &#123;</div><div class="line">#if defined (__IPHONE_7_0)</div><div class="line">                device.activeVideoMaxFrameDuration = CMTimeMake(1, (int32_t)_videoConfiguration.videoFrameRate);</div><div class="line">                device.activeVideoMinFrameDuration = CMTimeMake(1, (int32_t)_videoConfiguration.videoFrameRate);</div><div class="line">#endif</div><div class="line">            &#125;</div><div class="line">            [device unlockForConfiguration];</div><div class="line">        &#125;else</div><div class="line">        &#123;</div><div class="line">            for (AVCaptureConnection * connection in videoOutput.connections) &#123;</div><div class="line">#pragma clang diagnostic push</div><div class="line">#pragma clang diagnostic ignored &quot;-Wdeprecated-declarations&quot;</div><div class="line">                if ([connection respondsToSelector:@selector(setVideoMinFrameDuration:)])</div><div class="line">                    connection.videoMinFrameDuration = CMTimeMake(1,  (int32_t)_videoConfiguration.videoMinFrameRate);</div><div class="line">                </div><div class="line">                if ([connection respondsToSelector:@selector(setVideoMaxFrameDuration:)])</div><div class="line">                    connection.videoMaxFrameDuration = CMTimeMake(1, (int32_t)_videoConfiguration.videoMaxFrameRate);</div><div class="line">#pragma clang diagnostic pop</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        </div><div class="line">        </div><div class="line">        //5.</div><div class="line">        if ([session canAddInput:videoInput]) &#123;</div><div class="line">            [session addInput:videoInput];</div><div class="line">        &#125;</div><div class="line">        if ([session canAddOutput:videoOutput]) &#123;</div><div class="line">            [session addOutput:videoOutput];</div><div class="line">        &#125;</div><div class="line">        _session = session;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    return _session;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>1.通过获取系统支持有效的设备类型–视频类型;</p>
+<p>2.设置作为捕捉视频的输入设备;</p>
+<p>3.设置捕捉数据的输出,通过代理方法(7)获取处理<strong>未编解码的帧数据sampleBuffer;</strong></p>
+<p>4.每一个实时的捕获,全部通过一个session(会话)来开启;</p>
+<p>5.将输入设备和输出设备添加到会话中;</p>
+<p>6.开启会话捕获.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://github.com/twenty-zp/RealTimeAVVideo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Demo地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;苹果对于音视频的采集已经提供给我们很好的封装:AVFoundati
+    
+    </summary>
+    
+    
+      <category term=" - 视频直播系列" scheme="http://blog.img421.com/tags/%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS视频直播系列</title>
+    <link href="http://blog.img421.com/2016/08/05/shi-pin-zhi-bo-xi-lie-yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/"/>
+    <id>http://blog.img421.com/2016/08/05/shi-pin-zhi-bo-xi-lie-yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/</id>
+    <published>2016-08-05T02:12:10.000Z</published>
+    <updated>2016-08-05T08:17:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本教程为是一个系列教程.从0开始带你装逼,带你飞.(开玩笑,大家共同进步^_^).如若有什么不对请指点。</p>
+<p><a href="https://www.gitbook.com/book/twenty-zp/-/details" target="_blank" rel="external">内容全地址</a></p>
+<p><a href="https://github.com/twenty-zp/RealTimeAVVideo" target="_blank" rel="external">Demo地址</a></p>
+<p>文章从视频和音频两部分讲起。追寻以下图录流程。<br><img src="https://twenty-zp.gitbooks.io/-/content/69ABD544-ECDA-4A8D-A4BE-250D62D896E5.png" alt="导图"></p>
+<p><a href="http://blog.img421.com/2016/08/05/yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/">一、音视频配置文档概念</a></p>
+<p><a href="http://blog.img421.com/2016/08/05/shi-pin-zhi-bo-xi-lie-er-cai-ji-shi-pin-shu-ju/">二、采集视频数据</a></p>
+<p><a href="http://blog.img421.com/2016/08/05/san-shi-pin-bian-jie-ma-jie-ma-pian/">三、视频编解码-解码篇</a></p>
+<p><a href="http://blog.img421.com/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/">四、视频的编解码-编码篇</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本教程为是一个系列教程.从0开始带你装逼,带你飞.(开玩笑,大家共同进步^_^).如若有什么不对请指点。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.gitbook.com/book/twenty-zp/-/details&quot; target=&quot;_blank&quot; re
+    
+    </summary>
+    
+    
+      <category term=" - 视频直播系列" scheme="http://blog.img421.com/tags/%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一、音视频配置文档概念</title>
+    <link href="http://blog.img421.com/2016/08/05/yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/"/>
+    <id>http://blog.img421.com/2016/08/05/yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/</id>
+    <published>2016-08-05T02:08:30.000Z</published>
+    <updated>2016-08-05T08:02:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>开始中我们要了解几种影响音视频的质量的关键概念:</p>
+<ol>
+<li><p><strong>码流</strong>(也通常称码率、比特率),指在单位时间传输或解码的位数(数据流量),是视频中画面质量控制的最重要部分。在分辨率相同的情况下,码流越大,压缩的比例就越小,画面质量越高,视频文件的体积也就越大.码流越大,说明单位时间内采样率越大,数据流和精度也越高,所以图像画面质量越好、越清晰,但要求设备的解码能力也越强;</p>
+</li>
+<li><p><strong>采样率</strong>(也称为采样速度或采样频率),指每秒从连续的信号中提取并组成离散信号的采样个数,使用Hz(赫兹)来表示。 能够将模拟信号转换成数字信号时的采样频率,也就是单位时间内采样多少点。一个采样点数据有多少个比特。采集的数值越大,音视频的质量越好。</p>
+</li>
+<li><p><strong>比特率</strong>,指每秒传送的比特数,单位我bps(Bit Per Second),比特率越大,输送的数据也就越大,音质越好.视频中的比特率通常为码率。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">比特率 =采样率 * 采用位数 *声道数.</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>帧速度</strong>(帧率),指每秒刷新图片的帧数(FPS),帧数越多,图像动作越流畅.</p>
+</li>
+<li><p><strong>分辨率</strong>,即为帧的大小.每一帧都是一副图像。一个音频编码率为128Kbps，视频编码率为800Kbps的文件，其总编码率为928Kbps，意思是经过编码后的数据每秒钟需要用928K比特来表示。<br>计算输出文件大小公式：</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">音频编码率（KBit为单位）/8 +视频编码率（KBit为单位）/8 *影片总长度（秒为单位）</div><div class="line">=文件大小（MB为单位）</div></pre></td></tr></table></figure>
+<h5 id="由此从上述概念可知"><a href="#由此从上述概念可知" class="headerlink" title="由此从上述概念可知:"></a>由此从上述概念可知:</h5><p><em>码流</em>、<em>采样率</em>、<em>帧率</em>值越大,视频和音频的质量和清晰度越大.分辨率影响图像大小,所以分辨率越高,图像越大,分辨率越低,图像越小。</p>
+<p>因此,码率一定的情况下,分辨率越高,图像越不清晰.</p>
+<p>但事实情况下,硬件设备也会影响,我们不能无限制的让这些参数变大,同时，码率一定的情况下,分辨率在一定的范围内取值图像都是清晰的;同样分辨率一定,码率在一定的范围内取值也都是清晰。<br><img src="https://twenty-zp.gitbooks.io/-/content/adcaae0535cc795cb6eb0ee1b179790d.jpg" alt="网络图片"></p>
+<p>以上标准参考来自网络</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;开始中我们要了解几种影响音视频的质量的关键概念:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;码流&lt;/strong&gt;(也通常称码率、比特率),指在单位时间传输或解码的位数(数据流量),是视频中画面质量控制的最重要部分。在分辨率相同的情况下,码流越大,压缩的比例就越小,画
+    
+    </summary>
+    
+    
+      <category term=" - 视频直播系列" scheme="http://blog.img421.com/tags/%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>当NSDictionary遇到nil</title>
+    <link href="http://blog.img421.com/2016/07/11/dang-nsdictionaryyu-dao-nil/"/>
+    <id>http://blog.img421.com/2016/07/11/dang-nsdictionaryyu-dao-nil/</id>
+    <published>2016-07-11T08:15:48.000Z</published>
+    <updated>2016-08-01T08:53:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>#问题<br>在开发中我们经常会遇到如下问题：</p>
+<ul>
+<li>failed: caught “NSInvalidArgumentException”, “<em>*</em> -[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil object from objects[1]”</li>
+<li>failed: caught “NSInvalidArgumentException”, “<em>*</em> setObjectForKey: object cannot be nil (key: no_nillKey)”</li>
+<li>failed: caught “NSInvalidArgumentException”, “<em>*</em> setObjectForKey: key cannot be nil”</li>
+</ul>
+<p>由上可知,Objective-C里的<strong>NSDictionary</strong>是不支持<strong>nil</strong>作为key和value的.但是总会有一些地方我们往往会不注意的插入<strong>nil</strong>值。</p>
+<p>通过我们的做法是：</p>
+<ol>
+<li><p>使用<strong>if</strong>判断对象是否存在:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (obj) &#123;</div><div class="line">	[dic setObject:obj forKey:@&quot;obj&quot;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用<strong>三目运算符</strong>来判断</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[dic setObject:obj?:@&quot;&quot; forKey:@&quot;obj&quot;];</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样做有几个坏处：</p>
+<ol>
+<li>代码冗余较多；</li>
+<li>如果忘了检查<strong>nil</strong>,在某些情况下就会遇到以上问题;</li>
+<li>后台的API大部分是以JSON 格式传递,所以一个<strong>nil</strong>值不论是传空字符还是不传都不是很正确。</li>
+</ol>
+<p>因此我们希望<strong>NSDictionary</strong>用起来会遇到以下几种情况:</p>
+<ol>
+<li><p>插入<strong>nil</strong>时不会crash</p>
+</li>
+<li><p>插入<strong>nil</strong>值以后(不管是<strong>key</strong>为nil还是<strong>value</strong>为nil)对应的key-value 都不包含在<strong>NSDictionary</strong>中</p>
+</li>
+</ol>
+<p>#设计<br>根据crash 可以看出,dictionary有三个主要的入口传入nil 对象：</p>
+<ol>
+<li>字面量一个dictionary的时候，会调用<strong>dictionaryWithObjects:forKeys:count:</strong></li>
+<li>直接调用<strong>setObjectForKey:</strong>的时候</li>
+<li>通过下标方式赋值的时候(key不能为nil)调用”<strong>setObjectForKey: key cannot be nil”</strong></li>
+</ol>
+<p>当使用 <strong>setObjectForKey</strong>时对象是<strong>__NSDictionaryM</strong>类,同样要定义此类。<br>因此可以通过Method Swizzing 把这几种方法替换为自己的方法,在key或value 为<strong>nil</strong>的时候,并不加入到NSDictionary中.</p>
+<p>以<strong>dictionaryWithObjects:forKeys:count</strong>为例:</p>
+<p>创建交换方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">//</div><div class="line">//  NSDictionary+SafeNil.m</div><div class="line">//  当NSDictionary遇到nil</div><div class="line">//</div><div class="line">//  Created by iLogiEMAC on 16/7/11.</div><div class="line">//  Copyright © 2016年 zp. All rights reserved.</div><div class="line">//</div><div class="line"></div><div class="line">#import &quot;NSDictionary+SafeNil.h&quot;</div><div class="line">#import &lt;objc/runtime.h&gt;</div><div class="line">@implementation NSObject (SafeNil)</div><div class="line"></div><div class="line">+ (BOOL)swizzing_method:(SEL)originalSelector  replaceMethod:(SEL)replaceSelector</div><div class="line">&#123;</div><div class="line">    Method original = class_getInstanceMethod(self, originalSelector);</div><div class="line">    Method replace = class_getInstanceMethod(self, replaceSelector);</div><div class="line">    if (!original || !replace) &#123;</div><div class="line">        return NO;</div><div class="line">    &#125;</div><div class="line">    class_addMethod(self, originalSelector, class_getMethodImplementation(self, originalSelector), method_getTypeEncoding(original));</div><div class="line">    class_addMethod(self, replaceSelector, class_getMethodImplementation(self, replaceSelector), method_getTypeEncoding(replace));</div><div class="line">    </div><div class="line">    method_exchangeImplementations(original, replace);</div><div class="line">    return YES;</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (BOOL)swizzingClassMethod:(SEL)originSelector replaceMethod:(SEL)replaceSelector</div><div class="line">&#123;</div><div class="line">    return [object_getClass((id)self) swizzing_method:originSelector replaceMethod:replaceSelector];</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure></p>
+<p>实现自定义的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">@implementation NSDictionary (SafeNil)</div><div class="line"></div><div class="line">+ (void)load</div><div class="line">&#123;</div><div class="line">    static dispatch_once_t onceToken;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        [self swizzingClassMethod:@selector(initWithObjects:forKeys:count:) replaceMethod:@selector(zpSwizzing_initWithObjects:forKeys:count:)];</div><div class="line">        [self swizzingClassMethod:@selector(dictionaryWithObjects:forKeys:count:) replaceMethod:@selector(zpSwizzingClass_dictionaryWithObjects:forKeys:count:)];</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (instancetype)zpSwizzing_initWithObjects:(const id  _Nonnull __unsafe_unretained *)objects forKeys:(const id&lt;NSCopying&gt;  _Nonnull __unsafe_unretained *)keys count:(NSUInteger)cnt&#123;</div><div class="line">    id safeObjects[cnt];</div><div class="line">    id safeKeys[cnt];</div><div class="line">    </div><div class="line">    NSUInteger j = 0;</div><div class="line">    for (NSUInteger i = 0; i &lt; cnt ; i++) &#123;</div><div class="line">        id key = keys[i];</div><div class="line">        id obj = objects[i];</div><div class="line">        if (!key || !obj) &#123;</div><div class="line">            continue;</div><div class="line">        &#125;</div><div class="line">        safeObjects[j] = obj;</div><div class="line">        safeKeys[j] = key;</div><div class="line">        j++;</div><div class="line">    &#125;</div><div class="line">    return  [self zpSwizzing_initWithObjects:safeObjects forKeys:safeKeys count:j];</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">+ (instancetype)zpSwizzingClass_dictionaryWithObjects:(const id  _Nonnull __unsafe_unretained *)objects forKeys:(const id&lt;NSCopying&gt;  _Nonnull __unsafe_unretained *)keys count:(NSUInteger)cnt</div><div class="line">&#123;</div><div class="line">    id safeObjects[cnt];</div><div class="line">    id safeKeys[cnt];</div><div class="line">    </div><div class="line">    NSUInteger j = 0;</div><div class="line">    for (NSUInteger i = 0; i &lt; cnt ; i++) &#123;</div><div class="line">        id key = keys[i];</div><div class="line">        id obj = objects[i];</div><div class="line">        if (!key || !obj) &#123;</div><div class="line">            continue;</div><div class="line">        &#125;</div><div class="line">        safeObjects[j] = obj;</div><div class="line">        safeKeys[j] = key;</div><div class="line">        j++;</div><div class="line">    &#125;</div><div class="line">    return [self zpSwizzingClass_dictionaryWithObjects:safeObjects forKeys:safeKeys count:j];</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure></p>
+<p>在单元测试中测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">NSString * no_nillKey = @&quot;no_nillKey&quot;;</div><div class="line">NSString * nilKey = nil;</div><div class="line">NSString * no_nillValue = @&quot;no_nillValue&quot;;</div><div class="line">NSString * nilValue = nil;</div><div class="line">NSDictionary * dic = @&#123;</div><div class="line">                       no_nillKey: nilValue,</div><div class="line">                       nilKey: no_nillValue</div><div class="line">&#125;;</div><div class="line"></div><div class="line">NSLog(@&quot;%@&quot;,dic);</div><div class="line">     </div><div class="line">dic 输出为 &#123; &#125;</div></pre></td></tr></table></figure>
+<p><a href="http://tech.glowing.com/cn/how-we-made-nsdictionary-nil-safe/" target="_blank" rel="external">参考地址</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#问题&lt;br&gt;在开发中我们经常会遇到如下问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;failed: caught “NSInvalidArgumentException”, “&lt;em&gt;*&lt;/em&gt; -[__NSPlaceholderDictionary initWithObjects
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>使用interactivePopGestureRecognizer卡住的问题-不是BUG的BUG</title>
+    <link href="http://blog.img421.com/2016/06/08/shi-yong-interactivepopgesturerecognizerqia-zhu-de-wen-ti-bu-shi-bugde-bug/"/>
+    <id>http://blog.img421.com/2016/06/08/shi-yong-interactivepopgesturerecognizerqia-zhu-de-wen-ti-bu-shi-bugde-bug/</id>
+    <published>2016-06-08T02:29:23.000Z</published>
+    <updated>2016-06-08T02:30:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>   记录一次小问题</p>
+</blockquote>
+<p>苹果在iOS7的<strong>UINavigationController</strong>中加入了一个返回手势–<strong>interactivePopGestureRecognizer</strong>,因此支持iOS7以上版本,不用自己去实现一个手势去操作.<br>在iOS开发中,对于有些单独的一个<strong>ViewController</strong>页面等控制习惯性的喜欢在<strong>viewWillAppear</strong>生命周期方法中设置,因此在设置<strong>self.navigationController的interactivePopGestureRecognizer</strong>属性禁用系统时也会这样做.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillAppear:(BOOL)animated</div><div class="line">&#123;</div><div class="line">    [super viewWillAppear:animated];    </div><div class="line">    self.navigationController.interactivePopGestureRecognizer.enabled = NO;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因为只有此单独一个页面禁用系统的手势返回,所以要让此<strong>ViewController</strong>自己去启动<strong>interactivePopGestureRecognizer</strong>. 在<strong>viewWillDisappear</strong>方法中去实现启动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (void)viewWillDisappear:(BOOL)animated</div><div class="line">&#123;</div><div class="line">    [super viewWillDisappear:animated];</div><div class="line">    self.navigationController.interactivePopGestureRecognizer.enabled = YES;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试的时候,当由<strong>ViewController</strong>通过<strong>push</strong>方法导航到下一个页面,然后执行手势返回的时候会发生页面卡住,但是按住<strong>Home键</strong>到后台,然后重新回到<strong>app</strong>确实可以返回到上一页面.</p>
+<p>通过操作检查,当我们开始使用手势返回的时候,在执行<strong>interactivePopGestureRecognizer</strong>手势方法<strong>action=handleNavigationTransition:</strong> 时就开始执行上一个页面的<strong>viewWillAppear</strong>方法,而因此我在<strong>viewWillAppear</strong>方法中禁用了<strong>interactivePopGestureRecognizer</strong>返回手势,因此当前页面并没有看到<strong>pop</strong>动画,但确实是返回到上一页面.由此修改内容我们可以在<strong><em>viewDidAppear</em></strong>中,当页面已经显示的时候将方法禁用.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidAppear:(BOOL)animated</div><div class="line">&#123;</div><div class="line">    [super viewDidAppear:animated];</div><div class="line">    self.navigationController.interactivePopGestureRecognizer.enabled = NO;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;   记录一次小问题&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;苹果在iOS7的&lt;strong&gt;UINavigationController&lt;/strong&gt;中加入了一个返回手势–&lt;strong&gt;interactivePopGestureRecog
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>iTunes Connect(协议、税务和银行业务)－2016最新版</title>
+    <link href="http://blog.img421.com/2016/06/02/itunes-store-xie-yi-shui-wu-he-yin-xing-ye-wu-2016zui-xin-ban/"/>
+    <id>http://blog.img421.com/2016/06/02/itunes-store-xie-yi-shui-wu-he-yin-xing-ye-wu-2016zui-xin-ban/</id>
+    <published>2016-06-01T16:48:42.000Z</published>
+    <updated>2016-06-04T15:45:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>应用内购开发的前提是要填写税务等一些列内容,但是填写税务的时候出现了大的变动,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">Form W-8BEN: Certificate of Foreign Status of Beneficial Owner</div><div class="line">for United States Tax Withholding and Reporting (Individuals)</div><div class="line"></div><div class="line">(Rev. February 2014)</div><div class="line"></div><div class="line">Part I: Identification of Beneficial Owner</div><div class="line">1. Name of individual that is</div><div class="line">the beneficial owner:	</div><div class="line">2. Country of citizenship:	</div><div class="line">3. Permanent Residence Address:</div><div class="line">(Do Not Use P.O. Box)	Minhangpujiangzhen, Shanghai, SHANGHAI, 210000, China</div><div class="line">4. Mailing address:</div><div class="line">(if different from above)	 Same as residence</div><div class="line">5. U.S. taxpayer identification number, if required:</div><div class="line">(see instructions)	</div><div class="line"></div><div class="line"> SSN or ITIN EIN	Do you need a US Tax ID? (please see Form W-8BEN Tips sheet). If so, click to</div><div class="line">Click to download Form SS-4</div><div class="line">6. Foreign tax identifying number, if any:</div><div class="line">(optional)	</div><div class="line">7. Reference Number(s):</div><div class="line">(see instructions)	</div><div class="line">8. Date of Birth:</div><div class="line">(MM-DD-YYYY)	</div><div class="line"></div><div class="line">......</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/318204-89f6e68276764869.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>现在出现了<strong>W-8BEN表格填写</strong>,自己先看了一遍了解了大概,但是这些具体的内容含义不是专业人员不是太明白,因此Google了一下,查看到了一个<a href="http://7xoj45.com1.z0.glb.clouddn.com/w-8i.pdf" target="_blank" rel="external">简体</a>和<a href="http://10.0.42.153/7xoj45.com1.z0.glb.clouddn.com/W8BEN_TW_TC_ENG.pdf" target="_blank" rel="external">繁体</a>的pdf文档说明.现向大家放出来。<br>简体:<br><img src="http://upload-images.jianshu.io/upload_images/318204-6113922149210d06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="简体"></p>
+<p>繁体:<br><img src="http://upload-images.jianshu.io/upload_images/318204-59e05ef1a8c0d2b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="繁体"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;应用内购开发的前提是要填写税务等一些列内容,但是填写税务的时候出现了大的变动,&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>[译]使用水平和垂直滑动的UICollectionView来制作粘性的行和列</title>
+    <link href="http://blog.img421.com/2016/05/03/shi-yong-shui-ping-he-chui-zhi-hua-dong-de-uicollectionviewlai-zhi-zuo-nian-xing-de-xing-he-lie/"/>
+    <id>http://blog.img421.com/2016/05/03/shi-yong-shui-ping-he-chui-zhi-hua-dong-de-uicollectionviewlai-zhi-zuo-nian-xing-de-xing-he-lie/</id>
+    <published>2016-05-03T03:52:41.000Z</published>
+    <updated>2016-07-12T15:44:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>####一个tableView可以被水平和垂直滑动吗?</p>
+<blockquote>
+<p>免责申明（必读！）：本博客提供的所有教程的翻译原稿均来自于互联网，仅供学习交流之用，切勿进行商业传播。同时，转载时不要移除本申明。如产生任何纠纷，均与本博客所有人、发表该翻译稿之人无任何关系。谢谢合作！</p>
+</blockquote>
+<p>应用程序日常开发工作的现实之一就是克服日常的挑战.<a href="http://www.brightec.co.uk/ideas/uicollectionview-using-horizontal-and-vertical-scrolling-sticky-rows-and-columns?destination=taxonomy/term/1" target="_blank" rel="external">原文</a></p>
+<p>远非是我们要抱怨它。我们喜欢每一个新的障碍并且爱解决各种各样的困惑和难题为我们的客户服务。</p>
+<p>我们最近的挑战就是用一个<code>tableView</code>来实现水平和垂直的滑动。条件是：当水平滑动时第一列和垂直滑动时的第一行要保持静止.</p>
+<p>最后,我们需要给这个tableView包含一个巨大的数据,因此它重要性就是能够平稳的滑动。<br><img src="http://upload-images.jianshu.io/upload_images/318204-d52b7b752f79a9e0.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p>##挑战<br>首先,我们简单说明下挑战–有时在开发的第一步就是要明确实际的问题是什么:</p>
+<ul>
+<li>创建一个水平和垂直滑动的tableView.</li>
+<li>水平滑动第一列和垂直滑动第一行的粘性.</li>
+<li>使用大数据的情况下,必须要保持平滑的滚动.</li>
+</ul>
+<p>##第一次尝试-UITableView<br>我们开始考虑在UIScrollView中包含一个<code>UITableView</code>,但经过一些尝试,我们意识到:定制它的滚动和粘性是一个棘手的任务。</p>
+<p>使用UITableView来做出必要的定制工作,真的很痛苦.因此,我们决定使用可定制的UICollectionView.</p>
+<p>##第二次尝试-UICollectionView<br><code>UICollectionView</code>提供了强大的定制化服务,允许你设置一个自定义的<code>UICollectionFlowLayout</code>.不幸的是,网格布局的滚动只能沿着一个轴滑动:要么是水平要么是垂直.</p>
+<p>我们希望我们能嵌入一个UIScrollView的集合,允许我们能够两个方向都能滑动,因此多方考虑我们决定使用<code>UICollectionFlowLayout</code>的父类<code>UICollectionViewLayout</code>的子类。</p>
+<p>##UICollectionViewLayout子类<br>以下是创建<code>collectionView</code> 的步骤:</p>
+<ol>
+<li>创建一个<code>UICollectionViewLayout</code>的子类<code>CustomCollectionViewLayout</code>.</li>
+<li>在<code>storyboard</code>中拖动一个<code>UICollectionView</code>.我们也可以使用代码创建，这取决于你自己.</li>
+<li><p>在<code>storyboard</code>中的<code>Attributes Inspector</code>设置一些属性.我们设置<code>Layout</code>为<code>Custom</code>,设置<code>Class</code>为<code>CustomCollectionViewLayout</code>.<code>Scrolling Enabled</code>为选中状态,如果我们想要每次只滑动一个方向,选中<code>Direction Lock Enabled</code>.否则,会同一时刻滑动两个方向.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/318204-c6003caab22472bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li>最后,将<code>UICollectionView</code>连接到<code>UIViewController</code>.不要忘记连接<code>dataSource</code>和<code>delegate</code>.</li>
+<li>在我们的<code>CollectionView</code>中,这个视图表示<code>row</code>和<code>列所在的row</code>,因此记住<code>sections</code>的索引下标和<code>item</code>的索引下标.这取决我们设置<code>collectionView flow layout</code>的方向.<br><img src="http://upload-images.jianshu.io/upload_images/318204-0eb5fb59fee1e257.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ol>
+<ol>
+<li><p>一旦完成了设置<code>collectionView</code>的方式,我们就需要设置我们自己所要创建的<code>custom collection view layout</code>.首先,我们要设置3个管理所有数据的属性.</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic,strong) NSMutableArray *itemAttributes;</div><div class="line">@property (nonatomic,strong) NSMutableArray *itemsSize;</div><div class="line">@property (nonatomic, assign) CGSize contentSize;</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果你要自定义<code>item</code>的大小,你需要定义以下方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (CGSize)sizeForItemWithColumnIndex:(NSUInteger)columnIndex;</div></pre></td></tr></table></figure>
+<p>我强烈推荐你计算item大小存储到<code>itemsSize</code>中,是为了每一个列只计算一次.提高性能.</p>
+</li>
+<li><p>写如下方法并返回<code>YES</code>,是为了调用当你每次滑动<code>CollectionView</code>的时候都能够调用<code>prepareLayout</code>方法.你必须设置这个。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds</div><div class="line">&#123;  </div><div class="line">return YES; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>你需要调用以下方法布局显示的items</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">            *  CGRectOffset: 返回一个原点在源矩形基础上进行了偏移的矩	形。</div><div class="line">            *  CGRectInset: 返回一个与源矩形共中心点的，或大些或小些的新	矩形。</div><div class="line">            *  CGRectIntegral: 返回包围源矩形的最小整数矩形。</div><div class="line">            *  const CGRect CGRectZero: 一个原点在(0, 0)，且长宽均为 	0 的常数矩形。这个零矩形与 CGRectMake(0.0f, 0.0f, 0.0f, 0.0f) 是等	价的。</div><div class="line">            *  const CGRect CGRectNull: 空矩形。这个会在，比如说，求两	个不相交的矩形的相交部分时返回。注意，空矩形不是零矩形。</div><div class="line">            *  const CGRect CGRectInfinite: 无穷大矩形。</div><div class="line">            *  CGRectDivide: 将源矩形分为两个子矩形。</div><div class="line">            */</div><div class="line">         - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect</div><div class="line">                 &#123;</div><div class="line">             NSMutableArray *attributes = [@[] mutableCopy];</div><div class="line">              for (NSArray *section in self.itemAttributes) &#123;</div><div class="line">                     [attributes addObjectsFromArray:[section filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(UICollectionViewLayoutAttributes *evaluatedObject, NSDictionary *bindings) &#123;</div><div class="line">                 return CGRectIntersectsRect(rect, [evaluatedObject frame]);</div><div class="line">              &#125;]]];</div><div class="line">            &#125;</div><div class="line">                  return attributes;</div><div class="line">            &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>你需要根据<code>indexPath</code>返回<code>layout attributes</code>,如果才能返回出正确的<code>item attribute</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath</div><div class="line">&#123;</div><div class="line">    return      self.itemAttributes[indexPath.section]  [indexPath.row];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>你还需要返回<code>collectionView</code>内容视图的滑动大小.</p>
+<pre><code>- (CGSize)collectionViewContentSize
+{
+        return self.contentSize;
+}
+</code></pre></li>
+<li><p>最后,需要设<code>prepareLayout</code>方法.我们重画<code>collectionView</code>这将要被每次调用.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)prepareLayout;</div></pre></td></tr></table></figure>
+</li>
+<li><p>最后,我们要确定要展示的数据,否则返回<code>void</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if ([self.collectionView numberOfSections] == 0) </div><div class="line">&#123;</div><div class="line">       return;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>现在必须检查我们是否已经计算了<code>item</code>的attribute.在确定的情况下,我们将要使用这个attributes来粘性头部(第15步).否则,我们要每一次都计算,并且保存他们到<code>itemAttributes</code>数组中.</p>
+<p>基本上,我们为了保证它们可见,是通过遍历所有的<code>items</code>然后计算<code>item</code>的<code>size</code>、<code>frame</code>和<code>zIndex</code>.</p>
+<p>最后,我们使用<code>last item</code>来计算<code>contentSize</code>为了计算出content的全部高度.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"> 	 // 以下代码只在prepareLayout中执行一次</div><div class="line">   self.itemAttributes = [@[] mutableCopy];</div><div class="line">   self.itemsSize = [@[] mutableCopy];</div><div class="line">// Tip:我们可以使用NSUInteger来代替numberOfItemsInSection</div><div class="line">  // NSUInteger numberOfItems = [self.collectionView numberOfItemsInSection:section];</div><div class="line">  //计算每一列中item 的大小</div><div class="line">  if (self.itemsSize.count != NUMBEROFCOLUMNS) &#123;</div><div class="line">    [self calculateItemsSize];</div><div class="line">  &#125;</div><div class="line">  // 通过循环计算items</div><div class="line">    for (int section = 0; section &lt; [self.collectionView numberOfSections]; section++) &#123;</div><div class="line">    NSMutableArray *sectionAttributes = [@[] mutableCopy];</div><div class="line">    for (NSUInteger index = 0; index &lt; NUMBEROFCOLUMNS; index++) &#123;</div><div class="line">        CGSize itemSize = [self.itemsSize[index] CGSizeValue];</div><div class="line">        // 每一次都创建一个UICollectionViewLayoutAttributes,并且保存到数组中</div><div class="line">        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:section];</div><div class="line">        UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];</div><div class="line">        attributes.frame = CGRectIntegral(CGRectMake(xOffset, yOffset, itemSize.width, itemSize.height));</div><div class="line">               if (section == 0 &amp;&amp; index == 0) &#123;</div><div class="line">            attributes.zIndex = 1024; //设置(Sec0Row0)的第一项,使其能在第一列和第一行之上</div><div class="line">        &#125; else if (section == 0 || index == 0) &#123;</div><div class="line">            attributes.zIndex = 1023; //设置第一列和第一行在其余为设置的item之上</div><div class="line">        &#125;</div><div class="line">        if (section == 0) &#123;</div><div class="line">            CGRect frame = attributes.frame;</div><div class="line">            frame.origin.y = self.collectionView.contentOffset.y;</div><div class="line">            attributes.frame = frame; // 顶部(第一行)黏性</div><div class="line">        &#125;</div><div class="line">        if (index == 0) &#123;</div><div class="line">            CGRect frame = attributes.frame;</div><div class="line">            frame.origin.x = self.collectionView.contentOffset.x;</div><div class="line">            attributes.frame = frame; // 左部(第一列)黏性</div><div class="line">        &#125;</div><div class="line">        [sectionAttributes addObject:attributes];</div><div class="line">        xOffset = xOffset+itemSize.width;</div><div class="line">        column++;</div><div class="line">        // 如果最后的列,定义最终的宽度</div><div class="line">        if (column == NUMBEROFCOLUMNS) &#123;</div><div class="line">            if (xOffset &gt; contentWidth) &#123;</div><div class="line">                contentWidth = xOffset;</div><div class="line">            &#125;  </div><div class="line">            // Reset values</div><div class="line">            column = 0;</div><div class="line">            xOffset = 0;</div><div class="line">            yOffset += itemSize.height;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    [self.itemAttributes addObject:sectionAttributes];</div><div class="line">  &#125;</div><div class="line">   //获取最后的一个item 来计算 content的全部高度</div><div class="line">  UICollectionViewLayoutAttributes *attributes = [[self.itemAttributes lastObject] lastObject];</div><div class="line">  contentHeight = attributes.frame.origin.y+attributes.frame.size.height;</div><div class="line">  self.contentSize = CGSizeMake(contentWidth, contentHeight);</div></pre></td></tr></table></figure>
+</li>
+<li><p>事实上我们已经在之前计算过<code>items attributes</code>,我们只需要(垂直滑动的时候)通过设置<code>first row</code>的<code>y-offset</code>和(水平滑动)设置<code>first columns</code>的<code>x-offset</code>即可.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">//如果不进入以下if语句,就会执行计算方法</div><div class="line">    if (self.itemAttributes.count &gt; 0) &#123;</div><div class="line">            for (int section = 0; section &lt; [self.collectionView numberOfSections]; section++) &#123;</div><div class="line">               NSUInteger numberOfItems = [self.collectionView numberOfItemsInSection:section];</div><div class="line">               for (NSUInteger index = 0; index &lt; numberOfItems; index++) &#123;</div><div class="line">                    if (section != 0 &amp;&amp; index != 0)      &#123;         //这是我们不需要黏性的内容</div><div class="line">                   continue;</div><div class="line">                  &#125;</div><div class="line">               UICollectionViewLayoutAttributes *attributes = </div><div class="line">               [self layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:section]];</div><div class="line">               if (section == 0) &#123; // 顶部(第一行)黏性</div><div class="line">                   CGRect frame = attributes.frame;</div><div class="line">                   frame.origin.y = self.collectionView.contentOffset.y;</div><div class="line">                   attributes.frame = frame;</div><div class="line">               &#125;</div><div class="line">               if (index == 0) &#123; // 左部(第一列)黏性</div><div class="line">                   CGRect frame = attributes.frame;</div><div class="line">                   frame.origin.x = self.collectionView.contentOffset.x;</div><div class="line">                   attributes.frame = frame;</div><div class="line">               &#125;</div><div class="line">           &#125;</div><div class="line">       &#125;</div><div class="line">       return;</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><a href="https://github.com/twenty-zp/CustomCollectionViewLayout/archive/master.zip" target="_blank" rel="external">源代码下载</a></p>
+<p><a href="http://blog.img421.com/2016/05/03/shi-yong-shui-ping-he-chui-zhi-hua-dong-de-uicollectionviewlai-zhi-zuo-nian-xing-de-xing-he-lie/">ps: 转载注明出处</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;####一个tableView可以被水平和垂直滑动吗?&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;免责申明（必读！）：本博客提供的所有教程的翻译原稿均来自于互联网，仅供学习交流之用，切勿进行商业传播。同时，转载时不要移除本申明。如产生任何纠纷，均与本博客所有人、发表该翻译稿之
+    
+    </summary>
+    
+    
+      <category term=" - iOS技术" scheme="http://blog.img421.com/tags/iOS%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React Native 开发系列</title>
+    <link href="http://blog.img421.com/2016/04/14/react-native-ru-men/"/>
+    <id>http://blog.img421.com/2016/04/14/react-native-ru-men/</id>
+    <published>2016-04-14T03:15:07.000Z</published>
+    <updated>2016-04-30T01:20:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>你只有一定要,才一定会得到.<br>                                  – 沃兹基朔德</p>
+</blockquote>
+<p><img src="/content/images/2016/04/React-Native.png" alt=""><br>React Native发布已经有一段时间了,发布之后只是大概的了解下作用并没有做其余的工作,前段时间公司项目被客户要求使用HTML5开发,<code>React Native</code>因为是刚出来,可能网上的资料较少以及考虑到要踩得坑比较多,所以项目考虑使用<a href="http://www.ionic.wang/" target="_blank" rel="external">Ionic中文</a>开发,虽然自己不是此项目的开发人员,但是因为要写原生iOS插件,只是简单的了解了下<a href="http://www.ionic.wang/" target="_blank" rel="external">Ionic中文</a>,在写好的HTML5项目中,调试iOS插件的情况下,因为HTML5占用手机内存比较大,有时候手机没有交互效果,要每次重新运行很多次才可以,因此想到使用<code>React Native</code>试一下看看效果怎么样.</p>
+<p>以下只是显示简单的请求服务器登录和列表页面,后续工作也在进行当中:<br><img src="/content/images/2016/04/2016-04-14-11_45_48.gif" alt=""></p>
+<p>###开始工作</p>
+<ol>
+<li><p>开发工具: <a href="https://www.sublimetext.com/3" target="_blank" rel="external">Sublimt Text</a></p>
+</li>
+<li><p>JavaScript教程:<a href="http://www.w3school.com.cn/js/index.asp" target="_blank" rel="external">W3School-JavaScript</a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this" target="_blank" rel="external">MDN-JavaScript</a>教程.</p>
+</li>
+<li><p>CSS样式教程:<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS" target="_blank" rel="external">MDN-CSS</a> 和 <a href="http://www.w3school.com.cn/css/index.asp" target="_blank" rel="external">W3School-CSS</a></p>
+</li>
+<li><p><strong><a href="http://www.race604.com/react-native-component-lifecycle/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">了解React Native的生命周期</a></strong></p>
+</li>
+<li><p><a href="http://reactjs.cn/react/docs/component-api.html" target="_blank" rel="external">React.js 中文版</a></p>
+</li>
+<li><p><strong>请根据两篇教程走一遍,不懂的请务必<a href="https://www.google.co.jp/?gfe_rd=cr&amp;ei=_QgPV4TkNYf-8wfr17LgAg&amp;gws_rd=ssl" target="_blank" rel="external">Google</a>或其他浏览器搜索,搞明白为止.<a href="http://reactnative.cn/docs/0.23/getting-started.html" target="_blank" rel="external">React Native 中文版</a>和<a href="https://www.raywenderlich.com/126063/react-native-tutorial" target="_blank" rel="external">Raywenderlich 英文版</a></strong></p>
+</li>
+<li><p><strong><a href="https://github.com/facebook/css-layout" target="_blank" rel="external">FaceBook CSS-layout</a></strong></p>
+</li>
+<li><p><code>React Native</code>中的<code>fetch</code>方法所使用的规则同<a href="http://liubin.org/promises-book/#chapter1-what-is-promise" target="_blank" rel="external">Promise</a>.<br><a href="http://www.tuicool.com/articles/QZBJ7zJ" target="_blank" rel="external">fetch 入门</a></p>
+</li>
+</ol>
+<p><strong>注: 如果你跟着步骤5,6,7走一遍,在不懂得情况下同时Google或者度娘,那么你即可入门</strong></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;你只有一定要,才一定会得到.&lt;br&gt;                                  – 沃兹基朔德&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;/content/images/2016/04/React-Nat
+    
+    </summary>
+    
+    
+      <category term=" - React Native" scheme="http://blog.img421.com/tags/React-Native/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[转]React-Native学习指南</title>
+    <link href="http://blog.img421.com/2016/04/11/react-nativexue-xi-zhi-nan/"/>
+    <id>http://blog.img421.com/2016/04/11/react-nativexue-xi-zhi-nan/</id>
+    <published>2016-04-11T13:13:34.000Z</published>
+    <updated>2016-05-03T04:56:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本指南汇集React-Native各类学习资源，给大家提供便利。指南正在不断的更新，大家有好的资源欢迎Pull Requests！</p>
+<p>同时还有Awesome React-Native系列</p>
+<p><a href="https://github.com/jondot/awesome-react-native" target="_blank" rel="external">https://github.com/jondot/awesome-react-native</a></p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+<li><a href="#教程">教程</a><ul>
+<li><a href="#react-native">React Native</a></li>
+<li><a href="#reactjs">React.js</a></li>
+<li><a href="#es6">ES6</a></li>
+<li><a href="#系列教程">系列教程</a></li>
+</ul>
+</li>
+<li><a href="#开源app">开源APP</a></li>
+<li><a href="#组件">组件</a></li>
+<li><a href="#工具">工具</a></li>
+<li><a href="#资源网站">资源网站</a></li>
+<li><a href="#业界讨论">业界讨论</a></li>
+</ul>
+<p>##教程</p>
+<h3 id="React-Native"><a href="#React-Native" class="headerlink" title="React Native"></a>React Native</h3><ul>
+<li><p><strong>React-Native专题系列文章不断更新ing(入门,组件,Api,开源项目)-最近比较火-</strong><br><a href="http://www.lcode.org/react-native/" target="_blank" rel="external">http://www.lcode.org/react-native/</a></p>
+</li>
+<li><p><strong>React-Native入门指南</strong><br><a href="https://github.com/vczero/react-native-lesson" target="_blank" rel="external">https://github.com/vczero/react-native-lesson</a></p>
+</li>
+<li><p><strong>React-Native视频教程(部分免费)</strong><br><a href="https://egghead.io/technologies/react" target="_blank" rel="external">https://egghead.io/technologies/react</a></p>
+</li>
+<li><p>react-native 官方api文档<br><a href="http://facebook.github.io/react-native/docs/getting-started.html" target="_blank" rel="external">http://facebook.github.io/react-native/docs/getting-started.html</a></p>
+</li>
+<li><p>react-native中文文档(极客学院)<br><a href="http://wiki.jikexueyuan.com/project/react-native/" target="_blank" rel="external">http://wiki.jikexueyuan.com/project/react-native/</a></p>
+</li>
+<li><p>react-native中文文档(react native中文网，人工翻译，官网完全同步)<br><a href="http://react-native.cn/docs/getting-started.html" target="_blank" rel="external">http://react-native.cn/docs/getting-started.html</a></p>
+</li>
+<li><p>react-native第一课<br><a href="http://html-js.com/article/2783" target="_blank" rel="external">http://html-js.com/article/2783</a></p>
+</li>
+<li><p>深入浅出 React Native：使用 JavaScript 构建原生应用<br><a href="http://zhuanlan.zhihu.com/FrontendMagazine/19996445" target="_blank" rel="external">http://zhuanlan.zhihu.com/FrontendMagazine/19996445</a></p>
+</li>
+<li><p>React Native通信机制详解<br><a href="http://blog.cnbang.net/tech/2698/" target="_blank" rel="external">http://blog.cnbang.net/tech/2698/</a></p>
+</li>
+<li><p>React Native布局篇<br><a href="https://segmentfault.com/a/1190000002658374" target="_blank" rel="external">https://segmentfault.com/a/1190000002658374</a></p>
+</li>
+<li><p>React Native 基础练习指北（一）<br><a href="https://segmentfault.com/a/1190000002645929" target="_blank" rel="external">https://segmentfault.com/a/1190000002645929</a></p>
+</li>
+<li><p>React Native 基础练习指北（二）<br><a href="https://segmentfault.com/a/1190000002647733" target="_blank" rel="external">https://segmentfault.com/a/1190000002647733</a></p>
+</li>
+<li><p>Diary of Building an iOS App with React Native<br><a href="http://herman.asia/building-a-flashcard-app-with-react-native" target="_blank" rel="external">http://herman.asia/building-a-flashcard-app-with-react-native</a></p>
+</li>
+<li><p>Use React Native in Existing iOS App<br><a href="http://blog-en.leapoahead.com/post/use-react-native-in-existing-ios-app" target="_blank" rel="external">http://blog-en.leapoahead.com/post/use-react-native-in-existing-ios-app</a></p>
+</li>
+<li><p>React Native For Beginners – The Next Big Thing?<br><a href="https://devdactic.com/react-native-for-beginners/" target="_blank" rel="external">https://devdactic.com/react-native-for-beginners/</a></p>
+</li>
+<li><p>How To Implement A Tab Bar With React Native<br><a href="https://devdactic.com/react-native-tab-bar/" target="_blank" rel="external">https://devdactic.com/react-native-tab-bar/</a></p>
+</li>
+<li><p>tcomb-form-native使用视频教程(需翻墙)<br><a href="https://react.rocks/example/tcomb-form-native" target="_blank" rel="external">https://react.rocks/example/tcomb-form-native</a></p>
+</li>
+<li><p>React Native分享记录<br><a href="https://segmentfault.com/a/1190000002678782" target="_blank" rel="external">https://segmentfault.com/a/1190000002678782</a></p>
+</li>
+<li><p>React Native构建本地视图组件<br><a href="https://www.dobest.me/article/11" target="_blank" rel="external">https://www.dobest.me/article/11</a></p>
+</li>
+<li><p>react-native-android-lession(安卓系列教程)<br><a href="https://github.com/yipengmu/react-native-android-lession" target="_blank" rel="external">https://github.com/yipengmu/react-native-android-lession</a></p>
+</li>
+<li><p>React Native模块桥接详解<br><a href="https://www.dobest.me/article/14" target="_blank" rel="external">https://www.dobest.me/article/14</a></p>
+</li>
+<li><p>React Native: 配置和起步<br><a href="http://www.liaohuqiu.net/cn/posts/react-native-1/" target="_blank" rel="external">http://www.liaohuqiu.net/cn/posts/react-native-1/</a></p>
+</li>
+<li><p>React Native: Android 的打包<br><a href="http://www.liaohuqiu.net/cn/posts/react-native-android-package/" target="_blank" rel="external">http://www.liaohuqiu.net/cn/posts/react-native-android-package/</a></p>
+</li>
+<li><p>react-native的第一课<br><a href="https://github.com/coderyi/blog/blob/master/articles/2016/0122_react-native_first_lesson.md" target="_blank" rel="external">https://github.com/coderyi/blog/blob/master/articles/2016/0122_react-native_first_lesson.md</a></p>
+</li>
+</ul>
+<h3 id="React-js"><a href="#React-js" class="headerlink" title="React.js"></a>React.js</h3><ul>
+<li><p>react.js中文文档<br><a href="http://reactjs.cn/" target="_blank" rel="external">http://reactjs.cn/</a></p>
+</li>
+<li><p>react.js入门教程(gitbook)<br><a href="https://hulufei.gitbooks.io/react-tutorial/content/introduction.html" target="_blank" rel="external">https://hulufei.gitbooks.io/react-tutorial/content/introduction.html</a></p>
+</li>
+<li><p><strong>react.js快速入门教程 - 阮一峰</strong><br><a href="http://www.ruanyifeng.com/blog/2015/03/react.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2015/03/react.html</a></p>
+</li>
+<li><p>react.js视频教程<br><a href="http://react-china.org/t/reactjs/584" target="_blank" rel="external">http://react-china.org/t/reactjs/584</a></p>
+</li>
+</ul>
+<h3 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h3><ul>
+<li><p>深入浅出ES6（一）：ES6是什么<br><a href="http://www.infoq.com/cn/articles/es6-in-depth-an-introduction" target="_blank" rel="external">http://www.infoq.com/cn/articles/es6-in-depth-an-introduction</a></p>
+</li>
+<li><p>深入浅出ES6（二）：迭代器和for-of循环<br><a href="http://www.infoq.com/cn/articles/es6-in-depth-iterators-and-the-for-of-loop" target="_blank" rel="external">http://www.infoq.com/cn/articles/es6-in-depth-iterators-and-the-for-of-loop</a></p>
+</li>
+<li><p>深入浅出ES6（三）：生成器 Generators<br><a href="http://www.infoq.com/cn/articles/es6-in-depth-generators" target="_blank" rel="external">http://www.infoq.com/cn/articles/es6-in-depth-generators</a></p>
+</li>
+<li><p>深入浅出ES6（四）：模板字符串<br><a href="http://www.infoq.com/cn/articles/es6-in-depth-template-string" target="_blank" rel="external">http://www.infoq.com/cn/articles/es6-in-depth-template-string</a></p>
+</li>
+<li><p>深入浅出ES6（五）：不定参数和默认参数<br><a href="http://www.infoq.com/cn/articles/es6-in-depth-rest-parameters-and-defaults" target="_blank" rel="external">http://www.infoq.com/cn/articles/es6-in-depth-rest-parameters-and-defaults</a></p>
+</li>
+</ul>
+<h3 id="系列教程"><a href="#系列教程" class="headerlink" title="系列教程"></a>系列教程</h3><ul>
+<li><p>深入浅出React（一）：React的设计哲学 - 简单之美<br><a href="http://www.infoq.com/cn/articles/react-art-of-simplity" target="_blank" rel="external">http://www.infoq.com/cn/articles/react-art-of-simplity</a></p>
+</li>
+<li><p>深入浅出React（二）：React开发神器Webpack<br><a href="http://www.infoq.com/cn/articles/react-and-webpack" target="_blank" rel="external">http://www.infoq.com/cn/articles/react-and-webpack</a></p>
+</li>
+<li><p>深入浅出React（三）：理解JSX和组件<br><a href="http://www.infoq.com/cn/articles/react-jsx-and-component" target="_blank" rel="external">http://www.infoq.com/cn/articles/react-jsx-and-component</a></p>
+</li>
+<li><p>深入浅出React（四）：虚拟DOM Diff算法解析<br><a href="http://www.infoq.com/cn/articles/react-dom-diff" target="_blank" rel="external">http://www.infoq.com/cn/articles/react-dom-diff</a></p>
+</li>
+<li><p>深入浅出React（五）：使用Flux搭建React应用程序架构<br><a href="http://www.infoq.com/cn/articles/react-flux" target="_blank" rel="external">http://www.infoq.com/cn/articles/react-flux</a></p>
+</li>
+<li><p>react-webpack-cookbook中文版<br><a href="http://fakefish.github.io/react-webpack-cookbook/" target="_blank" rel="external">http://fakefish.github.io/react-webpack-cookbook/</a></p>
+</li>
+<li><p>Flex 布局语法教程<br><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</a></p>
+</li>
+<li><p>React 初探<br><a href="http://www.alloyteam.com/2015/04/react-explore/" target="_blank" rel="external">http://www.alloyteam.com/2015/04/react-explore/</a></p>
+</li>
+<li><p>React虚拟DOM浅析<br><a href="http://www.alloyteam.com/2015/10/react-virtual-analysis-of-the-dom/" target="_blank" rel="external">http://www.alloyteam.com/2015/10/react-virtual-analysis-of-the-dom/</a></p>
+</li>
+<li><p>react组件间通信<br><a href="http://www.alloyteam.com/2015/07/react-zu-jian-jian-tong-xin/" target="_blank" rel="external">http://www.alloyteam.com/2015/07/react-zu-jian-jian-tong-xin/</a></p>
+</li>
+<li><p>React 数据流管理架构之 Redux 介绍<br><a href="http://www.alloyteam.com/2015/09/react-redux/" target="_blank" rel="external">http://www.alloyteam.com/2015/09/react-redux/</a></p>
+</li>
+<li><p>React服务器端渲染实践小结<br><a href="http://www.alloyteam.com/2015/10/8783/" target="_blank" rel="external">http://www.alloyteam.com/2015/10/8783/</a></p>
+</li>
+<li><p>React Native Android 踩坑之旅<br><a href="http://www.alloyteam.com/2015/10/react-native-android-steps-on-tour/" target="_blank" rel="external">http://www.alloyteam.com/2015/10/react-native-android-steps-on-tour/</a></p>
+</li>
+<li><p>React Native 之 JSBridge<br><a href="http://www.alloyteam.com/2015/05/react-native-zhi-jsbridge/" target="_blank" rel="external">http://www.alloyteam.com/2015/05/react-native-zhi-jsbridge/</a></p>
+</li>
+</ul>
+<h3 id="React-Native探索系列教程"><a href="#React-Native探索系列教程" class="headerlink" title="React Native探索系列教程"></a>React Native探索系列教程</h3><ul>
+<li><p>React Native探索（一）：背景、规划和风险<br><a href="http://www.infoq.com/cn/articles/react-native-overview" target="_blank" rel="external">http://www.infoq.com/cn/articles/react-native-overview</a></p>
+</li>
+<li><p>React Native探索（二）：布局篇<br><a href="http://www.infoq.com/cn/articles/react-native-layout" target="_blank" rel="external">http://www.infoq.com/cn/articles/react-native-layout</a></p>
+</li>
+<li><p>React Native探索（三）：与 react-web 的融合<br><a href="http://www.infoq.com/cn/articles/react-native-web" target="_blank" rel="external">http://www.infoq.com/cn/articles/react-native-web</a></p>
+</li>
+</ul>
+<h2 id="开源APP"><a href="#开源APP" class="headerlink" title="开源APP"></a>开源APP</h2><blockquote>
+<p>研究源码也是一个很好的学习方式</p>
+</blockquote>
+<ul>
+<li><p>官方演示App<br><a href="https://github.com/facebook/react-native/tree/master/Examples" target="_blank" rel="external">https://github.com/facebook/react-native/tree/master/Examples</a></p>
+</li>
+<li><p>react-native-dribbble-app<br><a href="https://github.com/catalinmiron/react-native-dribbble-app" target="_blank" rel="external">https://github.com/catalinmiron/react-native-dribbble-app</a></p>
+</li>
+<li><p><strong>Gank.io客户端</strong><br><a href="https://github.com/Bob1993/React-Native-Gank" target="_blank" rel="external">https://github.com/Bob1993/React-Native-Gank</a>  </p>
+</li>
+<li><p><strong>Leanote for iOS(云笔记)</strong><br><a href="https://github.com/leanote/leanote-ios-rn" target="_blank" rel="external">https://github.com/leanote/leanote-ios-rn</a></p>
+</li>
+<li><p><strong>ReactNativeRubyChina</strong><br><a href="https://github.com/henter/ReactNativeRubyChina" target="_blank" rel="external">https://github.com/henter/ReactNativeRubyChina</a></p>
+</li>
+<li><p>HackerNews-React-Native<br><a href="https://github.com/iSimar/HackerNews-React-Native" target="_blank" rel="external">https://github.com/iSimar/HackerNews-React-Native</a></p>
+</li>
+<li><p>React-Native新闻客户端<br><a href="https://github.com/tabalt/ReactNativeNews" target="_blank" rel="external">https://github.com/tabalt/ReactNativeNews</a></p>
+</li>
+<li><p><strong>newswatch(新闻客户端)</strong><br><a href="https://github.com/bradoyler/newswatch-react-native" target="_blank" rel="external">https://github.com/bradoyler/newswatch-react-native</a></p>
+</li>
+<li><p><strong>buyscreen(购买页面)</strong><br><a href="https://github.com/appintheair/react-native-buyscreen" target="_blank" rel="external">https://github.com/appintheair/react-native-buyscreen</a></p>
+</li>
+<li><p><strong>V2EX客户端</strong><br><a href="https://github.com/samuel1112/v2er" target="_blank" rel="external">https://github.com/samuel1112/v2er</a></p>
+</li>
+<li><p>react-native-todo<br><a href="https://github.com/joemaddalone/react-native-todo" target="_blank" rel="external">https://github.com/joemaddalone/react-native-todo</a></p>
+</li>
+<li><p>react-native-beer<br><a href="https://github.com/muratsu/react-native-beer" target="_blank" rel="external">https://github.com/muratsu/react-native-beer</a></p>
+</li>
+<li><p>react-native-stars<br><a href="https://github.com/86/react-native-stars" target="_blank" rel="external">https://github.com/86/react-native-stars</a></p>
+</li>
+<li><p><strong>模仿天猫首页的app</strong><br><a href="https://github.com/hugohua/react-native-demo" target="_blank" rel="external">https://github.com/hugohua/react-native-demo</a></p>
+</li>
+<li><p>ReactNativeChess<br><a href="https://github.com/csarsam/ReactNativeChess" target="_blank" rel="external">https://github.com/csarsam/ReactNativeChess</a></p>
+</li>
+<li><p>react native 编写的音乐软件<br><a href="https://github.com/Johnqing/miumiu" target="_blank" rel="external">https://github.com/Johnqing/miumiu</a></p>
+</li>
+<li><p>react-native-pokedex<br><a href="https://github.com/ababol/react-native-pokedex" target="_blank" rel="external">https://github.com/ababol/react-native-pokedex</a></p>
+</li>
+<li><p>CNode-React-Native<br><a href="https://github.com/SFantasy/CNode-React-Native" target="_blank" rel="external">https://github.com/SFantasy/CNode-React-Native</a></p>
+</li>
+<li><p>8tracks电台客户端<br><a href="https://github.com/voronianski/EightTracksReactNative" target="_blank" rel="external">https://github.com/voronianski/EightTracksReactNative</a></p>
+</li>
+<li><p>React-Native实现的计算器<br><a href="https://github.com/yoxisem544/Calculator-using-React-Native" target="_blank" rel="external">https://github.com/yoxisem544/Calculator-using-React-Native</a></p>
+</li>
+<li><p><strong>房产搜索app</strong><br><a href="https://github.com/jawee/react-native-PropertyFinder" target="_blank" rel="external">https://github.com/jawee/react-native-PropertyFinder</a></p>
+</li>
+<li><p>知乎专栏app<br><a href="https://github.com/LeezQ/react-native-zhihu-app" target="_blank" rel="external">https://github.com/LeezQ/react-native-zhihu-app</a></p>
+</li>
+<li><p>ForeignExchangeApp<br><a href="https://github.com/peralmq/ForeignExchangeApp" target="_blank" rel="external">https://github.com/peralmq/ForeignExchangeApp</a></p>
+</li>
+<li><p>Segmentfault 客户端<br><a href="https://github.com/fakefish/sf-react-native" target="_blank" rel="external">https://github.com/fakefish/sf-react-native</a></p>
+</li>
+<li><p>糗事百科app<br><a href="https://github.com/stormhouse/QiuShiReactNative" target="_blank" rel="external">https://github.com/stormhouse/QiuShiReactNative</a></p>
+</li>
+<li><p>孢子社区app<br><a href="https://github.com/Hi-Rube/baoz-ReactNative" target="_blank" rel="external">https://github.com/Hi-Rube/baoz-ReactNative</a></p>
+</li>
+<li><p><strong>深JS app</strong><br><a href="https://github.com/fraserxu/shenjs" target="_blank" rel="external">https://github.com/fraserxu/shenjs</a></p>
+</li>
+<li><p>Den - 房屋销售app*<br><a href="https://github.com/asamiller/den" target="_blank" rel="external">https://github.com/asamiller/den</a></p>
+</li>
+<li><p><strong>Noder-cnodejs客户端</strong><br><a href="https://github.com/soliury/noder-react-native" target="_blank" rel="external">https://github.com/soliury/noder-react-native</a></p>
+</li>
+<li><p>知乎日报Android版<br><a href="https://github.com/race604/ZhiHuDaily-React-Native" target="_blank" rel="external">https://github.com/race604/ZhiHuDaily-React-Native</a></p>
+</li>
+<li><p>ziliun-react-native<br><a href="https://github.com/sonnylazuardi/ziliun-react-native" target="_blank" rel="external">https://github.com/sonnylazuardi/ziliun-react-native</a></p>
+</li>
+<li><p>react-native-weather-app<br><a href="https://github.com/shevawen/react-native-weather-app" target="_blank" rel="external">https://github.com/shevawen/react-native-weather-app</a></p>
+</li>
+<li><p>React Native Sample App(Navigation,Flux)<br><a href="https://github.com/taskrabbit/ReactNativeSampleApp" target="_blank" rel="external">https://github.com/taskrabbit/ReactNativeSampleApp</a></p>
+</li>
+<li><p>TesterHome社区app<br><a href="https://github.com/qddegtya/A-ReactNative-TesterHome" target="_blank" rel="external">https://github.com/qddegtya/A-ReactNative-TesterHome</a></p>
+</li>
+<li><p>Finance - 股票报价app<br><a href="https://github.com/7kfpun/FinanceReactNative" target="_blank" rel="external">https://github.com/7kfpun/FinanceReactNative</a></p>
+</li>
+<li><p>shopping - 购物app<br><a href="https://github.com/bigsui/shopping-react-native" target="_blank" rel="external">https://github.com/bigsui/shopping-react-native</a></p>
+</li>
+<li><p>zhuiyuan - 追源cms app<br><a href="https://github.com/kazaff/ZhuiYuanDemo" target="_blank" rel="external">https://github.com/kazaff/ZhuiYuanDemo</a></p>
+</li>
+<li><p>uestc-bbs-react-native - UESTC清水河畔RN客户端(with Redux)<br><a href="https://github.com/just4fun/uestc-bbs-react-native" target="_blank" rel="external">https://github.com/just4fun/uestc-bbs-react-native</a></p>
+</li>
+<li><p><strong>react-native-nw-react-calculator</strong>(iOS/Android、Web、桌面多端)<br><a href="https://github.com/benoitvallon/react-native-nw-react-calculator" target="_blank" rel="external">https://github.com/benoitvallon/react-native-nw-react-calculator</a></p>
+</li>
+<li><p>react-native-nba-app<br><a href="https://github.com/wwayne/react-native-nba-app" target="_blank" rel="external">https://github.com/wwayne/react-native-nba-app</a></p>
+</li>
+</ul>
+<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><blockquote>
+<p>由于已经有较好的组件库网站，这里就不做总结。可以直接查看如下网站，过后可能精选一部分优质组件出来 :P</p>
+</blockquote>
+<ul>
+<li><p><strong>React-native组件库</strong>（比较全的组件库）<br><a href="http://react.parts/" target="_blank" rel="external">http://react.parts/</a></p>
+</li>
+<li><p><strong>React Native Modules</strong><br><a href="http://reactnativemodules.com/" target="_blank" rel="external">http://reactnativemodules.com/</a></p>
+</li>
+<li><p><strong>最佳轮播类组件</strong><br><a href="https://github.com/leecade/react-native-swiper" target="_blank" rel="external">https://github.com/leecade/react-native-swiper</a></p>
+</li>
+<li><p>React Native Router<br><a href="https://github.com/t4t5/react-native-router" target="_blank" rel="external">https://github.com/t4t5/react-native-router</a></p>
+</li>
+<li><p>下拉刷新组件<br><a href="https://github.com/jsdf/react-native-refreshable-listview" target="_blank" rel="external">https://github.com/jsdf/react-native-refreshable-listview</a></p>
+</li>
+<li><p>模态框<br><a href="https://github.com/brentvatne/react-native-modal" target="_blank" rel="external">https://github.com/brentvatne/react-native-modal</a></p>
+</li>
+<li><p>react-native-navbar<br><a href="https://github.com/react-native-fellowship/react-native-navbar" target="_blank" rel="external">https://github.com/react-native-fellowship/react-native-navbar</a></p>
+</li>
+<li><p>滚动轮播组件<br><a href="https://github.com/appintheair/react-native-looped-carousel" target="_blank" rel="external">https://github.com/appintheair/react-native-looped-carousel</a></p>
+</li>
+<li><p>HTML显示组件<br><a href="https://github.com/jsdf/react-native-htmlview" target="_blank" rel="external">https://github.com/jsdf/react-native-htmlview</a></p>
+</li>
+<li><p><strong>Material React Native (MRN)</strong> - Material Design组件库<br><a href="https://github.com/binggg/mrn" target="_blank" rel="external">https://github.com/binggg/mrn</a></p>
+</li>
+<li><p>react-native-gitfeed - GitHub客户端(iOS/Android)<br><a href="https://github.com/xiekw2010/react-native-gitfeed" target="_blank" rel="external">https://github.com/xiekw2010/react-native-gitfeed</a></p>
+</li>
+</ul>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<li><p>react-native-snippets(代码提示)<br><a href="https://github.com/Shrugs/react-native-snippets" target="_blank" rel="external">https://github.com/Shrugs/react-native-snippets</a></p>
+</li>
+<li><p>react-native-babel(使用ES6+)<br><a href="https://github.com/roman01la/react-native-babel" target="_blank" rel="external">https://github.com/roman01la/react-native-babel</a></p>
+</li>
+<li><p>sqlite for react-native<br><a href="https://github.com/almost/react-native-sqlite" target="_blank" rel="external">https://github.com/almost/react-native-sqlite</a></p>
+</li>
+<li><p>gulp-react-native-css(就像写css一样写React Style)<br><a href="https://github.com/soliury/gulp-react-native-css" target="_blank" rel="external">https://github.com/soliury/gulp-react-native-css</a></p>
+</li>
+<li><p>rnpm(React Native Package Manager)<br><a href="https://github.com/rnpm/rnpm" target="_blank" rel="external">https://github.com/rnpm/rnpm</a></p>
+</li>
+</ul>
+<h2 id="资源网站"><a href="#资源网站" class="headerlink" title="资源网站"></a>资源网站</h2><ul>
+<li><p>React-native官网<br><a href="http://facebook.github.io/react-native/" target="_blank" rel="external">http://facebook.github.io/react-native/</a></p>
+</li>
+<li><p><strong>React-China社区</strong><br><a href="http://react-china.org/" target="_blank" rel="external">http://react-china.org/</a></p>
+</li>
+<li><p><strong>React Native中文社区</strong><br><a href="http://bbs.react-native.cn/" target="_blank" rel="external">http://bbs.react-native.cn/</a></p>
+</li>
+<li><p><strong>React-native组件库</strong>（比较全的组件库）<br><a href="http://react.parts/" target="_blank" rel="external">http://react.parts/</a></p>
+</li>
+<li><p><strong>React Native Modules</strong><br><a href="http://reactnativemodules.com/" target="_blank" rel="external">http://reactnativemodules.com/</a></p>
+</li>
+<li><p><strong>Use React Native 资讯站</strong>(使用技巧及新闻)<br><a href="http://www.reactnative.com/" target="_blank" rel="external">http://www.reactnative.com/</a></p>
+</li>
+<li><p>11款React Native开源移动 UI 组件<br><a href="http://www.oschina.net/news/61214/11-react-native-ui-components" target="_blank" rel="external">http://www.oschina.net/news/61214/11-react-native-ui-components</a></p>
+</li>
+<li><p><strong>稀土掘金的 React 标签</strong><br><a href="http://gold.xitu.io/#/tag/React.js" target="_blank" rel="external">http://gold.xitu.io/#/tag/React.js</a> <a href="http://gold.xitu.io/#/tag/React%20Native" target="_blank" rel="external">http://gold.xitu.io/#/tag/React%20Native</a></p>
+</li>
+</ul>
+<h2 id="业界讨论"><a href="#业界讨论" class="headerlink" title="业界讨论"></a>业界讨论</h2><ul>
+<li><p>跨平台开发时代的 (再次) 到来？（ Xamarin，NativeScript 和 React Native 对比）<br><a href="http://onevcat.com/2015/03/cross-platform/" target="_blank" rel="external">http://onevcat.com/2015/03/cross-platform/</a></p>
+</li>
+<li><p>谈谈 React Native - 唐巧<br><a href="http://blog.devtang.com/blog/2015/02/01/talk-about-react-native/" target="_blank" rel="external">http://blog.devtang.com/blog/2015/02/01/talk-about-react-native/</a></p>
+</li>
+<li><p>如何评价React-Native?<br><a href="https://www.zhihu.com/question/27852694/answer/43990708" target="_blank" rel="external">https://www.zhihu.com/question/27852694/answer/43990708</a></p>
+</li>
+<li><p>React Native概述：背景、规划和风险<br><a href="http://div.io/topic/938" target="_blank" rel="external">http://div.io/topic/938</a></p>
+</li>
+<li><p>Native与Web的融合 - Qcon中React-Native演讲<br><a href="http://www.infoq.com/cn/presentations/the-fusion-of-native-and-web" target="_blank" rel="external">http://www.infoq.com/cn/presentations/the-fusion-of-native-and-web</a></p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本指南汇集React-Native各类学习资源，给大家提供便利。指南正在不断的更新，大家有好的资源欢迎Pull Requests！&lt;/p&gt;
+&lt;p&gt;同时还有Awesome React-Native系列&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/jo
+    
+    </summary>
+    
+    
+      <category term=" - React Native" scheme="http://blog.img421.com/tags/React-Native/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解决Mac OSX系统版本安装brew出错</title>
+    <link href="http://blog.img421.com/2016/04/09/jie-jue-osx10-11-xxi-tong-ban-ben-an-zhuang-brewchu-cuo/"/>
+    <id>http://blog.img421.com/2016/04/09/jie-jue-osx10-11-xxi-tong-ban-ben-an-zhuang-brewchu-cuo/</id>
+    <published>2016-04-08T16:28:13.000Z</published>
+    <updated>2016-08-18T09:10:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>上周更新了最新的Mac OSX操作系统10.11.x,但是安装<a href="http://brew.sh/index.html" target="_blank" rel="external">brew</a>命令的时候出现如下两种错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fatal: cannot unlink &apos;Library/Aliases/0install&apos;: Permission denied</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Acceptable-Formulae.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Bottles.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Brew-Test-Bot-For-Core-Contributors.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Brew-Test-Bot.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/C++-Standard-Libraries.md&apos; (Permission denied)</div><div class="line">error: unable to create file share/doc/homebrew/Checksum_Deprecation.md (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Common-Issues-for-Core-Contributors.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Common-Issues.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Custom-GCC-and-cross-compilers.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/External-Commands.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/FAQ.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Formula-Cookbook.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Gems,-Eggs-and-Perl-Modules.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Homebrew-and-Python.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/How-To-Open-a-Homebrew-Pull-Request-(and-get-it-merged).md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/How-to-Create-and-Maintain-a-Tap.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/How-to-build-software-outside-Homebrew-with-Homebrew-keg-only-dependencies.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Installation.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Interesting-Taps-&amp;-Branches.md&apos; (Permission denied)</div><div class="line">error: unable to create file share/doc/homebrew/Kickstarter-Supporters.md (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Maintainer-Guidelines.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Migrating-A-Formula-To-A-Tap.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/New-Maintainer-Checklist.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Python-for-Formula-Authors.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Querying-Brew.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/README.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Rename-A-Formula.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Tips-N&apos;-Tricks.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Troubleshooting.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/Xcode.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/brew-tap.md&apos; (Permission denied)</div><div class="line">error: unable to unlink old &apos;share/doc/homebrew/brew.1.html&apos; (Permission denied)</div><div class="line">fatal: cannot create directory at &apos;share/doc/homebrew/images&apos;: Permission denied</div></pre></td></tr></table></figure>
+<p>网上找了半天找到了此种方法<a href="http://stackoverflow.com/questions/28460953/homebrew-install-issue-after-computer-restoration" target="_blank" rel="external">stackoverflow</a>.此方法给我了一些提示,解决了OSX系统中brew的安装。</p>
+<p>####1.clone brew项目到本地<br>    git clone <a href="https://github.com/Homebrew/brew" target="_blank" rel="external">https://github.com/Homebrew/brew</a></p>
+<p>####2.移动项目文件<br><code>在执行文件的移动之前,请保证要移动到的目录文件中的相同文件移除</code></p>
+<p>#####1).通过本地项目可知brew的目录结构,而我们所使用的命令都是<code>/usr/local/bin</code>文件中,因此将brew中的<code>bin</code>目录下的命令<code>brew</code>拷贝或者移动到<code>/usr/local/bin</code>下:(我所使用的是移动)</p>
+<pre><code>//进入本地项目brew中
+cd brew 
+//移动brew到系统文件中
+sudo mv bin/brew /usr/local/bin
+</code></pre><p>#####2).移动Library<br>    //移动Library库到/usr/local<br>    sudo mv Library /usr/local</p>
+<p>#####3).移动share文件<br>    //移动share库到/usr/local<br>    sudo mv share /usr/local</p>
+<p>####3.查看是否安装成功<br>使用<code>brew</code>查看是否已经移动成功.如果有以下内容则代表成功。<br><img src="/content/images/2016/04/45ECDF54-98F9-4027-A726-F961BB0DBCEF.png" alt=""><br>到此为止,我们可以运行<code>brew update</code>更新<code>brew</code>,以及<code>brew install</code>来安装我们所要使用的工具</p>
+<p><a href="">ps:转载请注明出处</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;上周更新了最新的Mac OSX操作系统10.11.x,但是安装&lt;a href=&quot;http://brew.sh/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;brew&lt;/a&gt;命令的时候出现如下两种错误：&lt;/p&gt;
+&lt;figure clas
+    
+    </summary>
+    
+    
+      <category term=" - 其他" scheme="http://blog.img421.com/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解决Xcode 7.3 中打断点崩溃</title>
+    <link href="http://blog.img421.com/2016/04/05/xcode-7-3-zhong-da-duan-dian-beng-kui-jie-jue/"/>
+    <id>http://blog.img421.com/2016/04/05/xcode-7-3-zhong-da-duan-dian-beng-kui-jie-jue/</id>
+    <published>2016-04-05T03:44:49.000Z</published>
+    <updated>2016-05-03T04:54:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Xcode 升级到7.3时打断点使用lldb命令输出对象的时候，Xcode经常崩溃, 因此各种不爽。通过查看<a href="http://stackoverflow.com/questions/36161040/xcode-7-3-crashing-when-debugging-with-breakpoints" target="_blank" rel="external">stackoverflow</a>可知,在<code>Build Settings</code>中将<code>Enable Clang Module Debugging</code>设置为<code>NO</code>即可.<br><img src="http://upload-images.jianshu.io/upload_images/318204-59b05405952dcc5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Xcode 升级到7.3时打断点使用lldb命令输出对象的时候，Xcode经常崩溃, 因此各种不爽。通过查看&lt;a href=&quot;http://stackoverflow.com/questions/36161040/xcode-7-3-crashing-when-debugg
+    
+    </summary>
+    
+    
+      <category term=" - iOS技术" scheme="http://blog.img421.com/tags/iOS%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sketch图形设计+Keynote交互</title>
+    <link href="http://blog.img421.com/2016/03/23/sketchqian-duan-she-ji/"/>
+    <id>http://blog.img421.com/2016/03/23/sketchqian-duan-she-ji/</id>
+    <published>2016-03-23T06:33:15.000Z</published>
+    <updated>2016-05-03T04:55:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>项目的开发需要需求,界面需要根据需求的开发来体现,以前画原型都是用的Axure,最近使用了另一个功能强大的工具————Sketch,当然此工具并没有交互性, 因此交互性的管理我交给了Keynote。</code></p>
+<p>以下为所画的Web端简单图:</p>
+<p><img src="/content/images/2016/03/------.png" alt="首页登录"><br><img src="/content/images/2016/03/-----1.png" alt="主页内容"><br><img src="/content/images/2016/03/----.png" alt="产品"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;项目的开发需要需求,界面需要根据需求的开发来体现,以前画原型都是用的Axure,最近使用了另一个功能强大的工具————Sketch,当然此工具并没有交互性, 因此交互性的管理我交给了Keynote。&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;以下为所画的Web端简单图:&lt;/p
+    
+    </summary>
+    
+    
+      <category term=" - iOS资源" scheme="http://blog.img421.com/tags/iOS%E8%B5%84%E6%BA%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Objective-C  Runtime</title>
+    <link href="http://blog.img421.com/2016/03/02/objective-c-runtime/"/>
+    <id>http://blog.img421.com/2016/03/02/objective-c-runtime/</id>
+    <published>2016-03-02T09:31:00.000Z</published>
+    <updated>2016-07-11T03:01:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Objective-C 不同于 其他语言,它是动态的。何为动态，就是说它在执行一个方法的时候，比如[object method]并不是去直接执行,而是将method当作一条消息发送,这个消息由object来处理,这个消息可能被转发给另外一个对象。例[object init]调用［super  init］或者不予理睬假装没有收到此消息比如给button 添加一个SEL.多条不同的消息也可以对应同一个方法实现。这都是在程序运行的过程时候决定的。</p>
+<p>实际情况下,我们所使用OC调用的语法都会被解析成一个C的函数调用 <code>- object_msgSend()</code>.例如以下代码是等价的：</p>
+<pre><code>1.[object method:message];
+2.object_msgSend(object,@selector(method:),message)
+</code></pre><p>消息传递的关键存在于<code>objc_object</code> 中的isa指针和<code>objc_class</code>中的class dispatch table.</p>
+<p>###<code>Objc_object</code>,<code>Objc_class</code>以及<code>objc_method</code></p>
+<p>在OC中，类、对象和方法都是一个C的结构体,从<code>objc/objc.h</code>头文件中,我们可以找到他们的定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">struct objc_object &#123;  </div><div class="line">    Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">struct objc_class &#123;  </div><div class="line">    Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line">#if !__OBJC2__</div><div class="line">    Class super_class;</div><div class="line">    const char *name;</div><div class="line">    long version;</div><div class="line">    long info;</div><div class="line">    long instance_size;</div><div class="line">    struct objc_ivar_list *ivars;</div><div class="line">    **struct objc_method_list **methodLists**;</div><div class="line">    **struct objc_cache *cache**;</div><div class="line">    struct objc_protocol_list *protocols;</div><div class="line">#endif</div><div class="line">&#125;;</div><div class="line"></div><div class="line">struct objc_method_list &#123;  </div><div class="line">    struct objc_method_list *obsolete;</div><div class="line">    int method_count;</div><div class="line"></div><div class="line">#ifdef __LP64__</div><div class="line">    int space;</div><div class="line">#endif</div><div class="line"></div><div class="line">    /* variable length structure */</div><div class="line">    struct objc_method method_list[1];</div><div class="line">&#125;;</div><div class="line"></div><div class="line">struct objc_method &#123;  </div><div class="line">    SEL method_name;</div><div class="line">    char *method_types;    /* a string representing argument/return types */</div><div class="line">    IMP method_imp;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><code>objc_method_list</code>本质是一个由<code>objc_method</code>元素的可变长度数组.一个<code>objc_method</code>结构体中有函数名,也就是SEL,函数类型的字符串,以及函数的实现IMP。<br>从这些定义中可以看出发送一条消息也就 <code>objc_msgSend</code> 做了什么事。举<code>objc_msgSend(obj, foo)</code> 这个例子来说:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">具体会转换成什么代码呢？</div><div class="line">Runtime会根据类型自动转换成下列某一个函数：</div><div class="line">objc_msgSend:普通的消息都会通过该函数发送</div><div class="line">objc_msgSend_stret:消息中有数据结构作为返回值（不是简单值）时，通过此函数发送和接收返回值</div><div class="line">objc_msgSendSuper:和objc_msgSend类似，这里把消息发送给父类的实例</div><div class="line">objc_msgSendSuper_stret:和objc_msgSend_stret类似，这里把消息发送给父类的实例并接收返回值</div></pre></td></tr></table></figure>
+<ol>
+<li>首先，通过 obj 的 isa 指针找到它的 class ;</li>
+<li>在 class 的 method list 找 foo ;</li>
+<li>如果 class 中没到 foo，继续往它的 superclass 中找 ;</li>
+<li>一旦找到 foo 这个函数，就去执行它的实现IMP .</li>
+</ol>
+<p>当消息被发送到实例对象时,是如图所示处理的（图片源自网络):</p>
+<p><img src="http://ianisme.u.qiniudn.com/wp-content/uploads/2016/01/objective-runtime-2.png" alt=""></p>
+<p>但这种实现有个问题，效率低。但一个 class 往往只有 20% 的函数会被经常调用，可能占总调用次数的 80% 。每个消息都需要遍历一次 <code>objc_method_list</code> 并不合理。如果把经常被调用的函数缓存下来，那可以大大提高函数查询的效率。这也就是 <code>objc_class</code> 中另一个重要成员 <code>objc_cache</code> 做的事情 - 再找到 foo 之后，把 foo 的 <code>method_name</code> 作为 key ，<code>method_imp</code> 作为 value 给存起来。当再次收到 foo 消息的时候，可以直接在 cache 里找到，避免去遍历 <code>objc_method_list</code>.</p>
+<p>##消息动态解析<br>动态方法解析流程图:</p>
+<p><img src="http://ianisme.u.qiniudn.com/wp-content/uploads/2016/01/objective-runtime-6.png" alt=""></p>
+<p>在上面的例子中，如果 <code>foo</code> 没有找到会发生什么？通常情况下，程序会在运行时挂掉并抛出 <em>unrecognized selector sent to …</em> 的异常。但在异常抛出前，Objective-C 的运行时会给你三次拯救程序的机会：</p>
+<ol>
+<li>Method resolution</li>
+<li>Fast forwarding</li>
+<li>Normal forwarding</li>
+</ol>
+<ul>
+<li>第一步：通过<code>+resolveInstanceMethod:</code>或者 <code>+resolveClassMethod:</code>,方法决定是否动态添加方法。如果返回<code>Yes</code>则通过<code>class_addMethod</code>动态添加方法，消息得到处理，结束；如果返回No，则进入下一步；</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">void fooMethod(id obj, SEL _cmd)  </div><div class="line">&#123;</div><div class="line">    NSLog(@&quot;Doing foo&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (BOOL)resolveInstanceMethod:(SEL)aSEL</div><div class="line">&#123;</div><div class="line">    if(aSEL == @selector(foo:))&#123;</div><div class="line">        class_addMethod([self class], aSEL, (IMP)fooMethod, &quot;v@:&quot;);</div><div class="line">        return YES;</div><div class="line">    &#125;</div><div class="line">    return [super resolveInstanceMethod];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>iOS 4.3加入runtime 方法，主要都是以 imp 为前缀的方法，比如 <code>imp_implementationWithBlock()</code> 用 block 快速创建一个 imp 。<br>上面的例子可以重写成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">IMP fooIMP = imp_implementationWithBlock(^(id _self) &#123;  </div><div class="line">    NSLog(@&quot;Doing foo&quot;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">class_addMethod([self class], aSEL, fooIMP, &quot;v@:&quot;);</div></pre></td></tr></table></figure>
+<ul>
+<li>第二步：这步会进入forwardingTargetForSelector:方法，用于指定响应这个selector的备选对象，不能指定为self。如果返回某个对象则会调用对象的方法，结束。如果返回nil，则进入第三部；</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (id)forwardingTargetForSelector:(SEL)aSelector</div><div class="line">&#123;</div><div class="line">    if(aSelector == @selector(foo:))&#123;</div><div class="line">        return alternateObject;</div><div class="line">    &#125;</div><div class="line">    return [super forwardingTargetForSelector:aSelector];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>只要这个方法返回的不是 nil 和 self，整个消息发送的过程就会被重启，当然发送的对象会变成你返回的那个对象。否则，就会继续 Normal Fowarding </p>
+<ul>
+<li>第三部：这步我们要通过methodSignatureForSelector:方法签名，如果返回nil，则消息无法处理。如果返回methodSignature，则进入下一步；</li>
+<li>第四部：这步调用forwardInvocation：方法，我们可以通过anInvocation对象做很多处理，比如修改实现方法，修改响应对象等，如果方法调用成功，则结束。如果失败，则进入doesNotRecognizeSelector方法，若我们没有实现这个方法，那么就会crash。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (void)forwardInvocation:(NSInvocation *)invocation</div><div class="line">&#123;</div><div class="line">    SEL sel = invocation.selector;</div><div class="line"></div><div class="line">    if([alternateObject respondsToSelector:sel]) &#123;</div><div class="line">        [invocation invokeWithTarget:alternateObject];</div><div class="line">    &#125; </div><div class="line">    else &#123;</div><div class="line">        [self doesNotRecognizeSelector:sel];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>##总结<br>Objective-C 中给一个对象发送消息会经过以下几个步骤：</p>
+<ol>
+<li>在对象类的 dispatch table 中尝试找到该消息。如果找到了，跳到相应的函数IMP去执行实现代码；</li>
+<li>如果没有找到，Runtime 会发送 <code>+resolveInstanceMethod:</code> 或者 <code>+resolveClassMethod:</code>尝试去 resolve 这个消息；</li>
+<li>如果 resolve 方法返回 NO，Runtime 就发送 -<code>forwardingTargetForSelector:</code> 允许你把这个消息转发给另一个对象；</li>
+<li>如果没有新的目标对象返回， Runtime 就会发送 <code>-methodSignatureForSelector:</code> 和 <code>-forwardInvocation:</code> 消息。你可以发送 <code>-invokeWithTarget:</code> 消息来手动转发消息或者发送 -<code>doesNotRecognizeSelector:</code> 抛出异常。</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Objective-C 不同于 其他语言,它是动态的。何为动态，就是说它在执行一个方法的时候，比如[object method]并不是去直接执行,而是将method当作一条消息发送,这个消息由object来处理,这个消息可能被转发给另外一个对象。例[object init]
+    
+    </summary>
+    
+    
+      <category term=" - iOS技术" scheme="http://blog.img421.com/tags/iOS%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Reveal App试用时间破解</title>
+    <link href="http://blog.img421.com/2016/02/23/reveal-appshi-yong-shi-jian-po-jie/"/>
+    <id>http://blog.img421.com/2016/02/23/reveal-appshi-yong-shi-jian-po-jie/</id>
+    <published>2016-02-23T06:32:42.000Z</published>
+    <updated>2016-02-23T06:43:33.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文转自<a href="http://johnwong.github.io/mobile/2015/05/20/hack-reveal-app.html" target="_blank" rel="external">John Wong</a>.<code>亲测可用</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">以下内容仅用于学习逆向工程。用到的工具有Hopper，lldb。</div></pre></td></tr></table></figure>
+<p>iOS应用调试利器Reveal不必多介绍。应用可以免费试用。目测时间校验并不严谨，修改系统时间就可以将试用状态从已过期变为未过期。先改时间到多天以后，运行会弹出“Your free trial of Reveal has expired”。接下来切入正题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">更新：以下方法在1.6.1版本中仍然试用。如果你不关心探索过程，寻找关键代码这一节略过，动手的时候绕过应用自身校验这一节与绕过过期弹窗交换顺序。</div></pre></td></tr></table></figure>
+<h3 id="寻找关键代码"><a href="#寻找关键代码" class="headerlink" title="寻找关键代码"></a>寻找关键代码</h3><pre><code>使用的是1.5.1的Reveal，先拖入Hopper。根据提示我们猜测使用过期的一些代码可能与“trial”有关，在左侧的搜索框搜索这个词。
+</code></pre><p><img src="http://dn-johnwong.qbox.me/images/2015-05-20-hack-reveal-app-01.png" alt=""></p>
+<p>许多结果都是IBATrialModeReminderWindowController来自这个类，看起来是试用的提示窗。可以看到初始化方法[IBATrialModeReminderWindowController controller]及其地址0000000100077940。尝试用GDB调试，打开命令行，切换到目录/Applications/Reveal.app/Contents/MacOS，然后使用GDB调试。<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">gdb Reveal</div><div class="line">(gdb) b *0x0000000100077940</div><div class="line">(gdb) r</div><div class="line">(gdb) bt</div></pre></td></tr></table></figure></p>
+<p>结果看到调用堆栈如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#0  0x0000000100077940 in std::__1::shared_ptr&lt;IBATrialDateStorageInterface&gt;::shared_ptr&lt;IBANSUserDefaultsTrialDateStorage, void&gt;(IBANSUserDefaultsTrialDateStorage*) ()</div><div class="line">#1  0x0000000100079779 in std::__1::shared_ptr&lt;IBATrialDateStorageInterface&gt;::shared_ptr&lt;IBANSUserDefaultsTrialDateStorage, void&gt;(IBANSUserDefaultsTrialDateStorage*) ()</div><div class="line">#2  0x000000010007992a in std::__1::shared_ptr&lt;IBATrialDateStorageInterface&gt;::shared_ptr&lt;IBANSUserDefaultsTrialDateStorage, void&gt;(IBANSUserDefaultsTrialDateStorage*) ()</div><div class="line">#3  0x000000010001f534 in _mh_execute_header ()</div></pre></td></tr></table></figure></p>
+<p>调用堆栈感觉不太对劲，放弃。</p>
+<h3 id="绕过过期弹窗"><a href="#绕过过期弹窗" class="headerlink" title="绕过过期弹窗"></a>绕过过期弹窗</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">之前搜索结果还有一些来自IBATrialModeReminderPresenter这个类。-[IBATrialModeReminderPresenter shouldShowTrialModeSheet]方法看起来判断是否显示试用窗口。0000000100079678处有跳转的汇编指令，我们尝试改改它。选中这一行，选择菜单栏的Modify &gt; Assemble Instruction...，将jne修改成je，然后点击Assemble and Go Next。</div></pre></td></tr></table></figure>
+<p><img src="http://dn-johnwong.qbox.me/images/2015-05-20-hack-reveal-app-02.png" alt=""></p>
+<p>然后生成新的可执行文件。备份/Applications/Reveal.app/Contents/MacOS/Reveal。点击File &gt; Produce New Executable…，并替换为新的可执行文件。运行会提示This copy of Reveal is damaged。</p>
+<h3 id="绕过应用自身校验"><a href="#绕过应用自身校验" class="headerlink" title="绕过应用自身校验"></a>绕过应用自身校验</h3><p>浏览一堆方法，看到了[IBAAppDelegate verifyCodeSignature]这个方法，用来在应用启动时做签名校验。部分汇编代码如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">000000010008f3de         je         0x10008f3e9</div><div class="line"></div><div class="line">000000010008f3e0         test       r15b, r15b</div><div class="line">000000010008f3e3         jne        0x10008f662</div><div class="line"></div><div class="line">000000010008f3e9         mov        rax, qword [ds:objc_cls_ref_NSAlert]</div><div class="line">000000010008f3f0         mov        qword [ss:rbp-0x70+var_48], rax</div><div class="line">000000010008f3f4         mov        rdi, qword [ds:objc_cls_ref_NSBundle]</div><div class="line">000000010008f3fb         mov        rsi, qword [ds:0x1001dda18]</div><div class="line">000000010008f402         mov        rbx, qword [ds:imp___got__objc_msgSend]</div><div class="line">000000010008f409         call       rbx</div><div class="line">000000010008f40b         mov        rdi, rax</div><div class="line">000000010008f40e         call       imp___stubs__objc_retainAutoreleasedReturnValue</div><div class="line">000000010008f413         mov        qword [ss:rbp-0x70+var_56], rax</div><div class="line">000000010008f417         mov        rsi, qword [ds:0x1001ddca8]</div><div class="line">000000010008f41e         lea        rdx, qword [ds:cfstring_This_copy_of_Reveal_is_damaged] ; @&quot;This copy of Reveal is damaged&quot;</div></pre></td></tr></table></figure>
+<p>方法内的第一个je跳转到0x10008f3e9。从这个地址往下看，能够看到”This copy of Reveal is damaged”，说明这个跳转会提示签名问题。我们尝试将这里的je替换为jne，应用崩溃了。将je替换为jmp 0x10008f662，再次运行Reveal。弹出框提示“Insecure update error!”。点击确定，Reveal可以运行起来，绕过了试用限制的弹窗。</p>
+<h3 id="屏蔽升级功能"><a href="#屏蔽升级功能" class="headerlink" title="屏蔽升级功能"></a>屏蔽升级功能</h3><p>每次打开都会弹窗都会提示这个，还是不爽。试着用签名的方法解决，遇到问题签名失败。读这个提示框的内容，看到了Sparkle，应该是个应用升级组件。那么把升级功能去掉应该就不会弹窗了。搜索Sparkle，找到一个方法-[IBAAppDelegate configureSparkle]。<br>我们能够看到方法内先判断是否Sparkle是否enable，然后做Sparkle的初始化。我们只需要把跳转语句je改为jne，那么升级功能就会去掉，也就不会弹出那个框。试了一下果真如此。至此过程全部结束.</p>
+<p><img src="http://7xoj45.com1.z0.glb.clouddn.com/2015-05-20-hack-reveal-app-03.png" alt="屏蔽"></p>
+<h3 id="去掉标题栏过期提示"><a href="#去掉标题栏过期提示" class="headerlink" title="去掉标题栏过期提示"></a>去掉标题栏过期提示</h3><p>窗口右上角的过期提示有点惹眼，去掉。找到-[IBAMainWindowController    configureTitleBarAccessoryView]这个方法，把下面的第一个跳转语句改成nop.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">000000010007be25 nop</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文转自&lt;a href=&quot;http://johnwong.github.io/mobile/2015/05/20/hack-reveal-app.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;John Wong&lt;/a&gt;.&lt;code&gt;亲测可用&lt;/c
+    
+    </summary>
+    
+    
+      <category term=" - 逆向工程" scheme="http://blog.img421.com/tags/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS程序员学习网站</title>
+    <link href="http://blog.img421.com/2016/01/22/ioscheng-xu-yuan-xue-xi-wang-zhan/"/>
+    <id>http://blog.img421.com/2016/01/22/ioscheng-xu-yuan-xue-xi-wang-zhan/</id>
+    <published>2016-01-22T03:10:52.000Z</published>
+    <updated>2016-01-22T13:57:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>#前言<br>早期开发iOS所做的资源等都是用文本编辑保存起来,每次换电脑后查找起来都要先从<a href="https://bitbucket.org/" target="_blank" rel="external">Bitbucket</a> git下来很不方便,如今整理一下学习资源,免得以后再用某些东西的时候重复查找,而且也不方便.</p>
+<p>#正题</p>
+<p>##入门级</p>
+<ul>
+<li><a href="http://www.cocoachina.com/" target="_blank" rel="external">CocoaChina</a>创立于2008年3月，是一个苹果产品和 iOS 开发的中文社区网站，主要为苹果产品开发者提供资讯、信息及服务。</li>
+<li>Apple的官方文档，尤其是关于人机界面设计的和OC的，网址不固定，XCode中可以查看。（这里还建议使用Dash管理API文档）</li>
+</ul>
+<p>##进阶级</p>
+<ol>
+<li>CS193p，视频学习的首选教程<br><a href="http://web.stanford.edu/class/cs193p/cgi-bin/drupal/" target="_blank" rel="external">CS193p iPhone Application Development</a></li>
+<li><p>英文学习网站<br><a href="www.google.com">Google</a> (有问题，找谷歌)</p>
+<p><a href="www.github.com">Github</a> (源码，直观且易学)</p>
+<p><a href="http://stackoverflow.com/" target="_blank" rel="external">Stackoverflow</a> (你遇到的程序问题，基本都在这里)</p>
+<p><a href="http://www.raywenderlich.com/" target="_blank" rel="external">Raywenderlich</a>(墙裂推荐@.@)</p>
+<p><a href="https://www.objc.io/" target="_blank" rel="external">objc.io</a>(深度解读Objective-C)</p>
+<p><a href="http://nshipster.com/" target="_blank" rel="external">NSHipster</a> (a journal of the overlooked bits in Objective-C and Cocoa.)<a href="http://nshipster.cn/" target="_blank" rel="external">中文版</a></p>
+<p><a href="http://www.thinkandbuild.it/" target="_blank" rel="external">Think&amp;Build</a><br>(Tutorials about OS X,iOS and web development)<br>####中文博客(大多为微博大牛的博客)<br><a href="http://blog.devtang.com/" target="_blank" rel="external">唐巧的技术博客</a>(拥有深厚功力者,京城iOS一哥@唐巧)</p>
+</li>
+</ol>
+<p><a href="http://beyondvincent.com/" target="_blank" rel="external">破船之家</a> (iOS文章绝对高产者，据说跑起马拉松也是在程序员中首屈一指@BeyondVincent)</p>
+<p><a href="http://onevcat.com/" target="_blank" rel="external">OneV’s Den</a> (喵神,隐居樱花之国，躬耕于上乘游戏之作@onevcat)</p>
+<p><a href="http://blog.t-xx.me/" target="_blank" rel="external">txx’s blog</a> (虾神，出任上市CTO不是梦@糖炒小虾_txx)</p>
+<p><a href="http://iosinit.com/" target="_blank" rel="external">iOS init</a> (如果你对objc.io的文章情有独钟，Come here@方一雄)</p>
+<p><a href="http://www.ios-wiki.com/" target="_blank" rel="external">iOS Wiki</a> (iOS资讯期刊 @吴发伟Ted)</p>
+<p><a href="http://yingkong1987.github.io/" target="_blank" rel="external">yingkong1987 iOS Dev Blog</a> (给我很多帮助的兔子@兔be南玻1)</p>
+<p><a href="http://blog.xcodev.com/" target="_blank" rel="external">Xcode Dev</a> (资深iOS开发工程师@谌启亮) </p>
+<p><a href="http://www.isaced.com/" target="_blank" rel="external">isaced</a> (iOS Programmer@isaced) </p>
+<p><a href="http://answerhuang.duapp.com/" target="_blank" rel="external">answer_huang</a> (iOS developer, Python fans@answer-huang) </p>
+<p><a href="http://blog.cocoabit.com/" target="_blank" rel="external">Cocoabit</a> (iOS 码农，攻城狮。喜欢各种有意思的东西。@6david9) </p>
+<p><a href="http://geeklu.com/" target="_blank" rel="external">Luke’s Homepage|卢克</a> (Mac，iOS开发@卢小克)</p>
+<p><a href="http://blog.csdn.net/ysy441088327" target="_blank" rel="external">余书懿</a> (代表作:&lt;豆豆音乐&gt; @余书懿)</p>
+<p><a href="http://wangling.me/" target="_blank" rel="external">Creator of moke</a>(Creator of 墨客(moke.com) and Voodo(moke.com/voodo)@an00na)</p>
+<p><a href="http://iiiyu.com/" target="_blank" rel="external">萧宸宇</a> (注定漂泊的人@Sumi-iYu) </p>
+<p><a href="http://webfrogs.me/" target="_blank" rel="external">webfrogs’ Homepage</a> (iOS开发，开源爱好者 @webfrogs)</p>
+<p><a href="http://esoftmobile.com/" target="_blank" rel="external">Esoft Mobile</a> (iOS开发者 esoftmobile.com @TracyYih)</p>
+<p><a href="http://blog.leezhong.com/" target="_blank" rel="external">无网不剩</a> (iOS开发@李忠)</p>
+<p><a href="http://www.lofter.com/shareblog/xxblog?fpost=19d861_5619fa" target="_blank" rel="external">小小技术博客 的推荐</a></p>
+<p><a href="http://dev.swiftguide.cn/" target="_blank" rel="external">Swift 语言指南</a><br>(@SwiftLanguag 学习swift的好资源)</p>
+<p><a href="http://www.devdiv.com/" target="_blank" rel="external">DevDiv开发者社区</a></p>
+<p><a href="http://blog.ibireme.com/" target="_blank" rel="external">Garan no Dou</a>(一只魔法师的工坊)</p>
+<p><a href="http://foggry.com/blog/2014/04/25/githubyou-xiu-xiang-mu-ios/" target="_blank" rel="external">王中周的技术博客</a></p>
+<p><a href="http://tech.glowing.com/" target="_blank" rel="external">Glow 技术团队博客</a></p>
+<p><a href="http://www.superqq.com/blog/archives/" target="_blank" rel="external">刚刚在线</a></p>
+<p><a href="http://adad184.com/" target="_blank" rel="external">里脊串的开发随笔</a></p>
+<p><a href="https://lvwenhan.com/" target="_blank" rel="external">岁寒</a>(全栈工程师)</p>
+<p><a href="http://www.freebuf.com/" target="_blank" rel="external">FreeBuf</a>(关注黑客与极客)</p>
+<p><a href="http://www.ioscookies.com/" target="_blank" rel="external">ioscookies</a>(一个老外总结的第三方库)</p>
+<p>####<a href="https://github.com/tangqiaoboy/iOSBlogCN" target="_blank" rel="external">更多的优秀博客集锦</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#前言&lt;br&gt;早期开发iOS所做的资源等都是用文本编辑保存起来,每次换电脑后查找起来都要先从&lt;a href=&quot;https://bitbucket.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Bitbucket&lt;/a&gt; git下来很不方便,如今整
+    
+    </summary>
+    
+    
+      <category term=" - iOS资源" scheme="http://blog.img421.com/tags/iOS%E8%B5%84%E6%BA%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS开发之如何跳到系统设置界面</title>
+    <link href="http://blog.img421.com/2016/01/21/ioskai-fa-zhi-ru-he-tiao-dao-xi-tong-she-zhi-li-de-wifijie-mian/"/>
+    <id>http://blog.img421.com/2016/01/21/ioskai-fa-zhi-ru-he-tiao-dao-xi-tong-she-zhi-li-de-wifijie-mian/</id>
+    <published>2016-01-21T08:44:38.000Z</published>
+    <updated>2016-01-22T13:58:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>NSURL *url = [NSURL URLWithString:@&quot;prefs:root=WIFI&quot;];
+if ([[UIApplication sharedApplication] canOpenURL:url])
+{
+[[UIApplication sharedApplication] openURL:url];
+}
+</code></pre><p>在项目中的<code>info.plist</code>中添加 <code>URL Types</code></p>
+<p>添加 <code>URL Schemes</code> 为 <code>prefs</code><br><img src="/content/images/2016/01/F1FF00C8-9658-42FB-BC85-60C23B001A41.png" alt=""></p>
+<p>#参数配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">About — prefs:root=General&amp;path=About</div><div class="line">Accessibility — prefs:root=General&amp;path=ACCESSIBILITY</div><div class="line">Airplane Mode On — prefs:root=AIRPLANE_MODE</div><div class="line">Auto-Lock — prefs:root=General&amp;path=AUTOLOCK</div><div class="line">Brightness — prefs:root=Brightness</div><div class="line">Bluetooth — prefs:root=General&amp;path=Bluetooth</div><div class="line">Date &amp; Time — prefs:root=General&amp;path=DATE_AND_TIME</div><div class="line">FaceTime — prefs:root=FACETIME</div><div class="line">General — prefs:root=General</div><div class="line">Keyboard — prefs:root=General&amp;path=Keyboard</div><div class="line">iCloud — prefs:root=CASTLE</div><div class="line">iCloud Storage &amp; Backup — prefs:root=CASTLE&amp;path=STORAGE_AND_BACKUP</div><div class="line">International — prefs:root=General&amp;path=INTERNATIONAL</div><div class="line">Location Services — prefs:root=LOCATION_SERVICES</div><div class="line">Music — prefs:root=MUSIC</div><div class="line">Music Equalizer — prefs:root=MUSIC&amp;path=EQ</div><div class="line">Music Volume Limit — prefs:root=MUSIC&amp;path=VolumeLimit</div><div class="line">Network — prefs:root=General&amp;path=Network</div><div class="line">Nike + iPod — prefs:root=NIKE_PLUS_IPOD</div><div class="line">Notes — prefs:root=NOTES</div><div class="line">Notification — prefs:root=NOTIFICATIONS_ID</div><div class="line">Phone — prefs:root=Phone</div><div class="line">Photos — prefs:root=Photos</div><div class="line">Profile — prefs:root=General&amp;path=ManagedConfigurationList</div><div class="line">Reset — prefs:root=General&amp;path=Reset</div><div class="line">Safari — prefs:root=Safari</div><div class="line">Siri — prefs:root=General&amp;path=Assistant</div><div class="line">Sounds — prefs:root=Sounds</div><div class="line">Software Update — prefs:root=General&amp;path=SOFTWARE_UPDATE_LINK</div><div class="line">Store — prefs:root=STORE</div><div class="line">Twitter — prefs:root=TWITTER</div><div class="line">Usage — prefs:root=General&amp;path=USAGE</div><div class="line">VPN — prefs:root=General&amp;path=Network/VPN</div><div class="line">Wallpaper — prefs:root=Wallpaper</div><div class="line">Wi-Fi — prefs:root=WIFI</div></pre></td></tr></table></figure></p>
+<p>文章转载自<a href="http://www.superqq.com/blog/2015/12/01/jump-setting-per-page/" target="_blank" rel="external">刚刚在线</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;pre&gt;&lt;code&gt;NSURL *url = [NSURL URLWithString:@&amp;quot;prefs:root=WIFI&amp;quot;];
+if ([[UIApplication sharedApplication] canOpenURL:url])
+{
+[[UIAp
+    
+    </summary>
+    
+    
+      <category term=" - iOS技术" scheme="http://blog.img421.com/tags/iOS%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+</feed>
