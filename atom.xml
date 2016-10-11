@@ -493,8 +493,8 @@ if (keyframe &amp;&amp; !encoder -&gt; sps) {
     
     <content type="html"><![CDATA[<p>应用内购开发的前提是要填写税务等一些列内容,但是填写税务的时候出现了大的变动,</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">Form W-8BEN: Certificate of Foreign Status of Beneficial Owner</div><div class="line">for United States Tax Withholding and Reporting (Individuals)</div><div class="line"></div><div class="line">(Rev. February 2014)</div><div class="line"></div><div class="line">Part I: Identification of Beneficial Owner</div><div class="line">1. Name of individual that is</div><div class="line">the beneficial owner:	</div><div class="line">2. Country of citizenship:	</div><div class="line">3. Permanent Residence Address:</div><div class="line">(Do Not Use P.O. Box)	Minhangpujiangzhen, Shanghai, SHANGHAI, 210000, China</div><div class="line">4. Mailing address:</div><div class="line">(if different from above)	 Same as residence</div><div class="line">5. U.S. taxpayer identification number, if required:</div><div class="line">(see instructions)	</div><div class="line"></div><div class="line"> SSN or ITIN EIN	Do you need a US Tax ID? (please see Form W-8BEN Tips sheet). If so, click to</div><div class="line">Click to download Form SS-4</div><div class="line">6. Foreign tax identifying number, if any:</div><div class="line">(optional)	</div><div class="line">7. Reference Number(s):</div><div class="line">(see instructions)	</div><div class="line">8. Date of Birth:</div><div class="line">(MM-DD-YYYY)	</div><div class="line"></div><div class="line">......</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/318204-89f6e68276764869.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>现在出现了<strong>W-8BEN表格填写</strong>,自己先看了一遍了解了大概,但是这些具体的内容含义不是专业人员不是太明白,因此Google了一下,查看到了一个<a href="http://7xoj45.com1.z0.glb.clouddn.com/w-8i.pdf" target="_blank" rel="external">简体</a>和<a href="http://10.0.42.153/7xoj45.com1.z0.glb.clouddn.com/W8BEN_TW_TC_ENG.pdf" target="_blank" rel="external">繁体</a>的pdf文档说明.现向大家放出来。<br>简体:<br><img src="http://upload-images.jianshu.io/upload_images/318204-6113922149210d06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="简体"></p>
-<p>繁体:<br><img src="http://upload-images.jianshu.io/upload_images/318204-59e05ef1a8c0d2b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="繁体"></p>
+<p><img src="http://ocar0timh.bkt.clouddn.com/75635413-C3C0-4627-874F-7766CC25B6F3.png" alt=""><br>现在出现了<strong>W-8BEN表格填写</strong>,自己先看了一遍了解了大概,但是这些具体的内容含义不是专业人员不是太明白,因此Google了一下,查看到了一个<a href="http://7xoj45.com1.z0.glb.clouddn.com/w-8i.pdf" target="_blank" rel="external">简体</a>和<a href="http://10.0.42.153/7xoj45.com1.z0.glb.clouddn.com/W8BEN_TW_TC_ENG.pdf" target="_blank" rel="external">繁体</a>的pdf文档说明.现向大家放出来。<br>简体:<br><img src="http://ocar0timh.bkt.clouddn.com/4194DE74-F498-480E-B544-D128D9BDC088.png" alt="简体"></p>
+<p>繁体:<br><img src="http://ocar0timh.bkt.clouddn.com/5796674D-7BFA-475F-913D-2327E9607A8C.png" alt="繁体"></p>
 ]]></content>
     
     <summary type="html">
@@ -514,33 +514,32 @@ if (keyframe &amp;&amp; !encoder -&gt; sps) {
     <published>2016-05-03T03:52:41.000Z</published>
     <updated>2016-07-12T15:44:53.000Z</updated>
     
-    <content type="html"><![CDATA[<p>####一个tableView可以被水平和垂直滑动吗?</p>
-<blockquote>
+    <content type="html"><![CDATA[<h4 id="一个tableView可以被水平和垂直滑动吗"><a href="#一个tableView可以被水平和垂直滑动吗" class="headerlink" title="一个tableView可以被水平和垂直滑动吗?"></a>一个tableView可以被水平和垂直滑动吗?</h4><blockquote>
 <p>免责申明（必读！）：本博客提供的所有教程的翻译原稿均来自于互联网，仅供学习交流之用，切勿进行商业传播。同时，转载时不要移除本申明。如产生任何纠纷，均与本博客所有人、发表该翻译稿之人无任何关系。谢谢合作！</p>
 </blockquote>
 <p>应用程序日常开发工作的现实之一就是克服日常的挑战.<a href="http://www.brightec.co.uk/ideas/uicollectionview-using-horizontal-and-vertical-scrolling-sticky-rows-and-columns?destination=taxonomy/term/1" target="_blank" rel="external">原文</a></p>
 <p>远非是我们要抱怨它。我们喜欢每一个新的障碍并且爱解决各种各样的困惑和难题为我们的客户服务。</p>
 <p>我们最近的挑战就是用一个<code>tableView</code>来实现水平和垂直的滑动。条件是：当水平滑动时第一列和垂直滑动时的第一行要保持静止.</p>
-<p>最后,我们需要给这个tableView包含一个巨大的数据,因此它重要性就是能够平稳的滑动。<br><img src="http://upload-images.jianshu.io/upload_images/318204-d52b7b752f79a9e0.gif?imageMogr2/auto-orient/strip" alt=""></p>
-<p>##挑战<br>首先,我们简单说明下挑战–有时在开发的第一步就是要明确实际的问题是什么:</p>
+<p>最后,我们需要给这个tableView包含一个巨大的数据,因此它重要性就是能够平稳的滑动。<br><img src="http://ocar0timh.bkt.clouddn.com/1083C35C-F832-472A-9E10-6E687A60A425318204-d52b7b752f79a9e0.gif" alt=""></p>
+<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><p>首先,我们简单说明下挑战–有时在开发的第一步就是要明确实际的问题是什么:</p>
 <ul>
 <li>创建一个水平和垂直滑动的tableView.</li>
 <li>水平滑动第一列和垂直滑动第一行的粘性.</li>
 <li>使用大数据的情况下,必须要保持平滑的滚动.</li>
 </ul>
-<p>##第一次尝试-UITableView<br>我们开始考虑在UIScrollView中包含一个<code>UITableView</code>,但经过一些尝试,我们意识到:定制它的滚动和粘性是一个棘手的任务。</p>
+<h2 id="第一次尝试-UITableView"><a href="#第一次尝试-UITableView" class="headerlink" title="第一次尝试-UITableView"></a>第一次尝试-UITableView</h2><p>我们开始考虑在UIScrollView中包含一个<code>UITableView</code>,但经过一些尝试,我们意识到:定制它的滚动和粘性是一个棘手的任务。</p>
 <p>使用UITableView来做出必要的定制工作,真的很痛苦.因此,我们决定使用可定制的UICollectionView.</p>
-<p>##第二次尝试-UICollectionView<br><code>UICollectionView</code>提供了强大的定制化服务,允许你设置一个自定义的<code>UICollectionFlowLayout</code>.不幸的是,网格布局的滚动只能沿着一个轴滑动:要么是水平要么是垂直.</p>
+<h2 id="第二次尝试-UICollectionView"><a href="#第二次尝试-UICollectionView" class="headerlink" title="第二次尝试-UICollectionView"></a>第二次尝试-UICollectionView</h2><p><code>UICollectionView</code>提供了强大的定制化服务,允许你设置一个自定义的<code>UICollectionFlowLayout</code>.不幸的是,网格布局的滚动只能沿着一个轴滑动:要么是水平要么是垂直.</p>
 <p>我们希望我们能嵌入一个UIScrollView的集合,允许我们能够两个方向都能滑动,因此多方考虑我们决定使用<code>UICollectionFlowLayout</code>的父类<code>UICollectionViewLayout</code>的子类。</p>
-<p>##UICollectionViewLayout子类<br>以下是创建<code>collectionView</code> 的步骤:</p>
+<h2 id="UICollectionViewLayout子类"><a href="#UICollectionViewLayout子类" class="headerlink" title="UICollectionViewLayout子类"></a>UICollectionViewLayout子类</h2><p>以下是创建<code>collectionView</code> 的步骤:</p>
 <ol>
 <li>创建一个<code>UICollectionViewLayout</code>的子类<code>CustomCollectionViewLayout</code>.</li>
 <li>在<code>storyboard</code>中拖动一个<code>UICollectionView</code>.我们也可以使用代码创建，这取决于你自己.</li>
 <li><p>在<code>storyboard</code>中的<code>Attributes Inspector</code>设置一些属性.我们设置<code>Layout</code>为<code>Custom</code>,设置<code>Class</code>为<code>CustomCollectionViewLayout</code>.<code>Scrolling Enabled</code>为选中状态,如果我们想要每次只滑动一个方向,选中<code>Direction Lock Enabled</code>.否则,会同一时刻滑动两个方向.</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/318204-c6003caab22472bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="http://ocar0timh.bkt.clouddn.com/98830D28-8BD4-4430-A7D7-6A8AE082298E.png" alt=""></p>
 </li>
 <li>最后,将<code>UICollectionView</code>连接到<code>UIViewController</code>.不要忘记连接<code>dataSource</code>和<code>delegate</code>.</li>
-<li>在我们的<code>CollectionView</code>中,这个视图表示<code>row</code>和<code>列所在的row</code>,因此记住<code>sections</code>的索引下标和<code>item</code>的索引下标.这取决我们设置<code>collectionView flow layout</code>的方向.<br><img src="http://upload-images.jianshu.io/upload_images/318204-0eb5fb59fee1e257.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<li>在我们的<code>CollectionView</code>中,这个视图表示<code>row</code>和<code>列所在的row</code>,因此记住<code>sections</code>的索引下标和<code>item</code>的索引下标.这取决我们设置<code>collectionView flow layout</code>的方向.<br><img src="http://ocar0timh.bkt.clouddn.com/1795C81F-30AD-4C5F-94A6-C969C76B93C6.png" alt=""></li>
 </ol>
 <ol>
 <li><p>一旦完成了设置<code>collectionView</code>的方式,我们就需要设置我们自己所要创建的<code>custom collection view layout</code>.首先,我们要设置3个管理所有数据的属性.</p>
@@ -586,9 +585,7 @@ if (keyframe &amp;&amp; !encoder -&gt; sps) {
     
     <summary type="html">
     
-      &lt;p&gt;####一个tableView可以被水平和垂直滑动吗?&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;免责申明（必读！）：本博客提供的所有教程的翻译原稿均来自于互联网，仅供学习交流之用，切勿进行商业传播。同时，转载时不要移除本申明。如产生任何纠纷，均与本博客所有人、发表该翻译稿之
+      &lt;h4 id=&quot;一个tableView可以被水平和垂直滑动吗&quot;&gt;&lt;a href=&quot;#一个tableView可以被水平和垂直滑动吗&quot; class=&quot;headerlink&quot; title=&quot;一个tableView可以被水平和垂直滑动吗?&quot;&gt;&lt;/a&gt;一个tableView可以被水平和垂直
     
     </summary>
     
@@ -607,8 +604,8 @@ if (keyframe &amp;&amp; !encoder -&gt; sps) {
     <content type="html"><![CDATA[<blockquote>
 <p>你只有一定要,才一定会得到.<br>                                  – 沃兹基朔德</p>
 </blockquote>
-<p><img src="/content/images/2016/04/React-Native.png" alt=""><br>React Native发布已经有一段时间了,发布之后只是大概的了解下作用并没有做其余的工作,前段时间公司项目被客户要求使用HTML5开发,<code>React Native</code>因为是刚出来,可能网上的资料较少以及考虑到要踩得坑比较多,所以项目考虑使用<a href="http://www.ionic.wang/" target="_blank" rel="external">Ionic中文</a>开发,虽然自己不是此项目的开发人员,但是因为要写原生iOS插件,只是简单的了解了下<a href="http://www.ionic.wang/" target="_blank" rel="external">Ionic中文</a>,在写好的HTML5项目中,调试iOS插件的情况下,因为HTML5占用手机内存比较大,有时候手机没有交互效果,要每次重新运行很多次才可以,因此想到使用<code>React Native</code>试一下看看效果怎么样.</p>
-<p>以下只是显示简单的请求服务器登录和列表页面,后续工作也在进行当中:<br><img src="/content/images/2016/04/2016-04-14-11_45_48.gif" alt=""></p>
+<p><img src="http://ocar0timh.bkt.clouddn.com/React-Native.png" alt=""><br>React Native发布已经有一段时间了,发布之后只是大概的了解下作用并没有做其余的工作,前段时间公司项目被客户要求使用HTML5开发,<code>React Native</code>因为是刚出来,可能网上的资料较少以及考虑到要踩得坑比较多,所以项目考虑使用<a href="http://www.ionic.wang/" target="_blank" rel="external">Ionic中文</a>开发,虽然自己不是此项目的开发人员,但是因为要写原生iOS插件,只是简单的了解了下<a href="http://www.ionic.wang/" target="_blank" rel="external">Ionic中文</a>,在写好的HTML5项目中,调试iOS插件的情况下,因为HTML5占用手机内存比较大,有时候手机没有交互效果,要每次重新运行很多次才可以,因此想到使用<code>React Native</code>试一下看看效果怎么样.</p>
+<p>以下只是显示简单的请求服务器登录和列表页面,后续工作也在进行当中:<br><img src="http://ocar0timh.bkt.clouddn.com/2016-04-14-11_45_48.gif" alt=""></p>
 <p>###开始工作</p>
 <ol>
 <li><p>开发工具: <a href="https://www.sublimetext.com/3" target="_blank" rel="external">Sublimt Text</a></p>
@@ -636,7 +633,7 @@ if (keyframe &amp;&amp; !encoder -&gt; sps) {
       &lt;blockquote&gt;
 &lt;p&gt;你只有一定要,才一定会得到.&lt;br&gt;                                  – 沃兹基朔德&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;/content/images/2016/04/React-Nat
+&lt;p&gt;&lt;img src=&quot;http://ocar0timh.bkt.clouddn.com/
     
     </summary>
     
@@ -969,7 +966,7 @@ cd brew
 sudo mv bin/brew /usr/local/bin
 </code></pre><p>#####2).移动Library<br>    //移动Library库到/usr/local<br>    sudo mv Library /usr/local</p>
 <p>#####3).移动share文件<br>    //移动share库到/usr/local<br>    sudo mv share /usr/local</p>
-<p>####3.查看是否安装成功<br>使用<code>brew</code>查看是否已经移动成功.如果有以下内容则代表成功。<br><img src="/content/images/2016/04/45ECDF54-98F9-4027-A726-F961BB0DBCEF.png" alt=""><br>到此为止,我们可以运行<code>brew update</code>更新<code>brew</code>,以及<code>brew install</code>来安装我们所要使用的工具</p>
+<p>####3.查看是否安装成功<br>使用<code>brew</code>查看是否已经移动成功.如果有以下内容则代表成功。<br><img src="http://ocar0timh.bkt.clouddn.com/45ECDF54-98F9-4027-A726-F961BB0DBCEF.png" alt=""><br>到此为止,我们可以运行<code>brew update</code>更新<code>brew</code>,以及<code>brew install</code>来安装我们所要使用的工具</p>
 <p><a href="">ps:转载请注明出处</a></p>
 ]]></content>
     
@@ -992,7 +989,7 @@ sudo mv bin/brew /usr/local/bin
     <published>2016-04-05T03:44:49.000Z</published>
     <updated>2016-05-03T04:54:54.000Z</updated>
     
-    <content type="html"><![CDATA[<p>Xcode 升级到7.3时打断点使用lldb命令输出对象的时候，Xcode经常崩溃, 因此各种不爽。通过查看<a href="http://stackoverflow.com/questions/36161040/xcode-7-3-crashing-when-debugging-with-breakpoints" target="_blank" rel="external">stackoverflow</a>可知,在<code>Build Settings</code>中将<code>Enable Clang Module Debugging</code>设置为<code>NO</code>即可.<br><img src="http://upload-images.jianshu.io/upload_images/318204-59b05405952dcc5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+    <content type="html"><![CDATA[<p>Xcode 升级到7.3时打断点使用lldb命令输出对象的时候，Xcode经常崩溃, 因此各种不爽。通过查看<a href="http://stackoverflow.com/questions/36161040/xcode-7-3-crashing-when-debugging-with-breakpoints" target="_blank" rel="external">stackoverflow</a>可知,在<code>Build Settings</code>中将<code>Enable Clang Module Debugging</code>设置为<code>NO</code>即可.<br><img src="http://ocar0timh.bkt.clouddn.com/A11E07B9-172D-4094-9FF3-A7046606E2FD.png" alt=""></p>
 ]]></content>
     
     <summary type="html">
@@ -1015,7 +1012,7 @@ sudo mv bin/brew /usr/local/bin
     
     <content type="html"><![CDATA[<p><code>项目的开发需要需求,界面需要根据需求的开发来体现,以前画原型都是用的Axure,最近使用了另一个功能强大的工具————Sketch,当然此工具并没有交互性, 因此交互性的管理我交给了Keynote。</code></p>
 <p>以下为所画的Web端简单图:</p>
-<p><img src="/content/images/2016/03/------.png" alt="首页登录"><br><img src="/content/images/2016/03/-----1.png" alt="主页内容"><br><img src="/content/images/2016/03/----.png" alt="产品"></p>
+<p><img src="http://ocar0timh.bkt.clouddn.com/------.png" alt="首页登录"><br><img src="http://ocar0timh.bkt.clouddn.com/-----1.png" alt="主页内容"><br><img src="http://ocar0timh.bkt.clouddn.com/----.png" alt="产品"></p>
 ]]></content>
     
     <summary type="html">
@@ -1220,7 +1217,7 @@ if ([[UIApplication sharedApplication] canOpenURL:url])
 [[UIApplication sharedApplication] openURL:url];
 }
 </code></pre><p>在项目中的<code>info.plist</code>中添加 <code>URL Types</code></p>
-<p>添加 <code>URL Schemes</code> 为 <code>prefs</code><br><img src="/content/images/2016/01/F1FF00C8-9658-42FB-BC85-60C23B001A41.png" alt=""></p>
+<p>添加 <code>URL Schemes</code> 为 <code>prefs</code><br><img src="http://7xoj45.com1.z0.glb.clouddn.com/F1FF00C8-9658-42FB-BC85-60C23B001A41.png" alt=""></p>
 <p>#参数配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">About — prefs:root=General&amp;path=About</div><div class="line">Accessibility — prefs:root=General&amp;path=ACCESSIBILITY</div><div class="line">Airplane Mode On — prefs:root=AIRPLANE_MODE</div><div class="line">Auto-Lock — prefs:root=General&amp;path=AUTOLOCK</div><div class="line">Brightness — prefs:root=Brightness</div><div class="line">Bluetooth — prefs:root=General&amp;path=Bluetooth</div><div class="line">Date &amp; Time — prefs:root=General&amp;path=DATE_AND_TIME</div><div class="line">FaceTime — prefs:root=FACETIME</div><div class="line">General — prefs:root=General</div><div class="line">Keyboard — prefs:root=General&amp;path=Keyboard</div><div class="line">iCloud — prefs:root=CASTLE</div><div class="line">iCloud Storage &amp; Backup — prefs:root=CASTLE&amp;path=STORAGE_AND_BACKUP</div><div class="line">International — prefs:root=General&amp;path=INTERNATIONAL</div><div class="line">Location Services — prefs:root=LOCATION_SERVICES</div><div class="line">Music — prefs:root=MUSIC</div><div class="line">Music Equalizer — prefs:root=MUSIC&amp;path=EQ</div><div class="line">Music Volume Limit — prefs:root=MUSIC&amp;path=VolumeLimit</div><div class="line">Network — prefs:root=General&amp;path=Network</div><div class="line">Nike + iPod — prefs:root=NIKE_PLUS_IPOD</div><div class="line">Notes — prefs:root=NOTES</div><div class="line">Notification — prefs:root=NOTIFICATIONS_ID</div><div class="line">Phone — prefs:root=Phone</div><div class="line">Photos — prefs:root=Photos</div><div class="line">Profile — prefs:root=General&amp;path=ManagedConfigurationList</div><div class="line">Reset — prefs:root=General&amp;path=Reset</div><div class="line">Safari — prefs:root=Safari</div><div class="line">Siri — prefs:root=General&amp;path=Assistant</div><div class="line">Sounds — prefs:root=Sounds</div><div class="line">Software Update — prefs:root=General&amp;path=SOFTWARE_UPDATE_LINK</div><div class="line">Store — prefs:root=STORE</div><div class="line">Twitter — prefs:root=TWITTER</div><div class="line">Usage — prefs:root=General&amp;path=USAGE</div><div class="line">VPN — prefs:root=General&amp;path=Network/VPN</div><div class="line">Wallpaper — prefs:root=Wallpaper</div><div class="line">Wi-Fi — prefs:root=WIFI</div></pre></td></tr></table></figure></p>
 <p>文章转载自<a href="http://www.superqq.com/blog/2015/12/01/jump-setting-per-page/" target="_blank" rel="external">刚刚在线</a></p>
 ]]></content>

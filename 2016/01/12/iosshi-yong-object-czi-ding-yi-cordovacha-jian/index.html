@@ -7,12 +7,12 @@ sudo ionic start CountDemo
  或
    //使用cordova ,但是后期cordova不知道怎么引导ionic中,如果你知道请留言告诉我,感谢！
     sudo cordova create CountDemo com.twenty.CountDemo CountDemo
-</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/318204-40c3036496633b4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</code></pre><p><img src="http://7xoj45.com1.z0.glb.clouddn.com/5CCD7A21-5131-4CAF-AEF4-168AB6B5A3AF.png" alt=""></p>
 <pre><code>1: 项目创建到桌面的目录名,
 2: iOS Bundle Identifier的名称,
 3: 项目名
 若舍去2,3步骤,iOS Bundle ID会自行创建,3中项目名为默认1中的目录名。
-</code></pre><p>我们创建的项目<code>没有可写权限</code>只有<code>可读权限</code>,因为修改CountTest权限为<code>可读可写可执行</code>。<br><img src="http://upload-images.jianshu.io/upload_images/318204-8b8bfcddd394f237.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</code></pre><p>我们创建的项目<code>没有可写权限</code>只有<code>可读权限</code>,因为修改CountTest权限为<code>可读可写可执行</code>。<br><img src="http://7xoj45.com1.z0.glb.clouddn.com/D8D7D5BE-15E7-4030-97D9-E5E8C3130474.png" alt=""></p>
 <p>由此可以修改CountTest文件及子文件。</p>
 <p>##2.  编译iOS项目工程<br>通过使用<code>ionic</code>编译出<code>iOS项目结构</code>的目录平台。</p>
 <p>命令如下:</p>
@@ -20,36 +20,36 @@ sudo ionic start CountDemo
 sudo ionic platform add ios 
 或 sudo  cordova platform add ios 
 </code></pre><p>下图输出则添加成功</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/318204-e90e815e2c19d8fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>等待几分钟</p>
+<p><img src="http://7xoj45.com1.z0.glb.clouddn.com/1-1.png" alt=""><br>等待几分钟</p>
 <pre><code>//编译iOS项目
 sudo ionic build ios
 或  sudo cordova build ios
 </code></pre><p>如上图<code>** BUILD SUCCEEDED **</code>成功以后,可以看到文件中<code>platform</code>添加一个iOS平台文件夹。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/318204-3019bde06e6a82ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS"></p>
+<p><img src="http://7xoj45.com1.z0.glb.clouddn.com/2-1.png" alt="iOS"></p>
 <p>使用苹果官方开发工具<code>Xcode</code>打开,如果没有权限使用命令修改权限:</p>
 <pre><code>sudo chmod -R 777 .
 </code></pre><p><code>. 代表当前文件夹</code> ,打开后结构如下</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/318204-a254e7a3bdc8dea2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="xcode"></p>
+<p><img src="http://7xoj45.com1.z0.glb.clouddn.com/3.png" alt="xcode"></p>
 <p>我们自定义的插件都在<code>Plugins</code>文件夹下.</p>
 <p>##3. 插件开发<br>创建一个<code>CountAdd</code>对象,继承<code>CDVPlugin</code>对象.<br>ps:<code>CDVPlugin</code>即为cordova库的连接对象。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/318204-657108b5a3a11a6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CountAdd"></p>
-<p><code>Command + B</code> 编译Xcode,程序报错<code>&#39;Cordova/Cordova.h&#39; file not found</code><br><img src="http://upload-images.jianshu.io/upload_images/318204-a93692096b451747.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="error"></p>
-<p>通过查看<code>CordovaLib</code>库文件内容,此库内容中头文件<code>CDV.h</code>包涵全部的类头文件,因此修改如下:<br><img src="http://upload-images.jianshu.io/upload_images/318204-1007c4a52e964166.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CDV"><br><img src="http://upload-images.jianshu.io/upload_images/318204-cf55f4c29348e481.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="correct"></p>
+<p><img src="http://7xoj45.com1.z0.glb.clouddn.com/5.png" alt="CountAdd"></p>
+<p><code>Command + B</code> 编译Xcode,程序报错<code>&#39;Cordova/Cordova.h&#39; file not found</code><br><img src="http://7xoj45.com1.z0.glb.clouddn.com/6.png" alt="error"></p>
+<p>通过查看<code>CordovaLib</code>库文件内容,此库内容中头文件<code>CDV.h</code>包涵全部的类头文件,因此修改如下:<br><img src="http://7xoj45.com1.z0.glb.clouddn.com/7.png" alt="CDV"><br><img src="http://7xoj45.com1.z0.glb.clouddn.com/8.png" alt="correct"></p>
 <p>再次编译成功.</p>
-<p>在<code>CountAdd.h</code>文件中,声明一个方法:计算大小.<code>CDVInvokedUrlCommand ＊</code>对象为调用URL命令的时候自动传递的参数。在<code>CountAdd.m</code>中实现此方法。<br><img src="http://upload-images.jianshu.io/upload_images/318204-806eb3eb8e71bf1b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=".h"><br><img src="http://upload-images.jianshu.io/upload_images/318204-4a04a133a2294503.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=".m"></p>
-<p>在<code>CountAdd.m</code>中,我们添加如下代码:<br><img src="http://upload-images.jianshu.io/upload_images/318204-420341b5702d994b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=".m"></p>
+<p>在<code>CountAdd.h</code>文件中,声明一个方法:计算大小.<code>CDVInvokedUrlCommand ＊</code>对象为调用URL命令的时候自动传递的参数。在<code>CountAdd.m</code>中实现此方法。<br><img src="http://7xoj45.com1.z0.glb.clouddn.com/10.png" alt=".h"></p>
+<p>在<code>CountAdd.m</code>中,我们添加如下代码:<br><img src="http://7xoj45.com1.z0.glb.clouddn.com/11.png" alt=".m"></p>
 <pre><code>1: 获取到调用的命令的唯一ID;
 2:    得到传过来的数组的第一个索引值;(后续详细解释)
 3:    给得到的数+1;
 5:    通过判断给插件的结果设置状态,成功状态 message 所传递的值, 失败状态 message 所传递的值;
 6:    通过调用代理发送插件的结果给对应的ID
 </code></pre><p>##4. 配置<br>通过使用<a href="">WebStorm</a>来打开所创建的<code>CountDemo</code>项目,在项目中的<code>Plugins</code>文件夹中我们创建一个自己的插件目录<code>com.twenty.CountTest</code>,结构如下:</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/318204-363f44d79bcb4cc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="webStorm"></p>
+<p><img src="http://7xoj45.com1.z0.glb.clouddn.com/12.png" alt="webStorm"></p>
 <pre><code>ios:    存放Xcode刚才所创建的CountAdd类,
 www:     存放调用的和CountAdd 所调用的js文件
 plugin.xml :    配置iOS 和 cordova 的内容.
 </code></pre><p>拷贝<code>OC的类</code>到<code>ios文件夹</code>目录下,<code>www</code>目录下创建一个与<code>oc类名一样</code>的js文件</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/318204-49b5b26156e33615.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="13"><br><code>plugin.xml</code>文件内容如下图:<br><img src="http://upload-images.jianshu.io/upload_images/318204-cd6522842d8949ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="14"></p>
+<p><img src="http://7xoj45.com1.z0.glb.clouddn.com/13.png" alt="13"><br><code>plugin.xml</code>文件内容如下图:<br><img src="http://7xoj45.com1.z0.glb.clouddn.com/14.png" alt="14"></p>
 <pre><code>方框内的name要一致,名字随意;
 圆形内的值要与OC中继承CDVPlugin类的类名一致;
 横线部分名称要与js名称一致
@@ -75,7 +75,7 @@ plist文件: &lt;resource-file src=&quot;src/ios/PushConfig.plist&quot;/&gt;
 
 .a文件：  &lt;source-file src=&quot;src/ios/lib/libPushSDK-1.8.8.a&quot; framework=&quot;true&quot; /&gt;
 </code></pre><p><code>js</code>文件内容的配置如下:</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/318204-22d5d433512df116.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="15"></p>
+<p><img src="http://7xoj45.com1.z0.glb.clouddn.com/jsconfig.png" alt="15"></p>
 <pre><code>方框中的内容要与plugin.xml 中的方框name一致;
 红色横线的部分即为OC中CDVPlugin的子类要调用的函数名.
 </code></pre><p>##5.    实现调用<br>为了调用,我们使用<a href="">angularjs</a>的方法调用,在<code>html</code>中创建一个<code>button按钮</code>,设置点击的函数和控制器.</p>
@@ -83,7 +83,7 @@ plist文件: &lt;resource-file src=&quot;src/ios/PushConfig.plist&quot;/&gt;
 <pre><code> &lt;div ng-controller=&quot;countController&quot;&gt;
 &lt;button ng-click=&quot;handleClick()&quot;&gt;点击&lt;/button&gt;
 &lt;/div&gt;
-</code></pre><p>然后在<code>app.js</code>文件中,实现调用的函数<br><img src="http://upload-images.jianshu.io/upload_images/318204-b2ffa35751ef4567.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="16"></p>
+</code></pre><p>然后在<code>app.js</code>文件中,实现调用的函数<br><img src="http://7xoj45.com1.z0.glb.clouddn.com/16.png" alt="16"></p>
 <p>至此,在项目的目录中,运行如下命令:</p>
 <pre><code>sudo ionic platform update ios
 sudo ionic build ios
@@ -91,7 +91,7 @@ sudo ionic build ios
 <pre><code>如若打的iOS项目中plugins文件夹不包括OC文件,请手动删除整个platform文件夹,重新执行:
 sudo ionic platform add ios
 sudo ionic build ios
-</code></pre><p>结果如下:<br><img src="http://upload-images.jianshu.io/upload_images/318204-18bf7090d94bdb62.gif?imageMogr2/auto-orient/strip" alt="演示如下"><br>源代码<a href="https://github.com/ailjiuai/CountDemo/tree/master" target="_blank" rel="external">下载</a></p>
+</code></pre><p>结果如下:<br><img src="http://7xoj45.com1.z0.glb.clouddn.com/2016-01-13-17_32_51.gif" alt="演示如下"><br>源代码<a href="https://github.com/ailjiuai/CountDemo/tree/master" target="_blank" rel="external">下载</a></p>
 </div></article></div></section><footer><div class="paginator"><a href="/2016/01/21/ioskai-fa-zhi-ru-he-tiao-dao-xi-tong-she-zhi-li-de-wifijie-mian/" class="prev">PREV</a><a href="/2016/01/07/macxia-an-zhuang-ioniche-cordova-bing-yun-xing-iosxiang-mu/" class="next">NEXT</a></div><div data-thread-key="2016/01/12/iosshi-yong-object-czi-ding-yi-cordovacha-jian/" data-title="iOS使用Objective-C自定义cordova插件" data-url="http://blog.img421.com/2016/01/12/iosshi-yong-object-czi-ding-yi-cordovacha-jian/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"twenty-zp"};
 (function() {
     var ds = document.createElement('script');

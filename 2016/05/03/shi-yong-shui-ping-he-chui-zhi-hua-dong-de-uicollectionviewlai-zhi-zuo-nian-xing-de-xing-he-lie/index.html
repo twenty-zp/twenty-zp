@@ -1,30 +1,29 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> [译]使用水平和垂直滑动的UICollectionView来制作粘性的行和列 · Twenty's 时间念</title><meta name="description" content="[译]使用水平和垂直滑动的UICollectionView来制作粘性的行和列 - Twenty's 时间念"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://blog.img421.com/atom.xml" title="Twenty's 时间念"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/twenty-zp" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">[译]使用水平和垂直滑动的UICollectionView来制作粘性的行和列</h1><div class="post-info">May 3, 2016</div><div class="post-content"><p>####一个tableView可以被水平和垂直滑动吗?</p>
-<blockquote>
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> [译]使用水平和垂直滑动的UICollectionView来制作粘性的行和列 · Twenty's 时间念</title><meta name="description" content="[译]使用水平和垂直滑动的UICollectionView来制作粘性的行和列 - Twenty's 时间念"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://blog.img421.com/atom.xml" title="Twenty's 时间念"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/twenty-zp" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">[译]使用水平和垂直滑动的UICollectionView来制作粘性的行和列</h1><div class="post-info">May 3, 2016</div><div class="post-content"><h4 id="一个tableView可以被水平和垂直滑动吗"><a href="#一个tableView可以被水平和垂直滑动吗" class="headerlink" title="一个tableView可以被水平和垂直滑动吗?"></a>一个tableView可以被水平和垂直滑动吗?</h4><blockquote>
 <p>免责申明（必读！）：本博客提供的所有教程的翻译原稿均来自于互联网，仅供学习交流之用，切勿进行商业传播。同时，转载时不要移除本申明。如产生任何纠纷，均与本博客所有人、发表该翻译稿之人无任何关系。谢谢合作！</p>
 </blockquote>
 <p>应用程序日常开发工作的现实之一就是克服日常的挑战.<a href="http://www.brightec.co.uk/ideas/uicollectionview-using-horizontal-and-vertical-scrolling-sticky-rows-and-columns?destination=taxonomy/term/1" target="_blank" rel="external">原文</a></p>
 <p>远非是我们要抱怨它。我们喜欢每一个新的障碍并且爱解决各种各样的困惑和难题为我们的客户服务。</p>
 <p>我们最近的挑战就是用一个<code>tableView</code>来实现水平和垂直的滑动。条件是：当水平滑动时第一列和垂直滑动时的第一行要保持静止.</p>
-<p>最后,我们需要给这个tableView包含一个巨大的数据,因此它重要性就是能够平稳的滑动。<br><img src="http://upload-images.jianshu.io/upload_images/318204-d52b7b752f79a9e0.gif?imageMogr2/auto-orient/strip" alt=""></p>
-<p>##挑战<br>首先,我们简单说明下挑战–有时在开发的第一步就是要明确实际的问题是什么:</p>
+<p>最后,我们需要给这个tableView包含一个巨大的数据,因此它重要性就是能够平稳的滑动。<br><img src="http://ocar0timh.bkt.clouddn.com/1083C35C-F832-472A-9E10-6E687A60A425318204-d52b7b752f79a9e0.gif" alt=""></p>
+<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><p>首先,我们简单说明下挑战–有时在开发的第一步就是要明确实际的问题是什么:</p>
 <ul>
 <li>创建一个水平和垂直滑动的tableView.</li>
 <li>水平滑动第一列和垂直滑动第一行的粘性.</li>
 <li>使用大数据的情况下,必须要保持平滑的滚动.</li>
 </ul>
-<p>##第一次尝试-UITableView<br>我们开始考虑在UIScrollView中包含一个<code>UITableView</code>,但经过一些尝试,我们意识到:定制它的滚动和粘性是一个棘手的任务。</p>
+<h2 id="第一次尝试-UITableView"><a href="#第一次尝试-UITableView" class="headerlink" title="第一次尝试-UITableView"></a>第一次尝试-UITableView</h2><p>我们开始考虑在UIScrollView中包含一个<code>UITableView</code>,但经过一些尝试,我们意识到:定制它的滚动和粘性是一个棘手的任务。</p>
 <p>使用UITableView来做出必要的定制工作,真的很痛苦.因此,我们决定使用可定制的UICollectionView.</p>
-<p>##第二次尝试-UICollectionView<br><code>UICollectionView</code>提供了强大的定制化服务,允许你设置一个自定义的<code>UICollectionFlowLayout</code>.不幸的是,网格布局的滚动只能沿着一个轴滑动:要么是水平要么是垂直.</p>
+<h2 id="第二次尝试-UICollectionView"><a href="#第二次尝试-UICollectionView" class="headerlink" title="第二次尝试-UICollectionView"></a>第二次尝试-UICollectionView</h2><p><code>UICollectionView</code>提供了强大的定制化服务,允许你设置一个自定义的<code>UICollectionFlowLayout</code>.不幸的是,网格布局的滚动只能沿着一个轴滑动:要么是水平要么是垂直.</p>
 <p>我们希望我们能嵌入一个UIScrollView的集合,允许我们能够两个方向都能滑动,因此多方考虑我们决定使用<code>UICollectionFlowLayout</code>的父类<code>UICollectionViewLayout</code>的子类。</p>
-<p>##UICollectionViewLayout子类<br>以下是创建<code>collectionView</code> 的步骤:</p>
+<h2 id="UICollectionViewLayout子类"><a href="#UICollectionViewLayout子类" class="headerlink" title="UICollectionViewLayout子类"></a>UICollectionViewLayout子类</h2><p>以下是创建<code>collectionView</code> 的步骤:</p>
 <ol>
 <li>创建一个<code>UICollectionViewLayout</code>的子类<code>CustomCollectionViewLayout</code>.</li>
 <li>在<code>storyboard</code>中拖动一个<code>UICollectionView</code>.我们也可以使用代码创建，这取决于你自己.</li>
 <li><p>在<code>storyboard</code>中的<code>Attributes Inspector</code>设置一些属性.我们设置<code>Layout</code>为<code>Custom</code>,设置<code>Class</code>为<code>CustomCollectionViewLayout</code>.<code>Scrolling Enabled</code>为选中状态,如果我们想要每次只滑动一个方向,选中<code>Direction Lock Enabled</code>.否则,会同一时刻滑动两个方向.</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/318204-c6003caab22472bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="http://ocar0timh.bkt.clouddn.com/98830D28-8BD4-4430-A7D7-6A8AE082298E.png" alt=""></p>
 </li>
 <li>最后,将<code>UICollectionView</code>连接到<code>UIViewController</code>.不要忘记连接<code>dataSource</code>和<code>delegate</code>.</li>
-<li>在我们的<code>CollectionView</code>中,这个视图表示<code>row</code>和<code>列所在的row</code>,因此记住<code>sections</code>的索引下标和<code>item</code>的索引下标.这取决我们设置<code>collectionView flow layout</code>的方向.<br><img src="http://upload-images.jianshu.io/upload_images/318204-0eb5fb59fee1e257.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<li>在我们的<code>CollectionView</code>中,这个视图表示<code>row</code>和<code>列所在的row</code>,因此记住<code>sections</code>的索引下标和<code>item</code>的索引下标.这取决我们设置<code>collectionView flow layout</code>的方向.<br><img src="http://ocar0timh.bkt.clouddn.com/1795C81F-30AD-4C5F-94A6-C969C76B93C6.png" alt=""></li>
 </ol>
 <ol>
 <li><p>一旦完成了设置<code>collectionView</code>的方式,我们就需要设置我们自己所要创建的<code>custom collection view layout</code>.首先,我们要设置3个管理所有数据的属性.</p>

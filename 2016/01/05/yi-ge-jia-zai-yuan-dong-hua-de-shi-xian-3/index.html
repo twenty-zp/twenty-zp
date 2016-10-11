@@ -1,14 +1,14 @@
 <!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 一个Loading加载圆动画的实现 (3) · Twenty's 时间念</title><meta name="description" content="一个Loading加载圆动画的实现 (3) - Twenty's 时间念"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://blog.img421.com/atom.xml" title="Twenty's 时间念"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/twenty-zp" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">一个Loading加载圆动画的实现 (3)</h1><div class="post-info">Jan 5, 2016</div><div class="post-content"><p>本教程为系列教程第三篇。如果不了解具体的情况,请至传送门。</p>
 <p><a href="http://blog.img421.com/yi-ge-loadingjia-zai-yuan-dong-hua-de-shi-xian/">第一篇教程传送门</a></p>
 <p><a href="http://blog.img421.com/yi-ge-loadingjia-zai-yuan-dong-hua-de-shi-xian-2/">第二篇教程传送门</a></p>
-<p>本系列教程,我们要实现如下效果:<br><img src="http://blog.img421.com/content/images/2016/01/2016-01-05-14_31_51.gif" alt="第三篇效果"></p>
+<p>本系列教程,我们要实现如下效果:<br><img src="http://7xoj45.com1.z0.glb.clouddn.com/2016-01-05-14_31_51.gif" alt="第三篇效果"></p>
 <p>我们可以看到动画中,当<a href="http://blog.img421.com/yi-ge-loadingjia-zai-yuan-dong-hua-de-shi-xian-2/">第二篇教程</a>中的红点部分移动到最高度的时候会有一个蓝色的细线出现,并且细线向下移动,而未做任何的动画.那么我们就可以考虑其中最简单的方法。</p>
 <p>####方法一:<br>创建一个简单的<code>UIView</code>或<code>CALayer</code>,使用UIView的动画或者CAAnimation动画。</p>
 <p>####方法二:<br>使用<a href="http://blog.img421.com/yi-ge-loadingjia-zai-yuan-dong-hua-de-shi-xian-2/">第二篇教程</a>中的<br><code>CAShapeLayer</code>的属性<code>strokeStart</code>和<code>strokeEnd</code>来实现类似效.</p>
 <p>这里我们为了简便我们使用第一种方法,通过改变<code>CALayer</code>的位置来进行动画。</p>
-<p><img src="/content/images/2016/01/-----2016-01-05---2-48-05.png" alt="初始简图"><br>我们可以看到蓝色的细线。假设蓝色的细线<code>长度为15</code>,由圆图的<code>position</code>,我们可以获取到蓝色细线的初始<code>position</code> <strong>ps: 注意调试线宽</strong></p>
+<p><img src="http://7xoj45.com1.z0.glb.clouddn.com/-----2016-01-05---2-48-05.png" alt="初始简图"><br>我们可以看到蓝色的细线。假设蓝色的细线<code>长度为15</code>,由圆图的<code>position</code>,我们可以获取到蓝色细线的初始<code>position</code> <strong>ps: 注意调试线宽</strong></p>
 <pre><code>蓝色细线初始position = 圆的position - 2*半径R ＋ (蓝色细线长度)*0.5
-</code></pre><p><img src="/content/images/2016/01/-----2016-01-05---3-01-15-1.png" alt="最终简图"></p>
+</code></pre><p><img src="http://7xoj45.com1.z0.glb.clouddn.com/-----2016-01-05---3-01-15-1.png" alt="最终简图"></p>
 <p>上图为蓝色为所移动到的最终位置。<strong>ps: 注意调试线宽</strong></p>
 <pre><code>蓝色细线最终position = 圆的position - 半径R - (蓝色细线长度)*0.5
 </code></pre><p>######上代码:<br>通过CAAnimation代理结束可知道,</p>

@@ -1,8 +1,8 @@
 <!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 一个Loading加载圆动画的实现(1) · Twenty's 时间念</title><meta name="description" content="一个Loading加载圆动画的实现(1) - Twenty's 时间念"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://blog.img421.com/atom.xml" title="Twenty's 时间念"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/twenty-zp" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">一个Loading加载圆动画的实现(1)</h1><div class="post-info">Dec 31, 2015</div><div class="post-content"><p>今天,看了一个<a href="http://www.jianshu.com/p/1c6a2de68753" target="_blank" rel="external">Loading动画的实现思路</a>,但是到后来的计算等有点迷糊,就自己动笔计算了一下。ps: 请原谅盗一下动画图 !-.- </p>
-<p><img src="/content/images/2015/12/1013170-f4ff25b49b577aee.gif" alt="原图"></p>
+<p><img src="http://ocar0timh.bkt.clouddn.com/1013170-f4ff25b49b577aee.gif" alt="原图"></p>
 <p>动画看着结构逻辑有点复杂,但是这里我们先完成第一阶段,要先实现进度的加载动画。实现效果如下:</p>
-<p><img src="/content/images/2015/12/2015-12-31-09_11_39.gif" alt="动画"></p>
-<p>这个动画可以分成几个阶段,每个阶段都可以分成几个简单的动画。动画的拆分,我们可以使用自带的软件,查看拆分的帧动画。<br><img src="/content/images/2015/12/-----2015-12-31---9-17-17.png" alt="帧动画"></p>
+<p><img src="http://ocar0timh.bkt.clouddn.com/2015-12-31-09_11_39.gif" alt="动画"></p>
+<p>这个动画可以分成几个阶段,每个阶段都可以分成几个简单的动画。动画的拆分,我们可以使用自带的软件,查看拆分的帧动画。<br><img src="http://ocar0timh.bkt.clouddn.com/-----2015-12-31---9-17-17.png" alt="帧动画"></p>
 <p>###方法一:<br>较简单,我们可以使用系统自带的CAAnimation动画实现。通过改变<code>CAShapeLayer</code>的<code>strokeStart</code>和<code>strokeEnd</code>以及layer的<code>rotation.z</code>来实现。<br>代码如下:    </p>
 <pre><code>  CAShapeLayer * circle = [CAShapeLayer layer];
 circle.bounds = self.view.bounds;
@@ -45,12 +45,12 @@ group.animations = @[strokeStartAnimation,strokeEndAnimation,rotationAnimation];
 </ul>
 </li>
 </ol>
-<p>创建一个名字为LoadingAnimation的项目,然后创建一个CALayer的子类,命名为Circlelayer。<br><img src="/content/images/2015/12/0A8D6165-F19E-4C0E-8FDF-D95E8FE5780B.png" alt=""></p>
+<p>创建一个名字为LoadingAnimation的项目,然后创建一个CALayer的子类,命名为Circlelayer。<br><img src="http://ocar0timh.bkt.clouddn.com/0A8D6165-F19E-4C0E-8FDF-D95E8FE5780B.png" alt=""></p>
 <p>UIView画图,子类重写</p>
 <pre><code>- (void)drawRect:(NSRect)rect
 </code></pre><p>CALayer画图,子类重写</p>
 <pre><code>- (void)drawInContext:(CGContextRef)ctx
-</code></pre><p>根据官方图画圆<br><img src="/content/images/2015/12/-----2015-12-31---11-38-29.png" alt=""><br>在此方法中使用UIBezierPath开始画圆。</p>
+</code></pre><p>根据官方图画圆<br><img src="http://ocar0timh.bkt.clouddn.com/-----2015-12-31---11-38-29.png" alt=""><br>在此方法中使用UIBezierPath开始画圆。</p>
 <pre><code>1.   UIBezierPath * path  = [UIBezierPath bezierPath] ; //创建一个UIBezierPath对象
 2.   [path addArcWithCenter:CGPointMake(100, 100) radius:30 startAngle:0 endAngle:_progress*2*M_PI clockwise:YES]; //画圆。clockwise: YES 顺时针,NO 逆时针
 3.   CGContextAddPath(ctx, path.CGPath);
@@ -66,7 +66,7 @@ group.animations = @[strokeStartAnimation,strokeEndAnimation,rotationAnimation];
     layer.frame = CGRectMake(100, 100, 200, 200);
     [self.view.layer addSublayer:layer];
 }
-</code></pre><p><img src="/content/images/2015/12/-----2015-12-31---11-33-59.png" alt=""><br>CALayer的子类如果想接听到它属性的改变,来动态的绘制圆,要在子类中重写 + (BOOL)needsDisplayForKey:(NSString *)key 来接听到改变的属性值返回YES,默认为父类needsDisplayForKey为NO.</p>
+</code></pre><p><img src="http://ocar0timh.bkt.clouddn.com/-----2015-12-31---11-33-59.png" alt=""><br>CALayer的子类如果想接听到它属性的改变,来动态的绘制圆,要在子类中重写 + (BOOL)needsDisplayForKey:(NSString *)key 来接听到改变的属性值返回YES,默认为父类needsDisplayForKey为NO.</p>
 <pre><code>+ (BOOL)needsDisplayForKey:(NSString *)key
  {
     if ([key isEqualToString:@&quot;progress&quot;])
@@ -81,10 +81,10 @@ group.animations = @[strokeStartAnimation,strokeEndAnimation,rotationAnimation];
 {
    _layer.progress += 0.01;
 }
-</code></pre><p><img src="/content/images/2015/12/2015-12-31-11_59_10.gif" alt=""></p>
+</code></pre><p><img src="http://ocar0timh.bkt.clouddn.com/2015-12-31-11_59_10.gif" alt=""></p>
 <p>ok,到目前为止,已经实现了一个加载的进度圆。</p>
-<p>###现在正式开始<br>我们已经知道UIBezierPath画圆有顺逆相反方向。要实现的动画为逆时针方向因此设置 <code>clockwise : NO</code> 我们知道顺时针旋转角度增加,那么逆时针旋转,设置对应的相反角度.<br><img src="/content/images/2015/12/-----2015-12-31---12-25-33.png" alt=""></p>
-<p>假设M点在<code>－ M_PI ／2</code> ,N点在 <code>－M_PI</code>,而我们结束的时候,可以看到M点和N点都到M‘ 和N’的位置。<br><img src="/content/images/2015/12/-----2015-12-31---12-32-49.png" alt=""><br>又因为 顺时针,我们了解到从<code>起始点0</code>到<code>终点－2*M_PI</code> 为一圈,其中相差2*M_PI的倍数。<br>因此假设M 点起始点,N为终点<br>可以得知:</p>
+<p>###现在正式开始<br>我们已经知道UIBezierPath画圆有顺逆相反方向。要实现的动画为逆时针方向因此设置 <code>clockwise : NO</code> 我们知道顺时针旋转角度增加,那么逆时针旋转,设置对应的相反角度.<br><img src="http://ocar0timh.bkt.clouddn.com/-----2015-12-31---12-25-33.png" alt=""></p>
+<p>假设M点在<code>－ M_PI ／2</code> ,N点在 <code>－M_PI</code>,而我们结束的时候,可以看到M点和N点都到M‘ 和N’的位置。<br><img src="http://ocar0timh.bkt.clouddn.com/-----2015-12-31---12-32-49.png" alt=""><br>又因为 顺时针,我们了解到从<code>起始点0</code>到<code>终点－2*M_PI</code> 为一圈,其中相差2*M_PI的倍数。<br>因此假设M 点起始点,N为终点<br>可以得知:</p>
 <pre><code>M 原点 －M_PI_2         , M&apos; 终点  －2*M_PI
 N 原点 －M_PI*3/2     , N&apos; 终点  －4*M_PI
 </code></pre><p>那么M走的路程</p>
