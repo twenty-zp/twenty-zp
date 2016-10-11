@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> iOS使用Objective-C自定义cordova插件 · Twenty's 时间念</title><meta name="description" content="iOS使用Objective-C自定义cordova插件 - Twenty's 时间念"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://blog.img421.com/atom.xml" title="Twenty's 时间念"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/twenty-zp" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">iOS使用Objective-C自定义cordova插件</h1><div class="post-info">Jan 12, 2016</div><div class="post-content"><pre><code>本系列教程为博主初次使用开发,内容如有差错,欢迎指正,敬请谅解。
 </code></pre><p><a href="http://blog.img421.com/2016/01/07/macxia-an-zhuang-ioniche-cordova-bing-yun-xing-iosxiang-mu/">Mac安装ionic和cordova</a>我们已经熟悉,现在使用<code>ionic</code>来创建<code>HTML5</code>使用<code>iOS原生框架</code>等内容的插件。</p>
 <pre><code>说明：图中的cordova 请自动切换为ionic使用
-</code></pre><p>##1.  创建项目<br>打开终端,切换到桌面,然后使用<code>ionic</code>创建一个测试项目,命名CountTest.    </p>
+</code></pre><h2 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1.  创建项目"></a>1.  创建项目</h2><p>打开终端,切换到桌面,然后使用<code>ionic</code>创建一个测试项目,命名CountTest.    </p>
 <pre><code>cd ./Desktop/
 sudo ionic start CountDemo 
  或
@@ -14,7 +14,7 @@ sudo ionic start CountDemo
 若舍去2,3步骤,iOS Bundle ID会自行创建,3中项目名为默认1中的目录名。
 </code></pre><p>我们创建的项目<code>没有可写权限</code>只有<code>可读权限</code>,因为修改CountTest权限为<code>可读可写可执行</code>。<br><img src="http://7xoj45.com1.z0.glb.clouddn.com/D8D7D5BE-15E7-4030-97D9-E5E8C3130474.png" alt=""></p>
 <p>由此可以修改CountTest文件及子文件。</p>
-<p>##2.  编译iOS项目工程<br>通过使用<code>ionic</code>编译出<code>iOS项目结构</code>的目录平台。</p>
+<h2 id="2-编译iOS项目工程"><a href="#2-编译iOS项目工程" class="headerlink" title="2.  编译iOS项目工程"></a>2.  编译iOS项目工程</h2><p>通过使用<code>ionic</code>编译出<code>iOS项目结构</code>的目录平台。</p>
 <p>命令如下:</p>
 <pre><code>//添加iOS项目的平台
 sudo ionic platform add ios 
@@ -31,7 +31,7 @@ sudo ionic build ios
 </code></pre><p><code>. 代表当前文件夹</code> ,打开后结构如下</p>
 <p><img src="http://7xoj45.com1.z0.glb.clouddn.com/3.png" alt="xcode"></p>
 <p>我们自定义的插件都在<code>Plugins</code>文件夹下.</p>
-<p>##3. 插件开发<br>创建一个<code>CountAdd</code>对象,继承<code>CDVPlugin</code>对象.<br>ps:<code>CDVPlugin</code>即为cordova库的连接对象。</p>
+<h2 id="3-插件开发"><a href="#3-插件开发" class="headerlink" title="3. 插件开发"></a>3. 插件开发</h2><p>创建一个<code>CountAdd</code>对象,继承<code>CDVPlugin</code>对象.<br>ps:<code>CDVPlugin</code>即为cordova库的连接对象。</p>
 <p><img src="http://7xoj45.com1.z0.glb.clouddn.com/5.png" alt="CountAdd"></p>
 <p><code>Command + B</code> 编译Xcode,程序报错<code>&#39;Cordova/Cordova.h&#39; file not found</code><br><img src="http://7xoj45.com1.z0.glb.clouddn.com/6.png" alt="error"></p>
 <p>通过查看<code>CordovaLib</code>库文件内容,此库内容中头文件<code>CDV.h</code>包涵全部的类头文件,因此修改如下:<br><img src="http://7xoj45.com1.z0.glb.clouddn.com/7.png" alt="CDV"><br><img src="http://7xoj45.com1.z0.glb.clouddn.com/8.png" alt="correct"></p>
@@ -43,7 +43,7 @@ sudo ionic build ios
 3:    给得到的数+1;
 5:    通过判断给插件的结果设置状态,成功状态 message 所传递的值, 失败状态 message 所传递的值;
 6:    通过调用代理发送插件的结果给对应的ID
-</code></pre><p>##4. 配置<br>通过使用<a href="">WebStorm</a>来打开所创建的<code>CountDemo</code>项目,在项目中的<code>Plugins</code>文件夹中我们创建一个自己的插件目录<code>com.twenty.CountTest</code>,结构如下:</p>
+</code></pre><h2 id="4-配置"><a href="#4-配置" class="headerlink" title="4. 配置"></a>4. 配置</h2><p>通过使用<a href="">WebStorm</a>来打开所创建的<code>CountDemo</code>项目,在项目中的<code>Plugins</code>文件夹中我们创建一个自己的插件目录<code>com.twenty.CountTest</code>,结构如下:</p>
 <p><img src="http://7xoj45.com1.z0.glb.clouddn.com/12.png" alt="webStorm"></p>
 <pre><code>ios:    存放Xcode刚才所创建的CountAdd类,
 www:     存放调用的和CountAdd 所调用的js文件
@@ -78,7 +78,7 @@ plist文件: &lt;resource-file src=&quot;src/ios/PushConfig.plist&quot;/&gt;
 <p><img src="http://7xoj45.com1.z0.glb.clouddn.com/jsconfig.png" alt="15"></p>
 <pre><code>方框中的内容要与plugin.xml 中的方框name一致;
 红色横线的部分即为OC中CDVPlugin的子类要调用的函数名.
-</code></pre><p>##5.    实现调用<br>为了调用,我们使用<a href="">angularjs</a>的方法调用,在<code>html</code>中创建一个<code>button按钮</code>,设置点击的函数和控制器.</p>
+</code></pre><h2 id="5-实现调用"><a href="#5-实现调用" class="headerlink" title="5.    实现调用"></a>5.    实现调用</h2><p>为了调用,我们使用<a href="">angularjs</a>的方法调用,在<code>html</code>中创建一个<code>button按钮</code>,设置点击的函数和控制器.</p>
 <p>ps:<code>tab-dash.html</code>文件中创建了按钮</p>
 <pre><code> &lt;div ng-controller=&quot;countController&quot;&gt;
 &lt;button ng-click=&quot;handleClick()&quot;&gt;点击&lt;/button&gt;
