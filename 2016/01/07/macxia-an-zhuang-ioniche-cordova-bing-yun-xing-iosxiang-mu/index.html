@@ -2,32 +2,25 @@
 
 Ionic(ionicframework一款接近原生的HTML5移动App开发框架　会html css js就可以开发app
 </code></pre><p><a href="http://www.ionic.wang/" target="_blank" rel="external">ionic中文教程</a>讲解的很清楚,此网站翻译了一些<a href="http://ionicframework.com/" target="_blank" rel="external">原官网</a>文档,而且也有诸多例子,让我们能够更好的学习.本教程讲述一下<code>ionic</code>、<code>cordova</code>安装的具体内容.</p>
-<p>###1.    安装npm 、node.js</p>
-<p>#####1.1     打开<code>终端(Terminal)</code>,分别输入以下内容:</p>
-<pre><code>npm -v 
+<h3 id="1-安装npm-、node-js"><a href="#1-安装npm-、node-js" class="headerlink" title="1.    安装npm 、node.js"></a>1.    安装npm 、node.js</h3><h5 id="1-1-打开终端-Terminal-分别输入以下内容"><a href="#1-1-打开终端-Terminal-分别输入以下内容" class="headerlink" title="1.1     打开终端(Terminal),分别输入以下内容:"></a>1.1     打开<code>终端(Terminal)</code>,分别输入以下内容:</h5><pre><code>npm -v 
 node -v 
 </code></pre><p><img src="http://ocar0timh.bkt.clouddn.com/8AA873F9-C4F8-4748-91CA-6FD44258A6E1.png" alt="nodejs"></p>
 <p>如果<code>npm</code>或者<code>node</code>可能并非最新版本或者没有安装,可以到<a href="https://nodejs.org/en/" target="_blank" rel="external">nodejs官网</a>下载最新版本.<br><img src="http://ocar0timh.bkt.clouddn.com/5B63EB2E-F9F1-47A8-9CC7-84CE4BA22943.png" alt="nodejs官网"></p>
 <p>下载好后双击下载的<code>pkg</code>包默认安装即可。</p>
-<p>###2.安装ionic和cordova</p>
-<p>#####2.1        因为某些原因,国内的网络安装ionic和cordova 会出现错误,因此要跳过某些墙。采用<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝NPM镜像</a>。打开终端直接输入以下命令即可。</p>
-<pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org
-</code></pre><p>#####2.2          通过淘宝NPM镜像就可以安装ionic和cordova包.<br>输入在终端中以下内容:</p>
+<h3 id="2-安装ionic和cordova"><a href="#2-安装ionic和cordova" class="headerlink" title="2.安装ionic和cordova"></a>2.安装ionic和cordova</h3><h5 id="2-1-因为某些原因-国内的网络安装ionic和cordova-会出现错误-因此要跳过某些墙。采用淘宝NPM镜像。打开终端直接输入以下命令即可。"><a href="#2-1-因为某些原因-国内的网络安装ionic和cordova-会出现错误-因此要跳过某些墙。采用淘宝NPM镜像。打开终端直接输入以下命令即可。" class="headerlink" title="2.1        因为某些原因,国内的网络安装ionic和cordova 会出现错误,因此要跳过某些墙。采用淘宝NPM镜像。打开终端直接输入以下命令即可。"></a>2.1        因为某些原因,国内的网络安装ionic和cordova 会出现错误,因此要跳过某些墙。采用<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝NPM镜像</a>。打开终端直接输入以下命令即可。</h5><pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org
+</code></pre><h5 id="2-2-通过淘宝NPM镜像就可以安装ionic和cordova包"><a href="#2-2-通过淘宝NPM镜像就可以安装ionic和cordova包" class="headerlink" title="2.2          通过淘宝NPM镜像就可以安装ionic和cordova包."></a>2.2          通过淘宝NPM镜像就可以安装ionic和cordova包.</h5><p>输入在终端中以下内容:</p>
 <pre><code>sudo cnpm install -g cordova ionic
 </code></pre><p><img src="http://ocar0timh.bkt.clouddn.com/63DFE2E1-DA6D-4DE0-B696-7BD19E0A8B33.png" alt="ionic"></p>
 <p><strong>ps:等待时间可能会长,请耐心等候</strong></p>
 <p>输出以上内容即可安装成功。</p>
-<p>#####2.3        安装成功以后,要查看安装的包内容是否全部都已安装.运行命令:</p>
-<pre><code>ionic info 
+<h5 id="2-3-安装成功以后-要查看安装的包内容是否全部都已安装-运行命令"><a href="#2-3-安装成功以后-要查看安装的包内容是否全部都已安装-运行命令" class="headerlink" title="2.3        安装成功以后,要查看安装的包内容是否全部都已安装.运行命令:"></a>2.3        安装成功以后,要查看安装的包内容是否全部都已安装.运行命令:</h5><pre><code>ionic info 
 </code></pre><p><img src="http://ocar0timh.bkt.clouddn.com/318760EA-5A18-44FE-84A5-E078E6A9A857.png" alt="ionic info"></p>
 <p>上图中所显示的<code>Not installed</code>代表未安装,安装方式即为红色给出的内容,照着内容安装即可以.<strong>ps:不安装的情况下就是不能在此环境下编译等,但是对于浏览器运行无影响.</strong></p>
 <pre><code>`ios-sim`代表模拟器运行环境,
 `ios-deploy`代表真机运行环境。
 </code></pre><p><img src="http://ocar0timh.bkt.clouddn.com/062CB032-3E75-4F47-B921-D9BF9975FECD.png" alt="ios_sim"></p>
 <p><strong>ps:博主只安装了模拟器环境</strong></p>
-<p>###3.    项目</p>
-<p>#####3.1        项目生成</p>
-<p>终端运行</p>
+<h3 id="3-项目"><a href="#3-项目" class="headerlink" title="3.    项目"></a>3.    项目</h3><h5 id="3-1-项目生成"><a href="#3-1-项目生成" class="headerlink" title="3.1        项目生成"></a>3.1        项目生成</h5><p>终端运行</p>
 <pre><code>//进入桌面
 cd ./Desktop 
 //生成demo_1文件项目
