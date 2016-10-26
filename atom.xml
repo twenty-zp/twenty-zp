@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.img421.com/"/>
-  <updated>2016-04-25T05:25:00.000Z</updated>
+  <updated>2016-10-26T07:52:30.000Z</updated>
   <id>http://blog.img421.com/</id>
   
   <author>
@@ -14,6 +14,73 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>判断一个整数是否回文</title>
+    <link href="http://blog.img421.com/2016/10/26/%E7%AE%97%E6%B3%953-%E5%9B%9E%E6%96%87%E6%95%B4%E6%95%B0/"/>
+    <id>http://blog.img421.com/2016/10/26/算法3-回文整数/</id>
+    <published>2016-10-26T07:40:48.000Z</published>
+    <updated>2016-10-26T07:52:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="给出一个整形判断是否是回文数"><a href="#给出一个整形判断是否是回文数" class="headerlink" title="给出一个整形判断是否是回文数"></a>给出一个整形判断是否是回文数</h2><p>1.不考虑整形溢出;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">/// 回文数</div><div class="line">class Solution1 &#123;</div><div class="line">    func isPalindrome(x: Int) -&gt; Bool &#123;</div><div class="line">        if (x&lt;0  || (x != 0 &amp;&amp; x % 10 == 0)) &#123;return false&#125;  //判断小0,并且尾数为0的数</div><div class="line">        var tmpX = x</div><div class="line">        var result = 0</div><div class="line">        while tmpX &gt; 0 &#123;</div><div class="line">            result = tmpX % 10 + result * 10</div><div class="line">            tmpX = tmpX / 10</div><div class="line">        &#125;</div><div class="line">        return result == x</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;给出一个整形判断是否是回文数&quot;&gt;&lt;a href=&quot;#给出一个整形判断是否是回文数&quot; class=&quot;headerlink&quot; title=&quot;给出一个整形判断是否是回文数&quot;&gt;&lt;/a&gt;给出一个整形判断是否是回文数&lt;/h2&gt;&lt;p&gt;1.不考虑整形溢出;&lt;/p&gt;
+&lt;figure
+    
+    </summary>
+    
+    
+      <category term="LeetCode算法" scheme="http://blog.img421.com/tags/LeetCode%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法-反转整形</title>
+    <link href="http://blog.img421.com/2016/10/26/%E7%AE%97%E6%B3%951-%E5%8F%8D%E8%BD%AC%E6%95%B4%E5%BD%A2/"/>
+    <id>http://blog.img421.com/2016/10/26/算法1-反转整形/</id>
+    <published>2016-10-26T02:30:48.000Z</published>
+    <updated>2016-10-26T07:50:01.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>从入门到“崩溃”,算法是硬伤.</p>
+</blockquote>
+<h2 id="反转整形"><a href="#反转整形" class="headerlink" title="反转整形"></a>反转整形</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Example1: x = 123, return 321</div><div class="line"></div><div class="line">Example2: x = -123, return -321</div></pre></td></tr></table></figure>
+<h3 id="1-字符串法"><a href="#1-字符串法" class="headerlink" title="1.字符串法"></a>1.字符串法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">class Solution&#123;</div><div class="line">    /// 字符串法</div><div class="line">    func reverse(x: Int) -&gt; Int &#123; </div><div class="line">        var negative: Bool = false</div><div class="line">        var m : Int = 0</div><div class="line">        if x &lt; 0 &#123; </div><div class="line">            m = x * -1</div><div class="line">            negative = true</div><div class="line">        &#125;</div><div class="line">        var xStr = String(m)</div><div class="line">        let c: [Character] =  xStr.characters.reversed()</div><div class="line">        let rStr = String(c)</div><div class="line">        if negative &#123;</div><div class="line">            return   -Int(rStr)!</div><div class="line">        &#125;</div><div class="line">            return Int(rStr)!;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-模十法"><a href="#2-模十法" class="headerlink" title="2.模十法"></a>2.模十法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class Solution&#123;</div><div class="line">    /// 模十法</div><div class="line">    func reverseMo10(x: Int) -&gt; Int &#123;</div><div class="line">        var result = 0</div><div class="line">        var tmp = abs(x)</div><div class="line">        while tmp &gt; 0 &#123;</div><div class="line">            result = result*10 + tmp%10</div><div class="line">            tmp/=10</div><div class="line">        &#125;</div><div class="line">        return x &gt; 0 ? result : -result</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;从入门到“崩溃”,算法是硬伤.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;反转整形&quot;&gt;&lt;a href=&quot;#反转整形&quot; class=&quot;headerlink&quot; title=&quot;反转整形&quot;&gt;&lt;/a&gt;反转整形&lt;/h2&gt;&lt;figure class=&quot;
+    
+    </summary>
+    
+    
+      <category term="LeetCode算法" scheme="http://blog.img421.com/tags/LeetCode%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>取出整形数组中的两数之和是给出值得数组</title>
+    <link href="http://blog.img421.com/2016/10/24/%E7%AE%97%E6%B3%952-%E5%8F%96%E5%87%BA%E6%95%B4%E5%BD%A2%E6%95%B0%E7%BB%84%E4%B8%AD%E5%92%8C%E4%B8%BA%E7%BB%99%E5%87%BA%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0/"/>
+    <id>http://blog.img421.com/2016/10/24/算法2-取出整形数组中和为给出值的整数/</id>
+    <published>2016-10-24T03:40:48.000Z</published>
+    <updated>2016-10-26T07:50:20.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="LeetCode算法" scheme="http://blog.img421.com/tags/LeetCode%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Xcode8 安装Alcatraz使用插件</title>
@@ -1088,145 +1155,6 @@ sudo mv bin/brew /usr/local/bin
     <summary type="html">
     
       &lt;p&gt;Objective-C 不同于 其他语言,它是动态的。何为动态，就是说它在执行一个方法的时候，比如[object method]并不是去直接执行,而是将method当作一条消息发送,这个消息由object来处理,这个消息可能被转发给另外一个对象。例[object init]
-    
-    </summary>
-    
-    
-      <category term=" - iOS技术" scheme="http://blog.img421.com/tags/iOS%E6%8A%80%E6%9C%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Reveal App试用时间破解</title>
-    <link href="http://blog.img421.com/2016/02/23/reveal-appshi-yong-shi-jian-po-jie/"/>
-    <id>http://blog.img421.com/2016/02/23/reveal-appshi-yong-shi-jian-po-jie/</id>
-    <published>2016-02-23T06:32:42.000Z</published>
-    <updated>2016-02-23T06:43:33.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文转自<a href="http://johnwong.github.io/mobile/2015/05/20/hack-reveal-app.html" target="_blank" rel="external">John Wong</a>.<code>亲测可用</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">以下内容仅用于学习逆向工程。用到的工具有Hopper，lldb。</div></pre></td></tr></table></figure>
-<p>iOS应用调试利器Reveal不必多介绍。应用可以免费试用。目测时间校验并不严谨，修改系统时间就可以将试用状态从已过期变为未过期。先改时间到多天以后，运行会弹出“Your free trial of Reveal has expired”。接下来切入正题。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">更新：以下方法在1.6.1版本中仍然试用。如果你不关心探索过程，寻找关键代码这一节略过，动手的时候绕过应用自身校验这一节与绕过过期弹窗交换顺序。</div></pre></td></tr></table></figure>
-<h3 id="寻找关键代码"><a href="#寻找关键代码" class="headerlink" title="寻找关键代码"></a>寻找关键代码</h3><pre><code>使用的是1.5.1的Reveal，先拖入Hopper。根据提示我们猜测使用过期的一些代码可能与“trial”有关，在左侧的搜索框搜索这个词。
-</code></pre><p><img src="http://dn-johnwong.qbox.me/images/2015-05-20-hack-reveal-app-01.png" alt=""></p>
-<p>许多结果都是IBATrialModeReminderWindowController来自这个类，看起来是试用的提示窗。可以看到初始化方法[IBATrialModeReminderWindowController controller]及其地址0000000100077940。尝试用GDB调试，打开命令行，切换到目录/Applications/Reveal.app/Contents/MacOS，然后使用GDB调试。<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">gdb Reveal</div><div class="line">(gdb) b *0x0000000100077940</div><div class="line">(gdb) r</div><div class="line">(gdb) bt</div></pre></td></tr></table></figure></p>
-<p>结果看到调用堆栈如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#0  0x0000000100077940 in std::__1::shared_ptr&lt;IBATrialDateStorageInterface&gt;::shared_ptr&lt;IBANSUserDefaultsTrialDateStorage, void&gt;(IBANSUserDefaultsTrialDateStorage*) ()</div><div class="line">#1  0x0000000100079779 in std::__1::shared_ptr&lt;IBATrialDateStorageInterface&gt;::shared_ptr&lt;IBANSUserDefaultsTrialDateStorage, void&gt;(IBANSUserDefaultsTrialDateStorage*) ()</div><div class="line">#2  0x000000010007992a in std::__1::shared_ptr&lt;IBATrialDateStorageInterface&gt;::shared_ptr&lt;IBANSUserDefaultsTrialDateStorage, void&gt;(IBANSUserDefaultsTrialDateStorage*) ()</div><div class="line">#3  0x000000010001f534 in _mh_execute_header ()</div></pre></td></tr></table></figure></p>
-<p>调用堆栈感觉不太对劲，放弃。</p>
-<h3 id="绕过过期弹窗"><a href="#绕过过期弹窗" class="headerlink" title="绕过过期弹窗"></a>绕过过期弹窗</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">之前搜索结果还有一些来自IBATrialModeReminderPresenter这个类。-[IBATrialModeReminderPresenter shouldShowTrialModeSheet]方法看起来判断是否显示试用窗口。0000000100079678处有跳转的汇编指令，我们尝试改改它。选中这一行，选择菜单栏的Modify &gt; Assemble Instruction...，将jne修改成je，然后点击Assemble and Go Next。</div></pre></td></tr></table></figure>
-<p><img src="http://dn-johnwong.qbox.me/images/2015-05-20-hack-reveal-app-02.png" alt=""></p>
-<p>然后生成新的可执行文件。备份/Applications/Reveal.app/Contents/MacOS/Reveal。点击File &gt; Produce New Executable…，并替换为新的可执行文件。运行会提示This copy of Reveal is damaged。</p>
-<h3 id="绕过应用自身校验"><a href="#绕过应用自身校验" class="headerlink" title="绕过应用自身校验"></a>绕过应用自身校验</h3><p>浏览一堆方法，看到了[IBAAppDelegate verifyCodeSignature]这个方法，用来在应用启动时做签名校验。部分汇编代码如下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">000000010008f3de         je         0x10008f3e9</div><div class="line"></div><div class="line">000000010008f3e0         test       r15b, r15b</div><div class="line">000000010008f3e3         jne        0x10008f662</div><div class="line"></div><div class="line">000000010008f3e9         mov        rax, qword [ds:objc_cls_ref_NSAlert]</div><div class="line">000000010008f3f0         mov        qword [ss:rbp-0x70+var_48], rax</div><div class="line">000000010008f3f4         mov        rdi, qword [ds:objc_cls_ref_NSBundle]</div><div class="line">000000010008f3fb         mov        rsi, qword [ds:0x1001dda18]</div><div class="line">000000010008f402         mov        rbx, qword [ds:imp___got__objc_msgSend]</div><div class="line">000000010008f409         call       rbx</div><div class="line">000000010008f40b         mov        rdi, rax</div><div class="line">000000010008f40e         call       imp___stubs__objc_retainAutoreleasedReturnValue</div><div class="line">000000010008f413         mov        qword [ss:rbp-0x70+var_56], rax</div><div class="line">000000010008f417         mov        rsi, qword [ds:0x1001ddca8]</div><div class="line">000000010008f41e         lea        rdx, qword [ds:cfstring_This_copy_of_Reveal_is_damaged] ; @&quot;This copy of Reveal is damaged&quot;</div></pre></td></tr></table></figure>
-<p>方法内的第一个je跳转到0x10008f3e9。从这个地址往下看，能够看到”This copy of Reveal is damaged”，说明这个跳转会提示签名问题。我们尝试将这里的je替换为jne，应用崩溃了。将je替换为jmp 0x10008f662，再次运行Reveal。弹出框提示“Insecure update error!”。点击确定，Reveal可以运行起来，绕过了试用限制的弹窗。</p>
-<h3 id="屏蔽升级功能"><a href="#屏蔽升级功能" class="headerlink" title="屏蔽升级功能"></a>屏蔽升级功能</h3><p>每次打开都会弹窗都会提示这个，还是不爽。试着用签名的方法解决，遇到问题签名失败。读这个提示框的内容，看到了Sparkle，应该是个应用升级组件。那么把升级功能去掉应该就不会弹窗了。搜索Sparkle，找到一个方法-[IBAAppDelegate configureSparkle]。<br>我们能够看到方法内先判断是否Sparkle是否enable，然后做Sparkle的初始化。我们只需要把跳转语句je改为jne，那么升级功能就会去掉，也就不会弹出那个框。试了一下果真如此。至此过程全部结束.</p>
-<p><img src="http://7xoj45.com1.z0.glb.clouddn.com/2015-05-20-hack-reveal-app-03.png" alt="屏蔽"></p>
-<h3 id="去掉标题栏过期提示"><a href="#去掉标题栏过期提示" class="headerlink" title="去掉标题栏过期提示"></a>去掉标题栏过期提示</h3><p>窗口右上角的过期提示有点惹眼，去掉。找到-[IBAMainWindowController    configureTitleBarAccessoryView]这个方法，把下面的第一个跳转语句改成nop.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">000000010007be25 nop</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文转自&lt;a href=&quot;http://johnwong.github.io/mobile/2015/05/20/hack-reveal-app.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;John Wong&lt;/a&gt;.&lt;code&gt;亲测可用&lt;/c
-    
-    </summary>
-    
-    
-      <category term=" - 逆向工程" scheme="http://blog.img421.com/tags/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS程序员学习网站</title>
-    <link href="http://blog.img421.com/2016/01/22/ioscheng-xu-yuan-xue-xi-wang-zhan/"/>
-    <id>http://blog.img421.com/2016/01/22/ioscheng-xu-yuan-xue-xi-wang-zhan/</id>
-    <published>2016-01-22T03:10:52.000Z</published>
-    <updated>2016-01-22T13:57:40.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>#前言<br>早期开发iOS所做的资源等都是用文本编辑保存起来,每次换电脑后查找起来都要先从<a href="https://bitbucket.org/" target="_blank" rel="external">Bitbucket</a> git下来很不方便,如今整理一下学习资源,免得以后再用某些东西的时候重复查找,而且也不方便.</p>
-<p>#正题</p>
-<p>##入门级</p>
-<ul>
-<li><a href="http://www.cocoachina.com/" target="_blank" rel="external">CocoaChina</a>创立于2008年3月，是一个苹果产品和 iOS 开发的中文社区网站，主要为苹果产品开发者提供资讯、信息及服务。</li>
-<li>Apple的官方文档，尤其是关于人机界面设计的和OC的，网址不固定，XCode中可以查看。（这里还建议使用Dash管理API文档）</li>
-</ul>
-<p>##进阶级</p>
-<ol>
-<li>CS193p，视频学习的首选教程<br><a href="http://web.stanford.edu/class/cs193p/cgi-bin/drupal/" target="_blank" rel="external">CS193p iPhone Application Development</a></li>
-<li><p>英文学习网站<br><a href="www.google.com">Google</a> (有问题，找谷歌)</p>
-<p><a href="www.github.com">Github</a> (源码，直观且易学)</p>
-<p><a href="http://stackoverflow.com/" target="_blank" rel="external">Stackoverflow</a> (你遇到的程序问题，基本都在这里)</p>
-<p><a href="http://www.raywenderlich.com/" target="_blank" rel="external">Raywenderlich</a>(墙裂推荐@.@)</p>
-<p><a href="https://www.objc.io/" target="_blank" rel="external">objc.io</a>(深度解读Objective-C)</p>
-<p><a href="http://nshipster.com/" target="_blank" rel="external">NSHipster</a> (a journal of the overlooked bits in Objective-C and Cocoa.)<a href="http://nshipster.cn/" target="_blank" rel="external">中文版</a></p>
-<p><a href="http://www.thinkandbuild.it/" target="_blank" rel="external">Think&amp;Build</a><br>(Tutorials about OS X,iOS and web development)<br>####中文博客(大多为微博大牛的博客)<br><a href="http://blog.devtang.com/" target="_blank" rel="external">唐巧的技术博客</a>(拥有深厚功力者,京城iOS一哥@唐巧)</p>
-</li>
-</ol>
-<p><a href="http://beyondvincent.com/" target="_blank" rel="external">破船之家</a> (iOS文章绝对高产者，据说跑起马拉松也是在程序员中首屈一指@BeyondVincent)</p>
-<p><a href="http://onevcat.com/" target="_blank" rel="external">OneV’s Den</a> (喵神,隐居樱花之国，躬耕于上乘游戏之作@onevcat)</p>
-<p><a href="http://blog.t-xx.me/" target="_blank" rel="external">txx’s blog</a> (虾神，出任上市CTO不是梦@糖炒小虾_txx)</p>
-<p><a href="http://iosinit.com/" target="_blank" rel="external">iOS init</a> (如果你对objc.io的文章情有独钟，Come here@方一雄)</p>
-<p><a href="http://www.ios-wiki.com/" target="_blank" rel="external">iOS Wiki</a> (iOS资讯期刊 @吴发伟Ted)</p>
-<p><a href="http://yingkong1987.github.io/" target="_blank" rel="external">yingkong1987 iOS Dev Blog</a> (给我很多帮助的兔子@兔be南玻1)</p>
-<p><a href="http://blog.xcodev.com/" target="_blank" rel="external">Xcode Dev</a> (资深iOS开发工程师@谌启亮) </p>
-<p><a href="http://www.isaced.com/" target="_blank" rel="external">isaced</a> (iOS Programmer@isaced) </p>
-<p><a href="http://answerhuang.duapp.com/" target="_blank" rel="external">answer_huang</a> (iOS developer, Python fans@answer-huang) </p>
-<p><a href="http://blog.cocoabit.com/" target="_blank" rel="external">Cocoabit</a> (iOS 码农，攻城狮。喜欢各种有意思的东西。@6david9) </p>
-<p><a href="http://geeklu.com/" target="_blank" rel="external">Luke’s Homepage|卢克</a> (Mac，iOS开发@卢小克)</p>
-<p><a href="http://blog.csdn.net/ysy441088327" target="_blank" rel="external">余书懿</a> (代表作:&lt;豆豆音乐&gt; @余书懿)</p>
-<p><a href="http://wangling.me/" target="_blank" rel="external">Creator of moke</a>(Creator of 墨客(moke.com) and Voodo(moke.com/voodo)@an00na)</p>
-<p><a href="http://iiiyu.com/" target="_blank" rel="external">萧宸宇</a> (注定漂泊的人@Sumi-iYu) </p>
-<p><a href="http://webfrogs.me/" target="_blank" rel="external">webfrogs’ Homepage</a> (iOS开发，开源爱好者 @webfrogs)</p>
-<p><a href="http://esoftmobile.com/" target="_blank" rel="external">Esoft Mobile</a> (iOS开发者 esoftmobile.com @TracyYih)</p>
-<p><a href="http://blog.leezhong.com/" target="_blank" rel="external">无网不剩</a> (iOS开发@李忠)</p>
-<p><a href="http://www.lofter.com/shareblog/xxblog?fpost=19d861_5619fa" target="_blank" rel="external">小小技术博客 的推荐</a></p>
-<p><a href="http://dev.swiftguide.cn/" target="_blank" rel="external">Swift 语言指南</a><br>(@SwiftLanguag 学习swift的好资源)</p>
-<p><a href="http://www.devdiv.com/" target="_blank" rel="external">DevDiv开发者社区</a></p>
-<p><a href="http://blog.ibireme.com/" target="_blank" rel="external">Garan no Dou</a>(一只魔法师的工坊)</p>
-<p><a href="http://foggry.com/blog/2014/04/25/githubyou-xiu-xiang-mu-ios/" target="_blank" rel="external">王中周的技术博客</a></p>
-<p><a href="http://tech.glowing.com/" target="_blank" rel="external">Glow 技术团队博客</a></p>
-<p><a href="http://www.superqq.com/blog/archives/" target="_blank" rel="external">刚刚在线</a></p>
-<p><a href="http://adad184.com/" target="_blank" rel="external">里脊串的开发随笔</a></p>
-<p><a href="https://lvwenhan.com/" target="_blank" rel="external">岁寒</a>(全栈工程师)</p>
-<p><a href="http://www.freebuf.com/" target="_blank" rel="external">FreeBuf</a>(关注黑客与极客)</p>
-<p><a href="http://www.ioscookies.com/" target="_blank" rel="external">ioscookies</a>(一个老外总结的第三方库)</p>
-<p>####<a href="https://github.com/tangqiaoboy/iOSBlogCN" target="_blank" rel="external">更多的优秀博客集锦</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;#前言&lt;br&gt;早期开发iOS所做的资源等都是用文本编辑保存起来,每次换电脑后查找起来都要先从&lt;a href=&quot;https://bitbucket.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Bitbucket&lt;/a&gt; git下来很不方便,如今整
-    
-    </summary>
-    
-    
-      <category term=" - iOS资源" scheme="http://blog.img421.com/tags/iOS%E8%B5%84%E6%BA%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS开发之如何跳到系统设置界面</title>
-    <link href="http://blog.img421.com/2016/01/21/ioskai-fa-zhi-ru-he-tiao-dao-xi-tong-she-zhi-li-de-wifijie-mian/"/>
-    <id>http://blog.img421.com/2016/01/21/ioskai-fa-zhi-ru-he-tiao-dao-xi-tong-she-zhi-li-de-wifijie-mian/</id>
-    <published>2016-01-21T08:44:38.000Z</published>
-    <updated>2016-01-22T13:58:13.000Z</updated>
-    
-    <content type="html"><![CDATA[<pre><code>NSURL *url = [NSURL URLWithString:@&quot;prefs:root=WIFI&quot;];
-if ([[UIApplication sharedApplication] canOpenURL:url])
-{
-[[UIApplication sharedApplication] openURL:url];
-}
-</code></pre><p>在项目中的<code>info.plist</code>中添加 <code>URL Types</code></p>
-<p>添加 <code>URL Schemes</code> 为 <code>prefs</code><br><img src="http://7xoj45.com1.z0.glb.clouddn.com/F1FF00C8-9658-42FB-BC85-60C23B001A41.png" alt=""></p>
-<p>#参数配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">About — prefs:root=General&amp;path=About</div><div class="line">Accessibility — prefs:root=General&amp;path=ACCESSIBILITY</div><div class="line">Airplane Mode On — prefs:root=AIRPLANE_MODE</div><div class="line">Auto-Lock — prefs:root=General&amp;path=AUTOLOCK</div><div class="line">Brightness — prefs:root=Brightness</div><div class="line">Bluetooth — prefs:root=General&amp;path=Bluetooth</div><div class="line">Date &amp; Time — prefs:root=General&amp;path=DATE_AND_TIME</div><div class="line">FaceTime — prefs:root=FACETIME</div><div class="line">General — prefs:root=General</div><div class="line">Keyboard — prefs:root=General&amp;path=Keyboard</div><div class="line">iCloud — prefs:root=CASTLE</div><div class="line">iCloud Storage &amp; Backup — prefs:root=CASTLE&amp;path=STORAGE_AND_BACKUP</div><div class="line">International — prefs:root=General&amp;path=INTERNATIONAL</div><div class="line">Location Services — prefs:root=LOCATION_SERVICES</div><div class="line">Music — prefs:root=MUSIC</div><div class="line">Music Equalizer — prefs:root=MUSIC&amp;path=EQ</div><div class="line">Music Volume Limit — prefs:root=MUSIC&amp;path=VolumeLimit</div><div class="line">Network — prefs:root=General&amp;path=Network</div><div class="line">Nike + iPod — prefs:root=NIKE_PLUS_IPOD</div><div class="line">Notes — prefs:root=NOTES</div><div class="line">Notification — prefs:root=NOTIFICATIONS_ID</div><div class="line">Phone — prefs:root=Phone</div><div class="line">Photos — prefs:root=Photos</div><div class="line">Profile — prefs:root=General&amp;path=ManagedConfigurationList</div><div class="line">Reset — prefs:root=General&amp;path=Reset</div><div class="line">Safari — prefs:root=Safari</div><div class="line">Siri — prefs:root=General&amp;path=Assistant</div><div class="line">Sounds — prefs:root=Sounds</div><div class="line">Software Update — prefs:root=General&amp;path=SOFTWARE_UPDATE_LINK</div><div class="line">Store — prefs:root=STORE</div><div class="line">Twitter — prefs:root=TWITTER</div><div class="line">Usage — prefs:root=General&amp;path=USAGE</div><div class="line">VPN — prefs:root=General&amp;path=Network/VPN</div><div class="line">Wallpaper — prefs:root=Wallpaper</div><div class="line">Wi-Fi — prefs:root=WIFI</div></pre></td></tr></table></figure></p>
-<p>文章转载自<a href="http://www.superqq.com/blog/2015/12/01/jump-setting-per-page/" target="_blank" rel="external">刚刚在线</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;pre&gt;&lt;code&gt;NSURL *url = [NSURL URLWithString:@&amp;quot;prefs:root=WIFI&amp;quot;];
-if ([[UIApplication sharedApplication] canOpenURL:url])
-{
-[[UIAp
     
     </summary>
     
