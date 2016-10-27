@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.img421.com/"/>
-  <updated>2016-10-26T07:57:30.000Z</updated>
+  <updated>2016-10-27T09:33:51.000Z</updated>
   <id>http://blog.img421.com/</id>
   
   <author>
@@ -16,20 +16,75 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>算法4-将罗马数字转换为整数</title>
+    <link href="http://blog.img421.com/2016/10/27/%E7%AE%97%E6%B3%954-%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B4%E6%95%B0/"/>
+    <id>http://blog.img421.com/2016/10/27/算法4-罗马数字转换为整数/</id>
+    <published>2016-10-27T07:50:29.000Z</published>
+    <updated>2016-10-27T09:33:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="给出一个罗马数-将其转换为整数"><a href="#给出一个罗马数-将其转换为整数" class="headerlink" title="给出一个罗马数,将其转换为整数."></a>给出一个罗马数,将其转换为整数.</h2><p>保证范围为1-3999.</p>
+<p><a href="https://github.com/twenty-zp/LeetCodeAlgorithm.git" target="_blank" rel="external">源代码</a></p>
+<blockquote>
+<p>罗马数字采用七个罗马字母作数字、即Ⅰ（1）、X（10）、C（100）、M（1000）、V（5）、L（50）、D（500）</p>
+</blockquote>
+<p>计数方式 :    <a href="http://baike.baidu.com/link?url=OtUwcBrsZYHwhgHXm4HIxgVnrhU0bD5yNuxXYxSVP6flX8-CMXjuPU1aJcIIyHw4VnwLaquM6uhqhMi0ZXMdO_" target="_blank" rel="external">百度百科</a>、<a href="https://zh.wikipedia.org/zh-hans/%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97" target="_blank" rel="external">维基百科</a></p>
+<ul>
+<li>重复数次：一个罗马数字重复几次，就表示这个数的几倍。如 Ⅲ=3</li>
+<li><p>右加左减</p>
+<ul>
+<li>小的数字在大的数字的右边，所表示的数等于这些数字相加得到的数，如 Ⅷ=8、Ⅻ=12</li>
+<li>小的数字（限于 Ⅰ、X 和 C）在大的数字的左边，所表示的数等于大数减小数得到的数，如 Ⅳ=4、Ⅸ=9</li>
+<li>右加数字不可连续超过三位，比如14写成XIV，而非XIIII。</li>
+<li>左减数字必须为一位，比如8写成VIII，而非IIX。</li>
+</ul>
+</li>
+<li><p>在罗马数字的上方加上一条横线或者加上下标的Ⅿ，表示将这个数乘以1000，即是原数的1000倍,如果上方有两条横线，即是原数的1000000倍。</p>
+</li>
+<li>数码限制：<ul>
+<li>同一数码最多只能连续出现三次，如40不可表示为XXXX，而要表示为XL<br><a href="http://literacy.kent.edu/Minigrants/Cinci/romanchart.htm" target="_blank" rel="external">Roman Numerals Chart</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h4 id="1-通过枚举-enum"><a href="#1-通过枚举-enum" class="headerlink" title="1.通过枚举(enum)"></a>1.通过枚举(enum)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line">enum Roman: String &#123;</div><div class="line">    case I, V, X, L, C, D, M</div><div class="line">    </div><div class="line">    func getRomanValue() -&gt; Int &#123;</div><div class="line">        switch self &#123;</div><div class="line">        case .I:</div><div class="line">            return 1</div><div class="line">        case .V:</div><div class="line">            return 5</div><div class="line">        case .X:</div><div class="line">            return 10</div><div class="line">        case .L:</div><div class="line">            return 50</div><div class="line">        case .C:</div><div class="line">            return 100</div><div class="line">        case .D:</div><div class="line">            return 500</div><div class="line">        case .M:</div><div class="line">            return 1000</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    //判断是否这三种类型，如果左边为三种则减</div><div class="line">    func isSubtract() -&gt; Bool &#123;</div><div class="line">        switch self &#123;</div><div class="line">        case .I,.X,.C :</div><div class="line">            return true</div><div class="line">        default:</div><div class="line">            return false</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//根据索引获取字符串当前索引字符</div><div class="line">extension String  &#123;</div><div class="line">    </div><div class="line">    func characterAtIndex(index: Int) -&gt; Character? &#123;</div><div class="line">        var cur = 0</div><div class="line">        for char in self.characters &#123;</div><div class="line">            if cur == index &#123;</div><div class="line">                return char</div><div class="line">            &#125;</div><div class="line">            cur += 1</div><div class="line">        &#125;</div><div class="line">        return nil</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//罗马数 -&gt; 整数</div><div class="line">class Solution &#123;</div><div class="line">    static func romanToInt(s: String) -&gt; Int &#123;</div><div class="line">        var intValue = 0</div><div class="line">        if s.characters.count == 1 &#123;</div><div class="line">            return Roman(rawValue: s)!.getRomanValue()</div><div class="line">        &#125;</div><div class="line">        //1.</div><div class="line">        let c_reversed = s.characters.reversed()</div><div class="line">        for (index,c) in c_reversed.enumerated() &#123;</div><div class="line">            </div><div class="line">            if (index+1) % 2  == 0 &#123;</div><div class="line">                continue</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            let roman_after = Roman(rawValue: String.init(c))</div><div class="line">            //2.</div><div class="line">            if (index+1 == s.characters.count) &#123;</div><div class="line">                return roman_after!.getRomanValue()+intValue</div><div class="line">            &#125;</div><div class="line">              </div><div class="line">            let c_curr = String(c_reversed).characterAtIndex(index: index+1)!</div><div class="line">            let roman =  Roman(rawValue: String.init(c_curr))</div><div class="line">      	  		//3.</div><div class="line">            if ((roman_after!.getRomanValue() &gt; roman!.getRomanValue()) &amp;&amp;  roman!.isSubtract())</div><div class="line">            &#123;</div><div class="line">                    intValue =  intValue + roman_after!.getRomanValue() - roman!.getRomanValue()</div><div class="line">            &#125;else</div><div class="line">            &#123;</div><div class="line">                    intValue =  intValue + roman_after!.getRomanValue() + roman!.getRomanValue()</div><div class="line">            &#125;</div><div class="line">           </div><div class="line">        &#125;</div><div class="line">        return intValue</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<ol>
+<li>反转字符为字符数组.目的: 使罗马数从右向左依次计算</li>
+<li>判断如果为最后一个,则整合全部的数</li>
+<li>通过判断左边的字符值和右边的字符值比较大小，并且左边的字符符合罗马数I、X、L 时,则大的减去小的</li>
+</ol>
+</blockquote>
+<p><strong>以上的枚举通过使用字典存储</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">class Solution1 &#123;</div><div class="line"></div><div class="line">        var romanDic: [String: Int] = [&quot;I&quot;: 1,</div><div class="line">                                       &quot;V&quot;: 5,</div><div class="line">                                       &quot;X&quot;: 10,</div><div class="line">                                       &quot;L&quot;: 50,</div><div class="line">                                       &quot;C&quot;: 100,</div><div class="line">                                       &quot;D&quot;: 500,</div><div class="line">                                       &quot;M&quot;: 1000]</div><div class="line">        func romanToInt(s: String) -&gt; Int &#123;</div><div class="line">            if s.characters.count == 1 &#123;</div><div class="line">                return romanDic[s] == nil ? romanDic[s]! : 0</div><div class="line">        &#125;</div><div class="line">        //1.</div><div class="line">                let c_reversed = s.characters.reversed()</div><div class="line">        var intValue = 0</div><div class="line"></div><div class="line">        for (index,c) in c_reversed.enumerated() &#123;</div><div class="line">            if (index+1) % 2  == 0 &#123;</div><div class="line">                continue</div><div class="line">            &#125;</div><div class="line">            let c_after_value = romanDic[String(c)]!</div><div class="line">            </div><div class="line">            if (index+1) == s.characters.count&#123;</div><div class="line">                return c_after_value + intValue</div><div class="line">            &#125;</div><div class="line">            let c_curr = String(c_reversed).characterAtIndex(index: index+1)!</div><div class="line">            let c_curr_value = romanDic[String(c_curr)]!</div><div class="line">            if (c_after_value &gt; c_curr_value) &amp;&amp; (c_curr_value == 1 || c_curr_value == 10 || c_curr_value == 100)&#123;</div><div class="line">            intValue = intValue + c_after_value - c_curr_value</div><div class="line">            &#125;else</div><div class="line">            &#123;</div><div class="line">            intValue = intValue + c_after_value + c_curr_value</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">            return intValue</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试:"></a>测试:</h2><p>使用一些特殊的罗马数进行测试:</p>
+<p><strong>XIV  -&gt;  14</strong></p>
+<p><img src="http://ocar0timh.bkt.clouddn.com/CC2275E1-39A6-4E5B-83BC-365C393C0BA4.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;给出一个罗马数-将其转换为整数&quot;&gt;&lt;a href=&quot;#给出一个罗马数-将其转换为整数&quot; class=&quot;headerlink&quot; title=&quot;给出一个罗马数,将其转换为整数.&quot;&gt;&lt;/a&gt;给出一个罗马数,将其转换为整数.&lt;/h2&gt;&lt;p&gt;保证范围为1-3999.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode算法" scheme="http://blog.img421.com/tags/LeetCode%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>算法3-判断一个整数是回文数</title>
     <link href="http://blog.img421.com/2016/10/25/%E7%AE%97%E6%B3%953-%E5%9B%9E%E6%96%87%E6%95%B4%E6%95%B0/"/>
     <id>http://blog.img421.com/2016/10/25/算法3-回文整数/</id>
     <published>2016-10-25T07:40:48.000Z</published>
-    <updated>2016-10-26T07:57:30.000Z</updated>
+    <updated>2016-10-27T09:34:06.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="给出一个整形判断是否是回文数"><a href="#给出一个整形判断是否是回文数" class="headerlink" title="给出一个整形判断是否是回文数"></a>给出一个整形判断是否是回文数</h2><p>1.不考虑整形溢出;</p>
+    <content type="html"><![CDATA[<h2 id="给出一个整形判断是否是回文数"><a href="#给出一个整形判断是否是回文数" class="headerlink" title="给出一个整形判断是否是回文数"></a>给出一个整形判断是否是回文数</h2><p><a href="https://github.com/twenty-zp/LeetCodeAlgorithm.git" target="_blank" rel="external">源代码</a><br>1.不考虑整形溢出;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">/// 回文数</div><div class="line">class Solution1 &#123;</div><div class="line">    func isPalindrome(x: Int) -&gt; Bool &#123;</div><div class="line">        if (x&lt;0  || (x != 0 &amp;&amp; x % 10 == 0)) &#123;return false&#125;  //判断小0,并且尾数为0的数</div><div class="line">        var tmpX = x</div><div class="line">        var result = 0</div><div class="line">        while tmpX &gt; 0 &#123;</div><div class="line">            result = tmpX % 10 + result * 10</div><div class="line">            tmpX = tmpX / 10</div><div class="line">        &#125;</div><div class="line">        return result == x</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;给出一个整形判断是否是回文数&quot;&gt;&lt;a href=&quot;#给出一个整形判断是否是回文数&quot; class=&quot;headerlink&quot; title=&quot;给出一个整形判断是否是回文数&quot;&gt;&lt;/a&gt;给出一个整形判断是否是回文数&lt;/h2&gt;&lt;p&gt;1.不考虑整形溢出;&lt;/p&gt;
-&lt;figure
+      &lt;h2 id=&quot;给出一个整形判断是否是回文数&quot;&gt;&lt;a href=&quot;#给出一个整形判断是否是回文数&quot; class=&quot;headerlink&quot; title=&quot;给出一个整形判断是否是回文数&quot;&gt;&lt;/a&gt;给出一个整形判断是否是回文数&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://githu
     
     </summary>
     
@@ -43,12 +98,13 @@
     <link href="http://blog.img421.com/2016/10/24/%E7%AE%97%E6%B3%952-%E5%8F%8D%E8%BD%AC%E6%95%B4%E5%BD%A2/"/>
     <id>http://blog.img421.com/2016/10/24/算法2-反转整形/</id>
     <published>2016-10-24T04:30:48.000Z</published>
-    <updated>2016-10-26T07:57:52.000Z</updated>
+    <updated>2016-10-27T09:33:33.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>从入门到“崩溃”,算法是硬伤.</p>
 </blockquote>
-<h2 id="反转整形"><a href="#反转整形" class="headerlink" title="反转整形"></a>反转整形</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Example1: x = 123, return 321</div><div class="line"></div><div class="line">Example2: x = -123, return -321</div></pre></td></tr></table></figure>
+<h2 id="反转整形"><a href="#反转整形" class="headerlink" title="反转整形"></a>反转整形</h2><p><a href="https://github.com/twenty-zp/LeetCodeAlgorithm.git" target="_blank" rel="external">源代码</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Example1: x = 123, return 321</div><div class="line"></div><div class="line">Example2: x = -123, return -321</div></pre></td></tr></table></figure>
 <h4 id="1-字符串法"><a href="#1-字符串法" class="headerlink" title="1.字符串法"></a>1.字符串法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">class Solution&#123;</div><div class="line">    /// 字符串法</div><div class="line">    func reverse(x: Int) -&gt; Int &#123; </div><div class="line">        var negative: Bool = false</div><div class="line">        var m : Int = 0</div><div class="line">        if x &lt; 0 &#123; </div><div class="line">            m = x * -1</div><div class="line">            negative = true</div><div class="line">        &#125;</div><div class="line">        var xStr = String(m)</div><div class="line">        let c: [Character] =  xStr.characters.reversed()</div><div class="line">        let rStr = String(c)</div><div class="line">        if negative &#123;</div><div class="line">            return   -Int(rStr)!</div><div class="line">        &#125;</div><div class="line">            return Int(rStr)!;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="2-模十法"><a href="#2-模十法" class="headerlink" title="2.模十法"></a>2.模十法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">class Solution&#123;</div><div class="line">    /// 模十法</div><div class="line">    func reverseMo10(x: Int) -&gt; Int &#123;</div><div class="line">        var result = 0</div><div class="line">        var tmp = abs(x)</div><div class="line">        while tmp &gt; 0 &#123;</div><div class="line">            result = result*10 + tmp%10</div><div class="line">            tmp/=10</div><div class="line">        &#125;</div><div class="line">        return x &gt; 0 ? result : -result</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
     
@@ -57,7 +113,7 @@
       &lt;blockquote&gt;
 &lt;p&gt;从入门到“崩溃”,算法是硬伤.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&quot;反转整形&quot;&gt;&lt;a href=&quot;#反转整形&quot; class=&quot;headerlink&quot; title=&quot;反转整形&quot;&gt;&lt;/a&gt;反转整形&lt;/h2&gt;&lt;figure class=&quot;
+&lt;h2 id=&quot;反转整形&quot;&gt;&lt;a href=&quot;#反转整形&quot; class=&quot;headerlink&quot; title=&quot;反转整形&quot;&gt;&lt;/a&gt;反转整形&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;htt
     
     </summary>
     
@@ -71,9 +127,10 @@
     <link href="http://blog.img421.com/2016/10/24/%E7%AE%97%E6%B3%951-%E5%8F%96%E5%87%BA%E6%95%B4%E5%BD%A2%E6%95%B0%E7%BB%84%E4%B8%AD%E5%92%8C%E4%B8%BA%E7%BB%99%E5%87%BA%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0/"/>
     <id>http://blog.img421.com/2016/10/24/算法1-取出整形数组中和为给出值的整数/</id>
     <published>2016-10-24T03:40:48.000Z</published>
-    <updated>2016-10-26T08:10:47.000Z</updated>
+    <updated>2016-10-27T09:33:24.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="给出一个内容不同的整形数组-使其中两数之和为所给的目标值-返回两数的索引值"><a href="#给出一个内容不同的整形数组-使其中两数之和为所给的目标值-返回两数的索引值" class="headerlink" title="给出一个内容不同的整形数组,使其中两数之和为所给的目标值,返回两数的索引值"></a>给出一个内容不同的整形数组,使其中两数之和为所给的目标值,返回两数的索引值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Example:</div><div class="line">	Given nums = [2, 7, 11, 15], target = 9,</div><div class="line">	Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">	return [0, 1].</div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<h2 id="给出一个内容不同的整形数组-使其中两数之和为所给的目标值-返回两数的索引值"><a href="#给出一个内容不同的整形数组-使其中两数之和为所给的目标值-返回两数的索引值" class="headerlink" title="给出一个内容不同的整形数组,使其中两数之和为所给的目标值,返回两数的索引值"></a>给出一个内容不同的整形数组,使其中两数之和为所给的目标值,返回两数的索引值</h2><p><a href="https://github.com/twenty-zp/LeetCodeAlgorithm.git" target="_blank" rel="external">源代码</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Example:</div><div class="line">	Given nums = [2, 7, 11, 15], target = 9,</div><div class="line">	Because nums[0] + nums[1] = 2 + 7 = 9,</div><div class="line">	return [0, 1].</div></pre></td></tr></table></figure>
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">/// 取出整形数组中的两数之和是给出值得数组</div><div class="line">class Solution &#123;</div><div class="line">    /**</div><div class="line">     - parameter nums:   整数数组</div><div class="line">     - parameter target: 目标和</div><div class="line">     - returns: 返回一个数组</div><div class="line">     */</div><div class="line">    func twoSum(_ nums: [Int], _ target: Int) -&gt; [Int] &#123;</div><div class="line">        //1.</div><div class="line">        var hash: [Int: Int] = [:]</div><div class="line">        var result: [Int] = []</div><div class="line">        for(i,n) in nums.enumerated() &#123;</div><div class="line">            //2.</div><div class="line">            if let index = hash[target - n] &#123;</div><div class="line">                result.append(index)</div><div class="line">                result.append(i)</div><div class="line">            &#125;</div><div class="line">            //3.</div><div class="line">            hash[n] = i</div><div class="line">        &#125;</div><div class="line">        return result</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>1.定义一个字典(Dictionary),为了从中判断是否存在<code>2</code>中内容;<br>2.通过目标值<code>-</code>(减去)遍历获取的值,去判断是否索引值,因为在<code>3</code>中将值和索引进行互换.</p>
@@ -399,39 +456,10 @@ if (keyframe &amp;&amp; !encoder -&gt; sps) {
   </entry>
   
   <entry>
-    <title>iOS视频直播系列</title>
-    <link href="http://blog.img421.com/2016/08/05/shi-pin-zhi-bo-xi-lie-yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/"/>
-    <id>http://blog.img421.com/2016/08/05/shi-pin-zhi-bo-xi-lie-yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/</id>
-    <published>2016-08-05T02:12:10.000Z</published>
-    <updated>2016-08-05T08:17:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>本教程为是一个系列教程.从0开始带你装逼,带你飞.(开玩笑,大家共同进步^_^).如若有什么不对请指点。</p>
-<p><a href="https://www.gitbook.com/book/twenty-zp/-/details" target="_blank" rel="external">内容全地址</a></p>
-<p><a href="https://github.com/twenty-zp/RealTimeAVVideo" target="_blank" rel="external">Demo地址</a></p>
-<p>文章从视频和音频两部分讲起。追寻以下图录流程。<br><img src="https://twenty-zp.gitbooks.io/-/content/69ABD544-ECDA-4A8D-A4BE-250D62D896E5.png" alt="导图"></p>
-<p><a href="http://blog.img421.com/2016/08/05/yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/">一、音视频配置文档概念</a></p>
-<p><a href="http://blog.img421.com/2016/08/05/shi-pin-zhi-bo-xi-lie-er-cai-ji-shi-pin-shu-ju/">二、采集视频数据</a></p>
-<p><a href="http://blog.img421.com/2016/08/05/san-shi-pin-bian-jie-ma-jie-ma-pian/">三、视频编解码-解码篇</a></p>
-<p><a href="http://blog.img421.com/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/">四、视频的编解码-编码篇</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本教程为是一个系列教程.从0开始带你装逼,带你飞.(开玩笑,大家共同进步^_^).如若有什么不对请指点。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.gitbook.com/book/twenty-zp/-/details&quot; target=&quot;_blank&quot; re
-    
-    </summary>
-    
-    
-      <category term=" - 视频直播系列" scheme="http://blog.img421.com/tags/%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD%E7%B3%BB%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
     <title>一、音视频配置文档概念</title>
     <link href="http://blog.img421.com/2016/08/05/yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/"/>
     <id>http://blog.img421.com/2016/08/05/yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/</id>
-    <published>2016-08-05T02:08:30.000Z</published>
+    <published>2016-08-05T02:12:30.000Z</published>
     <updated>2016-08-05T08:02:03.000Z</updated>
     
     <content type="html"><![CDATA[<p>开始中我们要了解几种影响音视频的质量的关键概念:</p>
@@ -460,6 +488,35 @@ if (keyframe &amp;&amp; !encoder -&gt; sps) {
       &lt;p&gt;开始中我们要了解几种影响音视频的质量的关键概念:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;码流&lt;/strong&gt;(也通常称码率、比特率),指在单位时间传输或解码的位数(数据流量),是视频中画面质量控制的最重要部分。在分辨率相同的情况下,码流越大,压缩的比例就越小,画
+    
+    </summary>
+    
+    
+      <category term=" - 视频直播系列" scheme="http://blog.img421.com/tags/%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS视频直播系列</title>
+    <link href="http://blog.img421.com/2016/08/05/shi-pin-zhi-bo-xi-lie-yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/"/>
+    <id>http://blog.img421.com/2016/08/05/shi-pin-zhi-bo-xi-lie-yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/</id>
+    <published>2016-08-05T02:08:10.000Z</published>
+    <updated>2016-08-05T08:17:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本教程为是一个系列教程.从0开始带你装逼,带你飞.(开玩笑,大家共同进步^_^).如若有什么不对请指点。</p>
+<p><a href="https://www.gitbook.com/book/twenty-zp/-/details" target="_blank" rel="external">内容全地址</a></p>
+<p><a href="https://github.com/twenty-zp/RealTimeAVVideo" target="_blank" rel="external">Demo地址</a></p>
+<p>文章从视频和音频两部分讲起。追寻以下图录流程。<br><img src="https://twenty-zp.gitbooks.io/-/content/69ABD544-ECDA-4A8D-A4BE-250D62D896E5.png" alt="导图"></p>
+<p><a href="http://blog.img421.com/2016/08/05/yi-yin-shi-pin-pei-zhi-wen-dang-gai-nian/">一、音视频配置文档概念</a></p>
+<p><a href="http://blog.img421.com/2016/08/05/shi-pin-zhi-bo-xi-lie-er-cai-ji-shi-pin-shu-ju/">二、采集视频数据</a></p>
+<p><a href="http://blog.img421.com/2016/08/05/san-shi-pin-bian-jie-ma-jie-ma-pian/">三、视频编解码-解码篇</a></p>
+<p><a href="http://blog.img421.com/2016/08/05/si-shi-pin-de-bian-jie-ma-bian-ma-pian/">四、视频的编解码-编码篇</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本教程为是一个系列教程.从0开始带你装逼,带你飞.(开玩笑,大家共同进步^_^).如若有什么不对请指点。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.gitbook.com/book/twenty-zp/-/details&quot; target=&quot;_blank&quot; re
     
     </summary>
     
@@ -1100,75 +1157,6 @@ sudo mv bin/brew /usr/local/bin
     
     
       <category term=" - iOS资源" scheme="http://blog.img421.com/tags/iOS%E8%B5%84%E6%BA%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Objective-C  Runtime</title>
-    <link href="http://blog.img421.com/2016/03/02/objective-c-runtime/"/>
-    <id>http://blog.img421.com/2016/03/02/objective-c-runtime/</id>
-    <published>2016-03-02T09:31:00.000Z</published>
-    <updated>2016-07-11T03:01:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Objective-C 不同于 其他语言,它是动态的。何为动态，就是说它在执行一个方法的时候，比如[object method]并不是去直接执行,而是将method当作一条消息发送,这个消息由object来处理,这个消息可能被转发给另外一个对象。例[object init]调用［super  init］或者不予理睬假装没有收到此消息比如给button 添加一个SEL.多条不同的消息也可以对应同一个方法实现。这都是在程序运行的过程时候决定的。</p>
-<p>实际情况下,我们所使用OC调用的语法都会被解析成一个C的函数调用 <code>- object_msgSend()</code>.例如以下代码是等价的：</p>
-<pre><code>1.[object method:message];
-2.object_msgSend(object,@selector(method:),message)
-</code></pre><p>消息传递的关键存在于<code>objc_object</code> 中的isa指针和<code>objc_class</code>中的class dispatch table.</p>
-<h3 id="Objc-object-Objc-class以及objc-method"><a href="#Objc-object-Objc-class以及objc-method" class="headerlink" title="Objc_object,Objc_class以及objc_method"></a><code>Objc_object</code>,<code>Objc_class</code>以及<code>objc_method</code></h3><p>在OC中，类、对象和方法都是一个C的结构体,从<code>objc/objc.h</code>头文件中,我们可以找到他们的定义：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">struct objc_object &#123;  </div><div class="line">    Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">struct objc_class &#123;  </div><div class="line">    Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line">#if !__OBJC2__</div><div class="line">    Class super_class;</div><div class="line">    const char *name;</div><div class="line">    long version;</div><div class="line">    long info;</div><div class="line">    long instance_size;</div><div class="line">    struct objc_ivar_list *ivars;</div><div class="line">    **struct objc_method_list **methodLists**;</div><div class="line">    **struct objc_cache *cache**;</div><div class="line">    struct objc_protocol_list *protocols;</div><div class="line">#endif</div><div class="line">&#125;;</div><div class="line"></div><div class="line">struct objc_method_list &#123;  </div><div class="line">    struct objc_method_list *obsolete;</div><div class="line">    int method_count;</div><div class="line"></div><div class="line">#ifdef __LP64__</div><div class="line">    int space;</div><div class="line">#endif</div><div class="line"></div><div class="line">    /* variable length structure */</div><div class="line">    struct objc_method method_list[1];</div><div class="line">&#125;;</div><div class="line"></div><div class="line">struct objc_method &#123;  </div><div class="line">    SEL method_name;</div><div class="line">    char *method_types;    /* a string representing argument/return types */</div><div class="line">    IMP method_imp;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p><code>objc_method_list</code>本质是一个由<code>objc_method</code>元素的可变长度数组.一个<code>objc_method</code>结构体中有函数名,也就是SEL,函数类型的字符串,以及函数的实现IMP。<br>从这些定义中可以看出发送一条消息也就 <code>objc_msgSend</code> 做了什么事。举<code>objc_msgSend(obj, foo)</code> 这个例子来说:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">具体会转换成什么代码呢？</div><div class="line">Runtime会根据类型自动转换成下列某一个函数：</div><div class="line">objc_msgSend:普通的消息都会通过该函数发送</div><div class="line">objc_msgSend_stret:消息中有数据结构作为返回值（不是简单值）时，通过此函数发送和接收返回值</div><div class="line">objc_msgSendSuper:和objc_msgSend类似，这里把消息发送给父类的实例</div><div class="line">objc_msgSendSuper_stret:和objc_msgSend_stret类似，这里把消息发送给父类的实例并接收返回值</div></pre></td></tr></table></figure>
-<ol>
-<li>首先，通过 obj 的 isa 指针找到它的 class ;</li>
-<li>在 class 的 method list 找 foo ;</li>
-<li>如果 class 中没到 foo，继续往它的 superclass 中找 ;</li>
-<li>一旦找到 foo 这个函数，就去执行它的实现IMP .</li>
-</ol>
-<p>当消息被发送到实例对象时,是如图所示处理的（图片源自网络):</p>
-<p><img src="http://ianisme.u.qiniudn.com/wp-content/uploads/2016/01/objective-runtime-2.png" alt=""></p>
-<p>但这种实现有个问题，效率低。但一个 class 往往只有 20% 的函数会被经常调用，可能占总调用次数的 80% 。每个消息都需要遍历一次 <code>objc_method_list</code> 并不合理。如果把经常被调用的函数缓存下来，那可以大大提高函数查询的效率。这也就是 <code>objc_class</code> 中另一个重要成员 <code>objc_cache</code> 做的事情 - 再找到 foo 之后，把 foo 的 <code>method_name</code> 作为 key ，<code>method_imp</code> 作为 value 给存起来。当再次收到 foo 消息的时候，可以直接在 cache 里找到，避免去遍历 <code>objc_method_list</code>.</p>
-<h2 id="消息动态解析"><a href="#消息动态解析" class="headerlink" title="消息动态解析"></a>消息动态解析</h2><p>动态方法解析流程图:</p>
-<p><img src="http://ianisme.u.qiniudn.com/wp-content/uploads/2016/01/objective-runtime-6.png" alt=""></p>
-<p>在上面的例子中，如果 <code>foo</code> 没有找到会发生什么？通常情况下，程序会在运行时挂掉并抛出 <em>unrecognized selector sent to …</em> 的异常。但在异常抛出前，Objective-C 的运行时会给你三次拯救程序的机会：</p>
-<ol>
-<li>Method resolution</li>
-<li>Fast forwarding</li>
-<li>Normal forwarding</li>
-</ol>
-<ul>
-<li>第一步：通过<code>+resolveInstanceMethod:</code>或者 <code>+resolveClassMethod:</code>,方法决定是否动态添加方法。如果返回<code>Yes</code>则通过<code>class_addMethod</code>动态添加方法，消息得到处理，结束；如果返回No，则进入下一步；</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">void fooMethod(id obj, SEL _cmd)  </div><div class="line">&#123;</div><div class="line">    NSLog(@&quot;Doing foo&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (BOOL)resolveInstanceMethod:(SEL)aSEL</div><div class="line">&#123;</div><div class="line">    if(aSEL == @selector(foo:))&#123;</div><div class="line">        class_addMethod([self class], aSEL, (IMP)fooMethod, &quot;v@:&quot;);</div><div class="line">        return YES;</div><div class="line">    &#125;</div><div class="line">    return [super resolveInstanceMethod];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>iOS 4.3加入runtime 方法，主要都是以 imp 为前缀的方法，比如 <code>imp_implementationWithBlock()</code> 用 block 快速创建一个 imp 。<br>上面的例子可以重写成：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">IMP fooIMP = imp_implementationWithBlock(^(id _self) &#123;  </div><div class="line">    NSLog(@&quot;Doing foo&quot;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">class_addMethod([self class], aSEL, fooIMP, &quot;v@:&quot;);</div></pre></td></tr></table></figure>
-<ul>
-<li>第二步：这步会进入forwardingTargetForSelector:方法，用于指定响应这个selector的备选对象，不能指定为self。如果返回某个对象则会调用对象的方法，结束。如果返回nil，则进入第三部；</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (id)forwardingTargetForSelector:(SEL)aSelector</div><div class="line">&#123;</div><div class="line">    if(aSelector == @selector(foo:))&#123;</div><div class="line">        return alternateObject;</div><div class="line">    &#125;</div><div class="line">    return [super forwardingTargetForSelector:aSelector];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>只要这个方法返回的不是 nil 和 self，整个消息发送的过程就会被重启，当然发送的对象会变成你返回的那个对象。否则，就会继续 Normal Fowarding </p>
-<ul>
-<li>第三部：这步我们要通过methodSignatureForSelector:方法签名，如果返回nil，则消息无法处理。如果返回methodSignature，则进入下一步；</li>
-<li>第四部：这步调用forwardInvocation：方法，我们可以通过anInvocation对象做很多处理，比如修改实现方法，修改响应对象等，如果方法调用成功，则结束。如果失败，则进入doesNotRecognizeSelector方法，若我们没有实现这个方法，那么就会crash。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (void)forwardInvocation:(NSInvocation *)invocation</div><div class="line">&#123;</div><div class="line">    SEL sel = invocation.selector;</div><div class="line"></div><div class="line">    if([alternateObject respondsToSelector:sel]) &#123;</div><div class="line">        [invocation invokeWithTarget:alternateObject];</div><div class="line">    &#125; </div><div class="line">    else &#123;</div><div class="line">        [self doesNotRecognizeSelector:sel];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Objective-C 中给一个对象发送消息会经过以下几个步骤：</p>
-<ol>
-<li>在对象类的 dispatch table 中尝试找到该消息。如果找到了，跳到相应的函数IMP去执行实现代码；</li>
-<li>如果没有找到，Runtime 会发送 <code>+resolveInstanceMethod:</code> 或者 <code>+resolveClassMethod:</code>尝试去 resolve 这个消息；</li>
-<li>如果 resolve 方法返回 NO，Runtime 就发送 -<code>forwardingTargetForSelector:</code> 允许你把这个消息转发给另一个对象；</li>
-<li>如果没有新的目标对象返回， Runtime 就会发送 <code>-methodSignatureForSelector:</code> 和 <code>-forwardInvocation:</code> 消息。你可以发送 <code>-invokeWithTarget:</code> 消息来手动转发消息或者发送 -<code>doesNotRecognizeSelector:</code> 抛出异常。</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Objective-C 不同于 其他语言,它是动态的。何为动态，就是说它在执行一个方法的时候，比如[object method]并不是去直接执行,而是将method当作一条消息发送,这个消息由object来处理,这个消息可能被转发给另外一个对象。例[object init]
-    
-    </summary>
-    
-    
-      <category term=" - iOS技术" scheme="http://blog.img421.com/tags/iOS%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
