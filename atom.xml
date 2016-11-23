@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.img421.com/"/>
-  <updated>2016-11-18T03:15:24.000Z</updated>
+  <updated>2016-11-23T03:23:34.000Z</updated>
   <id>http://blog.img421.com/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS使用Jenkins构建Cordova,解决fatal error: ‘Cordova/xxx.h’ file not found</title>
+    <link href="http://blog.img421.com/2016/11/23/iOS-shiyong-Jenkins-goujian-Cordova/"/>
+    <id>http://blog.img421.com/2016/11/23/iOS-shiyong-Jenkins-goujian-Cordova/</id>
+    <published>2016-11-23T02:30:30.000Z</published>
+    <updated>2016-11-23T03:23:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>此项目并没有使用<strong>fastlane</strong>脚本来集成打包环境,又因为<strong>fastlane</strong>命令因为测试环境和正式环境发布到不同的地址,如果并未用文档记录下来的话,时间长久会使运营＋测试人员遗忘,所以使用<strong>Jenkins</strong>图像化界面让运营和测试人员清晰的在局域网内自己来进行控制打包.</p>
+<p>在使用<strong>Jenkins</strong>,因为头一次将<strong>Cordova</strong>进行集成打包,所以在构建的过程中,遇到</p>
+<blockquote>
+<p>fatal error: ‘Cordova/CDV.h’ file not found </p>
+<p> #import <cordova cdv.h=""></cordova></p>
+<p> BUILD FAILED </p>
+</blockquote>
+<p>此种编译失败错误.</p>
+<p>通过在网上<strong>Google</strong>查找,在<a href="http://stackoverflow.com/questions/12184767/phonegap-cdvviewcontroller-h-file-not-found-when-archiving-for-ios" target="_blank" rel="external">Stack Overflow</a>找到解决办法,如下图:<br><img src="http://ocar0timh.bkt.clouddn.com/8E985126-9FF7-4E7C-B2EE-7BF6C5D4E50C.png" alt=""><br><strong>但是因为此解决方法因时间长久,而网上多是类似的解决答案</strong>,因此对于我来说一直没有解决.</p>
+<p>但是此中日志报错既然是找不到头文件,那么就在日志文件中搜索<strong>Cordova</strong>关键字,找出打包编译时所查询的目录路径.<br><img src="http://ocar0timh.bkt.clouddn.com/3989B17F-2879-4911-A509-60F03B6DDE2B.png" alt=""><br>可以看到查询头文件的路径.<br>因此,以上在之前的<strong>Header Search Path</strong>方法中添加路径不能使用.<br>将以上的路劲修改以下内容即可:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(SRCROOT)/CordovaLib/build/$(CONFIGURATION)-$&#123;PLATFORM_NAME&#125;/include</div></pre></td></tr></table></figure>
+<p>再次编译得到如下成功<br><img src="http://ocar0timh.bkt.clouddn.com/FA3171F4-62D5-42A8-ACA8-47F0DF98ECAA.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;此项目并没有使用&lt;strong&gt;fastlane&lt;/strong&gt;脚本来集成打包环境,又因为&lt;strong&gt;fastlane&lt;/strong&gt;命令因为测试环境和正式环境发布到不同的地址,如果并未用文档记录下来的话,时间长久会使运营＋测试人员遗忘,所以使用&lt;strong&gt;Je
+    
+    </summary>
+    
+    
+      <category term="ionic系列" scheme="http://blog.img421.com/tags/ionic%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
   
   <entry>
     <title>算法8-成对交换节点</title>
@@ -887,54 +919,6 @@ if (keyframe &amp;&amp; !encoder -&gt; sps) {
     
     
       <category term=" - iOS技术" scheme="http://blog.img421.com/tags/iOS%E6%8A%80%E6%9C%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React Native 开发系列</title>
-    <link href="http://blog.img421.com/2016/04/14/react-native-ru-men/"/>
-    <id>http://blog.img421.com/2016/04/14/react-native-ru-men/</id>
-    <published>2016-04-14T03:15:07.000Z</published>
-    <updated>2016-04-30T01:20:29.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>你只有一定要,才一定会得到.<br>                                  – 沃兹基朔德</p>
-</blockquote>
-<p><img src="http://ocar0timh.bkt.clouddn.com/React-Native.png" alt=""><br>React Native发布已经有一段时间了,发布之后只是大概的了解下作用并没有做其余的工作,前段时间公司项目被客户要求使用HTML5开发,<code>React Native</code>因为是刚出来,可能网上的资料较少以及考虑到要踩得坑比较多,所以项目考虑使用<a href="http://www.ionic.wang/" target="_blank" rel="external">Ionic中文</a>开发,虽然自己不是此项目的开发人员,但是因为要写原生iOS插件,只是简单的了解了下<a href="http://www.ionic.wang/" target="_blank" rel="external">Ionic中文</a>,在写好的HTML5项目中,调试iOS插件的情况下,因为HTML5占用手机内存比较大,有时候手机没有交互效果,要每次重新运行很多次才可以,因此想到使用<code>React Native</code>试一下看看效果怎么样.</p>
-<p>以下只是显示简单的请求服务器登录和列表页面,后续工作也在进行当中:<br><img src="http://ocar0timh.bkt.clouddn.com/2016-04-14-11_45_48.gif" alt=""></p>
-<p>###开始工作</p>
-<ol>
-<li><p>开发工具: <a href="https://www.sublimetext.com/3" target="_blank" rel="external">Sublimt Text</a></p>
-</li>
-<li><p>JavaScript教程:<a href="http://www.w3school.com.cn/js/index.asp" target="_blank" rel="external">W3School-JavaScript</a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this" target="_blank" rel="external">MDN-JavaScript</a>教程.</p>
-</li>
-<li><p>CSS样式教程:<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS" target="_blank" rel="external">MDN-CSS</a> 和 <a href="http://www.w3school.com.cn/css/index.asp" target="_blank" rel="external">W3School-CSS</a></p>
-</li>
-<li><p><strong><a href="http://www.race604.com/react-native-component-lifecycle/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">了解React Native的生命周期</a></strong></p>
-</li>
-<li><p><a href="http://reactjs.cn/react/docs/component-api.html" target="_blank" rel="external">React.js 中文版</a></p>
-</li>
-<li><p><strong>请根据两篇教程走一遍,不懂的请务必<a href="https://www.google.co.jp/?gfe_rd=cr&amp;ei=_QgPV4TkNYf-8wfr17LgAg&amp;gws_rd=ssl" target="_blank" rel="external">Google</a>或其他浏览器搜索,搞明白为止.<a href="http://reactnative.cn/docs/0.23/getting-started.html" target="_blank" rel="external">React Native 中文版</a>和<a href="https://www.raywenderlich.com/126063/react-native-tutorial" target="_blank" rel="external">Raywenderlich 英文版</a></strong></p>
-</li>
-<li><p><strong><a href="https://github.com/facebook/css-layout" target="_blank" rel="external">FaceBook CSS-layout</a></strong></p>
-</li>
-<li><p><code>React Native</code>中的<code>fetch</code>方法所使用的规则同<a href="http://liubin.org/promises-book/#chapter1-what-is-promise" target="_blank" rel="external">Promise</a>.<br><a href="http://www.tuicool.com/articles/QZBJ7zJ" target="_blank" rel="external">fetch 入门</a></p>
-</li>
-</ol>
-<p><strong>注: 如果你跟着步骤5,6,7走一遍,在不懂得情况下同时Google或者度娘,那么你即可入门</strong></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;你只有一定要,才一定会得到.&lt;br&gt;                                  – 沃兹基朔德&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;http://ocar0timh.bkt.clouddn.com/
-    
-    </summary>
-    
-    
-      <category term=" - React Native" scheme="http://blog.img421.com/tags/React-Native/"/>
     
   </entry>
   
