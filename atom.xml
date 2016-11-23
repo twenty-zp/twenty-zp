@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.img421.com/"/>
-  <updated>2016-11-23T03:23:34.000Z</updated>
+  <updated>2016-11-23T03:25:06.000Z</updated>
   <id>http://blog.img421.com/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://blog.img421.com/2016/11/23/iOS-shiyong-Jenkins-goujian-Cordova/"/>
     <id>http://blog.img421.com/2016/11/23/iOS-shiyong-Jenkins-goujian-Cordova/</id>
     <published>2016-11-23T02:30:30.000Z</published>
-    <updated>2016-11-23T03:23:34.000Z</updated>
+    <updated>2016-11-23T03:25:06.000Z</updated>
     
-    <content type="html"><![CDATA[<p>此项目并没有使用<strong>fastlane</strong>脚本来集成打包环境,又因为<strong>fastlane</strong>命令因为测试环境和正式环境发布到不同的地址,如果并未用文档记录下来的话,时间长久会使运营＋测试人员遗忘,所以使用<strong>Jenkins</strong>图像化界面让运营和测试人员清晰的在局域网内自己来进行控制打包.</p>
+    <content type="html"><![CDATA[<p><a href="http://blog.img421.com/2016/11/23/iOS-shiyong-Jenkins-goujian-Cordova/">博客地址</a><br>此项目并没有使用<strong>fastlane</strong>脚本来集成打包环境,又因为<strong>fastlane</strong>命令因为测试环境和正式环境发布到不同的地址,如果并未用文档记录下来的话,时间长久会使运营＋测试人员遗忘,所以使用<strong>Jenkins</strong>图像化界面让运营和测试人员清晰的在局域网内自己来进行控制打包.</p>
 <p>在使用<strong>Jenkins</strong>,因为头一次将<strong>Cordova</strong>进行集成打包,所以在构建的过程中,遇到</p>
 <blockquote>
 <p>fatal error: ‘Cordova/CDV.h’ file not found </p>
@@ -38,7 +38,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;此项目并没有使用&lt;strong&gt;fastlane&lt;/strong&gt;脚本来集成打包环境,又因为&lt;strong&gt;fastlane&lt;/strong&gt;命令因为测试环境和正式环境发布到不同的地址,如果并未用文档记录下来的话,时间长久会使运营＋测试人员遗忘,所以使用&lt;strong&gt;Je
+      &lt;p&gt;&lt;a href=&quot;http://blog.img421.com/2016/11/23/iOS-shiyong-Jenkins-goujian-Cordova/&quot;&gt;博客地址&lt;/a&gt;&lt;br&gt;此项目并没有使用&lt;strong&gt;fastlane&lt;/strong&gt;脚本来集成打包环境,又
     
     </summary>
     
