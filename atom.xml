@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.img421.com/"/>
-  <updated>2016-11-29T08:30:49.000Z</updated>
+  <updated>2016-11-29T08:33:17.000Z</updated>
   <id>http://blog.img421.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Jenkins非root用户使用sudo等</title>
+    <title>Jenkins非root用户使用sudo等本地环境变量</title>
     <link href="http://blog.img421.com/2016/11/29/jenkins-noroot-yonghu-use-sudo/"/>
     <id>http://blog.img421.com/2016/11/29/jenkins-noroot-yonghu-use-sudo/</id>
     <published>2016-11-29T07:40:06.000Z</published>
-    <updated>2016-11-29T08:30:49.000Z</updated>
+    <updated>2016-11-29T08:33:17.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>在使用<code>Jenkins</code>持续集成过程中,因为项目使用的是<code>Ionic</code>进行开发,在提交到<code>svn</code>时,进行打包查看<code>html</code>、<code>js</code>等文件,并没有更新成功,此是因为更新成功后并没有进行<code>ionic build</code>.</p>
