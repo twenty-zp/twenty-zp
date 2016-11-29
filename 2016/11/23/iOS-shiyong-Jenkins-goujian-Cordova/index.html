@@ -10,7 +10,7 @@
 <p>但是此中日志报错既然是找不到头文件,那么就在日志文件中搜索<strong>Cordova</strong>关键字,找出打包编译时所查询的目录路径.<br><img src="http://ocar0timh.bkt.clouddn.com/3989B17F-2879-4911-A509-60F03B6DDE2B.png" alt=""><br>可以看到查询头文件的路径.<br>因此,以上在之前的<strong>Header Search Path</strong>方法中添加路径不能使用.<br>将以上的路劲修改以下内容即可:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(SRCROOT)/CordovaLib/build/$(CONFIGURATION)-$&#123;PLATFORM_NAME&#125;/include</div></pre></td></tr></table></figure>
 <p>再次编译得到如下成功<br><img src="http://ocar0timh.bkt.clouddn.com/FA3171F4-62D5-42A8-ACA8-47F0DF98ECAA.png" alt=""></p>
-</div></article></div></section><footer><div class="paginator"><a href="/2016/11/18/chengdui-jiaohuan-jiedian/" class="next">NEXT</a></div><div data-thread-key="2016/11/23/iOS-shiyong-Jenkins-goujian-Cordova/" data-title="iOS使用Jenkins构建Cordova,解决fatal error: ‘Cordova/xxx.h’ file not found" data-url="http://blog.img421.com/2016/11/23/iOS-shiyong-Jenkins-goujian-Cordova/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"twenty-zp"};
+</div></article></div></section><footer><div class="paginator"><a href="/2016/11/29/jenkins-noroot-yonghu-use-sudo/" class="prev">PREV</a><a href="/2016/11/18/chengdui-jiaohuan-jiedian/" class="next">NEXT</a></div><div data-thread-key="2016/11/23/iOS-shiyong-Jenkins-goujian-Cordova/" data-title="iOS使用Jenkins构建Cordova,解决fatal error: ‘Cordova/xxx.h’ file not found" data-url="http://blog.img421.com/2016/11/23/iOS-shiyong-Jenkins-goujian-Cordova/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"twenty-zp"};
 (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;

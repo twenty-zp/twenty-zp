@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Jenkins非root用户使用sudo等 · Twenty's 时间念</title><meta name="description" content="Jenkins非root用户使用sudo等 - Twenty's 时间念"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon1.png"><link rel="stylesheet" href="/css/apollo.css"><script src="/baiduAnalyse.js"></script><link rel="search" type="application/opensearchdescription+xml" href="http://blog.img421.com/atom.xml" title="Twenty's 时间念"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/twenty-zp" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Jenkins非root用户使用sudo等</h1><div class="post-info">Nov 29, 2016</div><div class="post-content"><blockquote>
+<p>在使用<code>Jenkins</code>持续集成过程中,因为项目使用的是<code>Ionic</code>进行开发,在提交到<code>svn</code>时,进行打包查看<code>html</code>、<code>js</code>等文件,并没有更新成功,此是因为更新成功后并没有进行<code>ionic build</code>.</p>
+</blockquote>
+<h3 id="1-添加Jenkins脚本"><a href="#1-添加Jenkins脚本" class="headerlink" title="1.添加Jenkins脚本"></a>1.添加Jenkins脚本</h3><p>选择<code>增加构建步骤</code>-&gt;<code>Execute shell</code>脚本.<br><img src="http://ocar0timh.bkt.clouddn.com/57F55E4C-A212-4B9B-850B-DDD780E3878B.png" alt=""><br>在命令行中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ionic build ios</div></pre></td></tr></table></figure>
+<p><img src="http://ocar0timh.bkt.clouddn.com/22BE8882-1C79-4968-A3BF-0FA0301D9DEA.png" alt=""><br>然后进行保存. </p>
+<p>当点击<code>立即重新构建</code>后,<code>Jenkins</code>会报<code>Finished: FAILURE</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo: no tty present and no askpass program specified</div></pre></td></tr></table></figure>
+<p><img src="http://ocar0timh.bkt.clouddn.com/C4490F76-90D5-4729-A2F5-12E10ADA1E4B.png" alt=""><br>因为此用户为非root用户,并且要输入一个切换root用户的密码.</p>
+<h3 id="2-修改sudo不输入密码"><a href="#2-修改sudo不输入密码" class="headerlink" title="2.修改sudo不输入密码"></a>2.修改sudo不输入密码</h3><p>在终端进行输入:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo visudo</div></pre></td></tr></table></figure>
+<p>输入电脑用户密码.在<code>## Same thing without a password</code>下输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jenkins ALL=(ALL) NOPASSWD: ALL</div></pre></td></tr></table></figure>
+<p><img src="http://ocar0timh.bkt.clouddn.com/626C39EB-6BE9-4C0C-B474-4159EB9F7C19.png" alt=""><br>jenkins: 为你的jenkins系统的用户名,可以在<code>电脑的活动监视器的用户中查看</code>.</p>
+<p>重新点击<code>立即重新构建</code>后,<code>Jenkins</code>会报<code>Finished: FAILURE</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ionic command not found</div></pre></td></tr></table></figure>
+<p>因为<code>ionic</code>,只是在MAC本地安装,因此给<code>Jenkins</code>添加环境变量.</p>
+<h3 id="3-Jenkins添加环境变量"><a href="#3-Jenkins添加环境变量" class="headerlink" title="3.Jenkins添加环境变量"></a>3.Jenkins添加环境变量</h3><ol>
+<li>打开终端,输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo $PATH</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>将输出的内容,进行copy(拷贝).</p>
+<ol>
+<li>打开 系统管理-&gt;系统设置-&gt;全局属性-&gt;Environment variables 通过增加键值对列表,键为<code>PATH</code>,值为<code>拷贝的输出内容</code>:<br><img src="http://ocar0timh.bkt.clouddn.com/2C84B794-4953-4A81-96B4-AECCFEB40BF3.png" alt=""></li>
+</ol>
+<h3 id="4-完成"><a href="#4-完成" class="headerlink" title="4.完成"></a>4.完成</h3><p>再次点击<code>立即重新构建</code>,项目会从<code>svn</code>进行更新,并且通过<code>sudo ionic build ios</code>进行编译,最后在进行打包完成,并上传到<a href="http://fir.im" target="_blank" rel="external">fir服务器</a><br><img src="http://ocar0timh.bkt.clouddn.com/D1720569-F315-49B0-B728-86D6E3DA8211.png" alt=""></p>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/11/23/iOS-shiyong-Jenkins-goujian-Cordova/" class="next">NEXT</a></div><div data-thread-key="2016/11/29/jenkins-noroot-yonghu-use-sudo/" data-title="Jenkins非root用户使用sudo等" data-url="http://blog.img421.com/2016/11/29/jenkins-noroot-yonghu-use-sudo/" data-author-key="1" class="ds-thread"></div><script>var duoshuoQuery = {short_name:"twenty-zp"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+
+</script><div class="copyright"><p>© 2015 - 2016 <a href="http://blog.img421.com">Twenty's 时间念</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script></body></html>
