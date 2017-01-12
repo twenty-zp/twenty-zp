@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.img421.com/"/>
-  <updated>2016-11-29T08:33:17.000Z</updated>
+  <updated>2017-01-12T09:33:15.000Z</updated>
   <id>http://blog.img421.com/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微信小程序没你想象的那么难</title>
+    <link href="http://blog.img421.com/2017/01/11/wx-xiaochengxu-mei-ni-xiangxiang-de-nan/"/>
+    <id>http://blog.img421.com/2017/01/11/wx-xiaochengxu-mei-ni-xiangxiang-de-nan/</id>
+    <published>2017-01-11T02:03:30.000Z</published>
+    <updated>2017-01-12T09:33:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>正如我所说的,你要你懂得语言编程,微信小程序没你想象的那么难。</p>
+</blockquote>
+<p>这里做一下这两天的小程序记录。</p>
+<p>有时间再做一下开发流程。</p>
+<p><a href="https://github.com/twenty-zp/todayNews.git" target="_blank" rel="external">代码链接</a></p>
+<h4 id="1月12日-公司让做一个项目-后台的接口只是还未完成-因此只是简单的写了一些假数据做布局-同时完善仿今日头条小程序的详情内容页面"><a href="#1月12日-公司让做一个项目-后台的接口只是还未完成-因此只是简单的写了一些假数据做布局-同时完善仿今日头条小程序的详情内容页面" class="headerlink" title="1月12日,公司让做一个项目,后台的接口只是还未完成.因此只是简单的写了一些假数据做布局.同时完善仿今日头条小程序的详情内容页面."></a>1月12日,公司让做一个项目,后台的接口只是还未完成.因此只是简单的写了一些假数据做布局.同时完善仿今日头条小程序的详情内容页面.</h4><hr>
+<h4 id="1月11日-通过群内的分享，今日头条-决定仿写一个简单的今日头条-当日完成列表的开发-并且通过查看文档，小程序并不支持html-所以想起iOS-html替换文本内容，显示自定义的html页面-有了html-解析逻辑"><a href="#1月11日-通过群内的分享，今日头条-决定仿写一个简单的今日头条-当日完成列表的开发-并且通过查看文档，小程序并不支持html-所以想起iOS-html替换文本内容，显示自定义的html页面-有了html-解析逻辑" class="headerlink" title="1月11日,通过群内的分享，今日头条,决定仿写一个简单的今日头条,当日完成列表的开发,并且通过查看文档，小程序并不支持html,所以想起iOS html替换文本内容，显示自定义的html页面,有了html 解析逻辑;"></a>1月11日,通过群内的分享，今日头条,决定仿写一个简单的今日头条,当日完成列表的开发,并且通过查看文档，小程序并不支持html,所以想起iOS html替换文本内容，显示自定义的html页面,有了html 解析逻辑;</h4><hr>
+<h4 id="1月9日-简单的开发了豆瓣的电影列表"><a href="#1月9日-简单的开发了豆瓣的电影列表" class="headerlink" title="1月9日,简单的开发了豆瓣的电影列表"></a>1月9日,简单的开发了豆瓣的电影列表</h4>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;正如我所说的,你要你懂得语言编程,微信小程序没你想象的那么难。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这里做一下这两天的小程序记录。&lt;/p&gt;
+&lt;p&gt;有时间再做一下开发流程。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/
+    
+    </summary>
+    
+    
+      <category term="微信小程序" scheme="http://blog.img421.com/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>Jenkins非root用户使用sudo等本地环境变量</title>
@@ -853,29 +886,6 @@ if (keyframe &amp;&amp; !encoder -&gt; sps) {
 &lt;p&gt;   记录一次小问题&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;苹果在iOS7的&lt;strong&gt;UINavigationController&lt;/strong&gt;中加入了一个返回手势–&lt;strong&gt;interactivePopGestureRecog
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>iTunes Connect(协议、税务和银行业务)－2016最新版</title>
-    <link href="http://blog.img421.com/2016/06/02/itunes-store-xie-yi-shui-wu-he-yin-xing-ye-wu-2016zui-xin-ban/"/>
-    <id>http://blog.img421.com/2016/06/02/itunes-store-xie-yi-shui-wu-he-yin-xing-ye-wu-2016zui-xin-ban/</id>
-    <published>2016-06-01T16:48:42.000Z</published>
-    <updated>2016-06-04T15:45:25.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>应用内购开发的前提是要填写税务等一些列内容,但是填写税务的时候出现了大的变动,</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">Form W-8BEN: Certificate of Foreign Status of Beneficial Owner</div><div class="line">for United States Tax Withholding and Reporting (Individuals)</div><div class="line"></div><div class="line">(Rev. February 2014)</div><div class="line"></div><div class="line">Part I: Identification of Beneficial Owner</div><div class="line">1. Name of individual that is</div><div class="line">the beneficial owner:	</div><div class="line">2. Country of citizenship:	</div><div class="line">3. Permanent Residence Address:</div><div class="line">(Do Not Use P.O. Box)	Minhangpujiangzhen, Shanghai, SHANGHAI, 210000, China</div><div class="line">4. Mailing address:</div><div class="line">(if different from above)	 Same as residence</div><div class="line">5. U.S. taxpayer identification number, if required:</div><div class="line">(see instructions)	</div><div class="line"></div><div class="line"> SSN or ITIN EIN	Do you need a US Tax ID? (please see Form W-8BEN Tips sheet). If so, click to</div><div class="line">Click to download Form SS-4</div><div class="line">6. Foreign tax identifying number, if any:</div><div class="line">(optional)	</div><div class="line">7. Reference Number(s):</div><div class="line">(see instructions)	</div><div class="line">8. Date of Birth:</div><div class="line">(MM-DD-YYYY)	</div><div class="line"></div><div class="line">......</div></pre></td></tr></table></figure>
-<p><img src="http://ocar0timh.bkt.clouddn.com/75635413-C3C0-4627-874F-7766CC25B6F3.png" alt=""><br>现在出现了<strong>W-8BEN表格填写</strong>,自己先看了一遍了解了大概,但是这些具体的内容含义不是专业人员不是太明白,因此Google了一下,查看到了一个<a href="http://7xoj45.com1.z0.glb.clouddn.com/w-8i.pdf" target="_blank" rel="external">简体</a>和<a href="http://10.0.42.153/7xoj45.com1.z0.glb.clouddn.com/W8BEN_TW_TC_ENG.pdf" target="_blank" rel="external">繁体</a>的pdf文档说明.现向大家放出来。<br>简体:<br><img src="http://ocar0timh.bkt.clouddn.com/4194DE74-F498-480E-B544-D128D9BDC088.png" alt="简体"></p>
-<p>繁体:<br><img src="http://ocar0timh.bkt.clouddn.com/5796674D-7BFA-475F-913D-2327E9607A8C.png" alt="繁体"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;应用内购开发的前提是要填写税务等一些列内容,但是填写税务的时候出现了大的变动,&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;
     
     </summary>
     
