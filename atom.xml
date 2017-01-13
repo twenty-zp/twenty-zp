@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.img421.com/"/>
-  <updated>2017-01-12T09:35:54.000Z</updated>
+  <updated>2017-01-13T05:31:28.000Z</updated>
   <id>http://blog.img421.com/</id>
   
   <author>
@@ -20,11 +20,11 @@
     <link href="http://blog.img421.com/2017/01/11/wx-xiaochengxu-mei-ni-xiangxiang-de-nan/"/>
     <id>http://blog.img421.com/2017/01/11/wx-xiaochengxu-mei-ni-xiangxiang-de-nan/</id>
     <published>2017-01-11T02:03:30.000Z</published>
-    <updated>2017-01-12T09:35:54.000Z</updated>
+    <updated>2017-01-13T05:31:28.000Z</updated>
     
     <content type="html"><![CDATA[<p>这里做一下这两天的小程序记录。</p>
 <p>有时间再做一下开发流程。</p>
-<p><a href="https://github.com/twenty-zp/todayNews.git" target="_blank" rel="external">代码链接</a></p>
+<p><img src="http://ocar0timh.bkt.clouddn.com/2017-01-13%2013_28_20.gif" alt=""><br><a href="https://github.com/twenty-zp/todayNews.git" target="_blank" rel="external">代码链接</a></p>
 <h4 id="1月12日-公司让做一个项目-后台的接口只是还未完成-因此只是简单的写了一些假数据做布局-同时完善仿今日头条小程序的详情内容页面"><a href="#1月12日-公司让做一个项目-后台的接口只是还未完成-因此只是简单的写了一些假数据做布局-同时完善仿今日头条小程序的详情内容页面" class="headerlink" title="1月12日,公司让做一个项目,后台的接口只是还未完成.因此只是简单的写了一些假数据做布局.同时完善仿今日头条小程序的详情内容页面."></a>1月12日,公司让做一个项目,后台的接口只是还未完成.因此只是简单的写了一些假数据做布局.同时完善仿今日头条小程序的详情内容页面.</h4><hr>
 <h4 id="1月11日-通过群内的分享，今日头条-决定仿写一个简单的今日头条-当日完成列表的开发-并且通过查看文档，小程序并不支持html-所以想起iOS-html替换文本内容，显示自定义的html页面-有了html-解析逻辑"><a href="#1月11日-通过群内的分享，今日头条-决定仿写一个简单的今日头条-当日完成列表的开发-并且通过查看文档，小程序并不支持html-所以想起iOS-html替换文本内容，显示自定义的html页面-有了html-解析逻辑" class="headerlink" title="1月11日,通过群内的分享，今日头条,决定仿写一个简单的今日头条,当日完成列表的开发,并且通过查看文档，小程序并不支持html,所以想起iOS html替换文本内容，显示自定义的html页面,有了html 解析逻辑;"></a>1月11日,通过群内的分享，今日头条,决定仿写一个简单的今日头条,当日完成列表的开发,并且通过查看文档，小程序并不支持html,所以想起iOS html替换文本内容，显示自定义的html页面,有了html 解析逻辑;</h4><hr>
 <h4 id="1月9日-简单的开发了豆瓣的电影列表"><a href="#1月9日-简单的开发了豆瓣的电影列表" class="headerlink" title="1月9日,简单的开发了豆瓣的电影列表"></a>1月9日,简单的开发了豆瓣的电影列表</h4>]]></content>
@@ -33,7 +33,7 @@
     
       &lt;p&gt;这里做一下这两天的小程序记录。&lt;/p&gt;
 &lt;p&gt;有时间再做一下开发流程。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/twenty-zp/todayNews.git&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;代码链接&lt;/a&gt;&lt;/
+&lt;p&gt;&lt;img src=&quot;http://ocar0timh.bkt.clouddn.com/2017-01-13%2013_28_20.gif&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;a href=&quot;http
     
     </summary>
     
